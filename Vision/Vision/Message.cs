@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vision
+{
+    class Message
+    {
+        private string messageContent;
+        private string[] messageMatrix = new string[12];
+        private Dictionary<char, Segment> segmentLibrary;  //Need to populate dictionary
+        private string backgroundColor;
+        private string borderColor;
+        private double dotRadius;
+        private double deadSpace;
+        private bool specialEffectScrolling;
+        private bool specialEffectSubsegment;
+        private bool specialEffectULSplit;
+        private bool specialEffectRandomColor;
+        private bool specialEffectUpDownDisappear;
+        private bool specialEffectBorderHighlight;
+
+        //Constructor
+        public Message()
+        {
+
+        }
+
+        public string getMessageContent()
+        {
+
+        }
+
+        //Calls compileMessageMatrix to create the new matrix each time message is changed
+        public void setMessageContent(string newMessageContent)
+        {
+            compileMessageMatrix(newMessageContent);
+        }
+
+        public void compileMessageMatrix(string messageContent)
+        {
+
+        }
+
+        public string getBackgroundColor()
+        {
+
+        }
+
+        public void setBackgroundColor(string newBackgroundColor)
+        {
+
+        }
+
+        public string getBorderColor()
+        {
+
+        }
+
+        public void setBorderColor(string newBorderColor)
+        {
+
+        }
+
+        public double getDotRadius()
+        {
+
+        }
+
+        public void setDotRadius(double newDotRadius)
+        {
+
+        }
+
+        public double getDeadSpace()
+        {
+
+        }
+
+        public void setDeadSpace(double newDeadSpace)
+        {
+
+        }
+    }
+}
