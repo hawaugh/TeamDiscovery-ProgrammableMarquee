@@ -15,12 +15,8 @@ namespace Vision
         private string borderColor;
         private double dotRadius;
         private double deadSpace;
-        private bool specialEffectScrolling;
-        private bool specialEffectSubsegment;
-        private bool specialEffectULSplit;
-        private bool specialEffectRandomColor;
-        private bool specialEffectUpDownDisappear;
-        private bool specialEffectBorderHighlight;
+        private int specialEffect; //Numbers 0-5, each corresponding to a special effect (0 being static message)
+
 
         //Constructor
         public Message()
