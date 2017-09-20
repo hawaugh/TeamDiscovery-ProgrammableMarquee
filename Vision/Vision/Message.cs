@@ -9,8 +9,7 @@ namespace Vision
     class Message
     {
         private string messageContent;
-        private string[] messageMatrix = new string[12];
-        private Dictionary<char, Segment> segmentLibrary;  //Need to populate dictionary
+        private Segment[] segmentArray;  //Contains one segment for non subsegmented message
         private string backgroundColor;
         private string borderColor;
         private double dotRadius;

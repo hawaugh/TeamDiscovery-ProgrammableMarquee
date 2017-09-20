@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="MarqueeMatrix.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="CharacterBuild.cs" />
     <Compile Include="Segment.cs" />
     <Compile Include="UIForm.cs">
       <SubType>Form</SubType>

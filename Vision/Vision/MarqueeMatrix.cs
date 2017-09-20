@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Ahmad
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,6 +65,16 @@ namespace Vision
         }
 
         public void displayImage(Image image)
+        {
+
+        }
+
+        public Message LoadXML()
+        {
+
+        }
+
+        public void saveXML()
         {
 
         }
