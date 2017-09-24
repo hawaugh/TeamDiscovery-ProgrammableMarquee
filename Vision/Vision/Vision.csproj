@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="VisionAppDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MarqueeForm.resx">
+      <DependentUpon>MarqueeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

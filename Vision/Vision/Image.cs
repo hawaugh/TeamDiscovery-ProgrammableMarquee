@@ -25,7 +25,7 @@ namespace Vision
 
         public double getDotRadius()
         {
-
+            
         }
 
         public void setDotRadius(double newDotRadius)
