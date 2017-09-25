@@ -41,7 +41,7 @@ namespace Vision
 {
     static void Main()
     {
-        Testing.Dot D = new Testing.Dot();
+        Vision.Dot D = new Vision.Dot();
         D.Active = true;
         System.Console.WriteLine(D.Active);
     }
