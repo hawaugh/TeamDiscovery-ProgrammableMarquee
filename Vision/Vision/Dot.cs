@@ -6,33 +6,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vision
+namespace Testing
 {
-
-    class Dot
-    {
-        private string _dotColor;
-        private static bool _setActive;
-
-
-        //Constructor
-        public Dot()
+   
+        class Dot
         {
-            //This was just added to test that I would be able to find and test the Active getter and setter
-            this.Active = true;
-        }
+            private string _dotColor;
+            private static bool _setActive;
 
-        //Most c# getter/setters are written in this fashion
-        public bool Active
-        {
-            get { return _setActive; }
-            set { _setActive = value; }
-        }
 
-        public string dotColor
-        {
-            get { return _dotColor; }
-            set { _dotColor = value; }
+            //Constructor
+            public Dot()
+            {
+                //this.Active = false this will make Active value = false but with the example at the bottom it will change 
+                // to true
+                
+            }
+
+            public bool Active
+            {
+                get { return _setActive; }
+                set { _setActive = value; }
+            }
+
+            public string dotColor
+            {
+                get { return _dotColor; }
+                set { _dotColor = value; }
+            }
         }
-    }
 }
+
+/*class Program
+{
+    static void Main()
+    {
+        Testing.Dot D = new Testing.Dot();
+        D.Active = true;
+        System.Console.WriteLine(D.Active);
+    }
+
+}*/
