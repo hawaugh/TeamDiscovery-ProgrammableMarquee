@@ -8,21 +8,23 @@ namespace Vision
 {
     class Segment
     {
-        private char segmentCharacter;
-        private string[] segmentArray = new string[12];
+        private string _messageText;
+        private string[] messageMatrix = new string[12];
+        private Dictionary<char, CharacterBuild> characterLibrary;  //Need to populate dictionary
 
-        //Constructor
-        public Segment()
+        public Segment(string segmentText)
         {
 
         }
 
-        public char getSegmentCharacter()
+        //TODO: add getter/setter for _messageText
+
+        public string[] getMessageMatrix()
         {
 
         }
 
-        public string[] getSegmentArray()
+        public void setMessageMatrix(string messageText)
         {
 
         }
