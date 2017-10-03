@@ -10,8 +10,7 @@ namespace Vision
     {
         private string _messageText;
         private string[] messageMatrix = new string[12];
-        private Dictionary<char, CharacterBuild> characterLibrary;  //Need to populate dictionary
-
+        
         public Segment(string segmentText)
         {
 
@@ -27,6 +26,37 @@ namespace Vision
         public void setMessageMatrix(string messageText)
         {
 
+        }
+
+        //Contains the library of character builds,  TODO: Fill out all supported characters; Brooks
+        public string[] characterBuild(char character)
+        {
+            string[] returnString;
+
+            switch (character)
+            {
+                case 'A':
+                    returnString = new string[] {   "000001000000",
+                                                    "000011100000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000",
+                                                    "000000000000"};
+                    break;
+                case 'B':
+                    returnString = new string[] { }; //ETC
+                    break;
+                default:
+                    returnString = new string[12];
+                    break;
+            }
+            return returnString;
         }
     }
 }
