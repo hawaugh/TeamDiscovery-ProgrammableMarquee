@@ -46,10 +46,11 @@ namespace Vision
             // add 1536 cells
             for (int i = 0; i < cMaxColumn; i++)
             {
-                DataGridViewTextBoxColumn TxCol = new DataGridViewTextBoxColumn();
-                TxCol.MaxInputLength = 1;   // only one digit allowed in a cell
-                DGV.Columns.Add(TxCol);
-                DGV.Columns[i].Name = "Col " + (i + 1).ToString();
+                DataGridViewImageColumn imageCell = new DataGridViewImageColumn();
+
+                //TxCol.MaxInputLength = 1;   // only one digit allowed in a cell
+                DGV.Columns.Add(imageCell);
+                DGV.Columns[i].Name = i.ToString();
                 DGV.Columns[i].Width = cColWidth;
                 DGV.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
@@ -58,12 +59,33 @@ namespace Vision
                 DataGridViewRow row = new DataGridViewRow();
                 row.Height = cRowHeight;
                 DGV.Rows.Add(row);
+
             }
 
             Controls.Add(DGV);
 
         }
+
+        private void Dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex > -1)
+            {
+                Brush Brs = new SolidBrush(Color.FromName(DGV[1, e.RowIndex].Value.ToString()));
+                GraphicsExtensions.FillCircle(e.Graphics, Brs, e.CellBounds.Location.X + 5, e.CellBounds.Location.Y + 10, 5);
+                e.Handled = true;
+            }
+        }
     }
+
+    public static class GraphicsExtensions
+    {
+        public static void FillCircle(this Graphics g, Brush brush, float centerX, float centerY, float radius)
+        {
+            g.FillEllipse(brush, centerX - radius, centerY - radius, radius + radius, radius + radius);
+        }
+    }
+
+
 }
 
 
