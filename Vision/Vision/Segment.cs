@@ -13,10 +13,19 @@ namespace Vision
         
         public Segment(string segmentText)
         {
-
+            _messageText = segmentText;
+            setMessageMatrix(_messageText);
         }
 
-        //TODO: add getter/setter for _messageText
+        public string messageText
+        {
+            get { return _messageText; }
+            set
+            {
+                _messageText = value;
+                setMessageMatrix(_messageText);
+            }
+        }
 
         public String[] getMessageMatrix()
         {
@@ -25,10 +34,18 @@ namespace Vision
 
         public void setMessageMatrix(string messageText)
         {
-
+            string[] currentLetter;
+            foreach (char c in messageText)
+            {
+                currentLetter = characterBuild(c);
+                for (int i = 0; i < 12; i++)
+                {
+                    messageMatrix[i] = messageMatrix[i] + currentLetter[i];
+                }
+            }
         }
 
-        //Contains the library of character builds,  TODO: Fill out all supported characters; Brooks
+        //Contains the library of character builds
         public string[] characterBuild(char character)
         {
             string[] returnString;
