@@ -25,22 +25,22 @@ namespace Vision
 
         public double getDotRadius()
         {
-            
+            return dotRadius;
         }
 
         public void setDotRadius(double newDotRadius)
         {
-
+            dotRadius = newDotRadius;
         }
 
         public double getDeadSpace()
         {
-
+            return deadSpace;
         }
 
         public void setDeadSpace(double newDeadSpace)
         {
-
+            deadSpace = newDeadSpace; 
         }
     }
 }

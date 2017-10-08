@@ -18,9 +18,9 @@ namespace Vision
 
         //TODO: add getter/setter for _messageText
 
-        public string[] getMessageMatrix()
+        public String[] getMessageMatrix()
         {
-
+            return messageMatrix; 
         }
 
         public void setMessageMatrix(string messageText)

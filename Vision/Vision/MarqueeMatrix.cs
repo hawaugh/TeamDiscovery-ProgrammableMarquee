@@ -69,10 +69,10 @@ namespace Vision
 
         }
 
-        public Message LoadXML()
+       /* public Message LoadXML()
         {
-
-        }
+           
+        }*/
 
         public void saveXML()
         {

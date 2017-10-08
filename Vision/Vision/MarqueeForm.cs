@@ -13,6 +13,13 @@ namespace Vision
 {
     public partial class MarqueeForm : Form
     {
+        const int cColWidth = 20;
+        const int cRowHeight = 20;
+        const int cMaxColumn = 96;
+        const int cMaxRow = 16;
+        const int matrixWidth = cColWidth * cMaxColumn + 3;
+        const int matrixHeight = cRowHeight * cMaxRow + 3;
+        DataGridView DGV;
 
         public MarqueeForm()
         {
@@ -21,25 +28,47 @@ namespace Vision
 
         private void MarqueeForm_Load(object sender, EventArgs e)
         {
-            newMatrixGrid();
-        }
-
-        //Method to create new grid in the DataGridView
-        private void newMatrixGrid()
-        {
-            dataGridView1.ColumnCount = 96;
-            dataGridView1.RowCount = 16;
-
-            //fill background of each cell using a for loop
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            DGV = new DataGridView();
+            DGV.Name = "DGV";
+            DGV.AllowUserToResizeColumns = false;
+            DGV.AllowUserToResizeRows = false;
+            DGV.AllowUserToAddRows = false;
+            DGV.RowHeadersVisible = false;
+            DGV.ColumnHeadersVisible = false;
+            DGV.GridColor = Color.DarkBlue;
+            DGV.DefaultCellStyle.BackColor = Color.AliceBlue;
+            DGV.ScrollBars = ScrollBars.None;
+            DGV.Size = new Size(matrixWidth, matrixHeight);
+            DGV.Location = new Point(50, 50);
+            DGV.Font = new System.Drawing.Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+            DGV.ForeColor = Color.DarkBlue;
+            DGV.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            // add 1536 cells
+            for (int i = 0; i < cMaxColumn; i++)
             {
-                for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                {
-                    dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                }
+                DataGridViewTextBoxColumn TxCol = new DataGridViewTextBoxColumn();
+                TxCol.MaxInputLength = 1;   // only one digit allowed in a cell
+                DGV.Columns.Add(TxCol);
+                DGV.Columns[i].Name = "Col " + (i + 1).ToString();
+                DGV.Columns[i].Width = cColWidth;
+                DGV.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            for (int j = 0; j < cMaxRow; j++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.Height = cRowHeight;
+                DGV.Rows.Add(row);
+            }
+
+            Controls.Add(DGV);
+
         }
-
-
     }
 }
+
+
+
+
+
+
+
