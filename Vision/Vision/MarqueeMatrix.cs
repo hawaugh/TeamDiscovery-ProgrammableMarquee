@@ -10,8 +10,7 @@ namespace Vision
 {
     class MarqueeMatrix
     {
-        //Unused
-        //private Dot[,] matrixArray = new Dot[96, 16]; 
+        private Dot[,] matrixArray = new Dot[96, 16]; 
 
         public MarqueeMatrix()
         {

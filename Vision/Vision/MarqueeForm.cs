@@ -13,8 +13,8 @@ namespace Vision
 {
     public partial class MarqueeForm : Form
     {
-        const int cColWidth = 10;
-        const int cRowHeight = 10;
+        const int cColWidth = 20;
+        const int cRowHeight = 20;
         const int cMaxColumn = 96;
         const int cMaxRow = 16;
         const int matrixWidth = cColWidth * cMaxColumn + 3;
