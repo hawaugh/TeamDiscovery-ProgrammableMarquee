@@ -36,13 +36,13 @@ namespace Vision
             DGV.RowHeadersVisible = false;
             DGV.ColumnHeadersVisible = false;
             DGV.GridColor = Color.DarkBlue;
-            DGV.DefaultCellStyle.BackColor = Color.AliceBlue;
+            DGV.DefaultCellStyle.BackColor = Color.Black;
             DGV.ScrollBars = ScrollBars.None;
             DGV.Size = new Size(matrixWidth, matrixHeight);
-            DGV.Location = new Point(50, 50);
-            DGV.Font = new System.Drawing.Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            DGV.ForeColor = Color.DarkBlue;
-            DGV.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            DGV.Location = new Point(0, 0);
+            DGV.CellPainting += Dgv_CellPainting;
+            DGV.ForeColor = Color.White;
+            //DGV.SelectionMode = DataGridViewSelectionMode.CellSelect;
             // add 1536 cells
             for (int i = 0; i < cMaxColumn; i++)
             {
@@ -68,14 +68,15 @@ namespace Vision
 
         private void Dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex > -1)
-            {
-                Brush Brs = new SolidBrush(Color.FromName(DGV[1, e.RowIndex].Value.ToString()));
-                GraphicsExtensions.FillCircle(e.Graphics, Brs, e.CellBounds.Location.X + 5, e.CellBounds.Location.Y + 10, 5);
-                e.Handled = true;
-            }
+
+            Brush Brs = new SolidBrush(Color.Blue);
+            GraphicsExtensions.FillCircle(e.Graphics, Brs, e.CellBounds.Location.X + 5, e.CellBounds.Location.Y + 5, 5);
+            e.Handled = true;
+
         }
     }
+}
+    
 
     public static class GraphicsExtensions
     {
@@ -86,7 +87,7 @@ namespace Vision
     }
 
 
-}
+
 
 
 
