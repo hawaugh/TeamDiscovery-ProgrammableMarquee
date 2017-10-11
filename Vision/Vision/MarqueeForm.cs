@@ -13,12 +13,12 @@ namespace Vision
 {
     public partial class MarqueeForm : Form
     {
-        const int cColWidth = 20;
-        const int cRowHeight = 20;
+        const int cColWidth = 12;
+        const int cRowHeight = 12;
         const int cMaxColumn = 96;
         const int cMaxRow = 16;
-        const int matrixWidth = cColWidth * cMaxColumn + 3;
-        const int matrixHeight = cRowHeight * cMaxRow + 3;
+        const int matrixWidth = cColWidth * cMaxColumn + 10;
+        const int matrixHeight = cRowHeight * cMaxRow + 10;
         DataGridView DGV;
 
         public MarqueeForm()
@@ -36,12 +36,12 @@ namespace Vision
             DGV.RowHeadersVisible = false;
             DGV.ColumnHeadersVisible = false;
             DGV.GridColor = Color.DarkBlue;
-            DGV.DefaultCellStyle.BackColor = Color.Black;
+            DGV.BackgroundColor  = Color.Black;
             DGV.ScrollBars = ScrollBars.None;
-            DGV.Size = new Size(matrixWidth, matrixHeight);
+            DGV.Size = new Size(matrixWidth + 20, matrixHeight + 20);
             DGV.Location = new Point(0, 0);
             DGV.CellPainting += Dgv_CellPainting;
-            DGV.ForeColor = Color.White;
+            DGV.ForeColor = Color.Transparent;
             //DGV.SelectionMode = DataGridViewSelectionMode.CellSelect;
             // add 1536 cells
             for (int i = 0; i < cMaxColumn; i++)
@@ -54,14 +54,16 @@ namespace Vision
                 DGV.Columns[i].Width = cColWidth;
                 DGV.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            for (int j = 0; j < cMaxRow; j++)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row.Height = cRowHeight;
-                DGV.Rows.Add(row);
+                for (int j = 0; j < cMaxRow; j++)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.Height = cRowHeight;
+                    row.DividerHeight = 2;
+                    DGV.Rows.Add(row);
 
-            }
-
+                }
+            
+            
             Controls.Add(DGV);
 
         }
@@ -70,7 +72,7 @@ namespace Vision
         {
 
             Brush Brs = new SolidBrush(Color.Blue);
-            GraphicsExtensions.FillCircle(e.Graphics, Brs, e.CellBounds.Location.X + 5, e.CellBounds.Location.Y + 5, 5);
+            GraphicsExtensions.FillCircle(e.Graphics, Brs, e.CellBounds.Location.X + 5 , e.CellBounds.Location.Y + 5 , 5);
             e.Handled = true;
 
         }

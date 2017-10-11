@@ -9,17 +9,7 @@ using System.Drawing;
 
 namespace Vision
 {
-    class Image
-    {
-        private Bitmap imageBitmap;
-        private string filename;
-        private double dotRadius;
-        private double deadSpace;
-        private string bitmapString;
-
-        //Constructor
-      namespace Vision
-{
+    
     class Image
     {
         private Bitmap imageBitmap;
