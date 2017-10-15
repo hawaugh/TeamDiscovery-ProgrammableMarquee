@@ -17,8 +17,8 @@ namespace Vision
         const int cRowHeight = 12;
         const int cMaxColumn = 96;
         const int cMaxRow = 16;
-        const int matrixWidth = cColWidth * cMaxColumn + 5;
-        const int matrixHeight = cRowHeight * cMaxRow + 5;
+        const int matrixWidth = cColWidth * cMaxColumn + 10;
+        const int matrixHeight = cRowHeight * cMaxRow + 10;
         DataGridView DGV;
 
         public MarqueeForm()
@@ -38,7 +38,7 @@ namespace Vision
             DGV.GridColor = Color.DarkBlue;
             DGV.BackgroundColor  = Color.Black;
             DGV.ScrollBars = ScrollBars.None;
-            DGV.Size = new Size(matrixWidth , matrixHeight );
+            DGV.Size = new Size(matrixWidth + 20, matrixHeight + 20);
             DGV.Location = new Point(0, 0);
             DGV.CellPainting += Dgv_CellPainting;
             DGV.ForeColor = Color.Transparent;
