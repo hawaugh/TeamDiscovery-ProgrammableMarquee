@@ -12,24 +12,9 @@ namespace Vision
 {
     public partial class UIForm : Form
     {
-        MarqueeMatrix MyMarquee = null;
-
         public UIForm()
         {
             InitializeComponent();
-        }
-
-        public Panel panel1 { get; private set; }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MyMarquee = new MarqueeMatrix(this.panel1);
-        }
-
-
-        private void UIForm_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

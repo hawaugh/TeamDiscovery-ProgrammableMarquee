@@ -46,10 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dot.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Dot.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="MarqueeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarqueeForm.Designer.cs">
+      <DependentUpon>MarqueeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MarqueeMatrix.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Segment.cs" />
@@ -61,6 +65,9 @@
     </Compile>
     <Compile Include="VisionAppDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MarqueeForm.resx">
+      <DependentUpon>MarqueeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,9 +77,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UIForm.resx">
-      <DependentUpon>UIForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -5,11 +5,24 @@ C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableM
 C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.MarqueeForm.resources
 C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
 C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
-C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
-C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.UIForm.resources
-C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.MarqueeForm.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.pdb
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.MarqueeForm.resources
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\dbunn\Documents\Visual Studio 2015\Projects\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.pdb
