@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Vision
 {
-    class MarqueeMatrix
+    class Marquee
     {
-        private Dot[,] matrixArray = new Dot[96, 16]; 
+        private Dot[,] matrixArray = new Dot[16, 96]; 
 
-        public MarqueeMatrix()
+        public Marquee()
         {
 
         }
@@ -69,10 +69,12 @@ namespace Vision
 
         }
 
-       /* public Message LoadXML()
+        /*
+        public Message loadXML()
         {
            
-        }*/
+        }
+        */
 
         public void saveXML()
         {

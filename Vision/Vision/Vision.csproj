@@ -54,7 +54,7 @@
     <Compile Include="MarqueeForm.Designer.cs">
       <DependentUpon>MarqueeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarqueeMatrix.cs" />
+    <Compile Include="Marquee.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Segment.cs" />
     <Compile Include="UIForm.cs">
