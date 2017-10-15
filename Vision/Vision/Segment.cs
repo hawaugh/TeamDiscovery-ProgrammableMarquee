@@ -40,7 +40,7 @@ namespace Vision
                 currentLetter = characterBuild(c);
                 for (int i = 0; i < 12; i++)
                 {
-                    messageMatrix[i] = messageMatrix[i] + currentLetter[i];
+                    messageMatrix[i] = messageMatrix[i] + currentLetter[i] + "0";
                 }
             }
         }
