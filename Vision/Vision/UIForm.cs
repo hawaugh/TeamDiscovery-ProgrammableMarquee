@@ -1,4 +1,15 @@
-﻿using System;
+/////////////////////////////////////////////////////
+// Course: CSC 289
+// Team: Team Discovery
+//
+// Class: UIForm.cs
+// Description: 
+//
+// Name: 
+// Last Edit: 
+/////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
