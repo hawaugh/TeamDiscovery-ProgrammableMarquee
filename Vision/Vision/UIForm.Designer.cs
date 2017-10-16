@@ -1,4 +1,15 @@
-﻿namespace Vision
+/////////////////////////////////////////////////////
+// Course: CSC 289
+// Team: Team Discovery
+//
+// Class: UIForm.Designer.cs
+// Description: 
+//
+// Name: 
+// Last Edit: 
+/////////////////////////////////////////////////////
+
+namespace Vision
 {
     partial class UIForm
     {
