@@ -1,4 +1,13 @@
-﻿//Ahmad
+/////////////////////////////////////////////////////
+// Course: CSC 289
+// Team: Team Discovery
+//
+// Class: Image.cs
+// Description: 
+//
+// Name: Ahmad
+// Last Edit: 
+/////////////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;

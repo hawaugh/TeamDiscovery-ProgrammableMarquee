@@ -1,4 +1,15 @@
-﻿using System;
+/////////////////////////////////////////////////////
+// Course: CSC 289
+// Team: Team Discovery
+//
+// Class: Segment.cs
+// Description: 
+//
+// Name: 
+// Last Edit: 
+/////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
