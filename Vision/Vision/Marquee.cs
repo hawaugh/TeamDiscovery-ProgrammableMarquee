@@ -77,8 +77,8 @@ namespace Vision
             objPanel.ResumeLayout();
         }   
 
-//Will choose correct display method with if/else
-public void displayMessage(Message message)
+        //Will choose correct display method with if/else
+        public void displayMessage(Message message)
         {
 
         }
