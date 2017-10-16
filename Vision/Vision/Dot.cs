@@ -1,4 +1,13 @@
-﻿//Edited on 9/24 Ahmad
+/////////////////////////////////////////////////////
+// Course: CSC 289
+// Team: Team Discovery
+//
+// Class: Dot.cs
+// Description: Creates the dots for the Marquee
+//
+// Name: Ahmad
+// Last Edit: 9/24
+/////////////////////////////////////////////////////﻿
 
 using System;
 using System.Collections.Generic;
