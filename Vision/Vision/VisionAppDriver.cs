@@ -16,8 +16,8 @@ namespace Vision
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new UIForm());
-            Application.Run(new MarqueeForm());     //added by Heather just so the matrix will run for now.
+            Application.Run(new UIForm());
+            
         }
     }
 }
