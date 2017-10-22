@@ -6,7 +6,7 @@
 // Description: Creates the dots for the Marquee
 //
 // Name: Ahmad
-// Last Edit: 9/24
+// Last Edit: 10/22 - Heather
 /////////////////////////////////////////////////////﻿
 
 using System;
@@ -21,7 +21,7 @@ namespace Vision
 {
     class Dot : Control
     {
-       
+
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(ForeColor);
@@ -29,8 +29,10 @@ namespace Vision
 
 
         }
+    }
+}
 
-        private string _dotColor;
+        /*private string _dotColor;
         private static bool _setActive;
 
 

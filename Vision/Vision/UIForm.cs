@@ -5,8 +5,8 @@
 // Class: UIForm.cs
 // Description: 
 //
-// Name: 
-// Last Edit: 
+// Name: Heather
+// Last Edit: 10/22
 /////////////////////////////////////////////////////
 
 using System;
@@ -23,22 +23,21 @@ namespace Vision
 {
     public partial class UIForm : Form
     {
-        Marquee MyMarquee = null;
-        private Panel panel1;
+        Marquee MyMarquee = null;       
 
         public UIForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MyMarquee = new Marquee(this.panel1);
-        }
+        }      
 
         private void UIForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MyMarquee = new Marquee(this.panel1);
         }
     }
 }
