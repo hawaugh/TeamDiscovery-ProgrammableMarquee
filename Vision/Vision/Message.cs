@@ -41,10 +41,11 @@ namespace Vision
 
 
         //Constructor
-        public Message(string messageContent, Color backgroundColor, Color borderColor, double dotRadius, double deadSpace, int specialEffect)
+        public Message(string messageContent, Color offColor, Color backgroundColor, Color borderColor, double dotRadius, double deadSpace, int specialEffect)
         {
             _messageContent = messageContent;
             _backgroundColor = backgroundColor;
+            _offColor = offColor;
             _borderColor = borderColor;
             _dotRadius = dotRadius;
             _deadSpace = deadSpace;
