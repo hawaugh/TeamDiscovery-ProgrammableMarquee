@@ -24,23 +24,28 @@ namespace Vision
     {
         private Dot[,] matrix = new Dot[16, 96];
         private Dot[] border = new Dot[220];
+
         public Marquee(Panel objPanel)
         {
             createMarquee(objPanel);
         }
+
         public void setDot(int row, int col, Color fore, Color back)
         {
             matrix[row, col].ForeColor = fore;
             matrix[row, col].BackColor = back;
         }
+
         public Color getDotFore(int row, int col)
         {
             return matrix[row, col].ForeColor;
         }
+
         public Color getDotBack(int row, int col)
         {
             return matrix[row, col].BackColor;
         }
+
         private void createMarquee(Panel objPanel)
         {
             int adjustedSize = ((objPanel.Width - 10) / 96) * 96;

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Vision
 {
@@ -21,8 +22,9 @@ namespace Vision
     {
         private string _messageContent;
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
-        private string _backgroundColor;
-        private string _borderColor;
+        private Color _offColor;
+        private Color _backgroundColor;
+        private Color _borderColor;
         private double _dotRadius;
         private double _deadSpace;
         private int _specialEffect; 
@@ -39,7 +41,7 @@ namespace Vision
 
 
         //Constructor
-        public Message(string messageContent, string backgroundColor, string borderColor, double dotRadius, double deadSpace, int specialEffect)
+        public Message(string messageContent, Color backgroundColor, Color borderColor, double dotRadius, double deadSpace, int specialEffect)
         {
             _messageContent = messageContent;
             _backgroundColor = backgroundColor;
@@ -75,15 +77,22 @@ namespace Vision
             }
         }
 
+        //getter/setter for offColor
+        public Color offColor
+        {
+            get { return _offColor; }
+            set { _offColor = value; }
+        }
+
         //getter/setter for backgroundColor
-        public string backgroundColor
+        public Color backgroundColor
         {
             get { return _backgroundColor; }
             set { _backgroundColor = value; }
         }
 
         //getter/setter for borderColor
-        public string borderColor
+        public Color borderColor
         {
             get { return _borderColor; }
             set { _borderColor = value; }
