@@ -6,7 +6,7 @@
 // Description: 
 //
 // Name: Logan
-// Last Edit: 10/22
+// Last Edit: 10/23
 /////////////////////////////////////////////////////﻿
 
 using System;
@@ -151,7 +151,54 @@ namespace Vision
         //Logan
         public void displayScrollingMessage(Message message)
         {
+            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            for (int s = 0; s < segmentLength; s++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1), message.backgroundColor);
+                    }
+                }
 
+                //Set last column to next column in segment
+                for (int r = 2; r < 14; r++)
+                {
+                    if (currSegment[r - 2][s].Equals('1'))
+                    {
+                        setDot(r, 93, message.onColor, message.backgroundColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('0'))
+                    {
+                        setDot(r, 93, message.offColor, message.backgroundColor);
+                    }
+                }
+                Thread.Sleep(500);
+            }
+
+            //Exit rest of segment to the left
+            for (int i = 0; i < 94; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1), message.backgroundColor);
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 2; r < 14; r++)
+                {                  
+                    setDot(r, 93, message.offColor, message.backgroundColor);                    
+                }
+                Thread.Sleep(500);
+            }
         }
 
         //Logan

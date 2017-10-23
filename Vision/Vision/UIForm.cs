@@ -5,8 +5,8 @@
 // Class: UIForm.cs
 // Description: 
 //
-// Name: Heather
-// Last Edit: 10/22
+// Name: Logan
+// Last Edit: 10/23
 /////////////////////////////////////////////////////
 
 using System;
@@ -16,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,7 @@ namespace Vision
     public partial class UIForm : Form
     {
         Marquee MyMarquee = null;
+        Thread myDisplayThread = null;
 
         public OpenFileDialog openFileDialog { get; private set; }
 
@@ -34,21 +36,28 @@ namespace Vision
 
         private void UIForm_Load(object sender, EventArgs e)
         {
-
+            MyMarquee = new Marquee(this.marquee);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Abort();
+                }
+            }
             marquee.Visible = true;
             tabControl.Visible = false;
             createNewMessageButton.Visible = false;
             uploadMessageFromFileButton.Visible = false;
             fileLocationTextBox.Visible = false;
             browseButton.Visible = false;
-            uploadButton.Visible = false;
-            MyMarquee = new Marquee(this.marquee);
+            uploadButton.Visible = false;          
             Message myMessage = new Vision.Message("DISCOVERY", Color.Red, Color.Black, Color.Black, Color.Green, 0, 0, 0);
-            MyMarquee.displayStaticMessage(myMessage);
+            myDisplayThread = new Thread(delegate(){ MyMarquee.displayScrollingMessage(myMessage); });
+            myDisplayThread.Start();
         }
 
         private void browseButton_Click(object sender, EventArgs e)
