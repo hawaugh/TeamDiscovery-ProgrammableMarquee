@@ -177,7 +177,7 @@ namespace Vision
                         setDot(r, 93, message.offColor, message.backgroundColor);
                     }
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(75);
             }
 
             //Exit rest of segment to the left
@@ -197,7 +197,7 @@ namespace Vision
                 {                  
                     setDot(r, 93, message.offColor, message.backgroundColor);                    
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(75);
             }
         }
 
