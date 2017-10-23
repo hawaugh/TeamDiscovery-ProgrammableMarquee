@@ -5,8 +5,8 @@
 // Class: Message.cs
 // Description: 
 //
-// Name: 
-// Last Edit: 
+// Name: Logan
+// Last Edit: 10/22
 /////////////////////////////////////////////////////
 
 using System;
@@ -22,6 +22,7 @@ namespace Vision
     {
         private string _messageContent;
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
+        private Color _onColor;
         private Color _offColor;
         private Color _backgroundColor;
         private Color _borderColor;
@@ -41,10 +42,11 @@ namespace Vision
 
 
         //Constructor
-        public Message(string messageContent, Color offColor, Color backgroundColor, Color borderColor, double dotRadius, double deadSpace, int specialEffect)
+        public Message(string messageContent, Color onColor, Color offColor, Color backgroundColor, Color borderColor, double dotRadius, double deadSpace, int specialEffect)
         {
             _messageContent = messageContent;
             _backgroundColor = backgroundColor;
+            _onColor = onColor;
             _offColor = offColor;
             _borderColor = borderColor;
             _dotRadius = dotRadius;
@@ -65,6 +67,11 @@ namespace Vision
             }
         }
 
+        public Segment[] getSegmentArray()
+        {
+            return segmentArray;
+        }
+
         //Builds the segmentArray to hold matrix information about message
         public void compileMessageMatrix(string messageContent)
         {
@@ -76,6 +83,13 @@ namespace Vision
             {
                 segmentArray = new Segment[] { new Segment(messageContent) };
             }
+        }
+
+        //getter/setter for onColor
+        public Color onColor
+        {
+            get { return _onColor; }
+            set { _onColor = value; }
         }
 
         //getter/setter for offColor

@@ -38,6 +38,8 @@ namespace Vision
         private void button1_Click_1(object sender, EventArgs e)
         {
             MyMarquee = new Marquee(this.panel1);
+            Message myMessage = new Vision.Message("DISCOVERY", Color.Red, Color.Black, Color.Black, Color.Green, 0, 0, 0);
+            MyMarquee.displayStaticMessage(myMessage);
         }
     }
 }

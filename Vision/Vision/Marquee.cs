@@ -5,8 +5,8 @@
 // Class: Marquee.cs
 // Description: 
 //
-// Name: Ahmad
-// Last Edit: 10/22 - Heather
+// Name: Logan
+// Last Edit: 10/22
 /////////////////////////////////////////////////////﻿
 
 using System;
@@ -51,7 +51,7 @@ namespace Vision
             int adjustedSize = ((objPanel.Width - 10) / 96) * 96;
             int dotHeight = adjustedSize / 96;
             int dotWidth = dotHeight;
-            Color dotForeColor = Color.Red;
+            Color dotForeColor = Color.Green;
             Color dotBackColor = Color.Black;
             int xLoc = (objPanel.Width - adjustedSize) / 2;
             int yLoc = 3;
@@ -79,6 +79,26 @@ namespace Vision
                 xLoc = (objPanel.Width - adjustedSize) / 2;
                 yLoc += dotHeight + 1;
             }
+            //Set Top border
+            for (int b = 0; b < 96; b++)
+            {
+                border[b] = matrix[0, b];
+            }
+            //Set Right border
+            for (int b = 96; b < 111; b++)
+            {
+                border[b] = matrix[b - 95, 95];
+            }
+            //Set Bottom border
+            for (int b = 111; b < 206; b++)
+            {
+                border[b] = matrix[15, 205 - b];
+            }
+            //Set Left border
+            for (int b = 206; b < 220; b++)
+            {
+                border[b] = matrix[220 - b, 0];
+            }
             objPanel.ResumeLayout();
         }   
 
@@ -88,9 +108,44 @@ namespace Vision
 
         }
 
+        public void displayBorder(Color borderColor, Color backgroundColor, Color offColor)
+        {
+            for (int r = 0; r < 16; r++)
+            {
+                for (int c = 0; c < 96; c++)
+                {
+                    setDot(r, c, offColor, backgroundColor);
+                }
+            }
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = borderColor;
+                border[b].BackColor = backgroundColor;
+            }
+        }
+
         public void displayStaticMessage(Message message)
         {
+            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            String currString;
+            for (int r = 2; r < 14; r++)
+            {
+                currString = currSegment[r - 2];
+                for (int c = 0; c < segmentLength; c++)
+                {
 
+                    if (currString[c].Equals('1'))
+                    {
+                        setDot(r, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                    }
+                    else if (currString[c].Equals('0'))
+                    {
+                        setDot(r, ((96 - segmentLength) / 2) + c, message.offColor, message.backgroundColor);
+                    }
+                }
+            }
         }
 
         //Logan

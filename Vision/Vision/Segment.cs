@@ -5,8 +5,8 @@
 // Class: Segment.cs
 // Description: 
 //
-// Name: 
-// Last Edit: 
+// Name: Logan
+// Last Edit: N/A
 /////////////////////////////////////////////////////
 
 using System;
