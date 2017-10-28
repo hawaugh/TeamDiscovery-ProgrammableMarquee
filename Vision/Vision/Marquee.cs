@@ -216,7 +216,38 @@ namespace Vision
         //Nick
         public void displayRandomColorMessage(Message message)
         {
+            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            String currString;
+            for (int r = 2; r < 14; r++)
+            {
+                currString = currSegment[r - 2];
+                for (int c = 0; c < segmentLength; c++)
+                {
 
+                    if (currString[c].Equals('1'))
+                    {
+                        setDot(r, 93, message.onColor, message.backgroundColor);
+                    }
+                    else if (currString[c].Equals('0'))
+                    {
+                        setDot(r, ((96 - segmentLength) / 2) + c, message.offColor, message.backgroundColor);
+                    }
+                }
+                for (int r = 2; r < 14; r++)
+                {
+                    if (currSegment[r - 2][s].Equals('1'))
+                    {
+                        setDot(r, 93, message.onColor, message.backgroundColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('0'))
+                    {
+                        setDot(r, 93, message.offColor, message.backgroundColor);
+                    }
+                }
+                Thread.Sleep(75);
+            }
         }
 
         //Ahmad

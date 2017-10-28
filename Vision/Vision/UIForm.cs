@@ -57,6 +57,10 @@ namespace Vision
             uploadButton.Visible = false;          
             Message myMessage = new Vision.Message("TEAM DISCOVERY NUMBER 1!", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             myDisplayThread = new Thread(delegate(){ MyMarquee.displayScrollingMessage(myMessage); });
+            //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
+            //myDisplayThread = new Thread(delegate () {
+            //    MyMarquee.displayRandomColorMessage(myMessage);
+            //});
             myDisplayThread.Start();
         }
 

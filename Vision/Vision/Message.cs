@@ -28,7 +28,7 @@ namespace Vision
         private Color _borderColor;
         private double _dotRadius;
         private double _deadSpace;
-        private int _specialEffect; 
+        private int _specialEffect;
         /*
          * Special Effect int values:
          * 0: static message
@@ -53,7 +53,7 @@ namespace Vision
             _deadSpace = deadSpace;
             _specialEffect = specialEffect;
             //set the matrix
-            compileMessageMatrix(_messageContent);            
+            compileMessageMatrix(_messageContent);
         }
 
         //Calls compileMessageMatrix to create the new matrix each time message is changed
@@ -135,6 +135,28 @@ namespace Vision
             {
                 _specialEffect = value;
                 compileMessageMatrix(_messageContent);
+            }
+        }
+        //getter for random color
+        public Color randColor
+        {
+            get
+            {
+                Random rnd = new Random();
+                int randomNumber = rnd.Next(0, 100);
+                if (randomNumber < 50)
+                {
+                    return Color.Coral;
+                }
+                else
+                {
+                    return Color.Blue;
+                }
+            }
+            set
+            {
+                _onColor = value;
+                compileMessageMatrix(_messageContent); //is this needed??
             }
         }
     }
