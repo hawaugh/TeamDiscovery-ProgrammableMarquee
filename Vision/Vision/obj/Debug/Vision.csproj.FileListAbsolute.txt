@@ -31,3 +31,6 @@ C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Visi
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb

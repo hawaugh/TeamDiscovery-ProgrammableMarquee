@@ -207,10 +207,21 @@ namespace Vision
 
         }
 
-        //Heather
+        //Heather - edited on 10/29/17
         public void displayUpperLowerSplitMessage(Message message)
         {
-
+            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            String currString;
+            String[] topHalfSegment = new String[6];
+            String[] bottomHalfSegment = new String[6];
+            //loop through each index of currSegment
+            //make currString = value at index of currSegment
+            //loop through index 0-5 and add the values to topHalfSegment
+            //loop through index 6-11 and add the values to bottomHalfSegment.
+            //scroll top half from left-side of screen, and bottom half from right-side of screen. 
+            //Stop scrolling when they line up.
         }
 
         //Nick
