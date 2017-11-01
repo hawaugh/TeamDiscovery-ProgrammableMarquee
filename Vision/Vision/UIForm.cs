@@ -123,5 +123,10 @@ namespace Vision
                 transitionSpeedComboBox.Visible = false;
             }
         }
+
+        private void segment7Button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

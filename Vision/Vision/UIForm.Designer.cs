@@ -40,10 +40,26 @@ namespace Vision
         private void InitializeComponent()
         {
             this.marquee = new System.Windows.Forms.Panel();
+            this.segment12Button = new System.Windows.Forms.Button();
+            this.segment11Button = new System.Windows.Forms.Button();
+            this.segment10Button = new System.Windows.Forms.Button();
+            this.Segment9Button = new System.Windows.Forms.Button();
+            this.segment8Button = new System.Windows.Forms.Button();
+            this.segment7Button = new System.Windows.Forms.Button();
+            this.segment6Button = new System.Windows.Forms.Button();
+            this.segment5Button = new System.Windows.Forms.Button();
+            this.segment4Button = new System.Windows.Forms.Button();
+            this.segment3Button = new System.Windows.Forms.Button();
+            this.segment2Button = new System.Windows.Forms.Button();
+            this.segment1Button = new System.Windows.Forms.Button();
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.textTab = new System.Windows.Forms.TabPage();
             this.createAMessageGroupBox = new System.Windows.Forms.GroupBox();
+            this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
+            this.transitionSpeedLabel = new System.Windows.Forms.Label();
+            this.colorComboBox = new System.Windows.Forms.ComboBox();
+            this.colorLabel = new System.Windows.Forms.Label();
             this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.repeatLabel = new System.Windows.Forms.Label();
             this.transitionComboBox = new System.Windows.Forms.ComboBox();
@@ -56,10 +72,7 @@ namespace Vision
             this.uploadMessageFromFileButton = new System.Windows.Forms.RadioButton();
             this.createNewMessageButton = new System.Windows.Forms.RadioButton();
             this.imageTab = new System.Windows.Forms.TabPage();
-            this.colorLabel = new System.Windows.Forms.Label();
-            this.colorComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionSpeedLabel = new System.Windows.Forms.Label();
-            this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
+            this.marquee.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
             this.createAMessageGroupBox.SuspendLayout();
@@ -67,11 +80,133 @@ namespace Vision
             // 
             // marquee
             // 
+            this.marquee.Controls.Add(this.segment12Button);
+            this.marquee.Controls.Add(this.segment11Button);
+            this.marquee.Controls.Add(this.segment10Button);
+            this.marquee.Controls.Add(this.Segment9Button);
+            this.marquee.Controls.Add(this.segment8Button);
+            this.marquee.Controls.Add(this.segment7Button);
+            this.marquee.Controls.Add(this.segment6Button);
+            this.marquee.Controls.Add(this.segment5Button);
+            this.marquee.Controls.Add(this.segment4Button);
+            this.marquee.Controls.Add(this.segment3Button);
+            this.marquee.Controls.Add(this.segment2Button);
+            this.marquee.Controls.Add(this.segment1Button);
             this.marquee.Location = new System.Drawing.Point(12, 27);
             this.marquee.Name = "marquee";
             this.marquee.Size = new System.Drawing.Size(1179, 238);
             this.marquee.TabIndex = 0;
             this.marquee.Visible = false;
+            // 
+            // segment12Button
+            // 
+            this.segment12Button.Location = new System.Drawing.Point(1056, 74);
+            this.segment12Button.Name = "segment12Button";
+            this.segment12Button.Size = new System.Drawing.Size(103, 40);
+            this.segment12Button.TabIndex = 11;
+            this.segment12Button.Text = "Segment 12";
+            this.segment12Button.UseVisualStyleBackColor = true;
+            this.segment12Button.Visible = false;
+            // 
+            // segment11Button
+            // 
+            this.segment11Button.Location = new System.Drawing.Point(850, 74);
+            this.segment11Button.Name = "segment11Button";
+            this.segment11Button.Size = new System.Drawing.Size(103, 40);
+            this.segment11Button.TabIndex = 10;
+            this.segment11Button.Text = "Segment 11";
+            this.segment11Button.UseVisualStyleBackColor = true;
+            // 
+            // segment10Button
+            // 
+            this.segment10Button.Location = new System.Drawing.Point(643, 74);
+            this.segment10Button.Name = "segment10Button";
+            this.segment10Button.Size = new System.Drawing.Size(103, 40);
+            this.segment10Button.TabIndex = 9;
+            this.segment10Button.Text = "Segment 10";
+            this.segment10Button.UseVisualStyleBackColor = true;
+            // 
+            // Segment9Button
+            // 
+            this.Segment9Button.Location = new System.Drawing.Point(432, 74);
+            this.Segment9Button.Name = "Segment9Button";
+            this.Segment9Button.Size = new System.Drawing.Size(103, 40);
+            this.Segment9Button.TabIndex = 8;
+            this.Segment9Button.Text = "Segment 9";
+            this.Segment9Button.UseVisualStyleBackColor = true;
+            // 
+            // segment8Button
+            // 
+            this.segment8Button.Location = new System.Drawing.Point(225, 74);
+            this.segment8Button.Name = "segment8Button";
+            this.segment8Button.Size = new System.Drawing.Size(103, 40);
+            this.segment8Button.TabIndex = 7;
+            this.segment8Button.Text = "Segment 8";
+            this.segment8Button.UseVisualStyleBackColor = true;
+            // 
+            // segment7Button
+            // 
+            this.segment7Button.Location = new System.Drawing.Point(19, 74);
+            this.segment7Button.Name = "segment7Button";
+            this.segment7Button.Size = new System.Drawing.Size(103, 40);
+            this.segment7Button.TabIndex = 6;
+            this.segment7Button.Text = "Segment 7";
+            this.segment7Button.UseVisualStyleBackColor = true;
+            this.segment7Button.Click += new System.EventHandler(this.segment7Button_Click);
+            // 
+            // segment6Button
+            // 
+            this.segment6Button.Location = new System.Drawing.Point(1056, 13);
+            this.segment6Button.Name = "segment6Button";
+            this.segment6Button.Size = new System.Drawing.Size(103, 40);
+            this.segment6Button.TabIndex = 5;
+            this.segment6Button.Text = "Segment 6";
+            this.segment6Button.UseVisualStyleBackColor = true;
+            // 
+            // segment5Button
+            // 
+            this.segment5Button.Location = new System.Drawing.Point(850, 13);
+            this.segment5Button.Name = "segment5Button";
+            this.segment5Button.Size = new System.Drawing.Size(103, 40);
+            this.segment5Button.TabIndex = 4;
+            this.segment5Button.Text = "Segment 5";
+            this.segment5Button.UseVisualStyleBackColor = true;
+            // 
+            // segment4Button
+            // 
+            this.segment4Button.Location = new System.Drawing.Point(643, 13);
+            this.segment4Button.Name = "segment4Button";
+            this.segment4Button.Size = new System.Drawing.Size(103, 40);
+            this.segment4Button.TabIndex = 3;
+            this.segment4Button.Text = "Segment 4";
+            this.segment4Button.UseVisualStyleBackColor = true;
+            // 
+            // segment3Button
+            // 
+            this.segment3Button.Location = new System.Drawing.Point(432, 13);
+            this.segment3Button.Name = "segment3Button";
+            this.segment3Button.Size = new System.Drawing.Size(103, 40);
+            this.segment3Button.TabIndex = 2;
+            this.segment3Button.Text = "Segment 3";
+            this.segment3Button.UseVisualStyleBackColor = true;
+            // 
+            // segment2Button
+            // 
+            this.segment2Button.Location = new System.Drawing.Point(225, 13);
+            this.segment2Button.Name = "segment2Button";
+            this.segment2Button.Size = new System.Drawing.Size(103, 40);
+            this.segment2Button.TabIndex = 1;
+            this.segment2Button.Text = "Segment 2";
+            this.segment2Button.UseVisualStyleBackColor = true;
+            // 
+            // segment1Button
+            // 
+            this.segment1Button.Location = new System.Drawing.Point(19, 13);
+            this.segment1Button.Name = "segment1Button";
+            this.segment1Button.Size = new System.Drawing.Size(103, 40);
+            this.segment1Button.TabIndex = 0;
+            this.segment1Button.Text = "Segment 1";
+            this.segment1Button.UseVisualStyleBackColor = true;
             // 
             // populateMarqueeButton
             // 
@@ -87,10 +222,10 @@ namespace Vision
             // 
             this.tabControl.Controls.Add(this.textTab);
             this.tabControl.Controls.Add(this.imageTab);
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Location = new System.Drawing.Point(12, 147);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1176, 434);
+            this.tabControl.Size = new System.Drawing.Size(1176, 299);
             this.tabControl.TabIndex = 0;
             // 
             // textTab
@@ -104,7 +239,7 @@ namespace Vision
             this.textTab.Location = new System.Drawing.Point(4, 22);
             this.textTab.Name = "textTab";
             this.textTab.Padding = new System.Windows.Forms.Padding(3);
-            this.textTab.Size = new System.Drawing.Size(1168, 408);
+            this.textTab.Size = new System.Drawing.Size(1168, 273);
             this.textTab.TabIndex = 0;
             this.textTab.Text = "Text";
             this.textTab.UseVisualStyleBackColor = true;
@@ -128,6 +263,44 @@ namespace Vision
             this.createAMessageGroupBox.TabStop = false;
             this.createAMessageGroupBox.Text = "Create A Message";
             this.createAMessageGroupBox.Visible = false;
+            // 
+            // transitionSpeedComboBox
+            // 
+            this.transitionSpeedComboBox.FormattingEnabled = true;
+            this.transitionSpeedComboBox.Location = new System.Drawing.Point(932, 67);
+            this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
+            this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
+            this.transitionSpeedComboBox.TabIndex = 9;
+            this.transitionSpeedComboBox.Visible = false;
+            // 
+            // transitionSpeedLabel
+            // 
+            this.transitionSpeedLabel.AutoSize = true;
+            this.transitionSpeedLabel.Location = new System.Drawing.Point(833, 70);
+            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
+            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
+            this.transitionSpeedLabel.TabIndex = 8;
+            this.transitionSpeedLabel.Text = "Transition Speed:";
+            this.transitionSpeedLabel.Visible = false;
+            // 
+            // colorComboBox
+            // 
+            this.colorComboBox.FormattingEnabled = true;
+            this.colorComboBox.Location = new System.Drawing.Point(614, 67);
+            this.colorComboBox.Name = "colorComboBox";
+            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
+            this.colorComboBox.TabIndex = 7;
+            this.colorComboBox.Visible = false;
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(571, 70);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(34, 13);
+            this.colorLabel.TabIndex = 6;
+            this.colorLabel.Text = "Color:";
+            this.colorLabel.Visible = false;
             // 
             // repeatComboBox
             // 
@@ -242,48 +415,10 @@ namespace Vision
             this.imageTab.Location = new System.Drawing.Point(4, 22);
             this.imageTab.Name = "imageTab";
             this.imageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.imageTab.Size = new System.Drawing.Size(1168, 408);
+            this.imageTab.Size = new System.Drawing.Size(1168, 273);
             this.imageTab.TabIndex = 1;
             this.imageTab.Text = "Image";
             this.imageTab.UseVisualStyleBackColor = true;
-            // 
-            // colorLabel
-            // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(571, 70);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(34, 13);
-            this.colorLabel.TabIndex = 6;
-            this.colorLabel.Text = "Color:";
-            this.colorLabel.Visible = false;
-            // 
-            // colorComboBox
-            // 
-            this.colorComboBox.FormattingEnabled = true;
-            this.colorComboBox.Location = new System.Drawing.Point(614, 67);
-            this.colorComboBox.Name = "colorComboBox";
-            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
-            this.colorComboBox.TabIndex = 7;
-            this.colorComboBox.Visible = false;
-            // 
-            // transitionSpeedLabel
-            // 
-            this.transitionSpeedLabel.AutoSize = true;
-            this.transitionSpeedLabel.Location = new System.Drawing.Point(833, 70);
-            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
-            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
-            this.transitionSpeedLabel.TabIndex = 8;
-            this.transitionSpeedLabel.Text = "Transition Speed:";
-            this.transitionSpeedLabel.Visible = false;
-            // 
-            // transitionSpeedComboBox
-            // 
-            this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(932, 67);
-            this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
-            this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
-            this.transitionSpeedComboBox.TabIndex = 9;
-            this.transitionSpeedComboBox.Visible = false;
             // 
             // UIForm
             // 
@@ -296,6 +431,7 @@ namespace Vision
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
+            this.marquee.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.textTab.ResumeLayout(false);
             this.textTab.PerformLayout();
@@ -328,6 +464,18 @@ namespace Vision
         private System.Windows.Forms.Label transitionSpeedLabel;
         private System.Windows.Forms.ComboBox colorComboBox;
         private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.Button segment7Button;
+        private System.Windows.Forms.Button segment6Button;
+        private System.Windows.Forms.Button segment5Button;
+        private System.Windows.Forms.Button segment4Button;
+        private System.Windows.Forms.Button segment3Button;
+        private System.Windows.Forms.Button segment2Button;
+        private System.Windows.Forms.Button segment1Button;
+        private System.Windows.Forms.Button segment10Button;
+        private System.Windows.Forms.Button Segment9Button;
+        private System.Windows.Forms.Button segment8Button;
+        private System.Windows.Forms.Button segment12Button;
+        private System.Windows.Forms.Button segment11Button;
     }
 }
 

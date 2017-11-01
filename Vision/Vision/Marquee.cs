@@ -246,7 +246,7 @@ namespace Vision
                         setDot(r, ((96 - segmentLength) / 2) + c, message.offColor, message.backgroundColor);
                     }
                 }
-                for (int r = 2; r < 14; r++)
+                for (int s = 2; r < 14; r++)
                 {
                     if (currSegment[r - 2][s].Equals('1'))
                     {
