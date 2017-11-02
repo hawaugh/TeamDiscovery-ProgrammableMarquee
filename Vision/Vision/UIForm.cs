@@ -60,7 +60,7 @@ namespace Vision
             addSegmentButton1.Visible = false;
             marquee.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 0, 0, 0);
-            Segment mySecondSegment = new Segment("DISCOVERY", Color.Aqua, 0, 0, 0);
+            Segment mySecondSegment = new Segment("DISCOVERY", Color.Aqua, -1, -1, -1);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment};
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 200, 2000);
             myBorderThread = new Thread(delegate () { MyMarquee.displayBorder(Color.Red, Color.Black); });

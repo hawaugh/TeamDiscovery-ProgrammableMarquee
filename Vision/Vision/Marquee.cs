@@ -168,22 +168,22 @@ namespace Vision
             if (segment.exitEffect == 0)
             {
                 clearMarquee(backgroundColor);
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(500);
             }
             else if (segment.exitEffect == 1)
             {
                 displaySplitExit();
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(500);
             }
             else if (segment.exitEffect == 2)
             {
                 displayUpExit();
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(500);
             }
             else if (segment.exitEffect == 3)
             {
                 displayDownExit();
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(500);
             }
         }
 
