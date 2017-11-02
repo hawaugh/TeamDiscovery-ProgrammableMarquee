@@ -74,6 +74,19 @@ namespace Vision
             this.imageTab = new System.Windows.Forms.TabPage();
             this.segment13Button = new System.Windows.Forms.Button();
             this.segment14Button = new System.Windows.Forms.Button();
+            this.addSegmentButton1 = new System.Windows.Forms.Button();
+            this.addSegmentButton2 = new System.Windows.Forms.Button();
+            this.addSegmentButton3 = new System.Windows.Forms.Button();
+            this.addSegmentButton4 = new System.Windows.Forms.Button();
+            this.addSegmentButton5 = new System.Windows.Forms.Button();
+            this.addSegmentButton6 = new System.Windows.Forms.Button();
+            this.addSegmentButton7 = new System.Windows.Forms.Button();
+            this.addSegmentButton8 = new System.Windows.Forms.Button();
+            this.addSegmentButton9 = new System.Windows.Forms.Button();
+            this.addSegmentButton10 = new System.Windows.Forms.Button();
+            this.addSegmentButton11 = new System.Windows.Forms.Button();
+            this.addSegmentButton12 = new System.Windows.Forms.Button();
+            this.addSegmentButton13 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
             this.createAMessageGroupBox.SuspendLayout();
@@ -81,7 +94,7 @@ namespace Vision
             // 
             // marquee
             // 
-            this.marquee.Location = new System.Drawing.Point(12, 12);
+            this.marquee.Location = new System.Drawing.Point(9, 12);
             this.marquee.Name = "marquee";
             this.marquee.Size = new System.Drawing.Size(1179, 238);
             this.marquee.TabIndex = 0;
@@ -206,6 +219,7 @@ namespace Vision
             this.segment1Button.TabIndex = 0;
             this.segment1Button.Text = "Segment 1";
             this.segment1Button.UseVisualStyleBackColor = true;
+            this.segment1Button.Click += new System.EventHandler(this.segment1Button_Click);
             // 
             // populateMarqueeButton
             // 
@@ -439,11 +453,154 @@ namespace Vision
             this.segment14Button.UseVisualStyleBackColor = true;
             this.segment14Button.Visible = false;
             // 
+            // addSegmentButton1
+            // 
+            this.addSegmentButton1.Location = new System.Drawing.Point(199, 21);
+            this.addSegmentButton1.Name = "addSegmentButton1";
+            this.addSegmentButton1.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton1.TabIndex = 14;
+            this.addSegmentButton1.Text = "Add Segment";
+            this.addSegmentButton1.UseVisualStyleBackColor = true;
+            // 
+            // addSegmentButton2
+            // 
+            this.addSegmentButton2.Location = new System.Drawing.Point(376, 21);
+            this.addSegmentButton2.Name = "addSegmentButton2";
+            this.addSegmentButton2.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton2.TabIndex = 15;
+            this.addSegmentButton2.Text = "Add Segment";
+            this.addSegmentButton2.UseVisualStyleBackColor = true;
+            this.addSegmentButton2.Visible = false;
+            // 
+            // addSegmentButton3
+            // 
+            this.addSegmentButton3.Location = new System.Drawing.Point(555, 21);
+            this.addSegmentButton3.Name = "addSegmentButton3";
+            this.addSegmentButton3.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton3.TabIndex = 16;
+            this.addSegmentButton3.Text = "Add Segment";
+            this.addSegmentButton3.UseVisualStyleBackColor = true;
+            this.addSegmentButton3.Visible = false;
+            // 
+            // addSegmentButton4
+            // 
+            this.addSegmentButton4.Location = new System.Drawing.Point(733, 21);
+            this.addSegmentButton4.Name = "addSegmentButton4";
+            this.addSegmentButton4.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton4.TabIndex = 17;
+            this.addSegmentButton4.Text = "Add Segment";
+            this.addSegmentButton4.UseVisualStyleBackColor = true;
+            this.addSegmentButton4.Visible = false;
+            // 
+            // addSegmentButton5
+            // 
+            this.addSegmentButton5.Location = new System.Drawing.Point(911, 21);
+            this.addSegmentButton5.Name = "addSegmentButton5";
+            this.addSegmentButton5.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton5.TabIndex = 18;
+            this.addSegmentButton5.Text = "Add Segment";
+            this.addSegmentButton5.UseVisualStyleBackColor = true;
+            this.addSegmentButton5.Visible = false;
+            // 
+            // addSegmentButton6
+            // 
+            this.addSegmentButton6.Location = new System.Drawing.Point(1088, 21);
+            this.addSegmentButton6.Name = "addSegmentButton6";
+            this.addSegmentButton6.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton6.TabIndex = 19;
+            this.addSegmentButton6.Text = "Add Segment";
+            this.addSegmentButton6.UseVisualStyleBackColor = true;
+            this.addSegmentButton6.Visible = false;
+            // 
+            // addSegmentButton7
+            // 
+            this.addSegmentButton7.Location = new System.Drawing.Point(22, 98);
+            this.addSegmentButton7.Name = "addSegmentButton7";
+            this.addSegmentButton7.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton7.TabIndex = 20;
+            this.addSegmentButton7.Text = "Add Segment";
+            this.addSegmentButton7.UseVisualStyleBackColor = true;
+            this.addSegmentButton7.Visible = false;
+            // 
+            // addSegmentButton8
+            // 
+            this.addSegmentButton8.Location = new System.Drawing.Point(199, 98);
+            this.addSegmentButton8.Name = "addSegmentButton8";
+            this.addSegmentButton8.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton8.TabIndex = 21;
+            this.addSegmentButton8.Text = "Add Segment";
+            this.addSegmentButton8.UseVisualStyleBackColor = true;
+            this.addSegmentButton8.Visible = false;
+            // 
+            // addSegmentButton9
+            // 
+            this.addSegmentButton9.Location = new System.Drawing.Point(376, 98);
+            this.addSegmentButton9.Name = "addSegmentButton9";
+            this.addSegmentButton9.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton9.TabIndex = 22;
+            this.addSegmentButton9.Text = "Add Segment";
+            this.addSegmentButton9.UseVisualStyleBackColor = true;
+            this.addSegmentButton9.Visible = false;
+            // 
+            // addSegmentButton10
+            // 
+            this.addSegmentButton10.Location = new System.Drawing.Point(555, 98);
+            this.addSegmentButton10.Name = "addSegmentButton10";
+            this.addSegmentButton10.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton10.TabIndex = 23;
+            this.addSegmentButton10.Text = "Add Segment";
+            this.addSegmentButton10.UseVisualStyleBackColor = true;
+            this.addSegmentButton10.Visible = false;
+            // 
+            // addSegmentButton11
+            // 
+            this.addSegmentButton11.Location = new System.Drawing.Point(733, 98);
+            this.addSegmentButton11.Name = "addSegmentButton11";
+            this.addSegmentButton11.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton11.TabIndex = 24;
+            this.addSegmentButton11.Text = "Add Segment";
+            this.addSegmentButton11.UseVisualStyleBackColor = true;
+            this.addSegmentButton11.Visible = false;
+            // 
+            // addSegmentButton12
+            // 
+            this.addSegmentButton12.Location = new System.Drawing.Point(911, 98);
+            this.addSegmentButton12.Name = "addSegmentButton12";
+            this.addSegmentButton12.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton12.TabIndex = 25;
+            this.addSegmentButton12.Text = "Add Segment";
+            this.addSegmentButton12.UseVisualStyleBackColor = true;
+            this.addSegmentButton12.Visible = false;
+            // 
+            // addSegmentButton13
+            // 
+            this.addSegmentButton13.Location = new System.Drawing.Point(1088, 98);
+            this.addSegmentButton13.Name = "addSegmentButton13";
+            this.addSegmentButton13.Size = new System.Drawing.Size(91, 23);
+            this.addSegmentButton13.TabIndex = 26;
+            this.addSegmentButton13.Text = "Add Segment";
+            this.addSegmentButton13.UseVisualStyleBackColor = true;
+            this.addSegmentButton13.Visible = false;
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.Controls.Add(this.addSegmentButton13);
+            this.Controls.Add(this.addSegmentButton12);
+            this.Controls.Add(this.addSegmentButton11);
+            this.Controls.Add(this.addSegmentButton10);
+            this.Controls.Add(this.addSegmentButton9);
+            this.Controls.Add(this.addSegmentButton8);
+            this.Controls.Add(this.addSegmentButton7);
+            this.Controls.Add(this.addSegmentButton6);
+            this.Controls.Add(this.addSegmentButton5);
+            this.Controls.Add(this.addSegmentButton4);
+            this.Controls.Add(this.addSegmentButton3);
+            this.Controls.Add(this.addSegmentButton2);
+            this.Controls.Add(this.addSegmentButton1);
+            this.Controls.Add(this.segment2Button);
             this.Controls.Add(this.segment14Button);
             this.Controls.Add(this.segment13Button);
             this.Controls.Add(this.segment12Button);
@@ -458,7 +615,6 @@ namespace Vision
             this.Controls.Add(this.segment1Button);
             this.Controls.Add(this.segment4Button);
             this.Controls.Add(this.segment8Button);
-            this.Controls.Add(this.segment2Button);
             this.Controls.Add(this.segment3Button);
             this.Controls.Add(this.marquee);
             this.Name = "UIForm";
@@ -510,6 +666,19 @@ namespace Vision
         private System.Windows.Forms.Button segment11Button;
         private System.Windows.Forms.Button segment14Button;
         private System.Windows.Forms.Button segment13Button;
+        private System.Windows.Forms.Button addSegmentButton1;
+        private System.Windows.Forms.Button addSegmentButton2;
+        private System.Windows.Forms.Button addSegmentButton3;
+        private System.Windows.Forms.Button addSegmentButton4;
+        private System.Windows.Forms.Button addSegmentButton5;
+        private System.Windows.Forms.Button addSegmentButton6;
+        private System.Windows.Forms.Button addSegmentButton7;
+        private System.Windows.Forms.Button addSegmentButton8;
+        private System.Windows.Forms.Button addSegmentButton9;
+        private System.Windows.Forms.Button addSegmentButton10;
+        private System.Windows.Forms.Button addSegmentButton11;
+        private System.Windows.Forms.Button addSegmentButton12;
+        private System.Windows.Forms.Button addSegmentButton13;
     }
 }
 
