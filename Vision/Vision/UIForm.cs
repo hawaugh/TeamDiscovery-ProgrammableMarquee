@@ -54,7 +54,8 @@ namespace Vision
             uploadMessageFromFileButton.Visible = false;
             fileLocationTextBox.Visible = false;
             browseButton.Visible = false;
-            uploadButton.Visible = false;          
+            uploadButton.Visible = false;
+            segment1Button.Visible = false;
             Message myMessage = new Vision.Message("TEAM DISCOVERY NUMBER 1!", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             myDisplayThread = new Thread(delegate(){ MyMarquee.displayScrollingMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
