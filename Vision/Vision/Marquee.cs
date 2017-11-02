@@ -6,7 +6,7 @@
 // Description: 
 //
 // Name: Logan
-// Last Edit: 10/23
+// Last Edit: 11/2
 /////////////////////////////////////////////////////﻿
 
 using System;
@@ -100,34 +100,104 @@ namespace Vision
                 border[b] = matrix[220 - b, 0];
             }
             objPanel.ResumeLayout();
-        }   
-
-        //Will choose correct display method with if/else
-        public void displayMessage(Message message)
+        } 
+        
+        public void clearMarquee(Color backgroundColor)
         {
-
-        }
-
-        public void displayBorder(Color borderColor, Color backgroundColor, Color offColor)
-        {
-            for (int r = 0; r < 16; r++)
+            for (int r = 2; r < 14; r++)
             {
-                for (int c = 0; c < 96; c++)
+                for (int c = 2; c < 94; c++)
                 {
-                    setDot(r, c, offColor, backgroundColor);
+                    setDot(r, c, backgroundColor, backgroundColor);
                 }
             }
-            for (int b = 0; b < 220; b++)
+        }  
+
+        //Cycles through segments and displays them
+        public void displayMessage(Message message)
+        {
+            for (int i = 0; i < message.getSegmentArray().Length; i++)
             {
-                border[b].ForeColor = borderColor;
-                border[b].BackColor = backgroundColor;
+                displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.scrollSpeed, message.segmentSpeed);
             }
         }
 
-        public void displayStaticMessage(Message message)
+        //Selects the correct effects to use to display the segment
+        public void displaySegment(Segment segment, Color backgroundColor, int scrollSpeed, int segmentSpeed)
         {
-            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
-            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            //Display Entrance
+            if (segment.entranceEffect == 0)
+            {
+                displayStaticEntrance(segment, backgroundColor);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.entranceEffect == 1)
+            {
+                displaySplitEntrance(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.entranceEffect == 2)
+            {
+                displayUpEntrance(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.entranceEffect == 3)
+            {
+                displayDownEntrance(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
+
+            //Display Middle
+            if (segment.middleEffect == -1)
+            {
+                displayScrollingSegment(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.middleEffect == 1)
+            {
+                displayRandomColors(segment, backgroundColor);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.middleEffect == 2)
+            {
+                displayFadeEffect(segment, backgroundColor);
+                Thread.Sleep(segmentSpeed);
+            }
+
+            //Display Exit
+            if (segment.exitEffect == 0)
+            {
+                clearMarquee(backgroundColor);
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.exitEffect == 1)
+            {
+                displaySplitExit();
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.exitEffect == 2)
+            {
+                displayUpExit();
+                Thread.Sleep(segmentSpeed);
+            }
+            else if (segment.exitEffect == 3)
+            {
+                displayDownExit();
+                Thread.Sleep(segmentSpeed);
+            }
+        }
+
+
+        /*
+         * 
+         *   Entrance Effects
+         * 
+         */
+
+        public void displayStaticEntrance(Segment segment, Color backgroundColor)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             String currString;
             for (int r = 2; r < 14; r++)
@@ -138,80 +208,21 @@ namespace Vision
 
                     if (currString[c].Equals('1'))
                     {
-                        setDot(r, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                        setDot(r, ((96 - segmentLength) / 2) + c, segment.onColor, backgroundColor);
                     }
                     else if (currString[c].Equals('0'))
                     {
-                        setDot(r, ((96 - segmentLength) / 2) + c, message.offColor, message.backgroundColor);
+                        setDot(r, ((96 - segmentLength) / 2) + c, backgroundColor, backgroundColor);
                     }
                 }
             }
-        }
-
-        //Logan
-        public void displayScrollingMessage(Message message)
-        {
-            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
-            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
-            int segmentLength = currSegment[0].Length;
-            for (int s = 0; s < segmentLength; s++)
-            {
-                //Move all dots 1 column left
-                for (int c = 2; c < 93; c++)
-                {
-                    for (int r = 2; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r, c + 1), message.backgroundColor);
-                    }
-                }
-
-                //Set last column to next column in segment
-                for (int r = 2; r < 14; r++)
-                {
-                    if (currSegment[r - 2][s].Equals('1'))
-                    {
-                        setDot(r, 93, message.onColor, message.backgroundColor);
-                    }
-                    else if (currSegment[r - 2][s].Equals('0'))
-                    {
-                        setDot(r, 93, message.offColor, message.backgroundColor);
-                    }
-                }
-                Thread.Sleep(75);
-            }
-
-            //Exit rest of segment to the left
-            for (int i = 0; i < 94; i++)
-            {
-                //Move all dots 1 column left
-                for (int c = 2; c < 93; c++)
-                {
-                    for (int r = 2; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r, c + 1), message.backgroundColor);
-                    }
-                }
-
-                //Set last column to blank
-                for (int r = 2; r < 14; r++)
-                {                  
-                    setDot(r, 93, message.offColor, message.backgroundColor);                    
-                }
-                Thread.Sleep(75);
-            }
-        }
-
-        //Logan
-        public void displaySubsegmentMessage(Message message)
-        {
-
         }
 
         //Heather - edited on 10/29/17
-        public void displayUpperLowerSplitMessage(Message message)
+        public void displaySplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
-            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
-            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             String currString;
             String[] topHalfSegment = new String[6];
@@ -224,47 +235,136 @@ namespace Vision
             //Stop scrolling when they line up.
         }
 
-        //Nick
-        public void displayRandomColorMessage(Message message)
+        //Ahmad
+        public void displayUpEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
-            displayBorder(message.borderColor, message.backgroundColor, message.offColor);
-            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
-            int segmentLength = currSegment[0].Length;
-            String currString;
-            for (int r = 2; r < 14; r++)
-            {
-                currString = currSegment[r - 2];
-                for (int c = 0; c < segmentLength; c++)
-                {
 
-                    if (currString[c].Equals('1'))
-                    {
-                        setDot(r, 93, message.onColor, message.backgroundColor);
-                    }
-                    else if (currString[c].Equals('0'))
-                    {
-                        setDot(r, ((96 - segmentLength) / 2) + c, message.offColor, message.backgroundColor);
-                    }
-                }
-                for (int s = 2; r < 14; r++)
-                {
-                    if (currSegment[r - 2][s].Equals('1'))
-                    {
-                        setDot(r, 93, message.onColor, message.backgroundColor);
-                    }
-                    else if (currSegment[r - 2][s].Equals('0'))
-                    {
-                        setDot(r, 93, message.offColor, message.backgroundColor);
-                    }
-                }
-                Thread.Sleep(75);
-            }
         }
 
         //Ahmad
-        public void displayUpDownDisappearMessage(Message message)
+        public void displayDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
 
+        }
+
+
+
+        /*
+         * 
+         *   Middle Effects
+         * 
+         */
+
+        //Logan
+        public void displayScrollingSegment(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            for (int s = 0; s < segmentLength; s++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);
+                    }
+                }
+
+                //Set last column to next column in segment
+                for (int r = 2; r < 14; r++)
+                {
+                    if (currSegment[r - 2][s].Equals('1'))
+                    {
+                        setDot(r, 93, segment.onColor, backgroundColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('0'))
+                    {
+                        setDot(r, 93, backgroundColor, backgroundColor);
+                    }
+                }
+                Thread.Sleep(scrollSpeed);
+            }
+
+            //Exit rest of segment to the left
+            for (int i = 0; i < 94; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 2; r < 14; r++)
+                {
+                    setDot(r, 93, backgroundColor, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+            }
+        }
+
+        //Nick
+        //The marquee will already have the message displayed and the dots are set for you to edit them in this method
+        public void displayRandomColors(Segment segment, Color backgroundColor)
+        {
+            
+        }
+
+        //Jeremy
+        public void displayFadeEffect(Segment segment, Color backgroundColor)
+        {
+
+        }
+
+        /*
+         * 
+         *   Exit Effects
+         * 
+         */
+
+        //Heather
+        public void displaySplitExit()
+        {
+
+        }
+
+        //Ahmad
+        public void displayUpExit()
+        {
+
+        }
+
+        //Ahmad
+        public void displayDownExit()
+        {
+
+        }
+
+        /*
+         * 
+         *   Border Effects
+         * 
+         */
+
+        public void displayBorder(Color borderColor, Color backgroundColor)
+        {
+            for (int r = 0; r < 16; r++)
+            {
+                for (int c = 0; c < 96; c++)
+                {
+                    setDot(r, c, backgroundColor, backgroundColor);
+                }
+            }
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = borderColor;
+                border[b].BackColor = backgroundColor;
+            }
         }
 
         //Brooks

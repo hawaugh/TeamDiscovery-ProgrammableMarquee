@@ -6,11 +6,12 @@
 // Description: 
 //
 // Name: Logan
-// Last Edit: N/A
+// Last Edit: 11/2
 /////////////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,31 @@ namespace Vision
     {
         private string _messageText;
         private string[] messageMatrix = new string[12];
-        
-        public Segment(string segmentText)
+        private Color _onColor;
+        private int _entranceEffect;
+        /*
+         * Entrance Effect int values:
+         * 0: TODO
+        */
+        private int _middleEffect;
+        /*
+         * Middle Effect int values:
+         * 0: TODO
+        */
+        private int _exitEffect;
+        /*
+         * Exit Effect int values:
+         * 0: TODO
+        */
+
+        public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect)
         {
             _messageText = segmentText;
             setMessageMatrix(_messageText);
+            _onColor = onColor;
+            _entranceEffect = entranceEffect;
+            _middleEffect = middleEffect;
+            _exitEffect = exitEffect;
         }
 
         public string messageText
@@ -54,6 +75,34 @@ namespace Vision
                     messageMatrix[i] = messageMatrix[i] + currentLetter[i] + "0";
                 }
             }
+        }
+
+        //getter/setter for onColor
+        public Color onColor
+        {
+            get { return _onColor; }
+            set { _onColor = value; }
+        }
+
+        //getter/setter for entranceEffect
+        public int entranceEffect
+        {
+            get { return _entranceEffect; }
+            set { _entranceEffect = value; }
+        }
+
+        //getter/setter for middleEffect
+        public int middleEffect
+        {
+            get { return _middleEffect; }
+            set { _middleEffect = value; }
+        }
+
+        //getter/setter for exitEffect
+        public int exitEffect
+        {
+            get { return _exitEffect; }
+            set { _exitEffect = value; }
         }
 
         //Contains the library of character builds

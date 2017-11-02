@@ -6,7 +6,7 @@
 // Description: 
 //
 // Name: Logan
-// Last Edit: 10/23
+// Last Edit: 11/2
 /////////////////////////////////////////////////////
 
 using System;
@@ -24,8 +24,10 @@ namespace Vision
 {
     public partial class UIForm : Form
     {
-        Marquee MyMarquee = null;
-        Thread myDisplayThread = null;
+        private Marquee MyMarquee = null;
+        private Thread myDisplayThread = null;
+        private Thread myBorderThread = null;
+        private Segment[] mySegmentArray;
 
         public OpenFileDialog openFileDialog { get; private set; }
 
@@ -57,12 +59,17 @@ namespace Vision
             segment1Button.Visible = false;
             addSegmentButton1.Visible = false;
             marquee.Visible = true;
-            Message myMessage = new Vision.Message("TEAM DISCOVERY NUMBER 1!", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
-            myDisplayThread = new Thread(delegate(){ MyMarquee.displayScrollingMessage(myMessage); });
+            Segment mySegment = new Segment("TEAM", Color.Red, 0, 0, 0);
+            Segment mySecondSegment = new Segment("DISCOVERY", Color.Aqua, 0, 0, 0);
+            mySegmentArray = new Segment[] {mySegment, mySecondSegment};
+            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 200, 2000);
+            myBorderThread = new Thread(delegate () { MyMarquee.displayBorder(Color.Red, Color.Black); });
+            myDisplayThread = new Thread(delegate(){ MyMarquee.displayMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             //myDisplayThread = new Thread(delegate () {
             //    MyMarquee.displayRandomColorMessage(myMessage);
             //});
+            myBorderThread.Start();
             myDisplayThread.Start();
         }
 
