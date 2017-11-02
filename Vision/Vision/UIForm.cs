@@ -48,7 +48,6 @@ namespace Vision
                     myDisplayThread.Abort();
                 }
             }
-            marquee.Visible = true;
             tabControl.Visible = false;
             createNewMessageButton.Visible = false;
             uploadMessageFromFileButton.Visible = false;
@@ -57,6 +56,7 @@ namespace Vision
             uploadButton.Visible = false;
             segment1Button.Visible = false;
             addSegmentButton1.Visible = false;
+            marquee.Visible = true;
             Message myMessage = new Vision.Message("TEAM DISCOVERY NUMBER 1!", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             myDisplayThread = new Thread(delegate(){ MyMarquee.displayScrollingMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
@@ -109,6 +109,8 @@ namespace Vision
                 colorComboBox.Visible = true;
                 transitionSpeedLabel.Visible = true;
                 transitionSpeedComboBox.Visible = true;
+                specialEffectButton.Visible = true;
+                scrollingTextButton.Visible = true;
             }
             else if (!createNewMessageButton.Checked)
             {
@@ -123,6 +125,8 @@ namespace Vision
                 colorComboBox.Visible = false;
                 transitionSpeedLabel.Visible = false;
                 transitionSpeedComboBox.Visible = false;
+                specialEffectButton.Visible = false;
+                scrollingTextButton.Visible = false;
             }
         }
         private void segment1Button_Click(object sender, EventArgs e)
