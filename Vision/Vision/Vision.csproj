@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dot.cs" />
+    <Compile Include="Dot.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Image.cs" />
     <Compile Include="Marquee.cs" />
     <Compile Include="Message.cs" />

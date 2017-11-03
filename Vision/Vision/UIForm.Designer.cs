@@ -56,6 +56,14 @@ namespace Vision
             this.tabControl = new System.Windows.Forms.TabControl();
             this.textTab = new System.Windows.Forms.TabPage();
             this.createAMessageGroupBox = new System.Windows.Forms.GroupBox();
+            this.exitEffectLabel = new System.Windows.Forms.Label();
+            this.staticEffectLabel = new System.Windows.Forms.Label();
+            this.entranceEffectLabel = new System.Windows.Forms.Label();
+            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.scrollingTextButton = new System.Windows.Forms.RadioButton();
+            this.specialEffectButton = new System.Windows.Forms.RadioButton();
             this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
             this.transitionSpeedLabel = new System.Windows.Forms.Label();
             this.colorComboBox = new System.Windows.Forms.ComboBox();
@@ -88,14 +96,6 @@ namespace Vision
             this.addSegmentButton12 = new System.Windows.Forms.Button();
             this.addSegmentButton13 = new System.Windows.Forms.Button();
             this.saveAndRunButton = new System.Windows.Forms.Button();
-            this.specialEffectButton = new System.Windows.Forms.RadioButton();
-            this.scrollingTextButton = new System.Windows.Forms.RadioButton();
-            this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.entranceEffectLabel = new System.Windows.Forms.Label();
-            this.staticEffectLabel = new System.Windows.Forms.Label();
-            this.exitEffectLabel = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
             this.createAMessageGroupBox.SuspendLayout();
@@ -293,6 +293,87 @@ namespace Vision
             this.createAMessageGroupBox.TabStop = false;
             this.createAMessageGroupBox.Text = "Create A Message";
             this.createAMessageGroupBox.Visible = false;
+            // 
+            // exitEffectLabel
+            // 
+            this.exitEffectLabel.AutoSize = true;
+            this.exitEffectLabel.Location = new System.Drawing.Point(571, 133);
+            this.exitEffectLabel.Name = "exitEffectLabel";
+            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
+            this.exitEffectLabel.TabIndex = 16;
+            this.exitEffectLabel.Text = "Exit Effect";
+            this.exitEffectLabel.Visible = false;
+            // 
+            // staticEffectLabel
+            // 
+            this.staticEffectLabel.AutoSize = true;
+            this.staticEffectLabel.Location = new System.Drawing.Point(315, 133);
+            this.staticEffectLabel.Name = "staticEffectLabel";
+            this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
+            this.staticEffectLabel.TabIndex = 15;
+            this.staticEffectLabel.Text = "Static Effect";
+            this.staticEffectLabel.Visible = false;
+            // 
+            // entranceEffectLabel
+            // 
+            this.entranceEffectLabel.AutoSize = true;
+            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 133);
+            this.entranceEffectLabel.Name = "entranceEffectLabel";
+            this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
+            this.entranceEffectLabel.TabIndex = 14;
+            this.entranceEffectLabel.Text = "Entrance Effect";
+            this.entranceEffectLabel.Visible = false;
+            // 
+            // exitEffectComboBox
+            // 
+            this.exitEffectComboBox.FormattingEnabled = true;
+            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 149);
+            this.exitEffectComboBox.Name = "exitEffectComboBox";
+            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.exitEffectComboBox.TabIndex = 13;
+            this.exitEffectComboBox.Visible = false;
+            // 
+            // staticEffectComboBox
+            // 
+            this.staticEffectComboBox.FormattingEnabled = true;
+            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 149);
+            this.staticEffectComboBox.Name = "staticEffectComboBox";
+            this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.staticEffectComboBox.TabIndex = 12;
+            this.staticEffectComboBox.Visible = false;
+            // 
+            // entranceEffectComboBox
+            // 
+            this.entranceEffectComboBox.FormattingEnabled = true;
+            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 149);
+            this.entranceEffectComboBox.Name = "entranceEffectComboBox";
+            this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.entranceEffectComboBox.TabIndex = 11;
+            this.entranceEffectComboBox.Visible = false;
+            // 
+            // scrollingTextButton
+            // 
+            this.scrollingTextButton.AutoSize = true;
+            this.scrollingTextButton.Location = new System.Drawing.Point(168, 104);
+            this.scrollingTextButton.Name = "scrollingTextButton";
+            this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
+            this.scrollingTextButton.TabIndex = 10;
+            this.scrollingTextButton.TabStop = true;
+            this.scrollingTextButton.Text = "Scrolling Text";
+            this.scrollingTextButton.UseVisualStyleBackColor = true;
+            this.scrollingTextButton.Visible = false;
+            // 
+            // specialEffectButton
+            // 
+            this.specialEffectButton.AutoSize = true;
+            this.specialEffectButton.Location = new System.Drawing.Point(17, 104);
+            this.specialEffectButton.Name = "specialEffectButton";
+            this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
+            this.specialEffectButton.TabIndex = 6;
+            this.specialEffectButton.TabStop = true;
+            this.specialEffectButton.Text = "Special Effects";
+            this.specialEffectButton.UseVisualStyleBackColor = true;
+            this.specialEffectButton.Visible = false;
             // 
             // transitionSpeedComboBox
             // 
@@ -607,87 +688,6 @@ namespace Vision
             this.saveAndRunButton.TabIndex = 27;
             this.saveAndRunButton.Text = "Save and Run";
             this.saveAndRunButton.UseVisualStyleBackColor = true;
-            // 
-            // specialEffectButton
-            // 
-            this.specialEffectButton.AutoSize = true;
-            this.specialEffectButton.Location = new System.Drawing.Point(17, 104);
-            this.specialEffectButton.Name = "specialEffectButton";
-            this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
-            this.specialEffectButton.TabIndex = 6;
-            this.specialEffectButton.TabStop = true;
-            this.specialEffectButton.Text = "Special Effects";
-            this.specialEffectButton.UseVisualStyleBackColor = true;
-            this.specialEffectButton.Visible = false;
-            // 
-            // scrollingTextButton
-            // 
-            this.scrollingTextButton.AutoSize = true;
-            this.scrollingTextButton.Location = new System.Drawing.Point(168, 104);
-            this.scrollingTextButton.Name = "scrollingTextButton";
-            this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
-            this.scrollingTextButton.TabIndex = 10;
-            this.scrollingTextButton.TabStop = true;
-            this.scrollingTextButton.Text = "Scrolling Text";
-            this.scrollingTextButton.UseVisualStyleBackColor = true;
-            this.scrollingTextButton.Visible = false;
-            // 
-            // entranceEffectComboBox
-            // 
-            this.entranceEffectComboBox.FormattingEnabled = true;
-            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 149);
-            this.entranceEffectComboBox.Name = "entranceEffectComboBox";
-            this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.entranceEffectComboBox.TabIndex = 11;
-            this.entranceEffectComboBox.Visible = false;
-            // 
-            // staticEffectComboBox
-            // 
-            this.staticEffectComboBox.FormattingEnabled = true;
-            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 149);
-            this.staticEffectComboBox.Name = "staticEffectComboBox";
-            this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.staticEffectComboBox.TabIndex = 12;
-            this.staticEffectComboBox.Visible = false;
-            // 
-            // exitEffectComboBox
-            // 
-            this.exitEffectComboBox.FormattingEnabled = true;
-            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 149);
-            this.exitEffectComboBox.Name = "exitEffectComboBox";
-            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.exitEffectComboBox.TabIndex = 13;
-            this.exitEffectComboBox.Visible = false;
-            // 
-            // entranceEffectLabel
-            // 
-            this.entranceEffectLabel.AutoSize = true;
-            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 133);
-            this.entranceEffectLabel.Name = "entranceEffectLabel";
-            this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
-            this.entranceEffectLabel.TabIndex = 14;
-            this.entranceEffectLabel.Text = "Entrance Effect";
-            this.entranceEffectLabel.Visible = false;
-            // 
-            // staticEffectLabel
-            // 
-            this.staticEffectLabel.AutoSize = true;
-            this.staticEffectLabel.Location = new System.Drawing.Point(315, 133);
-            this.staticEffectLabel.Name = "staticEffectLabel";
-            this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
-            this.staticEffectLabel.TabIndex = 15;
-            this.staticEffectLabel.Text = "Static Effect";
-            this.staticEffectLabel.Visible = false;
-            // 
-            // exitEffectLabel
-            // 
-            this.exitEffectLabel.AutoSize = true;
-            this.exitEffectLabel.Location = new System.Drawing.Point(571, 133);
-            this.exitEffectLabel.Name = "exitEffectLabel";
-            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
-            this.exitEffectLabel.TabIndex = 16;
-            this.exitEffectLabel.Text = "Exit Effect";
-            this.exitEffectLabel.Visible = false;
             // 
             // UIForm
             // 

@@ -77,7 +77,7 @@ namespace Vision
                     xLoc += dotWidth + 0;
                 }
                 xLoc = (objPanel.Width - adjustedSize) / 2;
-                yLoc += dotHeight + 1;
+                yLoc += dotHeight + 0;
             }
             //Set Top border
             for (int b = 0; b < 96; b++)
@@ -267,8 +267,8 @@ namespace Vision
                 for (int c = 2; c < 93; c++)
                 {
                     for (int r = 2; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);
+                    {                        
+                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);                        
                     }
                 }
 
@@ -280,8 +280,8 @@ namespace Vision
                         setDot(r, 93, segment.onColor, backgroundColor);
                     }
                     else if (currSegment[r - 2][s].Equals('0'))
-                    {
-                        setDot(r, 93, backgroundColor, backgroundColor);
+                    {                        
+                        setDot(r, 93, backgroundColor, backgroundColor);                        
                     }
                 }
                 Thread.Sleep(scrollSpeed);
