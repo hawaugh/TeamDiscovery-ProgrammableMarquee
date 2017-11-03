@@ -18,6 +18,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 
+
 namespace Vision
 {
     class Marquee
@@ -262,7 +263,7 @@ namespace Vision
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             for (int s = 0; s < segmentLength; s++)
-            {
+            {                
                 //Move all dots 1 column left
                 for (int c = 2; c < 93; c++)
                 {

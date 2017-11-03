@@ -23,8 +23,9 @@ namespace Vision
     {
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(ForeColor);
-            e.Graphics.FillEllipse(myBrush, new Rectangle(Point.Empty, new Size(Width - 1, Height - 1)));
+            e.Graphics.FillPie(myBrush, Point.Empty.X, Point.Empty.Y, Width - 1, Height - 1, 0, 360);
         }
     }
 }
