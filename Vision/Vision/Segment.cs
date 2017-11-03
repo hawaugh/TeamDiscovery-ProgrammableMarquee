@@ -104,6 +104,27 @@ namespace Vision
             get { return _exitEffect; }
             set { _exitEffect = value; }
         }
+        //getter for random color
+        public Color randColor
+        {
+            get
+            {
+                Random rnd = new Random();
+                int randomNumber = rnd.Next(0, 100);
+                if (randomNumber < 50)
+                {
+                    return Color.Coral;
+                }
+                else
+                {
+                    return Color.Blue;
+                }
+            }
+            set
+            {
+
+            }
+        }
 
         //Contains the library of character builds
         public string[] characterBuild(char character)

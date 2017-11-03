@@ -5,8 +5,8 @@
 // Class: UIForm.cs
 // Description: 
 //
-// Name: Logan
-// Last Edit: 11/2
+// Name: Nick Burnette
+// Last Edit: 11/3
 /////////////////////////////////////////////////////
 
 using System;
@@ -65,10 +65,6 @@ namespace Vision
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 50, 2000);
             myBorderThread = new Thread(delegate () { MyMarquee.displayBorder(Color.Red, Color.Black); });
             myDisplayThread = new Thread(delegate(){ MyMarquee.displayMessage(myMessage); });
-            //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
-            //myDisplayThread = new Thread(delegate () {
-            //    MyMarquee.displayRandomColorMessage(myMessage);
-            //});
             myBorderThread.Start();
             myDisplayThread.Start();
         }

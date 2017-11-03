@@ -5,8 +5,8 @@
 // Class: UIForm.Designer.cs
 // Description: 
 //
-// Name: 
-// Last Edit: 
+// Name: Nick Burnette
+// Last Edit: 11/3/17
 /////////////////////////////////////////////////////
 
 namespace Vision
