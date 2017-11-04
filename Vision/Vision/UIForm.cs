@@ -24,7 +24,6 @@ namespace Vision
 {
     public partial class UIForm : Form
     {
-        private Marquee MyMarquee = null;
         private Thread myDisplayThread = null;
         private Thread myBorderThread = null;
         private Segment[] mySegmentArray;
@@ -38,7 +37,7 @@ namespace Vision
 
         private void UIForm_Load(object sender, EventArgs e)
         {
-            MyMarquee = new Marquee(this.marquee);
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -58,13 +57,13 @@ namespace Vision
             uploadButton.Visible = false;
             segment1Button.Visible = false;
             addSegmentButton1.Visible = false;
-            marquee.Visible = true;
+            marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 0, 0, 0);
             Segment mySecondSegment = new Segment("DISCOVERY", Color.Aqua, -1, -1, -1);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment};
-            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 50, 2000);
-            myBorderThread = new Thread(delegate () { MyMarquee.displayBorder(Color.Red, Color.Black); });
-            myDisplayThread = new Thread(delegate(){ MyMarquee.displayMessage(myMessage); });
+            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 25, 2000);
+            myBorderThread = new Thread(delegate () { marquee1.displayBorder(Color.Red, Color.Black); });
+            myDisplayThread = new Thread(delegate(){ marquee1.displayMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             //myDisplayThread = new Thread(delegate () {
             //    MyMarquee.displayRandomColorMessage(myMessage);

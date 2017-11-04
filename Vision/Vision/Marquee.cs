@@ -17,69 +17,31 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
-
+using System.Drawing.Drawing2D;
 
 namespace Vision
 {
-    class Marquee
+    class Marquee : Control
     {
         private Dot[,] matrix = new Dot[16, 96];
         private Dot[] border = new Dot[220];
 
-        public Marquee(Panel objPanel)
+        public Marquee()
         {
-            createMarquee(objPanel);
-        }
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
-        public void setDot(int row, int col, Color fore, Color back)
-        {
-            matrix[row, col].ForeColor = fore;
-            matrix[row, col].BackColor = back;
-        }
+            this.BackColor = Color.Black;
 
-        public Color getDotFore(int row, int col)
-        {
-            return matrix[row, col].ForeColor;
-        }
-
-        public Color getDotBack(int row, int col)
-        {
-            return matrix[row, col].BackColor;
-        }
-
-        private void createMarquee(Panel objPanel)
-        {
-            int adjustedSize = ((objPanel.Width - 10) / 96) * 96;
-            int dotHeight = adjustedSize / 96;
-            int dotWidth = dotHeight;
-            Color dotForeColor = Color.Green;
-            Color dotBackColor = Color.Black;
-            int xLoc = (objPanel.Width - adjustedSize) / 2;
-            int yLoc = 3;
-            objPanel.SuspendLayout();
+            //Populate matrix array of Dots
             for (int r = 0; r < 16; r++)
             {
                 for (int c = 0; c < 96; c++)
                 {
-                    Dot objDot = new Dot();
-                    objDot.Width = dotWidth;
-                    objDot.Height = dotHeight;
-                    objDot.ForeColor = dotForeColor;
-                    objDot.BackColor = dotBackColor;
-                    objDot.Location = new Point(xLoc, yLoc);
-
-                    objPanel.Controls.Add(objDot);
-                    matrix[r, c] = objDot;
-                    if (((r == 1 || r == 14) && (c > 0 && c < 95)) || ((r > 1 && r < 14) && (c == 1 || c == 94))) //blank out pad area
-                    {
-                        matrix[r, c].ForeColor = Color.Black;
-                        matrix[r, c].BackColor = Color.Black;
-                    }
-                    xLoc += dotWidth + 0;
+                    matrix[r, c] = new Dot();
                 }
-                xLoc = (objPanel.Width - adjustedSize) / 2;
-                yLoc += dotHeight + 0;
             }
+
+            //Reference border array
             //Set Top border
             for (int b = 0; b < 96; b++)
             {
@@ -100,7 +62,22 @@ namespace Vision
             {
                 border[b] = matrix[220 - b, 0];
             }
-            objPanel.ResumeLayout();
+        }
+
+        public void setDot(int row, int col, Color fore, Color back)
+        {
+            matrix[row, col].ForeColor = fore;
+            matrix[row, col].BackColor = back;
+        }
+
+        public Color getDotFore(int row, int col)
+        {
+            return matrix[row, col].ForeColor;
+        }
+
+        public Color getDotBack(int row, int col)
+        {
+            return matrix[row, col].BackColor;
         } 
         
         public void clearMarquee(Color backgroundColor)
@@ -112,11 +89,20 @@ namespace Vision
                     setDot(r, c, backgroundColor, backgroundColor);
                 }
             }
-        }  
+            Invalidate();
+        }
+
+        /*
+         * 
+         *   Message Control
+         * 
+         */
+        #region Message Control
 
         //Cycles through segments and displays them
         public void displayMessage(Message message)
         {
+            this.BackColor = message.backgroundColor;
             for (int i = 0; i < message.getSegmentArray().Length; i++)
             {
                 displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.scrollSpeed, message.segmentSpeed);
@@ -187,6 +173,7 @@ namespace Vision
                 Thread.Sleep(500);
             }
         }
+        #endregion
 
 
         /*
@@ -194,7 +181,7 @@ namespace Vision
          *   Entrance Effects
          * 
          */
-
+        #region Entrance Effects
         public void displayStaticEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -217,6 +204,7 @@ namespace Vision
                     }
                 }
             }
+            Invalidate();
         }
 
         //Heather - edited on 10/29/17
@@ -247,7 +235,7 @@ namespace Vision
         {
 
         }
-
+        #endregion
 
 
         /*
@@ -255,7 +243,7 @@ namespace Vision
          *   Middle Effects
          * 
          */
-
+        #region Middle Effects
         //Logan
         public void displayScrollingSegment(Segment segment, Color backgroundColor, int scrollSpeed)
         {
@@ -285,6 +273,7 @@ namespace Vision
                         setDot(r, 93, backgroundColor, backgroundColor);                        
                     }
                 }
+                Invalidate();
                 Thread.Sleep(scrollSpeed);
             }
 
@@ -306,6 +295,7 @@ namespace Vision
                     setDot(r, 93, backgroundColor, backgroundColor);
                 }
                 Thread.Sleep(scrollSpeed);
+                Invalidate();
             }
         }
 
@@ -321,13 +311,15 @@ namespace Vision
         {
 
         }
+        #endregion
+
 
         /*
          * 
          *   Exit Effects
          * 
          */
-
+        #region Exit Effects
         //Heather
         public void displaySplitExit()
         {
@@ -345,13 +337,15 @@ namespace Vision
         {
 
         }
+        #endregion
+
 
         /*
          * 
          *   Border Effects
          * 
          */
-
+        #region Border Effects
         public void displayBorder(Color borderColor, Color backgroundColor)
         {
             for (int r = 0; r < 16; r++)
@@ -373,22 +367,59 @@ namespace Vision
         {
 
         }
+        #endregion
 
+
+        /*
+         * 
+         *   Image Effects
+         * 
+         */
+        #region Image Effects
         public void displayImage(Image image)
         {
 
         }
+        #endregion
+
 
         /*
-        public Message loadXML()
+         * 
+         *   Events
+         * 
+         */
+        #region Events
+        protected override void OnPaint(PaintEventArgs e)
         {
-           
-        }
-        */
+            Graphics gfx = e.Graphics;
 
-        public void saveXML()
-        {
+            // Calling the base class OnPaint
+            base.OnPaint(e);
 
+            // Antialiasing
+            gfx.SmoothingMode = SmoothingMode.AntiAlias;
+
+            int dotWidth = this.Width / 96;         
+            int xLoc = (this.Width - (dotWidth * 96)) / 2;
+            int yLoc = (this.Height - (dotWidth * 16)) / 2;
+            this.SuspendLayout();         
+            for (int r = 0; r < 16; r++)
+            {
+                for (int c = 0; c < 96; c++)
+                {
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(getDotFore(r, c));
+                    e.Graphics.FillPie(myBrush, xLoc, yLoc, dotWidth - 1, dotWidth - 1, 0, 360);                              
+                    xLoc += dotWidth;
+                }
+                xLoc = (this.Width - (dotWidth * 96)) / 2;
+                yLoc += dotWidth;
+            }
+            this.ResumeLayout();
         }
+
+
+
+        #endregion
+
     }
 }

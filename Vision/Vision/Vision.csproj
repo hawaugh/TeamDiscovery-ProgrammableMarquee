@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dot.cs">
+    <Compile Include="Dot.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="Marquee.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Image.cs" />
-    <Compile Include="Marquee.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Segment.cs" />
     <Compile Include="UIForm.cs">

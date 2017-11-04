@@ -39,7 +39,6 @@ namespace Vision
         /// </summary>
         private void InitializeComponent()
         {
-            this.marquee = new System.Windows.Forms.Panel();
             this.segment12Button = new System.Windows.Forms.Button();
             this.segment11Button = new System.Windows.Forms.Button();
             this.segment10Button = new System.Windows.Forms.Button();
@@ -96,18 +95,11 @@ namespace Vision
             this.addSegmentButton12 = new System.Windows.Forms.Button();
             this.addSegmentButton13 = new System.Windows.Forms.Button();
             this.saveAndRunButton = new System.Windows.Forms.Button();
+            this.marquee1 = new Vision.Marquee();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
             this.createAMessageGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // marquee
-            // 
-            this.marquee.Location = new System.Drawing.Point(9, 12);
-            this.marquee.Name = "marquee";
-            this.marquee.Size = new System.Drawing.Size(1179, 238);
-            this.marquee.TabIndex = 0;
-            this.marquee.Visible = false;
             // 
             // segment12Button
             // 
@@ -689,11 +681,22 @@ namespace Vision
             this.saveAndRunButton.Text = "Save and Run";
             this.saveAndRunButton.UseVisualStyleBackColor = true;
             // 
+            // marquee1
+            // 
+            this.marquee1.BackColor = System.Drawing.Color.Black;
+            this.marquee1.Location = new System.Drawing.Point(16, 13);
+            this.marquee1.Name = "marquee1";
+            this.marquee1.Size = new System.Drawing.Size(1168, 202);
+            this.marquee1.TabIndex = 28;
+            this.marquee1.Text = "marquee";
+            this.marquee1.Visible = false;
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.Controls.Add(this.marquee1);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.addSegmentButton13);
             this.Controls.Add(this.addSegmentButton12);
@@ -724,7 +727,6 @@ namespace Vision
             this.Controls.Add(this.segment4Button);
             this.Controls.Add(this.segment8Button);
             this.Controls.Add(this.segment3Button);
-            this.Controls.Add(this.marquee);
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
@@ -738,8 +740,6 @@ namespace Vision
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel marquee;
         private System.Windows.Forms.Button populateMarqueeButton;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage textTab;
@@ -796,6 +796,7 @@ namespace Vision
         private System.Windows.Forms.ComboBox exitEffectComboBox;
         private System.Windows.Forms.ComboBox staticEffectComboBox;
         private System.Windows.Forms.ComboBox entranceEffectComboBox;
+        private Marquee marquee1;
     }
 }
 
