@@ -44,3 +44,13 @@ D:\School\CSC 289\Vision Experiement\Vision\Vision\obj\Debug\Vision.UIForm.resou
 D:\School\CSC 289\Vision Experiement\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
 D:\School\CSC 289\Vision Experiement\Vision\Vision\bin\Debug\Vision.exe
 D:\School\CSC 289\Vision Experiement\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.UIForm.resources
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.pdb
