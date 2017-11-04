@@ -323,7 +323,7 @@ namespace Vision
                 activeDotList[randomNumber].ForeColor = segment.randColor;
                 activeDotList.RemoveAt(randomNumber);                
                 Invalidate();
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
         }
 
