@@ -18,6 +18,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing.Drawing2D;
+using System.Collections.Generic;
 
 namespace Vision
 {
@@ -303,38 +304,24 @@ namespace Vision
         //The marquee will already have the message displayed and the dots are set for you to edit them in this method
         public void displayRandomColors(Segment segment, Color backgroundColor)
         {
-            ArrayList activeDotArray = new ArrayList();
+            List<Dot> activeDotList = new List<Dot>();
             for (int r = 2; r < 14; r++)
             {
-                for (int c = 3; c < 94; c++)
+                for (int c = 2; c < 94; c++)
                 {
                     if (getDotFore(r, c) == segment.onColor)
                     {
                         //add to storage for next loop
-                        //Count will always return a odd number
-                        activeDotArray.Add(r);
-                        activeDotArray.Add(c);
+                        activeDotList.Add(matrix[r, c]);
                     }
                 }
             }
-            while (activeDotArray.Count > 0)
+            Random rnd = new Random();
+            while (activeDotList.Count > 0)
             {
-                Random rnd = new Random();
-                //Convert to int32
-                int randomNumber = rnd.Next(0, activeDotArray.Count);
-                //test whether randomNumber is odd
-                if (randomNumber % 2 == 0)
-                {
-                    setDot(randomNumber, randomNumber + 1, segment.randColor, backgroundColor);
-                    activeDotArray.RemoveAt(randomNumber);
-                    activeDotArray.RemoveAt(randomNumber + 1);
-                }
-                else
-                {
-                    setDot(randomNumber - 1, randomNumber, segment.randColor, backgroundColor);
-                    activeDotArray.RemoveAt(randomNumber);
-                    activeDotArray.RemoveAt(randomNumber - 1);
-                }
+                int randomNumber = rnd.Next(0, activeDotList.Count);
+                activeDotList[randomNumber].ForeColor = segment.randColor;
+                activeDotList.RemoveAt(randomNumber);                
                 Invalidate();
                 Thread.Sleep(50);
             }

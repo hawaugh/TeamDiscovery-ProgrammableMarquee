@@ -696,7 +696,6 @@ namespace Vision
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 516);
-            this.Controls.Add(this.marquee1);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.addSegmentButton13);
             this.Controls.Add(this.addSegmentButton12);
@@ -727,6 +726,7 @@ namespace Vision
             this.Controls.Add(this.segment4Button);
             this.Controls.Add(this.segment8Button);
             this.Controls.Add(this.segment3Button);
+            this.Controls.Add(this.marquee1);
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
