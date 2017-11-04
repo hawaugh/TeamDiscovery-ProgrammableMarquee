@@ -10,7 +10,7 @@
 /////////////////////////////////////////////////////﻿
 
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -303,7 +303,40 @@ namespace Vision
         //The marquee will already have the message displayed and the dots are set for you to edit them in this method
         public void displayRandomColors(Segment segment, Color backgroundColor)
         {
-            
+            ArrayList activeDotArray = new ArrayList();
+            for (int r = 2; r < 14; r++)
+            {
+                for (int c = 3; c < 94; c++)
+                {
+                    if (getDotFore(r, c) == segment.onColor)
+                    {
+                        //add to storage for next loop
+                        //Count will always return a odd number
+                        activeDotArray.Add(r);
+                        activeDotArray.Add(c);
+                    }
+                }
+            }
+            while (activeDotArray.Count > 0)
+            {
+                Random rnd = new Random();
+                //Convert to int32
+                int randomNumber = rnd.Next(0, activeDotArray.Count);
+                //test whether randomNumber is odd
+                if (randomNumber % 2 == 0)
+                {
+                    setDot(randomNumber, randomNumber + 1, segment.randColor, backgroundColor);
+                    activeDotArray.RemoveAt(randomNumber);
+                    activeDotArray.RemoveAt(randomNumber + 1);
+                }
+                else
+                {
+                    setDot(randomNumber - 1, randomNumber, segment.randColor, backgroundColor);
+                    activeDotArray.RemoveAt(randomNumber);
+                    activeDotArray.RemoveAt(randomNumber - 1);
+                }
+                Thread.Sleep(50);
+            }
         }
 
         //Jeremy

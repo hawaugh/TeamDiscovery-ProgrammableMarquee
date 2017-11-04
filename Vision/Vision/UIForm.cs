@@ -5,8 +5,8 @@
 // Class: UIForm.cs
 // Description: 
 //
-// Name: Logan
-// Last Edit: 11/2
+// Name: Nick Burnette
+// Last Edit: 11/3
 /////////////////////////////////////////////////////
 
 using System;
@@ -61,6 +61,7 @@ namespace Vision
             Segment mySegment = new Segment("TEAM", Color.Red, 0, 0, 0);
             Segment mySecondSegment = new Segment("DISCOVERY", Color.Aqua, -1, -1, -1);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment};
+<<<<<<< HEAD
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 25, 2000);
             myBorderThread = new Thread(delegate () { marquee1.displayBorder(Color.Red, Color.Black); });
             myDisplayThread = new Thread(delegate(){ marquee1.displayMessage(myMessage); });
@@ -68,6 +69,11 @@ namespace Vision
             //myDisplayThread = new Thread(delegate () {
             //    MyMarquee.displayRandomColorMessage(myMessage);
             //});
+=======
+            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 50, 2000);
+            myBorderThread = new Thread(delegate () { MyMarquee.displayBorder(Color.Red, Color.Black); });
+            myDisplayThread = new Thread(delegate(){ MyMarquee.displayMessage(myMessage); });
+>>>>>>> 562ee2091b8e2571047ae59a8d423397345bf246
             myBorderThread.Start();
             myDisplayThread.Start();
         }
