@@ -134,6 +134,11 @@ namespace Vision
                 displayDownEntrance(segment, backgroundColor, scrollSpeed);
                 Thread.Sleep(segmentSpeed);
             }
+            else if (segment.entranceEffect == 4)
+            {
+                displayRandomEntrance(segment, backgroundColor);
+                Thread.Sleep(segmentSpeed);
+            }
 
             //Display Middle
             if (segment.middleEffect == -1)
@@ -171,6 +176,11 @@ namespace Vision
             else if (segment.exitEffect == 3)
             {
                 displayDownExit();
+                Thread.Sleep(500);
+            }
+            else if (segment.exitEffect == 4)
+            {
+                displayRandomExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
         }
@@ -235,6 +245,35 @@ namespace Vision
         public void displayDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
 
+        }
+
+        public void displayRandomEntrance(Segment segment, Color backgroundColor)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            String currString;
+            List<Dot> activeDotList = new List<Dot>();
+            for (int r = 2; r < 14; r++)
+            {
+                currString = currSegment[r - 2];
+                for (int c = 0; c < segmentLength; c++)
+                {
+                    if (currString[c].Equals('1'))
+                    {
+                        activeDotList.Add(matrix[r, ((96 - segmentLength) / 2) + c]);                        
+                    }                    
+                }
+            }
+            Random rnd = new Random();
+            while (activeDotList.Count > 0)
+            {
+                int randomNumber = rnd.Next(0, activeDotList.Count);
+                activeDotList[randomNumber].ForeColor = segment.onColor;
+                activeDotList.RemoveAt(randomNumber);
+                Invalidate();
+                Thread.Sleep(10);
+            }
         }
         #endregion
 
@@ -309,7 +348,7 @@ namespace Vision
             {
                 for (int c = 2; c < 94; c++)
                 {
-                    if (getDotFore(r, c) == segment.onColor)
+                    if (getDotFore(r, c) != backgroundColor)
                     {
                         //add to storage for next loop
                         activeDotList.Add(matrix[r, c]);
@@ -357,6 +396,31 @@ namespace Vision
         public void displayDownExit()
         {
 
+        }
+
+        public void displayRandomExit(Segment segment, Color backgroundColor)
+        {
+            List<Dot> activeDotList = new List<Dot>();
+            for (int r = 2; r < 14; r++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    if (getDotFore(r, c) != backgroundColor)
+                    {
+                        //add to storage for next loop
+                        activeDotList.Add(matrix[r, c]);
+                    }
+                }
+            }
+            Random rnd = new Random();
+            while (activeDotList.Count > 0)
+            {
+                int randomNumber = rnd.Next(0, activeDotList.Count);
+                activeDotList[randomNumber].ForeColor = backgroundColor;
+                activeDotList.RemoveAt(randomNumber);
+                Invalidate();
+                Thread.Sleep(10);
+            }
         }
         #endregion
 
