@@ -62,7 +62,7 @@ namespace Vision
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment};
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 25, 2000);
-            myBorderThread = new Thread(delegate () { marquee1.displayBorder(Color.Red, Color.Black); });
+            myBorderThread = new Thread(delegate () { marquee1.displayBorder(Color.Red); });
             myDisplayThread = new Thread(delegate(){ marquee1.displayMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             //myDisplayThread = new Thread(delegate () {

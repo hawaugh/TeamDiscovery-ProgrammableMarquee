@@ -65,29 +65,23 @@ namespace Vision
             }
         }
 
-        public void setDot(int row, int col, Color fore, Color back)
+        public void setDot(int row, int col, Color fore)
         {
             matrix[row, col].ForeColor = fore;
-            matrix[row, col].BackColor = back;
         }
 
         public Color getDotFore(int row, int col)
         {
             return matrix[row, col].ForeColor;
         }
-
-        public Color getDotBack(int row, int col)
-        {
-            return matrix[row, col].BackColor;
-        } 
         
         public void clearMarquee(Color backgroundColor)
         {
-            for (int r = 2; r < 14; r++)
+            for (int r = 1; r < 15; r++)
             {
-                for (int c = 2; c < 94; c++)
+                for (int c = 1; c < 95; c++)
                 {
-                    setDot(r, c, backgroundColor, backgroundColor);
+                    setDot(r, c, backgroundColor);
                 }
             }
             Invalidate();
@@ -207,11 +201,11 @@ namespace Vision
 
                     if (currString[c].Equals('1'))
                     {
-                        setDot(r, ((96 - segmentLength) / 2) + c, segment.onColor, backgroundColor);
+                        setDot(r, ((96 - segmentLength) / 2) + c, segment.onColor);
                     }
                     else if (currString[c].Equals('0'))
                     {
-                        setDot(r, ((96 - segmentLength) / 2) + c, backgroundColor, backgroundColor);
+                        setDot(r, ((96 - segmentLength) / 2) + c, backgroundColor);
                     }
                 }
             }
@@ -297,7 +291,7 @@ namespace Vision
                 {
                     for (int r = 2; r < 14; r++)
                     {                        
-                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);                        
+                        setDot(r, c, getDotFore(r, c + 1));                        
                     }
                 }
 
@@ -306,11 +300,11 @@ namespace Vision
                 {
                     if (currSegment[r - 2][s].Equals('1'))
                     {
-                        setDot(r, 93, segment.onColor, backgroundColor);
+                        setDot(r, 93, segment.onColor);
                     }
                     else if (currSegment[r - 2][s].Equals('0'))
                     {                        
-                        setDot(r, 93, backgroundColor, backgroundColor);                        
+                        setDot(r, 93, backgroundColor);                        
                     }
                 }
                 Invalidate();
@@ -325,14 +319,14 @@ namespace Vision
                 {
                     for (int r = 2; r < 14; r++)
                     {
-                        setDot(r, c, getDotFore(r, c + 1), backgroundColor);
+                        setDot(r, c, getDotFore(r, c + 1));
                     }
                 }
 
                 //Set last column to blank
                 for (int r = 2; r < 14; r++)
                 {
-                    setDot(r, 93, backgroundColor, backgroundColor);
+                    setDot(r, 93, backgroundColor);
                 }
                 Thread.Sleep(scrollSpeed);
                 Invalidate();
@@ -431,19 +425,11 @@ namespace Vision
          * 
          */
         #region Border Effects
-        public void displayBorder(Color borderColor, Color backgroundColor)
+        public void displayBorder(Color borderColor)
         {
-            for (int r = 0; r < 16; r++)
-            {
-                for (int c = 0; c < 96; c++)
-                {
-                    setDot(r, c, backgroundColor, backgroundColor);
-                }
-            }
             for (int b = 0; b < 220; b++)
             {
                 border[b].ForeColor = borderColor;
-                border[b].BackColor = backgroundColor;
             }
         }
 
@@ -501,10 +487,6 @@ namespace Vision
             }
             this.ResumeLayout();
         }
-
-
-
         #endregion
-
     }
 }
