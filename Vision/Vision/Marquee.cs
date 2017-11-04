@@ -335,6 +335,7 @@ namespace Vision
                     activeDotArray.RemoveAt(randomNumber);
                     activeDotArray.RemoveAt(randomNumber - 1);
                 }
+                Invalidate();
                 Thread.Sleep(50);
             }
         }
