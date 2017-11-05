@@ -224,7 +224,7 @@ namespace Vision
             // 
             // segment1Button
             // 
-            this.segment1Button.BackColor = System.Drawing.Color.LightGray;
+            this.segment1Button.BackColor = System.Drawing.Color.Gray;
             this.segment1Button.Location = new System.Drawing.Point(16, 12);
             this.segment1Button.Name = "segment1Button";
             this.segment1Button.Size = new System.Drawing.Size(103, 40);
@@ -575,6 +575,7 @@ namespace Vision
             this.addSegmentButton2.Text = "Add Segment";
             this.addSegmentButton2.UseVisualStyleBackColor = true;
             this.addSegmentButton2.Visible = false;
+            this.addSegmentButton2.Click += new System.EventHandler(this.addSegmentButton2_Click);
             // 
             // addSegmentButton3
             // 
@@ -585,6 +586,7 @@ namespace Vision
             this.addSegmentButton3.Text = "Add Segment";
             this.addSegmentButton3.UseVisualStyleBackColor = true;
             this.addSegmentButton3.Visible = false;
+            this.addSegmentButton3.Click += new System.EventHandler(this.addSegmentButton3_Click);
             // 
             // addSegmentButton4
             // 
@@ -595,6 +597,7 @@ namespace Vision
             this.addSegmentButton4.Text = "Add Segment";
             this.addSegmentButton4.UseVisualStyleBackColor = true;
             this.addSegmentButton4.Visible = false;
+            this.addSegmentButton4.Click += new System.EventHandler(this.addSegmentButton4_Click);
             // 
             // addSegmentButton5
             // 
@@ -605,6 +608,7 @@ namespace Vision
             this.addSegmentButton5.Text = "Add Segment";
             this.addSegmentButton5.UseVisualStyleBackColor = true;
             this.addSegmentButton5.Visible = false;
+            this.addSegmentButton5.Click += new System.EventHandler(this.addSegmentButton5_Click);
             // 
             // addSegmentButton6
             // 
@@ -615,6 +619,7 @@ namespace Vision
             this.addSegmentButton6.Text = "Add Segment";
             this.addSegmentButton6.UseVisualStyleBackColor = true;
             this.addSegmentButton6.Visible = false;
+            this.addSegmentButton6.Click += new System.EventHandler(this.addSegmentButton6_Click);
             // 
             // addSegmentButton7
             // 
@@ -625,6 +630,7 @@ namespace Vision
             this.addSegmentButton7.Text = "Add Segment";
             this.addSegmentButton7.UseVisualStyleBackColor = true;
             this.addSegmentButton7.Visible = false;
+            this.addSegmentButton7.Click += new System.EventHandler(this.addSegmentButton7_Click);
             // 
             // addSegmentButton8
             // 
@@ -635,6 +641,7 @@ namespace Vision
             this.addSegmentButton8.Text = "Add Segment";
             this.addSegmentButton8.UseVisualStyleBackColor = true;
             this.addSegmentButton8.Visible = false;
+            this.addSegmentButton8.Click += new System.EventHandler(this.addSegmentButton8_Click);
             // 
             // addSegmentButton9
             // 
@@ -645,6 +652,7 @@ namespace Vision
             this.addSegmentButton9.Text = "Add Segment";
             this.addSegmentButton9.UseVisualStyleBackColor = true;
             this.addSegmentButton9.Visible = false;
+            this.addSegmentButton9.Click += new System.EventHandler(this.addSegmentButton9_Click);
             // 
             // addSegmentButton10
             // 
@@ -655,6 +663,7 @@ namespace Vision
             this.addSegmentButton10.Text = "Add Segment";
             this.addSegmentButton10.UseVisualStyleBackColor = true;
             this.addSegmentButton10.Visible = false;
+            this.addSegmentButton10.Click += new System.EventHandler(this.addSegmentButton10_Click);
             // 
             // addSegmentButton11
             // 
@@ -665,6 +674,7 @@ namespace Vision
             this.addSegmentButton11.Text = "Add Segment";
             this.addSegmentButton11.UseVisualStyleBackColor = true;
             this.addSegmentButton11.Visible = false;
+            this.addSegmentButton11.Click += new System.EventHandler(this.addSegmentButton11_Click);
             // 
             // addSegmentButton12
             // 
@@ -675,6 +685,7 @@ namespace Vision
             this.addSegmentButton12.Text = "Add Segment";
             this.addSegmentButton12.UseVisualStyleBackColor = true;
             this.addSegmentButton12.Visible = false;
+            this.addSegmentButton12.Click += new System.EventHandler(this.addSegmentButton12_Click);
             // 
             // addSegmentButton13
             // 
@@ -685,6 +696,7 @@ namespace Vision
             this.addSegmentButton13.Text = "Add Segment";
             this.addSegmentButton13.UseVisualStyleBackColor = true;
             this.addSegmentButton13.Visible = false;
+            this.addSegmentButton13.Click += new System.EventHandler(this.addSegmentButton13_Click);
             // 
             // saveAndRunButton
             // 
