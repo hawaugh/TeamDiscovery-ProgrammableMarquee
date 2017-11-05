@@ -58,7 +58,7 @@ namespace Vision
             segment1Button.Visible = false;
             addSegmentButton1.Visible = false;
             marquee1.Visible = true;
-            Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 4);
+            Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);  //changed from 1, 1, 4
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment};
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, 25, 2000);

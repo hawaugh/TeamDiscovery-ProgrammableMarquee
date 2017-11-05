@@ -159,7 +159,7 @@ namespace Vision
             }
             else if (segment.exitEffect == 1)
             {
-                displaySplitExit();
+                displaySplitExit(segment, backgroundColor, scrollSpeed);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 2)
@@ -466,10 +466,49 @@ namespace Vision
          * 
          */
         #region Exit Effects
-        //Heather
-        public void displaySplitExit()
+        //Heather edited on 11/05/17
+        public void displaySplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
         {
 
+            //Exit top half to right
+            for (int i = 0; i < 94; i++)
+            {
+                for (int c = 93; c > 0; c--)
+                {
+                    for (int r = 2; r < 8; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 2; r < 8; r++)
+                {
+                    setDot(r, 1, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();              
+            }
+            //Exit rest of segment to the left
+            for (int i = 0; i < 94; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 8; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 2; r < 14; r++)
+                {
+                    setDot(r, 93, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
         }
 
         //Ahmad
