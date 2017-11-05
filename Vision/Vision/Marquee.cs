@@ -212,23 +212,23 @@ namespace Vision
             Invalidate();
         }
 
-        //Heather - edited on 10/29/17
+        //Heather - edited on 11/05/17
         public void displaySplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 4; //gives stop column for top half scrolling in from right
-            int bottomColumnStop = (96 - segmentLength) / 2;
-            String currString;
+            int bottomColumnStop = (96 - segmentLength) / 2;   //gives stop column for bottom half in from left.           
 
             //scroll top half from left-side of screen, and bottom half from right-side of screen. 
             //Stop scrolling when they line up.
             for (int s = segmentLength - 1; s > -1; s--)
             {
-                //Move top half of dots to the right
+                //Move top half of dots to the right, starting at the topColumnStop column
                 for (int c = topColumnStop; c > 1; c--)
                 {
+                    //Only want to use the upper half of rows on the display (2-7)
                     for (int r = 2; r < 8; r++)
                     {
                         setDot(r, c, getDotFore(r, c - 1));
