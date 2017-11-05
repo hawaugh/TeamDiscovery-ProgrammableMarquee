@@ -487,5 +487,11 @@ namespace Vision
             addSegmentButton13.Visible = false;
             segment14Button.Visible = true;
         }
+
+        private void saveAndExitButton_Click(object sender, EventArgs e)
+        {
+            //Closes the form
+            Application.Exit();
+        }
     }
 }

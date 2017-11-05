@@ -95,6 +95,7 @@ namespace Vision
             this.addSegmentButton12 = new System.Windows.Forms.Button();
             this.addSegmentButton13 = new System.Windows.Forms.Button();
             this.saveAndRunButton = new System.Windows.Forms.Button();
+            this.saveAndExitButton = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
@@ -707,6 +708,16 @@ namespace Vision
             this.saveAndRunButton.Text = "Save and Run";
             this.saveAndRunButton.UseVisualStyleBackColor = true;
             // 
+            // saveAndExitButton
+            // 
+            this.saveAndExitButton.Location = new System.Drawing.Point(1023, 460);
+            this.saveAndExitButton.Name = "saveAndExitButton";
+            this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
+            this.saveAndExitButton.TabIndex = 29;
+            this.saveAndExitButton.Text = "Save and Exit";
+            this.saveAndExitButton.UseVisualStyleBackColor = true;
+            this.saveAndExitButton.Click += new System.EventHandler(this.saveAndExitButton_Click);
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
@@ -722,6 +733,7 @@ namespace Vision
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.Controls.Add(this.saveAndExitButton);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.addSegmentButton13);
             this.Controls.Add(this.addSegmentButton12);
@@ -823,6 +835,7 @@ namespace Vision
         private System.Windows.Forms.ComboBox staticEffectComboBox;
         private System.Windows.Forms.ComboBox entranceEffectComboBox;
         private Marquee marquee1;
+        private System.Windows.Forms.Button saveAndExitButton;
     }
 }
 
