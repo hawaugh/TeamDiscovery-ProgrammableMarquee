@@ -138,11 +138,271 @@ namespace Vision
         }
         private void segment1Button_Click(object sender, EventArgs e)
         {
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
             segment1Button.BackColor = Color.SlateGray;
+        }
+        private void segment2Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment2Button.BackColor = Color.SlateGray;
+        }
+        private void segment3Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment3Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment4Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment4Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment5Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment5Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment6Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment6Button.BackColor = Color.SlateGray;
         }
         private void segment7Button_Click(object sender, EventArgs e)
         {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
 
+            segment7Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment8Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment8Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment9Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment9Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment10Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment10Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment11Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment11Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment12Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment12Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment13Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment14Button.BackColor = Color.LightGray;
+
+            segment13Button.BackColor = Color.SlateGray;
+        }
+
+        private void segment14Button_Click(object sender, EventArgs e)
+        {
+            segment1Button.BackColor = Color.LightGray;
+            segment2Button.BackColor = Color.LightGray;
+            segment3Button.BackColor = Color.LightGray;
+            segment4Button.BackColor = Color.LightGray;
+            segment5Button.BackColor = Color.LightGray;
+            segment6Button.BackColor = Color.LightGray;
+            segment7Button.BackColor = Color.LightGray;
+            segment8Button.BackColor = Color.LightGray;
+            segment9Button.BackColor = Color.LightGray;
+            segment10Button.BackColor = Color.LightGray;
+            segment11Button.BackColor = Color.LightGray;
+            segment12Button.BackColor = Color.LightGray;
+            segment13Button.BackColor = Color.LightGray;
+
+            segment14Button.BackColor = Color.SlateGray;
+        }
+        private void addSegmentButton1_Click(object sender, EventArgs e)
+        {
+            addSegmentButton1.Visible = false;
+            segment2Button.Visible = true;
+            addSegmentButton2.Visible = true;
         }
     }
 }

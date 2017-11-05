@@ -42,7 +42,7 @@ namespace Vision
             this.segment12Button = new System.Windows.Forms.Button();
             this.segment11Button = new System.Windows.Forms.Button();
             this.segment10Button = new System.Windows.Forms.Button();
-            this.Segment9Button = new System.Windows.Forms.Button();
+            this.segment9Button = new System.Windows.Forms.Button();
             this.segment8Button = new System.Windows.Forms.Button();
             this.segment7Button = new System.Windows.Forms.Button();
             this.segment6Button = new System.Windows.Forms.Button();
@@ -110,6 +110,7 @@ namespace Vision
             this.segment12Button.Text = "Segment 12";
             this.segment12Button.UseVisualStyleBackColor = true;
             this.segment12Button.Visible = false;
+            this.segment12Button.Click += new System.EventHandler(this.segment12Button_Click);
             // 
             // segment11Button
             // 
@@ -120,6 +121,7 @@ namespace Vision
             this.segment11Button.Text = "Segment 11";
             this.segment11Button.UseVisualStyleBackColor = true;
             this.segment11Button.Visible = false;
+            this.segment11Button.Click += new System.EventHandler(this.segment11Button_Click);
             // 
             // segment10Button
             // 
@@ -130,16 +132,18 @@ namespace Vision
             this.segment10Button.Text = "Segment 10";
             this.segment10Button.UseVisualStyleBackColor = true;
             this.segment10Button.Visible = false;
+            this.segment10Button.Click += new System.EventHandler(this.segment10Button_Click);
             // 
-            // Segment9Button
+            // segment9Button
             // 
-            this.Segment9Button.Location = new System.Drawing.Point(193, 89);
-            this.Segment9Button.Name = "Segment9Button";
-            this.Segment9Button.Size = new System.Drawing.Size(103, 40);
-            this.Segment9Button.TabIndex = 8;
-            this.Segment9Button.Text = "Segment 9";
-            this.Segment9Button.UseVisualStyleBackColor = true;
-            this.Segment9Button.Visible = false;
+            this.segment9Button.Location = new System.Drawing.Point(193, 89);
+            this.segment9Button.Name = "segment9Button";
+            this.segment9Button.Size = new System.Drawing.Size(103, 40);
+            this.segment9Button.TabIndex = 8;
+            this.segment9Button.Text = "Segment 9";
+            this.segment9Button.UseVisualStyleBackColor = true;
+            this.segment9Button.Visible = false;
+            this.segment9Button.Click += new System.EventHandler(this.segment9Button_Click);
             // 
             // segment8Button
             // 
@@ -150,6 +154,7 @@ namespace Vision
             this.segment8Button.Text = "Segment 8";
             this.segment8Button.UseVisualStyleBackColor = true;
             this.segment8Button.Visible = false;
+            this.segment8Button.Click += new System.EventHandler(this.segment8Button_Click);
             // 
             // segment7Button
             // 
@@ -171,6 +176,7 @@ namespace Vision
             this.segment6Button.Text = "Segment 6";
             this.segment6Button.UseVisualStyleBackColor = true;
             this.segment6Button.Visible = false;
+            this.segment6Button.Click += new System.EventHandler(this.segment6Button_Click);
             // 
             // segment5Button
             // 
@@ -181,6 +187,7 @@ namespace Vision
             this.segment5Button.Text = "Segment 5";
             this.segment5Button.UseVisualStyleBackColor = true;
             this.segment5Button.Visible = false;
+            this.segment5Button.Click += new System.EventHandler(this.segment5Button_Click);
             // 
             // segment4Button
             // 
@@ -191,6 +198,7 @@ namespace Vision
             this.segment4Button.Text = "Segment 4";
             this.segment4Button.UseVisualStyleBackColor = true;
             this.segment4Button.Visible = false;
+            this.segment4Button.Click += new System.EventHandler(this.segment4Button_Click);
             // 
             // segment3Button
             // 
@@ -201,6 +209,7 @@ namespace Vision
             this.segment3Button.Text = "Segment 3";
             this.segment3Button.UseVisualStyleBackColor = true;
             this.segment3Button.Visible = false;
+            this.segment3Button.Click += new System.EventHandler(this.segment3Button_Click);
             // 
             // segment2Button
             // 
@@ -211,15 +220,17 @@ namespace Vision
             this.segment2Button.Text = "Segment 2";
             this.segment2Button.UseVisualStyleBackColor = true;
             this.segment2Button.Visible = false;
+            this.segment2Button.Click += new System.EventHandler(this.segment2Button_Click);
             // 
             // segment1Button
             // 
+            this.segment1Button.BackColor = System.Drawing.Color.LightGray;
             this.segment1Button.Location = new System.Drawing.Point(16, 12);
             this.segment1Button.Name = "segment1Button";
             this.segment1Button.Size = new System.Drawing.Size(103, 40);
             this.segment1Button.TabIndex = 0;
             this.segment1Button.Text = "Segment 1";
-            this.segment1Button.UseVisualStyleBackColor = true;
+            this.segment1Button.UseVisualStyleBackColor = false;
             this.segment1Button.Click += new System.EventHandler(this.segment1Button_Click);
             // 
             // populateMarqueeButton
@@ -532,6 +543,7 @@ namespace Vision
             this.segment13Button.Text = "Segment 13";
             this.segment13Button.UseVisualStyleBackColor = true;
             this.segment13Button.Visible = false;
+            this.segment13Button.Click += new System.EventHandler(this.segment13Button_Click);
             // 
             // segment14Button
             // 
@@ -542,6 +554,7 @@ namespace Vision
             this.segment14Button.Text = "Segment 14";
             this.segment14Button.UseVisualStyleBackColor = true;
             this.segment14Button.Visible = false;
+            this.segment14Button.Click += new System.EventHandler(this.segment14Button_Click);
             // 
             // addSegmentButton1
             // 
@@ -551,6 +564,7 @@ namespace Vision
             this.addSegmentButton1.TabIndex = 14;
             this.addSegmentButton1.Text = "Add Segment";
             this.addSegmentButton1.UseVisualStyleBackColor = true;
+            this.addSegmentButton1.Click += new System.EventHandler(this.addSegmentButton1_Click);
             // 
             // addSegmentButton2
             // 
@@ -721,7 +735,7 @@ namespace Vision
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.segment10Button);
             this.Controls.Add(this.segment5Button);
-            this.Controls.Add(this.Segment9Button);
+            this.Controls.Add(this.segment9Button);
             this.Controls.Add(this.segment1Button);
             this.Controls.Add(this.segment4Button);
             this.Controls.Add(this.segment8Button);
@@ -768,7 +782,7 @@ namespace Vision
         private System.Windows.Forms.Button segment2Button;
         private System.Windows.Forms.Button segment1Button;
         private System.Windows.Forms.Button segment10Button;
-        private System.Windows.Forms.Button Segment9Button;
+        private System.Windows.Forms.Button segment9Button;
         private System.Windows.Forms.Button segment8Button;
         private System.Windows.Forms.Button segment12Button;
         private System.Windows.Forms.Button segment11Button;
