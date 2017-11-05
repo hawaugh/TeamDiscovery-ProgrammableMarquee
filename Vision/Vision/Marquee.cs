@@ -218,7 +218,7 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int topColumnStop = (96 - segmentLength) / 2 + segmentLength; //gives stop column for top half scrolling in from right
+            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 4; //gives stop column for top half scrolling in from right
             int bottomColumnStop = (96 - segmentLength) / 2;
             String currString;
 
@@ -254,7 +254,7 @@ namespace Vision
             for (int i = 96; i > topColumnStop; i--)
             {
                 //Move all dots 1 column right
-                for (int c = 93; c > 2; c--)
+                for (int c = 93; c > 0; c--)
                 {
                     for (int r = 2; r < 8; r++)
                     {
