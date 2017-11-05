@@ -218,16 +218,108 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
+            int topColumnStop = (96 - segmentLength) / 2 + segmentLength; //gives stop column for top half scrolling in from right
+            int bottomColumnStop = (96 - segmentLength) / 2;
             String currString;
-            String[] topHalfSegment = new String[6];
-            String[] bottomHalfSegment = new String[6];
-            //loop through each index of currSegment
-            //make currString = value at index of currSegment
-            //loop through index 0-5 and add the values to topHalfSegment
-            //loop through index 6-11 and add the values to bottomHalfSegment.
+
             //scroll top half from left-side of screen, and bottom half from right-side of screen. 
             //Stop scrolling when they line up.
+            for (int s = segmentLength - 1; s > -1; s--)
+            {
+                //Move top half of dots to the right
+                for (int c = topColumnStop; c > 1; c--)
+                {
+                    for (int r = 2; r < 8; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+
+                //Set last column to next column in segment
+                for (int r = 2; r < 8; r++)
+                {
+                    if (currSegment[r - 2][s].Equals('1'))
+                    {
+                        setDot(r, 2, segment.onColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('0'))
+                    {
+                        setDot(r, 93, backgroundColor);
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(scrollSpeed);
+            }
+            ////////center upper half of message
+            for (int i = 96; i > topColumnStop; i--)
+            {
+                //Move all dots 1 column right
+                for (int c = 93; c > 2; c--)
+                {
+                    for (int r = 2; r < 7; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 2; r < 8; r++)
+                {
+                    setDot(r, 1, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+            //scroll bottom half from left
+
+            for (int q = 0; q < segmentLength; q++)
+                {
+                    //Move all dots 1 column left
+                    for (int c = 2; c < 93; c++)
+                    {
+                        for (int row = 8; row < 14; row++)
+                        {
+                            setDot(row, c, getDotFore(row, c + 1));
+                        }
+                    }
+
+                    //Set last column to next column in segment
+                    for (int r = 8; r < 14; r++)
+                    {
+                        if (currSegment[r - 2][q].Equals('1'))
+                        {
+                            setDot(r, 93, segment.onColor);
+                        }
+                        else if (currSegment[r - 2][q].Equals('0'))
+                        {
+                            setDot(r, 93, backgroundColor);
+                        }
+                    }
+                    Invalidate();
+                    Thread.Sleep(scrollSpeed);
+                }
+            //////center lower half of message
+            for (int i = 0; i < bottomColumnStop; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 8; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int r = 8; r < 14; r++)
+                {
+                    setDot(r, 93, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
         }
+        
 
         //Ahmad
         public void displayUpEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
