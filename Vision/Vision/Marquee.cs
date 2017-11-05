@@ -256,7 +256,7 @@ namespace Vision
                 //Move all dots 1 column right
                 for (int c = 93; c > 2; c--)
                 {
-                    for (int r = 2; r < 7; r++)
+                    for (int r = 2; r < 8; r++)
                     {
                         setDot(r, c, getDotFore(r, c - 1));
                     }
