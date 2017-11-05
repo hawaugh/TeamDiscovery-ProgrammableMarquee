@@ -28,7 +28,6 @@ C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bi
 C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
 C:\Users\Heather\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe.config
-C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.UIForm.resources
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache

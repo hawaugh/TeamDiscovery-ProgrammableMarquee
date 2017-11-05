@@ -765,7 +765,7 @@ namespace Vision
                     break;
                 case 'M':
                     returnString = new string[] {   "001101100",
-                                                    "111111110",
+                                                    "011111110",
                                                     "111111111",
                                                     "111010111",
                                                     "111010111",
