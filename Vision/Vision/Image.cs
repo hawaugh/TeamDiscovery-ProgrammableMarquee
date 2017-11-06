@@ -19,70 +19,60 @@ using System.Drawing;
 namespace Vision
 {
     
-    class Image
+    class Image : Segment
     {
-        private Bitmap imageBitmap;
-        private string filename;
-        private double dotRadius;
-        private double deadSpace;
-        private string bitmapString;
+        private Bitmap _scaledBitmap;
+        private float _imageAspect;
+        private const float ASPECT_RATIO = 6;
 
         //Constructor
-        public Image(Bitmap imageBitmap, Rectangle rectangle, Int32 pixelateSize)
+        public Image(string filename)
         {
             //creates the image from file
-            imageBitmap = new Bitmap(filename);
+            Bitmap imageBitmap = new Bitmap(filename);
+            _imageAspect = imageBitmap.Width / imageBitmap.Height;
 
-            Bitmap pixelated = new System.Drawing.Bitmap(imageBitmap.Width, imageBitmap.Height);
-
-            // make an exact copy of the bitmap provided
-            using (Graphics graphics = System.Drawing.Graphics.FromImage(pixelated))
-                graphics.DrawImage(imageBitmap, new System.Drawing.Rectangle(0, 0, imageBitmap.Width, imageBitmap.Height),
-                    new Rectangle(0, 0, imageBitmap.Width, imageBitmap.Height), GraphicsUnit.Pixel);
-
-            // look at every pixel in the rectangle while making sure we're within the image bounds
-            for (Int32 xx = rectangle.X; xx < rectangle.X + rectangle.Width && xx < imageBitmap.Width; xx += pixelateSize)
+            if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
             {
-                for (Int32 yy = rectangle.Y; yy < rectangle.Y + rectangle.Height && yy < imageBitmap.Height; yy += pixelateSize)
-                {
-                    Int32 offsetX = pixelateSize / 2;
-                    Int32 offsetY = pixelateSize / 2;
-
-                    // make sure that the offset is within the boundry of the image
-                    while (xx + offsetX >= imageBitmap.Width) offsetX--;
-                    while (yy + offsetY >= imageBitmap.Height) offsetY--;
-
-                    // get the pixel color in the center of the soon to be pixelated area
-                    Color pixel = pixelated.GetPixel(xx + offsetX, yy + offsetY);
-
-                    // for each pixel in the pixelate size, set it to the center color
-                    for (Int32 x = xx; x < xx + pixelateSize && x < imageBitmap.Width; x++)
-                        for (Int32 y = yy; y < yy + pixelateSize && y < imageBitmap.Height; y++)
-                            pixelated.SetPixel(x, y, pixel);
-                }
-
-
+                _scaledBitmap = new Bitmap(imageBitmap,(int) Math.Round(16 * _imageAspect), 16);
+            }
+            else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
+            {
+                _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+            }
+            else //Aspect ratio equals marquee
+            {
+                _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
             }
         }
 
-        public double getDotRadius()
+        public Color getPixel(int c, int r)
         {
-            return dotRadius;
+            return _scaledBitmap.GetPixel(c, r);
         }
 
-        public void setDotRadius(double newDotRadius)
+        public int getWidth()
         {
-            dotRadius = newDotRadius;
+            return _scaledBitmap.Width;
         }
 
-        public double getDeadSpace()
+        public int getHeight()
         {
-            return deadSpace;
+            return _scaledBitmap.Height;
         }
 
-        public void setDeadSpace(double newDeadSpace)
+        //getter/setter for scaledBitmap
+        public float imageAspect 
         {
-            deadSpace = newDeadSpace; 
+            get { return _imageAspect; }
+            set {}
+        }
+
+        //getter/setter for scaledBitmap
+        public Bitmap scaledBitmap
+        {
+            get { return _scaledBitmap; }
+            set {}
         }
     }
 }

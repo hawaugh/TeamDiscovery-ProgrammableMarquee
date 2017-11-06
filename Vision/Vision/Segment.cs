@@ -39,6 +39,15 @@ namespace Vision
          * 0: TODO
         */
 
+        public Segment()
+        {
+            _messageText = "";
+            _onColor = Color.Black;
+            _entranceEffect = 0;
+            _middleEffect = 0;
+            _exitEffect = 0;
+        }
+
         public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect)
         {
             _messageText = segmentText;
