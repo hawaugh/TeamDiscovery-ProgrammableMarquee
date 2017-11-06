@@ -25,7 +25,6 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
-        private Thread myBorderThread = null;
         private Segment[] mySegmentArray;
 
         public OpenFileDialog openFileDialog { get; private set; }
@@ -522,7 +521,6 @@ namespace Vision
                 if (myDisplayThread.IsAlive)
                 {
                     myDisplayThread.Abort();
-                    myBorderThread.Abort();
                 }
             }
 
