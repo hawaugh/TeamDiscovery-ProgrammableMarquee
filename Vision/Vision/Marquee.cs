@@ -343,13 +343,114 @@ namespace Vision
         //Ahmad
         public void displayUpEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
+             displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment.Length;
+            for (int s = 0; s < segmentLength; s++)
+            {
+                //Move all dots 1 row down
+                for (int c = 93; c > 0; c--)
+                {
+                    for (int r  = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c), message.backgroundColor);
+                    }
+                }
+
+
+                //Set last column to next column in segment
+                for (int c = 2; c < segmentLength; c++)
+                {
+                    if (currSegment[0][c - 2].Equals('1'))
+                    {
+                        //setDot(14, c, message.onColor, message.backgroundColor);
+                        setDot(93, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                    }
+                    else if (currSegment[0][c - 2].Equals('0'))
+                    {
+                        //setDot(14, c, message.offColor, message.backgroundColor);
+                        setDot(93, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                    }
+                }
+                Thread.Sleep(75);
+            }
+
+            //Exit rest of segment to the down
+            for (int i = 14; i > 0; i--)
+            {
+                //Move all dots 1 column down
+                for (int c = 93; c > 0; c--)
+                {
+                    for (int r = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c), message.backgroundColor);
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 93; c > 2; c--)
+                {
+                    setDot(14, c, message.offColor, message.backgroundColor);
+                }
+                Thread.Sleep(75);
+            }
 
         }
 
         //Ahmad
         public void displayDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
+             displayBorder(message.borderColor, message.backgroundColor, message.offColor);
+            String[] currSegment = message.getSegmentArray()[0].getMessageMatrix();
+            int segmentLength = currSegment.Length;
+            for (int s = 0; s < segmentLength; s++)
+            {
+                //Move all dots 1 row up
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r+1,c), message.backgroundColor);
+                    }
+                }
 
+
+                //Set last column to next column in segment
+                for (int c = 2; c < segmentLength; c++)
+                {
+                    if (currSegment[0][c-2].Equals('1'))
+                    {
+                        //setDot(14, c, message.onColor, message.backgroundColor);
+                        setDot(14, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                    }
+                    else if (currSegment[0][c-2].Equals('0'))
+                    {
+                        //setDot(14, c, message.offColor, message.backgroundColor);
+                        setDot(14, ((96 - segmentLength) / 2) + c, message.onColor, message.backgroundColor);
+                    }
+                }
+                Thread.Sleep(75);
+            }
+
+            //Exit rest of segment to the up
+            for (int i = 0; i < 14; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r+1, c), message.backgroundColor);
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 93; c++)
+                {
+                    setDot(14, c, message.offColor, message.backgroundColor);
+                }
+                Thread.Sleep(75);
+            }
         }
 
         public void displayRandomEntrance(Segment segment, Color backgroundColor)
