@@ -84,7 +84,7 @@ namespace Vision
             marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
-            Image myImageSegment = new Image("..\\..\\desert.jpg");
+            Image myImageSegment = new Image("..\\..\\panthers.jpg");
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 0, 4);
             mySegmentArray = new Segment[] {mySegment, mySecondSegment, myImageSegment, myThirdSegment};
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);

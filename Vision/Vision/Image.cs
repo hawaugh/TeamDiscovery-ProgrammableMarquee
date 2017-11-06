@@ -30,11 +30,11 @@ namespace Vision
         {
             //creates the image from file
             Bitmap imageBitmap = new Bitmap(filename);
-            _imageAspect = imageBitmap.Width / imageBitmap.Height;
+            _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
 
             if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap,(int) Math.Round(16 * _imageAspect), 16);
+                _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
             }
             else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
             {
