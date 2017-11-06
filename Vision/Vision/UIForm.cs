@@ -517,6 +517,16 @@ namespace Vision
         {
             //Closes the form
             Application.Exit();
+            myDisplayThread.Abort();
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Abort();
+                    myBorderThread.Abort();
+                }
+            }
+
         }
     }
 }
