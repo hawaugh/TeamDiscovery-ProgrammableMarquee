@@ -461,6 +461,7 @@ namespace Vision
             this.textTextBox.Name = "textTextBox";
             this.textTextBox.Size = new System.Drawing.Size(1045, 20);
             this.textTextBox.TabIndex = 1;
+            this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
             // 
             // textLabel
             // 
@@ -707,6 +708,7 @@ namespace Vision
             this.saveAndRunButton.TabIndex = 27;
             this.saveAndRunButton.Text = "Save and Run";
             this.saveAndRunButton.UseVisualStyleBackColor = true;
+            this.saveAndRunButton.Click += new System.EventHandler(this.saveAndRunButton_Click);
             // 
             // saveAndExitButton
             // 
