@@ -6,7 +6,7 @@
 // Description: 
 //
 // Name: Logan
-// Last Edit: 11/2
+// Last Edit: 11/6
 /////////////////////////////////////////////////////﻿
 
 using System;
@@ -464,7 +464,7 @@ namespace Vision
             while (activeDotList.Count > 0)
             {
                 int randomNumber = rnd.Next(0, activeDotList.Count);
-                activeDotList[randomNumber].ForeColor = segment.randColor;
+                activeDotList[randomNumber].randColor();
                 activeDotList.RemoveAt(randomNumber);                
                 Invalidate();
                 Thread.Sleep(10);
