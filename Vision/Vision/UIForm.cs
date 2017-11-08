@@ -25,7 +25,7 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
-        private Segment[] mySegmentArray;
+        private Segment[] mySegmentArray = new Segment[13];
 
         public OpenFileDialog openFileDialog { get; private set; }
 
@@ -360,59 +360,59 @@ namespace Vision
             //Test which segment button is active
             if (segmentPanel14.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[13].messageText = textTextBox.Text;
             }
             else if (segmentPanel13.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[12].messageText = textTextBox.Text;
             }
             else if (segmentPanel12.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[11].messageText = textTextBox.Text;
             }
             else if (segmentPanel11.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[10].messageText = textTextBox.Text;
             }
             else if (segmentPanel10.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[9].messageText = textTextBox.Text;
             }
             else if (segmentPanel9.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[8].messageText = textTextBox.Text;
             }
             else if (segmentPanel8.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[7].messageText = textTextBox.Text;
             }
             else if (segmentPanel7.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[6].messageText = textTextBox.Text;
             }
             else if (segmentPanel6.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[5].messageText = textTextBox.Text;
             }
             else if (segmentPanel5.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[4].messageText = textTextBox.Text;
             }
             else if (segmentPanel4.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[3].messageText = textTextBox.Text;
             }
             else if (segmentPanel3.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[2].messageText = textTextBox.Text;
             }
             else if (segmentPanel2.BackColor == Color.DeepSkyBlue)
             {
-
+                mySegmentArray[1].messageText = textTextBox.Text;
             }
             else //Segment 1
             {
-
+                mySegmentArray[0].messageText = textTextBox.Text;
             }
         }
 
