@@ -32,11 +32,11 @@ namespace Vision
         public UIForm()
         {
             InitializeComponent();
-        }      
+        }
 
         private void UIForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -54,20 +54,20 @@ namespace Vision
             fileLocationTextBox.Visible = false;
             browseButton.Visible = false;
             uploadButton.Visible = false;
-            segment1Button.Visible = false;
-            segment2Button.Visible = false;
-            segment3Button.Visible = false;
-            segment4Button.Visible = false;
-            segment5Button.Visible = false;
-            segment6Button.Visible = false;
-            segment7Button.Visible = false;
-            segment8Button.Visible = false;
-            segment9Button.Visible = false;
-            segment10Button.Visible = false;
-            segment11Button.Visible = false;
-            segment12Button.Visible = false;
-            segment13Button.Visible = false;
-            segment14Button.Visible = false;
+            segmentPanel1.Visible = false;
+            segmentPanel2.Visible = false;
+            segmentPanel3.Visible = false;
+            segmentPanel4.Visible = false;
+            segmentPanel5.Visible = false;
+            segmentPanel6.Visible = false;
+            segmentPanel7.Visible = false;
+            segmentPanel8.Visible = false;
+            segmentPanel9.Visible = false;
+            segmentPanel10.Visible = false;
+            segmentPanel11.Visible = false;
+            segmentPanel12.Visible = false;
+            segmentPanel13.Visible = false;
+            segmentPanel14.Visible = false;
             addSegmentButton1.Visible = false;
             addSegmentButton2.Visible = false;
             addSegmentButton3.Visible = false;
@@ -85,10 +85,10 @@ namespace Vision
             Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
             Image myImageSegment = new Image("..\\..\\panthers.jpg");
-            Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 0, 4);
-            mySegmentArray = new Segment[] {mySegment, mySecondSegment, myImageSegment, myThirdSegment};
+            Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 2, 4);
+            mySegmentArray = new Segment[] { myThirdSegment, mySecondSegment, myImageSegment, };
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
-            myDisplayThread = new Thread(delegate(){ marquee1.displayMessage(myMessage); });
+            myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             //Message myMessage = new Vision.Message("DISCOVERY", Color.Aqua, Color.Black, Color.Black, Color.Red, 0, 0, 0);
             //myDisplayThread = new Thread(delegate () {
             //    MyMarquee.displayRandomColorMessage(myMessage);
@@ -159,174 +159,95 @@ namespace Vision
                 scrollingTextButton.Visible = false;
             }
         }
-        private void segment1Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment1Button.BackColor = Color.Gray;
-        }
-        private void segment2Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment2Button.BackColor = Color.Gray;
-        }
-        private void segment3Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment3Button.BackColor = Color.Gray;
-        }
 
-        private void segment4Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment4Button.BackColor = Color.Gray;
-        }
-
-        private void segment5Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment5Button.BackColor = Color.Gray;
-        }
-
-        private void segment6Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment6Button.BackColor = Color.Gray;
-        }
-        private void segment7Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment7Button.BackColor = Color.Gray;
-        }
-
-        private void segment8Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment8Button.BackColor = Color.Gray;
-        }
-
-        private void segment9Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment9Button.BackColor = Color.Gray;
-        }
-
-        private void segment10Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment10Button.BackColor = Color.Gray;
-        }
-
-        private void segment11Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment11Button.BackColor = Color.Gray;
-        }
-
-        private void segment12Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment12Button.BackColor = Color.Gray;
-        }
-
-        private void segment13Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment13Button.BackColor = Color.Gray;
-        }
-
-        private void segment14Button_Click(object sender, EventArgs e)
-        {
-            resetSegments();
-            segment14Button.BackColor = Color.Gray;
-        }
         private void addSegmentButton1_Click(object sender, EventArgs e)
         {
             addSegmentButton1.Visible = false;
-            segment2Button.Visible = true;
+            segmentPanel2.Visible = true;
             addSegmentButton2.Visible = true;
         }
 
         private void addSegmentButton2_Click(object sender, EventArgs e)
         {
             addSegmentButton2.Visible = false;
-            segment3Button.Visible = true;
+            segmentPanel3.Visible = true;
             addSegmentButton3.Visible = true;
         }
 
         private void addSegmentButton3_Click(object sender, EventArgs e)
         {
             addSegmentButton3.Visible = false;
-            segment4Button.Visible = true;
+            segmentPanel4.Visible = true;
             addSegmentButton4.Visible = true;
         }
 
         private void addSegmentButton4_Click(object sender, EventArgs e)
         {
             addSegmentButton4.Visible = false;
-            segment5Button.Visible = true;
+            segmentPanel5.Visible = true;
             addSegmentButton5.Visible = true;
         }
 
         private void addSegmentButton5_Click(object sender, EventArgs e)
         {
             addSegmentButton5.Visible = false;
-            segment6Button.Visible = true;
+            segmentPanel6.Visible = true;
             addSegmentButton6.Visible = true;
         }
 
         private void addSegmentButton6_Click(object sender, EventArgs e)
         {
             addSegmentButton6.Visible = false;
-            segment7Button.Visible = true;
+            segmentPanel7.Visible = true;
             addSegmentButton7.Visible = true;
         }
 
         private void addSegmentButton7_Click(object sender, EventArgs e)
         {
             addSegmentButton7.Visible = false;
-            segment8Button.Visible = true;
+            segmentPanel8.Visible = true;
             addSegmentButton8.Visible = true;
         }
 
         private void addSegmentButton8_Click(object sender, EventArgs e)
         {
             addSegmentButton8.Visible = false;
-            segment9Button.Visible = true;
+            segmentPanel9.Visible = true;
             addSegmentButton9.Visible = true;
         }
 
         private void addSegmentButton9_Click(object sender, EventArgs e)
         {
             addSegmentButton9.Visible = false;
-            segment10Button.Visible = true;
+            segmentPanel10.Visible = true;
             addSegmentButton10.Visible = true;
         }
 
         private void addSegmentButton10_Click(object sender, EventArgs e)
         {
             addSegmentButton10.Visible = false;
-            segment11Button.Visible = true;
+            segmentPanel11.Visible = true;
             addSegmentButton11.Visible = true;
         }
 
         private void addSegmentButton11_Click(object sender, EventArgs e)
         {
             addSegmentButton11.Visible = false;
-            segment12Button.Visible = true;
+            segmentPanel12.Visible = true;
             addSegmentButton12.Visible = true;
         }
 
         private void addSegmentButton12_Click(object sender, EventArgs e)
         {
             addSegmentButton12.Visible = false;
-            segment13Button.Visible = true;
+            segmentPanel13.Visible = true;
             addSegmentButton13.Visible = true;
         }
 
         private void addSegmentButton13_Click(object sender, EventArgs e)
         {
             addSegmentButton13.Visible = false;
-            segment14Button.Visible = true;
+            segmentPanel14.Visible = true;
         }
 
         private void saveAndExitButton_Click(object sender, EventArgs e)
@@ -345,28 +266,29 @@ namespace Vision
 
         private void resetSegments()
         {
-            segment1Button.BackColor = Color.LightGray;
-            segment2Button.BackColor = Color.LightGray;
-            segment3Button.BackColor = Color.LightGray;
-            segment4Button.BackColor = Color.LightGray;
-            segment5Button.BackColor = Color.LightGray;
-            segment6Button.BackColor = Color.LightGray;
-            segment7Button.BackColor = Color.LightGray;
-            segment8Button.BackColor = Color.LightGray;
-            segment9Button.BackColor = Color.LightGray;
-            segment10Button.BackColor = Color.LightGray;
-            segment11Button.BackColor = Color.LightGray;
-            segment12Button.BackColor = Color.LightGray;
-            segment13Button.BackColor = Color.LightGray;
-            segment14Button.BackColor = Color.LightGray;
+            segmentPanel1.BackColor = Color.Gray;
+            segmentPanel2.BackColor = Color.Gray;
+            segmentPanel3.BackColor = Color.Gray;
+            segmentPanel4.BackColor = Color.Gray;
+            segmentPanel5.BackColor = Color.Gray;
+            segmentPanel6.BackColor = Color.Gray;
+            segmentPanel7.BackColor = Color.Gray;
+            segmentPanel8.BackColor = Color.Gray;
+            segmentPanel9.BackColor = Color.Gray;
+            segmentPanel10.BackColor = Color.Gray;
+            segmentPanel11.BackColor = Color.Gray;
+            segmentPanel12.BackColor = Color.Gray;
+            segmentPanel13.BackColor = Color.Gray;
+            segmentPanel14.BackColor = Color.Gray;
         }
 
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             //Start at the highest to decided how big the array should be.
-            if (segment14Button.Visible == true) //If segment14 is visable then the user added all segments.
+            //If segment14 is visable then the user added all segments.
+            if (segmentPanel14.Visible == true)
             {
-                /* Test data */ 
+                /* Test data */
                 /*
                 Segment[] mySegmentArray = new Segment[13];
                 Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
@@ -379,51 +301,51 @@ namespace Vision
                 myDisplayThread.Start();
                 */
             }
-            else if (segment13Button.Visible == true)
+            else if (segmentPanel13.Visible == true)
             {
 
             }
-            else if (segment12Button.Visible == true)
+            else if (segmentPanel12.Visible == true)
             {
 
             }
-            else if (segment11Button.Visible == true)
+            else if (segmentPanel11.Visible == true)
             {
 
             }
-            else if (segment10Button.Visible == true)
+            else if (segmentPanel10.Visible == true)
             {
 
             }
-            else if (segment9Button.Visible == true)
+            else if (segmentPanel9.Visible == true)
             {
 
             }
-            else if (segment8Button.Visible == true)
+            else if (segmentPanel8.Visible == true)
             {
 
             }
-            else if (segment7Button.Visible == true)
+            else if (segmentPanel7.Visible == true)
             {
 
             }
-            else if (segment6Button.Visible == true)
+            else if (segmentPanel6.Visible == true)
             {
 
             }
-            else if (segment5Button.Visible == true)
+            else if (segmentPanel5.Visible == true)
             {
 
             }
-            else if (segment4Button.Visible == true)
+            else if (segmentPanel4.Visible == true)
             {
 
             }
-            else if (segment3Button.Visible == true)
+            else if (segmentPanel3.Visible == true)
             {
 
             }
-            else if (segment2Button.Visible == true)
+            else if (segmentPanel2.Visible == true)
             {
 
             }
@@ -436,55 +358,55 @@ namespace Vision
         private void textTextBox_TextChanged(object sender, EventArgs e)
         {
             //Test which segment button is active
-            if (segment14Button.ForeColor == Color.Gray) 
-            {
-                
-            }
-            else if (segment13Button.ForeColor == Color.Gray)
+            if (segmentPanel14.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment12Button.ForeColor == Color.Gray)
+            else if (segmentPanel13.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment11Button.ForeColor == Color.Gray)
+            else if (segmentPanel12.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment10Button.ForeColor == Color.Gray)
+            else if (segmentPanel11.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment9Button.ForeColor == Color.Gray)
+            else if (segmentPanel10.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment8Button.ForeColor == Color.Gray)
+            else if (segmentPanel9.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment7Button.ForeColor == Color.Gray)
+            else if (segmentPanel8.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment6Button.ForeColor == Color.Gray)
+            else if (segmentPanel7.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment5Button.ForeColor == Color.Gray)
+            else if (segmentPanel6.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment4Button.ForeColor == Color.Gray)
+            else if (segmentPanel5.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment3Button.ForeColor == Color.Gray)
+            else if (segmentPanel4.BackColor == Color.DeepSkyBlue)
             {
 
             }
-            else if (segment2Button.ForeColor == Color.Gray)
+            else if (segmentPanel3.BackColor == Color.DeepSkyBlue)
+            {
+
+            }
+            else if (segmentPanel2.BackColor == Color.DeepSkyBlue)
             {
 
             }
@@ -492,6 +414,174 @@ namespace Vision
             {
 
             }
+        }
+
+        private void segmentPanel1_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel1.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel2_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel2.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel3_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel3.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel4_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel4.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel5_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel5.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel6_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel6.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel7_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel7.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel8_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel8.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel9_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel9.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel10_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel10.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel11_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel11.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel12_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel12.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel13_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel13.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentPanel14_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel14.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel1.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel2_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel2.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel3_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel3.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel4_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel4.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel5_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel5.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel6_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel6.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel7_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel7.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel8_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel8.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel9_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel9.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel10_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel10.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel11_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel11.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel12_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel12.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel13_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel13.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void segmentLabel14_Click(object sender, EventArgs e)
+        {
+            resetSegments();
+            segmentPanel14.BackColor = Color.DeepSkyBlue;
         }
     }
 }

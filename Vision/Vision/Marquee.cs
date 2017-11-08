@@ -575,7 +575,66 @@ namespace Vision
         //Jeremy
         public void displayFadeEffect(Segment segment, Color backgroundColor)
         {
-
+            //needs error handling for if RBG's are over 255 or under 0.
+            //need to find a find to pull rbg values from the foreColor.
+            //setup for Yellow
+            int newR = 255;
+            int newG = 255;
+            int newB = 0;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int r = 2; r < 14; r++)
+                {
+                    for (int c = 2; c < 94; c++)
+                    {
+                        if (getDotFore(r, c) != backgroundColor)
+                        {
+                            setDot(r, c, Color.FromArgb(newR, newG, newB));
+                        }
+                    }
+                }
+                if (newR > 0)
+                {
+                    newR = newR - 17;
+                    //newR = newR * (0.20);
+                }
+                else
+                {
+                    i = 16;
+                }
+                
+                newG = newG - 17;
+                newB = newB - 0;
+                Invalidate();
+                Thread.Sleep(70);
+            }
+            for (int i = 0; i < 15; i++)
+            {
+                for (int r = 2; r < 14; r++)
+                {
+                    for (int c = 2; c < 94; c++)
+                    {
+                        if (getDotFore(r, c) != backgroundColor)
+                        {
+                            setDot(r, c, Color.FromArgb(newR, newG, newB));
+                        }
+                    }
+                }
+                if (newR < 255)
+                {
+                    newR = newR + 17;
+                    //newR = newR * (1.20);
+                }
+                else
+                {
+                    i = 16;
+                }
+                newR = newR + 17;
+                newG = newG + 17;
+                newB = newB + 0;
+                Invalidate();
+                Thread.Sleep(70);
+            }
         }
         #endregion
 
