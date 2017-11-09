@@ -58,11 +58,10 @@ namespace Vision
             Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
             Image myImageSegment = new Image("..\\..\\panthers.jpg");
-            Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 2, 4);
-            mySegmentArray = new Segment[] { myThirdSegment, mySecondSegment, myImageSegment, };
+            Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 0, 4);
+            mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-            mySegmentArray[0] = mySegment;
             myDisplayThread.Start();
             
         }
@@ -363,7 +362,7 @@ namespace Vision
                 marquee1.Visible = true;
                 //Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
                 //segment1.onColor = Color.Blue;
-                mySegmentArray = new Segment[] { mySegmentArray[0] };
+                mySegmentArray = new Segment[] { mySegmentArray[0] };  //make direct calls to indexes for now, but once we get ignore field up this line will go away (since the whole array will be passed every time)
                 Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
                 myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
                 myDisplayThread.Start();
