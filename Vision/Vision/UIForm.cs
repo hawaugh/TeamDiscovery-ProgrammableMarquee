@@ -25,7 +25,7 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
-        private Segment[] mySegmentArray = new Segment[13];
+        private Segment[] mySegmentArray;
         private Segment segment1 = new Segment();
         private Segment segment2 = new Segment();
         private Segment segment3 = new Segment();
@@ -428,7 +428,7 @@ namespace Vision
             {
                 mySegmentArray[1].messageText = textTextBox.Text;
             }
-            else //Segment 1
+            else if (segmentPanel1.BackColor == Color.DeepSkyBlue)
             {
                 segment1.messageText = textTextBox.Text;
             }
@@ -706,8 +706,7 @@ namespace Vision
             }
             else //Segment 1
             {
-                //segment1.onColor = findColor(colorComboBox.Text);
-                segment1.onColor = Color.Red;
+                segment1.onColor = findColor(colorComboBox.Text);
             }
         }
         private Color findColor(String text)

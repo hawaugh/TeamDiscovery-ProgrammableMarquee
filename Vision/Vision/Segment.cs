@@ -42,7 +42,7 @@ namespace Vision
         public Segment()
         {
             _messageText = "";
-            _onColor = Color.Red; //change back to black
+            _onColor = Color.Black;
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
@@ -75,6 +75,7 @@ namespace Vision
 
         public void setMessageMatrix(string messageText)
         {
+            messageMatrix = new String[12];
             string[] currentLetter;
             foreach (char c in messageText)
             {
