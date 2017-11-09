@@ -25,17 +25,17 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
-        private Segment[] mySegmentArray;
-        private Segment segment1 = new Segment();
-        private Segment segment2 = new Segment();
-        private Segment segment3 = new Segment();
-
+        private Segment[] mySegmentArray = new Segment[14];
 
         public OpenFileDialog openFileDialog { get; private set; }
 
         public UIForm()
         {
-            InitializeComponent();
+            for (int i = 0; i < 14; i++)
+            {
+                mySegmentArray[i] = new Segment();
+            }
+                InitializeComponent();
         }
 
         private void UIForm_Load(object sender, EventArgs e)
@@ -136,8 +136,7 @@ namespace Vision
         }
 
         private void addSegmentButton1_Click(object sender, EventArgs e)
-        {
-            mySegmentArray[0] = segment1;
+        {            
             if (createAMessageGroupBox.Visible == false)
             {
                 noOptionSelectedPopUp.Visible = true;
@@ -158,8 +157,7 @@ namespace Vision
         }
 
         private void addSegmentButton2_Click(object sender, EventArgs e)
-        {
-            mySegmentArray[1] = segment2;
+        {            
             if (createAMessageGroupBox.Visible == false)
             {
                 noOptionSelectedPopUp.Visible = true;
@@ -365,7 +363,7 @@ namespace Vision
                 marquee1.Visible = true;
                 //Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
                 //segment1.onColor = Color.Blue;
-                mySegmentArray = new Segment[] { segment1 };
+                mySegmentArray = new Segment[] { mySegmentArray[0] };
                 Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
                 myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
                 myDisplayThread.Start();
@@ -430,7 +428,7 @@ namespace Vision
             }
             else if (segmentPanel1.BackColor == Color.DeepSkyBlue)
             {
-                segment1.messageText = textTextBox.Text;
+                mySegmentArray[0].messageText = textTextBox.Text;
             }
         }
 
@@ -706,7 +704,7 @@ namespace Vision
             }
             else //Segment 1
             {
-                segment1.onColor = findColor(colorComboBox.Text);
+                mySegmentArray[0].onColor = findColor(colorComboBox.Text);
             }
         }
         private Color findColor(String text)
