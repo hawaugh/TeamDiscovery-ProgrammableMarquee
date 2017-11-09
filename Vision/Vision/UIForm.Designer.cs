@@ -42,6 +42,31 @@ namespace Vision
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.textTab = new System.Windows.Forms.TabPage();
+            this.createAMessageGroupBox = new System.Windows.Forms.GroupBox();
+            this.exitEffectLabel = new System.Windows.Forms.Label();
+            this.staticEffectLabel = new System.Windows.Forms.Label();
+            this.entranceEffectLabel = new System.Windows.Forms.Label();
+            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.scrollingTextButton = new System.Windows.Forms.RadioButton();
+            this.specialEffectButton = new System.Windows.Forms.RadioButton();
+            this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
+            this.transitionSpeedLabel = new System.Windows.Forms.Label();
+            this.colorComboBox = new System.Windows.Forms.ComboBox();
+            this.colorLabel = new System.Windows.Forms.Label();
+            this.repeatComboBox = new System.Windows.Forms.ComboBox();
+            this.repeatLabel = new System.Windows.Forms.Label();
+            this.transitionComboBox = new System.Windows.Forms.ComboBox();
+            this.transitionLabel = new System.Windows.Forms.Label();
+            this.textTextBox = new System.Windows.Forms.TextBox();
+            this.textLabel = new System.Windows.Forms.Label();
+            this.uploadButton = new System.Windows.Forms.Button();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.fileLocationTextBox = new System.Windows.Forms.TextBox();
+            this.uploadMessageFromFileButton = new System.Windows.Forms.RadioButton();
+            this.createNewMessageButton = new System.Windows.Forms.RadioButton();
+            this.imageTab = new System.Windows.Forms.TabPage();
             this.segmentPanel14 = new System.Windows.Forms.Panel();
             this.segmentLabel14 = new System.Windows.Forms.Label();
             this.closeButton14 = new System.Windows.Forms.Button();
@@ -75,31 +100,6 @@ namespace Vision
             this.segmentPanel4 = new System.Windows.Forms.Panel();
             this.segmentLabel4 = new System.Windows.Forms.Label();
             this.closeButton4 = new System.Windows.Forms.Button();
-            this.createAMessageGroupBox = new System.Windows.Forms.GroupBox();
-            this.exitEffectLabel = new System.Windows.Forms.Label();
-            this.staticEffectLabel = new System.Windows.Forms.Label();
-            this.entranceEffectLabel = new System.Windows.Forms.Label();
-            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.scrollingTextButton = new System.Windows.Forms.RadioButton();
-            this.specialEffectButton = new System.Windows.Forms.RadioButton();
-            this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionSpeedLabel = new System.Windows.Forms.Label();
-            this.colorComboBox = new System.Windows.Forms.ComboBox();
-            this.colorLabel = new System.Windows.Forms.Label();
-            this.repeatComboBox = new System.Windows.Forms.ComboBox();
-            this.repeatLabel = new System.Windows.Forms.Label();
-            this.transitionComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionLabel = new System.Windows.Forms.Label();
-            this.textTextBox = new System.Windows.Forms.TextBox();
-            this.textLabel = new System.Windows.Forms.Label();
-            this.uploadButton = new System.Windows.Forms.Button();
-            this.browseButton = new System.Windows.Forms.Button();
-            this.fileLocationTextBox = new System.Windows.Forms.TextBox();
-            this.uploadMessageFromFileButton = new System.Windows.Forms.RadioButton();
-            this.createNewMessageButton = new System.Windows.Forms.RadioButton();
-            this.imageTab = new System.Windows.Forms.TabPage();
             this.addSegmentButton1 = new System.Windows.Forms.Button();
             this.addSegmentButton2 = new System.Windows.Forms.Button();
             this.addSegmentButton3 = new System.Windows.Forms.Button();
@@ -126,9 +126,14 @@ namespace Vision
             this.segmentLabel3 = new System.Windows.Forms.Label();
             this.closeButton3 = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
+            this.noTextPopUp = new System.Windows.Forms.Label();
+            this.noOptionSelectedPopUp = new System.Windows.Forms.Label();
+            this.textTabLabel = new System.Windows.Forms.Label();
+            this.imageTabLabel = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.tabControl.SuspendLayout();
             this.textTab.SuspendLayout();
+            this.createAMessageGroupBox.SuspendLayout();
             this.segmentPanel14.SuspendLayout();
             this.segmentPanel13.SuspendLayout();
             this.segmentPanel12.SuspendLayout();
@@ -140,7 +145,6 @@ namespace Vision
             this.segmentPanel6.SuspendLayout();
             this.segmentPanel5.SuspendLayout();
             this.segmentPanel4.SuspendLayout();
-            this.createAMessageGroupBox.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.segmentPanel1.SuspendLayout();
             this.segmentPanel2.SuspendLayout();
@@ -161,14 +165,15 @@ namespace Vision
             // 
             this.tabControl.Controls.Add(this.textTab);
             this.tabControl.Controls.Add(this.imageTab);
-            this.tabControl.Location = new System.Drawing.Point(247, 12);
+            this.tabControl.Location = new System.Drawing.Point(247, 60);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(932, 455);
+            this.tabControl.Size = new System.Drawing.Size(932, 407);
             this.tabControl.TabIndex = 0;
             // 
             // textTab
             // 
+            this.textTab.Controls.Add(this.noOptionSelectedPopUp);
             this.textTab.Controls.Add(this.createAMessageGroupBox);
             this.textTab.Controls.Add(this.uploadButton);
             this.textTab.Controls.Add(this.browseButton);
@@ -178,10 +183,285 @@ namespace Vision
             this.textTab.Location = new System.Drawing.Point(4, 22);
             this.textTab.Name = "textTab";
             this.textTab.Padding = new System.Windows.Forms.Padding(3);
-            this.textTab.Size = new System.Drawing.Size(924, 429);
+            this.textTab.Size = new System.Drawing.Size(924, 381);
             this.textTab.TabIndex = 0;
             this.textTab.Text = "Text";
             this.textTab.UseVisualStyleBackColor = true;
+            // 
+            // createAMessageGroupBox
+            // 
+            this.createAMessageGroupBox.Controls.Add(this.noTextPopUp);
+            this.createAMessageGroupBox.Controls.Add(this.exitEffectLabel);
+            this.createAMessageGroupBox.Controls.Add(this.staticEffectLabel);
+            this.createAMessageGroupBox.Controls.Add(this.entranceEffectLabel);
+            this.createAMessageGroupBox.Controls.Add(this.exitEffectComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.staticEffectComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.entranceEffectComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.scrollingTextButton);
+            this.createAMessageGroupBox.Controls.Add(this.specialEffectButton);
+            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedLabel);
+            this.createAMessageGroupBox.Controls.Add(this.colorComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.colorLabel);
+            this.createAMessageGroupBox.Controls.Add(this.repeatComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.repeatLabel);
+            this.createAMessageGroupBox.Controls.Add(this.transitionComboBox);
+            this.createAMessageGroupBox.Controls.Add(this.transitionLabel);
+            this.createAMessageGroupBox.Controls.Add(this.textTextBox);
+            this.createAMessageGroupBox.Controls.Add(this.textLabel);
+            this.createAMessageGroupBox.Location = new System.Drawing.Point(15, 65);
+            this.createAMessageGroupBox.Name = "createAMessageGroupBox";
+            this.createAMessageGroupBox.Size = new System.Drawing.Size(711, 237);
+            this.createAMessageGroupBox.TabIndex = 5;
+            this.createAMessageGroupBox.TabStop = false;
+            this.createAMessageGroupBox.Text = "Create A Message";
+            this.createAMessageGroupBox.Visible = false;
+            // 
+            // exitEffectLabel
+            // 
+            this.exitEffectLabel.AutoSize = true;
+            this.exitEffectLabel.Location = new System.Drawing.Point(571, 175);
+            this.exitEffectLabel.Name = "exitEffectLabel";
+            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
+            this.exitEffectLabel.TabIndex = 16;
+            this.exitEffectLabel.Text = "Exit Effect";
+            this.exitEffectLabel.Visible = false;
+            // 
+            // staticEffectLabel
+            // 
+            this.staticEffectLabel.AutoSize = true;
+            this.staticEffectLabel.Location = new System.Drawing.Point(315, 175);
+            this.staticEffectLabel.Name = "staticEffectLabel";
+            this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
+            this.staticEffectLabel.TabIndex = 15;
+            this.staticEffectLabel.Text = "Static Effect";
+            this.staticEffectLabel.Visible = false;
+            // 
+            // entranceEffectLabel
+            // 
+            this.entranceEffectLabel.AutoSize = true;
+            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 175);
+            this.entranceEffectLabel.Name = "entranceEffectLabel";
+            this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
+            this.entranceEffectLabel.TabIndex = 14;
+            this.entranceEffectLabel.Text = "Entrance Effect";
+            this.entranceEffectLabel.Visible = false;
+            // 
+            // exitEffectComboBox
+            // 
+            this.exitEffectComboBox.FormattingEnabled = true;
+            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
+            this.exitEffectComboBox.Name = "exitEffectComboBox";
+            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.exitEffectComboBox.TabIndex = 13;
+            this.exitEffectComboBox.Visible = false;
+            // 
+            // staticEffectComboBox
+            // 
+            this.staticEffectComboBox.FormattingEnabled = true;
+            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
+            this.staticEffectComboBox.Name = "staticEffectComboBox";
+            this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.staticEffectComboBox.TabIndex = 12;
+            this.staticEffectComboBox.Visible = false;
+            // 
+            // entranceEffectComboBox
+            // 
+            this.entranceEffectComboBox.FormattingEnabled = true;
+            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 191);
+            this.entranceEffectComboBox.Name = "entranceEffectComboBox";
+            this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.entranceEffectComboBox.TabIndex = 11;
+            this.entranceEffectComboBox.Visible = false;
+            // 
+            // scrollingTextButton
+            // 
+            this.scrollingTextButton.AutoSize = true;
+            this.scrollingTextButton.Location = new System.Drawing.Point(168, 146);
+            this.scrollingTextButton.Name = "scrollingTextButton";
+            this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
+            this.scrollingTextButton.TabIndex = 10;
+            this.scrollingTextButton.TabStop = true;
+            this.scrollingTextButton.Text = "Scrolling Text";
+            this.scrollingTextButton.UseVisualStyleBackColor = true;
+            this.scrollingTextButton.Visible = false;
+            // 
+            // specialEffectButton
+            // 
+            this.specialEffectButton.AutoSize = true;
+            this.specialEffectButton.Location = new System.Drawing.Point(17, 146);
+            this.specialEffectButton.Name = "specialEffectButton";
+            this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
+            this.specialEffectButton.TabIndex = 6;
+            this.specialEffectButton.TabStop = true;
+            this.specialEffectButton.Text = "Special Effects";
+            this.specialEffectButton.UseVisualStyleBackColor = true;
+            this.specialEffectButton.Visible = false;
+            // 
+            // transitionSpeedComboBox
+            // 
+            this.transitionSpeedComboBox.FormattingEnabled = true;
+            this.transitionSpeedComboBox.Location = new System.Drawing.Point(395, 108);
+            this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
+            this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
+            this.transitionSpeedComboBox.TabIndex = 9;
+            this.transitionSpeedComboBox.Visible = false;
+            // 
+            // transitionSpeedLabel
+            // 
+            this.transitionSpeedLabel.AutoSize = true;
+            this.transitionSpeedLabel.Location = new System.Drawing.Point(296, 111);
+            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
+            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
+            this.transitionSpeedLabel.TabIndex = 8;
+            this.transitionSpeedLabel.Text = "Transition Speed:";
+            this.transitionSpeedLabel.Visible = false;
+            // 
+            // colorComboBox
+            // 
+            this.colorComboBox.FormattingEnabled = true;
+            this.colorComboBox.Items.AddRange(new object[] {
+            "Aqua",
+            "Blue",
+            "BlueViolet",
+            "Cyan",
+            "Fuchsia"});
+            this.colorComboBox.Location = new System.Drawing.Point(77, 108);
+            this.colorComboBox.Name = "colorComboBox";
+            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
+            this.colorComboBox.TabIndex = 7;
+            this.colorComboBox.Visible = false;
+            this.colorComboBox.SelectedIndexChanged += new System.EventHandler(this.colorComboBox_SelectedIndexChanged);
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(34, 111);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(34, 13);
+            this.colorLabel.TabIndex = 6;
+            this.colorLabel.Text = "Color:";
+            this.colorLabel.Visible = false;
+            // 
+            // repeatComboBox
+            // 
+            this.repeatComboBox.FormattingEnabled = true;
+            this.repeatComboBox.Location = new System.Drawing.Point(395, 70);
+            this.repeatComboBox.Name = "repeatComboBox";
+            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
+            this.repeatComboBox.TabIndex = 5;
+            this.repeatComboBox.Visible = false;
+            // 
+            // repeatLabel
+            // 
+            this.repeatLabel.AutoSize = true;
+            this.repeatLabel.Location = new System.Drawing.Point(335, 70);
+            this.repeatLabel.Name = "repeatLabel";
+            this.repeatLabel.Size = new System.Drawing.Size(45, 13);
+            this.repeatLabel.TabIndex = 4;
+            this.repeatLabel.Text = "Repeat:";
+            this.repeatLabel.Visible = false;
+            // 
+            // transitionComboBox
+            // 
+            this.transitionComboBox.FormattingEnabled = true;
+            this.transitionComboBox.Location = new System.Drawing.Point(77, 67);
+            this.transitionComboBox.Name = "transitionComboBox";
+            this.transitionComboBox.Size = new System.Drawing.Size(191, 21);
+            this.transitionComboBox.TabIndex = 3;
+            this.transitionComboBox.Visible = false;
+            // 
+            // transitionLabel
+            // 
+            this.transitionLabel.AutoSize = true;
+            this.transitionLabel.Location = new System.Drawing.Point(14, 70);
+            this.transitionLabel.Name = "transitionLabel";
+            this.transitionLabel.Size = new System.Drawing.Size(56, 13);
+            this.transitionLabel.TabIndex = 2;
+            this.transitionLabel.Text = "Transition:";
+            this.transitionLabel.Visible = false;
+            // 
+            // textTextBox
+            // 
+            this.textTextBox.Location = new System.Drawing.Point(69, 23);
+            this.textTextBox.Name = "textTextBox";
+            this.textTextBox.Size = new System.Drawing.Size(545, 20);
+            this.textTextBox.TabIndex = 1;
+            this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
+            // 
+            // textLabel
+            // 
+            this.textLabel.AutoSize = true;
+            this.textLabel.Location = new System.Drawing.Point(14, 26);
+            this.textLabel.Name = "textLabel";
+            this.textLabel.Size = new System.Drawing.Size(34, 13);
+            this.textLabel.TabIndex = 0;
+            this.textLabel.Text = "Text: ";
+            this.textLabel.Visible = false;
+            // 
+            // uploadButton
+            // 
+            this.uploadButton.Location = new System.Drawing.Point(785, 27);
+            this.uploadButton.Name = "uploadButton";
+            this.uploadButton.Size = new System.Drawing.Size(75, 23);
+            this.uploadButton.TabIndex = 4;
+            this.uploadButton.Text = "Upload";
+            this.uploadButton.UseVisualStyleBackColor = true;
+            this.uploadButton.Visible = false;
+            // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(683, 27);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(75, 23);
+            this.browseButton.TabIndex = 3;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Visible = false;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            // 
+            // fileLocationTextBox
+            // 
+            this.fileLocationTextBox.Location = new System.Drawing.Point(193, 29);
+            this.fileLocationTextBox.Name = "fileLocationTextBox";
+            this.fileLocationTextBox.ReadOnly = true;
+            this.fileLocationTextBox.Size = new System.Drawing.Size(448, 20);
+            this.fileLocationTextBox.TabIndex = 2;
+            this.fileLocationTextBox.Visible = false;
+            // 
+            // uploadMessageFromFileButton
+            // 
+            this.uploadMessageFromFileButton.AutoSize = true;
+            this.uploadMessageFromFileButton.Location = new System.Drawing.Point(6, 29);
+            this.uploadMessageFromFileButton.Name = "uploadMessageFromFileButton";
+            this.uploadMessageFromFileButton.Size = new System.Drawing.Size(150, 17);
+            this.uploadMessageFromFileButton.TabIndex = 1;
+            this.uploadMessageFromFileButton.TabStop = true;
+            this.uploadMessageFromFileButton.Text = "Upload Message From File";
+            this.uploadMessageFromFileButton.UseVisualStyleBackColor = true;
+            this.uploadMessageFromFileButton.CheckedChanged += new System.EventHandler(this.uploadMessageFromFileButton_CheckedChanged);
+            // 
+            // createNewMessageButton
+            // 
+            this.createNewMessageButton.AutoSize = true;
+            this.createNewMessageButton.Location = new System.Drawing.Point(6, 6);
+            this.createNewMessageButton.Name = "createNewMessageButton";
+            this.createNewMessageButton.Size = new System.Drawing.Size(127, 17);
+            this.createNewMessageButton.TabIndex = 0;
+            this.createNewMessageButton.TabStop = true;
+            this.createNewMessageButton.Text = "Create New Message";
+            this.createNewMessageButton.UseVisualStyleBackColor = true;
+            this.createNewMessageButton.CheckedChanged += new System.EventHandler(this.createNewMessageButton_CheckedChanged);
+            // 
+            // imageTab
+            // 
+            this.imageTab.Location = new System.Drawing.Point(4, 22);
+            this.imageTab.Name = "imageTab";
+            this.imageTab.Padding = new System.Windows.Forms.Padding(3);
+            this.imageTab.Size = new System.Drawing.Size(924, 429);
+            this.imageTab.TabIndex = 1;
+            this.imageTab.Text = "Image";
+            this.imageTab.UseVisualStyleBackColor = true;
             // 
             // segmentPanel14
             // 
@@ -612,272 +892,6 @@ namespace Vision
             this.closeButton4.Text = "X";
             this.closeButton4.UseVisualStyleBackColor = false;
             // 
-            // createAMessageGroupBox
-            // 
-            this.createAMessageGroupBox.Controls.Add(this.exitEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.staticEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.entranceEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.exitEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.staticEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.entranceEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.scrollingTextButton);
-            this.createAMessageGroupBox.Controls.Add(this.specialEffectButton);
-            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedLabel);
-            this.createAMessageGroupBox.Controls.Add(this.colorComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.colorLabel);
-            this.createAMessageGroupBox.Controls.Add(this.repeatComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.repeatLabel);
-            this.createAMessageGroupBox.Controls.Add(this.transitionComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.transitionLabel);
-            this.createAMessageGroupBox.Controls.Add(this.textTextBox);
-            this.createAMessageGroupBox.Controls.Add(this.textLabel);
-            this.createAMessageGroupBox.Location = new System.Drawing.Point(15, 65);
-            this.createAMessageGroupBox.Name = "createAMessageGroupBox";
-            this.createAMessageGroupBox.Size = new System.Drawing.Size(711, 237);
-            this.createAMessageGroupBox.TabIndex = 5;
-            this.createAMessageGroupBox.TabStop = false;
-            this.createAMessageGroupBox.Text = "Create A Message";
-            this.createAMessageGroupBox.Visible = false;
-            // 
-            // exitEffectLabel
-            // 
-            this.exitEffectLabel.AutoSize = true;
-            this.exitEffectLabel.Location = new System.Drawing.Point(571, 175);
-            this.exitEffectLabel.Name = "exitEffectLabel";
-            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
-            this.exitEffectLabel.TabIndex = 16;
-            this.exitEffectLabel.Text = "Exit Effect";
-            this.exitEffectLabel.Visible = false;
-            // 
-            // staticEffectLabel
-            // 
-            this.staticEffectLabel.AutoSize = true;
-            this.staticEffectLabel.Location = new System.Drawing.Point(315, 175);
-            this.staticEffectLabel.Name = "staticEffectLabel";
-            this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
-            this.staticEffectLabel.TabIndex = 15;
-            this.staticEffectLabel.Text = "Static Effect";
-            this.staticEffectLabel.Visible = false;
-            // 
-            // entranceEffectLabel
-            // 
-            this.entranceEffectLabel.AutoSize = true;
-            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 175);
-            this.entranceEffectLabel.Name = "entranceEffectLabel";
-            this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
-            this.entranceEffectLabel.TabIndex = 14;
-            this.entranceEffectLabel.Text = "Entrance Effect";
-            this.entranceEffectLabel.Visible = false;
-            // 
-            // exitEffectComboBox
-            // 
-            this.exitEffectComboBox.FormattingEnabled = true;
-            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
-            this.exitEffectComboBox.Name = "exitEffectComboBox";
-            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.exitEffectComboBox.TabIndex = 13;
-            this.exitEffectComboBox.Visible = false;
-            // 
-            // staticEffectComboBox
-            // 
-            this.staticEffectComboBox.FormattingEnabled = true;
-            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
-            this.staticEffectComboBox.Name = "staticEffectComboBox";
-            this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.staticEffectComboBox.TabIndex = 12;
-            this.staticEffectComboBox.Visible = false;
-            // 
-            // entranceEffectComboBox
-            // 
-            this.entranceEffectComboBox.FormattingEnabled = true;
-            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 191);
-            this.entranceEffectComboBox.Name = "entranceEffectComboBox";
-            this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.entranceEffectComboBox.TabIndex = 11;
-            this.entranceEffectComboBox.Visible = false;
-            // 
-            // scrollingTextButton
-            // 
-            this.scrollingTextButton.AutoSize = true;
-            this.scrollingTextButton.Location = new System.Drawing.Point(168, 146);
-            this.scrollingTextButton.Name = "scrollingTextButton";
-            this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
-            this.scrollingTextButton.TabIndex = 10;
-            this.scrollingTextButton.TabStop = true;
-            this.scrollingTextButton.Text = "Scrolling Text";
-            this.scrollingTextButton.UseVisualStyleBackColor = true;
-            this.scrollingTextButton.Visible = false;
-            // 
-            // specialEffectButton
-            // 
-            this.specialEffectButton.AutoSize = true;
-            this.specialEffectButton.Location = new System.Drawing.Point(17, 146);
-            this.specialEffectButton.Name = "specialEffectButton";
-            this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
-            this.specialEffectButton.TabIndex = 6;
-            this.specialEffectButton.TabStop = true;
-            this.specialEffectButton.Text = "Special Effects";
-            this.specialEffectButton.UseVisualStyleBackColor = true;
-            this.specialEffectButton.Visible = false;
-            // 
-            // transitionSpeedComboBox
-            // 
-            this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(395, 108);
-            this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
-            this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
-            this.transitionSpeedComboBox.TabIndex = 9;
-            this.transitionSpeedComboBox.Visible = false;
-            // 
-            // transitionSpeedLabel
-            // 
-            this.transitionSpeedLabel.AutoSize = true;
-            this.transitionSpeedLabel.Location = new System.Drawing.Point(296, 111);
-            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
-            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
-            this.transitionSpeedLabel.TabIndex = 8;
-            this.transitionSpeedLabel.Text = "Transition Speed:";
-            this.transitionSpeedLabel.Visible = false;
-            // 
-            // colorComboBox
-            // 
-            this.colorComboBox.FormattingEnabled = true;
-            this.colorComboBox.Location = new System.Drawing.Point(77, 108);
-            this.colorComboBox.Name = "colorComboBox";
-            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
-            this.colorComboBox.TabIndex = 7;
-            this.colorComboBox.Visible = false;
-            // 
-            // colorLabel
-            // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(34, 111);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(34, 13);
-            this.colorLabel.TabIndex = 6;
-            this.colorLabel.Text = "Color:";
-            this.colorLabel.Visible = false;
-            // 
-            // repeatComboBox
-            // 
-            this.repeatComboBox.FormattingEnabled = true;
-            this.repeatComboBox.Location = new System.Drawing.Point(395, 70);
-            this.repeatComboBox.Name = "repeatComboBox";
-            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
-            this.repeatComboBox.TabIndex = 5;
-            this.repeatComboBox.Visible = false;
-            // 
-            // repeatLabel
-            // 
-            this.repeatLabel.AutoSize = true;
-            this.repeatLabel.Location = new System.Drawing.Point(335, 70);
-            this.repeatLabel.Name = "repeatLabel";
-            this.repeatLabel.Size = new System.Drawing.Size(45, 13);
-            this.repeatLabel.TabIndex = 4;
-            this.repeatLabel.Text = "Repeat:";
-            this.repeatLabel.Visible = false;
-            // 
-            // transitionComboBox
-            // 
-            this.transitionComboBox.FormattingEnabled = true;
-            this.transitionComboBox.Location = new System.Drawing.Point(77, 67);
-            this.transitionComboBox.Name = "transitionComboBox";
-            this.transitionComboBox.Size = new System.Drawing.Size(191, 21);
-            this.transitionComboBox.TabIndex = 3;
-            this.transitionComboBox.Visible = false;
-            // 
-            // transitionLabel
-            // 
-            this.transitionLabel.AutoSize = true;
-            this.transitionLabel.Location = new System.Drawing.Point(14, 70);
-            this.transitionLabel.Name = "transitionLabel";
-            this.transitionLabel.Size = new System.Drawing.Size(56, 13);
-            this.transitionLabel.TabIndex = 2;
-            this.transitionLabel.Text = "Transition:";
-            this.transitionLabel.Visible = false;
-            // 
-            // textTextBox
-            // 
-            this.textTextBox.Location = new System.Drawing.Point(69, 23);
-            this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(545, 20);
-            this.textTextBox.TabIndex = 1;
-            this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
-            // 
-            // textLabel
-            // 
-            this.textLabel.AutoSize = true;
-            this.textLabel.Location = new System.Drawing.Point(14, 26);
-            this.textLabel.Name = "textLabel";
-            this.textLabel.Size = new System.Drawing.Size(34, 13);
-            this.textLabel.TabIndex = 0;
-            this.textLabel.Text = "Text: ";
-            this.textLabel.Visible = false;
-            // 
-            // uploadButton
-            // 
-            this.uploadButton.Location = new System.Drawing.Point(785, 27);
-            this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(75, 23);
-            this.uploadButton.TabIndex = 4;
-            this.uploadButton.Text = "Upload";
-            this.uploadButton.UseVisualStyleBackColor = true;
-            this.uploadButton.Visible = false;
-            // 
-            // browseButton
-            // 
-            this.browseButton.Location = new System.Drawing.Point(683, 27);
-            this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(75, 23);
-            this.browseButton.TabIndex = 3;
-            this.browseButton.Text = "Browse";
-            this.browseButton.UseVisualStyleBackColor = true;
-            this.browseButton.Visible = false;
-            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
-            // 
-            // fileLocationTextBox
-            // 
-            this.fileLocationTextBox.Location = new System.Drawing.Point(193, 29);
-            this.fileLocationTextBox.Name = "fileLocationTextBox";
-            this.fileLocationTextBox.Size = new System.Drawing.Size(448, 20);
-            this.fileLocationTextBox.TabIndex = 2;
-            this.fileLocationTextBox.Visible = false;
-            // 
-            // uploadMessageFromFileButton
-            // 
-            this.uploadMessageFromFileButton.AutoSize = true;
-            this.uploadMessageFromFileButton.Location = new System.Drawing.Point(6, 29);
-            this.uploadMessageFromFileButton.Name = "uploadMessageFromFileButton";
-            this.uploadMessageFromFileButton.Size = new System.Drawing.Size(150, 17);
-            this.uploadMessageFromFileButton.TabIndex = 1;
-            this.uploadMessageFromFileButton.TabStop = true;
-            this.uploadMessageFromFileButton.Text = "Upload Message From File";
-            this.uploadMessageFromFileButton.UseVisualStyleBackColor = true;
-            this.uploadMessageFromFileButton.CheckedChanged += new System.EventHandler(this.uploadMessageFromFileButton_CheckedChanged);
-            // 
-            // createNewMessageButton
-            // 
-            this.createNewMessageButton.AutoSize = true;
-            this.createNewMessageButton.Location = new System.Drawing.Point(6, 6);
-            this.createNewMessageButton.Name = "createNewMessageButton";
-            this.createNewMessageButton.Size = new System.Drawing.Size(127, 17);
-            this.createNewMessageButton.TabIndex = 0;
-            this.createNewMessageButton.TabStop = true;
-            this.createNewMessageButton.Text = "Create New Message";
-            this.createNewMessageButton.UseVisualStyleBackColor = true;
-            this.createNewMessageButton.CheckedChanged += new System.EventHandler(this.createNewMessageButton_CheckedChanged);
-            // 
-            // imageTab
-            // 
-            this.imageTab.Location = new System.Drawing.Point(4, 22);
-            this.imageTab.Name = "imageTab";
-            this.imageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.imageTab.Size = new System.Drawing.Size(924, 429);
-            this.imageTab.TabIndex = 1;
-            this.imageTab.Text = "Image";
-            this.imageTab.UseVisualStyleBackColor = true;
-            // 
             // addSegmentButton1
             // 
             this.addSegmentButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1244,6 +1258,60 @@ namespace Vision
             this.logoLabel.TabIndex = 31;
             this.logoLabel.Text = "Discovery";
             // 
+            // noTextPopUp
+            // 
+            this.noTextPopUp.AutoSize = true;
+            this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
+            this.noTextPopUp.Location = new System.Drawing.Point(402, 26);
+            this.noTextPopUp.Name = "noTextPopUp";
+            this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
+            this.noTextPopUp.TabIndex = 17;
+            this.noTextPopUp.Text = "Please Enter Some Text Before Continuing.";
+            this.noTextPopUp.Visible = false;
+            // 
+            // noOptionSelectedPopUp
+            // 
+            this.noOptionSelectedPopUp.AutoSize = true;
+            this.noOptionSelectedPopUp.ForeColor = System.Drawing.Color.Red;
+            this.noOptionSelectedPopUp.Location = new System.Drawing.Point(164, 19);
+            this.noOptionSelectedPopUp.Name = "noOptionSelectedPopUp";
+            this.noOptionSelectedPopUp.Size = new System.Drawing.Size(119, 13);
+            this.noOptionSelectedPopUp.TabIndex = 6;
+            this.noOptionSelectedPopUp.Text = "Please Select A Option.";
+            this.noOptionSelectedPopUp.Visible = false;
+            // 
+            // textTabLabel
+            // 
+            this.textTabLabel.AutoSize = true;
+            this.textTabLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTabLabel.ForeColor = System.Drawing.Color.White;
+            this.textTabLabel.Location = new System.Drawing.Point(235, 0);
+            this.textTabLabel.Name = "textTabLabel";
+            this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.textTabLabel.Size = new System.Drawing.Size(85, 57);
+            this.textTabLabel.TabIndex = 32;
+            this.textTabLabel.Text = "Text";
+            this.textTabLabel.MouseEnter += new System.EventHandler(this.textTabLabel_MouseEnter);
+            this.textTabLabel.MouseLeave += new System.EventHandler(this.textTabLabel_MouseLeave);
+            // 
+            // imageTabLabel
+            // 
+            this.imageTabLabel.AutoSize = true;
+            this.imageTabLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imageTabLabel.ForeColor = System.Drawing.Color.White;
+            this.imageTabLabel.Location = new System.Drawing.Point(320, 0);
+            this.imageTabLabel.Name = "imageTabLabel";
+            this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.imageTabLabel.Size = new System.Drawing.Size(114, 57);
+            this.imageTabLabel.TabIndex = 33;
+            this.imageTabLabel.Text = "Image";
+            this.imageTabLabel.MouseEnter += new System.EventHandler(this.imageTabLabel_MouseEnter);
+            this.imageTabLabel.MouseLeave += new System.EventHandler(this.imageTabLabel_MouseLeave);
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
@@ -1258,8 +1326,10 @@ namespace Vision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.Controls.Add(this.imageTabLabel);
+            this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.saveAndExitButton);
@@ -1273,6 +1343,8 @@ namespace Vision
             this.tabControl.ResumeLayout(false);
             this.textTab.ResumeLayout(false);
             this.textTab.PerformLayout();
+            this.createAMessageGroupBox.ResumeLayout(false);
+            this.createAMessageGroupBox.PerformLayout();
             this.segmentPanel14.ResumeLayout(false);
             this.segmentPanel14.PerformLayout();
             this.segmentPanel13.ResumeLayout(false);
@@ -1295,8 +1367,6 @@ namespace Vision
             this.segmentPanel5.PerformLayout();
             this.segmentPanel4.ResumeLayout(false);
             this.segmentPanel4.PerformLayout();
-            this.createAMessageGroupBox.ResumeLayout(false);
-            this.createAMessageGroupBox.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.segmentPanel1.ResumeLayout(false);
             this.segmentPanel1.PerformLayout();
@@ -1398,6 +1468,10 @@ namespace Vision
         private System.Windows.Forms.Panel segmentPanel4;
         private System.Windows.Forms.Label segmentLabel4;
         private System.Windows.Forms.Button closeButton4;
+        private System.Windows.Forms.Label noTextPopUp;
+        private System.Windows.Forms.Label noOptionSelectedPopUp;
+        private System.Windows.Forms.Label textTabLabel;
+        private System.Windows.Forms.Label imageTabLabel;
     }
 }
 

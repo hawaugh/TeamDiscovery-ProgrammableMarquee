@@ -42,7 +42,7 @@ namespace Vision
         public Segment()
         {
             _messageText = "";
-            _onColor = Color.Black;
+            _onColor = Color.Red; //change back to black
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
