@@ -40,9 +40,8 @@ namespace Vision
         private void InitializeComponent()
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.textTab = new System.Windows.Forms.TabPage();
-            this.createAMessageGroupBox = new System.Windows.Forms.GroupBox();
+            this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.noTextPopUp = new System.Windows.Forms.Label();
             this.exitEffectLabel = new System.Windows.Forms.Label();
             this.staticEffectLabel = new System.Windows.Forms.Label();
             this.entranceEffectLabel = new System.Windows.Forms.Label();
@@ -61,12 +60,8 @@ namespace Vision
             this.transitionLabel = new System.Windows.Forms.Label();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
-            this.uploadButton = new System.Windows.Forms.Button();
-            this.browseButton = new System.Windows.Forms.Button();
+            this.loadXMLButton = new System.Windows.Forms.Button();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
-            this.uploadMessageFromFileButton = new System.Windows.Forms.RadioButton();
-            this.createNewMessageButton = new System.Windows.Forms.RadioButton();
-            this.imageTab = new System.Windows.Forms.TabPage();
             this.segmentPanel14 = new System.Windows.Forms.Panel();
             this.segmentLabel14 = new System.Windows.Forms.Label();
             this.closeButton14 = new System.Windows.Forms.Button();
@@ -126,14 +121,12 @@ namespace Vision
             this.segmentLabel3 = new System.Windows.Forms.Label();
             this.closeButton3 = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
-            this.noTextPopUp = new System.Windows.Forms.Label();
-            this.noOptionSelectedPopUp = new System.Windows.Forms.Label();
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
+            this.textPanel = new System.Windows.Forms.Panel();
+            this.imagePanel = new System.Windows.Forms.Panel();
             this.marquee1 = new Vision.Marquee();
-            this.tabControl.SuspendLayout();
-            this.textTab.SuspendLayout();
-            this.createAMessageGroupBox.SuspendLayout();
+            this.createASegmentGroupBox.SuspendLayout();
             this.segmentPanel14.SuspendLayout();
             this.segmentPanel13.SuspendLayout();
             this.segmentPanel12.SuspendLayout();
@@ -149,6 +142,8 @@ namespace Vision
             this.segmentPanel1.SuspendLayout();
             this.segmentPanel2.SuspendLayout();
             this.segmentPanel3.SuspendLayout();
+            this.textPanel.SuspendLayout();
+            this.imagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -161,61 +156,45 @@ namespace Vision
             this.populateMarqueeButton.UseVisualStyleBackColor = true;
             this.populateMarqueeButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // tabControl
+            // createASegmentGroupBox
             // 
-            this.tabControl.Controls.Add(this.textTab);
-            this.tabControl.Controls.Add(this.imageTab);
-            this.tabControl.Location = new System.Drawing.Point(247, 60);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(932, 407);
-            this.tabControl.TabIndex = 0;
+            this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
+            this.createASegmentGroupBox.Controls.Add(this.exitEffectLabel);
+            this.createASegmentGroupBox.Controls.Add(this.staticEffectLabel);
+            this.createASegmentGroupBox.Controls.Add(this.entranceEffectLabel);
+            this.createASegmentGroupBox.Controls.Add(this.exitEffectComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.staticEffectComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.entranceEffectComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
+            this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
+            this.createASegmentGroupBox.Controls.Add(this.transitionSpeedComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.transitionSpeedLabel);
+            this.createASegmentGroupBox.Controls.Add(this.colorComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.colorLabel);
+            this.createASegmentGroupBox.Controls.Add(this.repeatComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.repeatLabel);
+            this.createASegmentGroupBox.Controls.Add(this.transitionComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.transitionLabel);
+            this.createASegmentGroupBox.Controls.Add(this.textTextBox);
+            this.createASegmentGroupBox.Controls.Add(this.textLabel);
+            this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
+            this.createASegmentGroupBox.Name = "createASegmentGroupBox";
+            this.createASegmentGroupBox.Size = new System.Drawing.Size(711, 237);
+            this.createASegmentGroupBox.TabIndex = 5;
+            this.createASegmentGroupBox.TabStop = false;
+            this.createASegmentGroupBox.Text = "Create A Segment";
             // 
-            // textTab
+            // noTextPopUp
             // 
-            this.textTab.Controls.Add(this.noOptionSelectedPopUp);
-            this.textTab.Controls.Add(this.createAMessageGroupBox);
-            this.textTab.Controls.Add(this.uploadButton);
-            this.textTab.Controls.Add(this.browseButton);
-            this.textTab.Controls.Add(this.fileLocationTextBox);
-            this.textTab.Controls.Add(this.uploadMessageFromFileButton);
-            this.textTab.Controls.Add(this.createNewMessageButton);
-            this.textTab.Location = new System.Drawing.Point(4, 22);
-            this.textTab.Name = "textTab";
-            this.textTab.Padding = new System.Windows.Forms.Padding(3);
-            this.textTab.Size = new System.Drawing.Size(924, 381);
-            this.textTab.TabIndex = 0;
-            this.textTab.Text = "Text";
-            this.textTab.UseVisualStyleBackColor = true;
-            // 
-            // createAMessageGroupBox
-            // 
-            this.createAMessageGroupBox.Controls.Add(this.noTextPopUp);
-            this.createAMessageGroupBox.Controls.Add(this.exitEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.staticEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.entranceEffectLabel);
-            this.createAMessageGroupBox.Controls.Add(this.exitEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.staticEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.entranceEffectComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.scrollingTextButton);
-            this.createAMessageGroupBox.Controls.Add(this.specialEffectButton);
-            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.transitionSpeedLabel);
-            this.createAMessageGroupBox.Controls.Add(this.colorComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.colorLabel);
-            this.createAMessageGroupBox.Controls.Add(this.repeatComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.repeatLabel);
-            this.createAMessageGroupBox.Controls.Add(this.transitionComboBox);
-            this.createAMessageGroupBox.Controls.Add(this.transitionLabel);
-            this.createAMessageGroupBox.Controls.Add(this.textTextBox);
-            this.createAMessageGroupBox.Controls.Add(this.textLabel);
-            this.createAMessageGroupBox.Location = new System.Drawing.Point(15, 65);
-            this.createAMessageGroupBox.Name = "createAMessageGroupBox";
-            this.createAMessageGroupBox.Size = new System.Drawing.Size(711, 237);
-            this.createAMessageGroupBox.TabIndex = 5;
-            this.createAMessageGroupBox.TabStop = false;
-            this.createAMessageGroupBox.Text = "Create A Message";
-            this.createAMessageGroupBox.Visible = false;
+            this.noTextPopUp.AutoSize = true;
+            this.noTextPopUp.BackColor = System.Drawing.Color.White;
+            this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
+            this.noTextPopUp.Location = new System.Drawing.Point(402, 26);
+            this.noTextPopUp.Name = "noTextPopUp";
+            this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
+            this.noTextPopUp.TabIndex = 17;
+            this.noTextPopUp.Text = "Please Enter Some Text Before Continuing.";
+            this.noTextPopUp.Visible = false;
             // 
             // exitEffectLabel
             // 
@@ -249,6 +228,7 @@ namespace Vision
             // 
             // exitEffectComboBox
             // 
+            this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exitEffectComboBox.FormattingEnabled = true;
             this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
             this.exitEffectComboBox.Name = "exitEffectComboBox";
@@ -258,6 +238,7 @@ namespace Vision
             // 
             // staticEffectComboBox
             // 
+            this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staticEffectComboBox.FormattingEnabled = true;
             this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
             this.staticEffectComboBox.Name = "staticEffectComboBox";
@@ -267,7 +248,14 @@ namespace Vision
             // 
             // entranceEffectComboBox
             // 
+            this.entranceEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entranceEffectComboBox.FormattingEnabled = true;
+            this.entranceEffectComboBox.Items.AddRange(new object[] {
+            "Static",
+            "Split",
+            "Raise",
+            "Lower",
+            "Random Dots"});
             this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 191);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -284,7 +272,7 @@ namespace Vision
             this.scrollingTextButton.TabStop = true;
             this.scrollingTextButton.Text = "Scrolling Text";
             this.scrollingTextButton.UseVisualStyleBackColor = true;
-            this.scrollingTextButton.Visible = false;
+            this.scrollingTextButton.CheckedChanged += new System.EventHandler(this.scrollingTextButton_CheckedChanged);
             // 
             // specialEffectButton
             // 
@@ -296,16 +284,16 @@ namespace Vision
             this.specialEffectButton.TabStop = true;
             this.specialEffectButton.Text = "Special Effects";
             this.specialEffectButton.UseVisualStyleBackColor = true;
-            this.specialEffectButton.Visible = false;
+            this.specialEffectButton.CheckedChanged += new System.EventHandler(this.specialEffectButton_CheckedChanged);
             // 
             // transitionSpeedComboBox
             // 
+            this.transitionSpeedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transitionSpeedComboBox.FormattingEnabled = true;
             this.transitionSpeedComboBox.Location = new System.Drawing.Point(395, 108);
             this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
             this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
             this.transitionSpeedComboBox.TabIndex = 9;
-            this.transitionSpeedComboBox.Visible = false;
             // 
             // transitionSpeedLabel
             // 
@@ -315,10 +303,10 @@ namespace Vision
             this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
             this.transitionSpeedLabel.TabIndex = 8;
             this.transitionSpeedLabel.Text = "Transition Speed:";
-            this.transitionSpeedLabel.Visible = false;
             // 
             // colorComboBox
             // 
+            this.colorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.colorComboBox.FormattingEnabled = true;
             this.colorComboBox.Items.AddRange(new object[] {
             "Aqua",
@@ -330,7 +318,6 @@ namespace Vision
             this.colorComboBox.Name = "colorComboBox";
             this.colorComboBox.Size = new System.Drawing.Size(191, 21);
             this.colorComboBox.TabIndex = 7;
-            this.colorComboBox.Visible = false;
             this.colorComboBox.SelectedIndexChanged += new System.EventHandler(this.colorComboBox_SelectedIndexChanged);
             // 
             // colorLabel
@@ -341,16 +328,15 @@ namespace Vision
             this.colorLabel.Size = new System.Drawing.Size(34, 13);
             this.colorLabel.TabIndex = 6;
             this.colorLabel.Text = "Color:";
-            this.colorLabel.Visible = false;
             // 
             // repeatComboBox
             // 
+            this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.repeatComboBox.FormattingEnabled = true;
             this.repeatComboBox.Location = new System.Drawing.Point(395, 70);
             this.repeatComboBox.Name = "repeatComboBox";
             this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
             this.repeatComboBox.TabIndex = 5;
-            this.repeatComboBox.Visible = false;
             // 
             // repeatLabel
             // 
@@ -360,16 +346,15 @@ namespace Vision
             this.repeatLabel.Size = new System.Drawing.Size(45, 13);
             this.repeatLabel.TabIndex = 4;
             this.repeatLabel.Text = "Repeat:";
-            this.repeatLabel.Visible = false;
             // 
             // transitionComboBox
             // 
+            this.transitionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transitionComboBox.FormattingEnabled = true;
             this.transitionComboBox.Location = new System.Drawing.Point(77, 67);
             this.transitionComboBox.Name = "transitionComboBox";
             this.transitionComboBox.Size = new System.Drawing.Size(191, 21);
             this.transitionComboBox.TabIndex = 3;
-            this.transitionComboBox.Visible = false;
             // 
             // transitionLabel
             // 
@@ -379,7 +364,6 @@ namespace Vision
             this.transitionLabel.Size = new System.Drawing.Size(56, 13);
             this.transitionLabel.TabIndex = 2;
             this.transitionLabel.Text = "Transition:";
-            this.transitionLabel.Visible = false;
             // 
             // textTextBox
             // 
@@ -397,71 +381,25 @@ namespace Vision
             this.textLabel.Size = new System.Drawing.Size(34, 13);
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "Text: ";
-            this.textLabel.Visible = false;
             // 
-            // uploadButton
+            // loadXMLButton
             // 
-            this.uploadButton.Location = new System.Drawing.Point(785, 27);
-            this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(75, 23);
-            this.uploadButton.TabIndex = 4;
-            this.uploadButton.Text = "Upload";
-            this.uploadButton.UseVisualStyleBackColor = true;
-            this.uploadButton.Visible = false;
-            // 
-            // browseButton
-            // 
-            this.browseButton.Location = new System.Drawing.Point(683, 27);
-            this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(75, 23);
-            this.browseButton.TabIndex = 3;
-            this.browseButton.Text = "Browse";
-            this.browseButton.UseVisualStyleBackColor = true;
-            this.browseButton.Visible = false;
-            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            this.loadXMLButton.Location = new System.Drawing.Point(938, 473);
+            this.loadXMLButton.Name = "loadXMLButton";
+            this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
+            this.loadXMLButton.TabIndex = 3;
+            this.loadXMLButton.Text = "Load XML";
+            this.loadXMLButton.UseVisualStyleBackColor = true;
+            this.loadXMLButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // fileLocationTextBox
             // 
-            this.fileLocationTextBox.Location = new System.Drawing.Point(193, 29);
+            this.fileLocationTextBox.Location = new System.Drawing.Point(74, 17);
             this.fileLocationTextBox.Name = "fileLocationTextBox";
             this.fileLocationTextBox.ReadOnly = true;
             this.fileLocationTextBox.Size = new System.Drawing.Size(448, 20);
             this.fileLocationTextBox.TabIndex = 2;
             this.fileLocationTextBox.Visible = false;
-            // 
-            // uploadMessageFromFileButton
-            // 
-            this.uploadMessageFromFileButton.AutoSize = true;
-            this.uploadMessageFromFileButton.Location = new System.Drawing.Point(6, 29);
-            this.uploadMessageFromFileButton.Name = "uploadMessageFromFileButton";
-            this.uploadMessageFromFileButton.Size = new System.Drawing.Size(150, 17);
-            this.uploadMessageFromFileButton.TabIndex = 1;
-            this.uploadMessageFromFileButton.TabStop = true;
-            this.uploadMessageFromFileButton.Text = "Upload Message From File";
-            this.uploadMessageFromFileButton.UseVisualStyleBackColor = true;
-            this.uploadMessageFromFileButton.CheckedChanged += new System.EventHandler(this.uploadMessageFromFileButton_CheckedChanged);
-            // 
-            // createNewMessageButton
-            // 
-            this.createNewMessageButton.AutoSize = true;
-            this.createNewMessageButton.Location = new System.Drawing.Point(6, 6);
-            this.createNewMessageButton.Name = "createNewMessageButton";
-            this.createNewMessageButton.Size = new System.Drawing.Size(127, 17);
-            this.createNewMessageButton.TabIndex = 0;
-            this.createNewMessageButton.TabStop = true;
-            this.createNewMessageButton.Text = "Create New Message";
-            this.createNewMessageButton.UseVisualStyleBackColor = true;
-            this.createNewMessageButton.CheckedChanged += new System.EventHandler(this.createNewMessageButton_CheckedChanged);
-            // 
-            // imageTab
-            // 
-            this.imageTab.Location = new System.Drawing.Point(4, 22);
-            this.imageTab.Name = "imageTab";
-            this.imageTab.Padding = new System.Windows.Forms.Padding(3);
-            this.imageTab.Size = new System.Drawing.Size(924, 381);
-            this.imageTab.TabIndex = 1;
-            this.imageTab.Text = "Image";
-            this.imageTab.UseVisualStyleBackColor = true;
             // 
             // segmentPanel14
             // 
@@ -492,7 +430,7 @@ namespace Vision
             this.closeButton14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton14.FlatAppearance.BorderSize = 0;
             this.closeButton14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton14.ForeColor = System.Drawing.Color.White;
             this.closeButton14.Location = new System.Drawing.Point(87, 0);
@@ -531,7 +469,7 @@ namespace Vision
             this.closeButton13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton13.FlatAppearance.BorderSize = 0;
             this.closeButton13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton13.ForeColor = System.Drawing.Color.White;
             this.closeButton13.Location = new System.Drawing.Point(87, 0);
@@ -570,7 +508,7 @@ namespace Vision
             this.closeButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton12.FlatAppearance.BorderSize = 0;
             this.closeButton12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton12.ForeColor = System.Drawing.Color.White;
             this.closeButton12.Location = new System.Drawing.Point(87, 0);
@@ -609,7 +547,7 @@ namespace Vision
             this.closeButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton11.FlatAppearance.BorderSize = 0;
             this.closeButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton11.ForeColor = System.Drawing.Color.White;
             this.closeButton11.Location = new System.Drawing.Point(87, 0);
@@ -648,7 +586,7 @@ namespace Vision
             this.closeButton10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton10.FlatAppearance.BorderSize = 0;
             this.closeButton10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton10.ForeColor = System.Drawing.Color.White;
             this.closeButton10.Location = new System.Drawing.Point(87, 0);
@@ -687,7 +625,7 @@ namespace Vision
             this.closeButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton9.FlatAppearance.BorderSize = 0;
             this.closeButton9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton9.ForeColor = System.Drawing.Color.White;
             this.closeButton9.Location = new System.Drawing.Point(87, 0);
@@ -726,7 +664,7 @@ namespace Vision
             this.closeButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton8.FlatAppearance.BorderSize = 0;
             this.closeButton8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton8.ForeColor = System.Drawing.Color.White;
             this.closeButton8.Location = new System.Drawing.Point(87, 0);
@@ -765,7 +703,7 @@ namespace Vision
             this.closeButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton7.FlatAppearance.BorderSize = 0;
             this.closeButton7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton7.ForeColor = System.Drawing.Color.White;
             this.closeButton7.Location = new System.Drawing.Point(87, 0);
@@ -804,7 +742,7 @@ namespace Vision
             this.closeButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton6.FlatAppearance.BorderSize = 0;
             this.closeButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton6.ForeColor = System.Drawing.Color.White;
             this.closeButton6.Location = new System.Drawing.Point(87, 0);
@@ -843,7 +781,7 @@ namespace Vision
             this.closeButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton5.FlatAppearance.BorderSize = 0;
             this.closeButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton5.ForeColor = System.Drawing.Color.White;
             this.closeButton5.Location = new System.Drawing.Point(87, 0);
@@ -882,7 +820,7 @@ namespace Vision
             this.closeButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton4.FlatAppearance.BorderSize = 0;
             this.closeButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton4.ForeColor = System.Drawing.Color.White;
             this.closeButton4.Location = new System.Drawing.Point(87, 0);
@@ -1158,7 +1096,7 @@ namespace Vision
             this.closeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton1.FlatAppearance.BorderSize = 0;
             this.closeButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton1.ForeColor = System.Drawing.Color.White;
             this.closeButton1.Location = new System.Drawing.Point(87, 0);
@@ -1197,7 +1135,7 @@ namespace Vision
             this.closeButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton2.FlatAppearance.BorderSize = 0;
             this.closeButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton2.ForeColor = System.Drawing.Color.White;
             this.closeButton2.Location = new System.Drawing.Point(87, 0);
@@ -1236,7 +1174,7 @@ namespace Vision
             this.closeButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton3.FlatAppearance.BorderSize = 0;
             this.closeButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.closeButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.closeButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton3.ForeColor = System.Drawing.Color.White;
             this.closeButton3.Location = new System.Drawing.Point(87, 0);
@@ -1252,47 +1190,27 @@ namespace Vision
             this.logoLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.logoLabel.Location = new System.Drawing.Point(0, 0);
+            this.logoLabel.Location = new System.Drawing.Point(-1, 0);
             this.logoLabel.Name = "logoLabel";
             this.logoLabel.Size = new System.Drawing.Size(235, 55);
             this.logoLabel.TabIndex = 31;
             this.logoLabel.Text = "Discovery";
             // 
-            // noTextPopUp
-            // 
-            this.noTextPopUp.AutoSize = true;
-            this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
-            this.noTextPopUp.Location = new System.Drawing.Point(402, 26);
-            this.noTextPopUp.Name = "noTextPopUp";
-            this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
-            this.noTextPopUp.TabIndex = 17;
-            this.noTextPopUp.Text = "Please Enter Some Text Before Continuing.";
-            this.noTextPopUp.Visible = false;
-            // 
-            // noOptionSelectedPopUp
-            // 
-            this.noOptionSelectedPopUp.AutoSize = true;
-            this.noOptionSelectedPopUp.ForeColor = System.Drawing.Color.Red;
-            this.noOptionSelectedPopUp.Location = new System.Drawing.Point(164, 19);
-            this.noOptionSelectedPopUp.Name = "noOptionSelectedPopUp";
-            this.noOptionSelectedPopUp.Size = new System.Drawing.Size(119, 13);
-            this.noOptionSelectedPopUp.TabIndex = 6;
-            this.noOptionSelectedPopUp.Text = "Please Select A Option.";
-            this.noOptionSelectedPopUp.Visible = false;
-            // 
             // textTabLabel
             // 
             this.textTabLabel.AutoSize = true;
-            this.textTabLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textTabLabel.BackColor = System.Drawing.Color.White;
             this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTabLabel.ForeColor = System.Drawing.Color.White;
-            this.textTabLabel.Location = new System.Drawing.Point(235, 0);
+            this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTabLabel.ForeColor = System.Drawing.Color.Black;
+            this.textTabLabel.Location = new System.Drawing.Point(234, 1);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.textTabLabel.Size = new System.Drawing.Size(85, 57);
+            this.textTabLabel.Size = new System.Drawing.Size(80, 55);
             this.textTabLabel.TabIndex = 32;
             this.textTabLabel.Text = "Text";
+            this.textTabLabel.BackColorChanged += new System.EventHandler(this.textTabLabel_BackColorChanged);
+            this.textTabLabel.Click += new System.EventHandler(this.textTabLabel_Click);
             this.textTabLabel.MouseEnter += new System.EventHandler(this.textTabLabel_MouseEnter);
             this.textTabLabel.MouseLeave += new System.EventHandler(this.textTabLabel_MouseLeave);
             // 
@@ -1301,16 +1219,36 @@ namespace Vision
             this.imageTabLabel.AutoSize = true;
             this.imageTabLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(320, 0);
+            this.imageTabLabel.Location = new System.Drawing.Point(313, 1);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.imageTabLabel.Size = new System.Drawing.Size(114, 57);
+            this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
             this.imageTabLabel.TabIndex = 33;
             this.imageTabLabel.Text = "Image";
+            this.imageTabLabel.Click += new System.EventHandler(this.imageTabLabel_Click);
             this.imageTabLabel.MouseEnter += new System.EventHandler(this.imageTabLabel_MouseEnter);
             this.imageTabLabel.MouseLeave += new System.EventHandler(this.imageTabLabel_MouseLeave);
+            // 
+            // textPanel
+            // 
+            this.textPanel.BackColor = System.Drawing.Color.White;
+            this.textPanel.Controls.Add(this.createASegmentGroupBox);
+            this.textPanel.Location = new System.Drawing.Point(235, 55);
+            this.textPanel.Name = "textPanel";
+            this.textPanel.Size = new System.Drawing.Size(941, 406);
+            this.textPanel.TabIndex = 34;
+            // 
+            // imagePanel
+            // 
+            this.imagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imagePanel.Controls.Add(this.fileLocationTextBox);
+            this.imagePanel.Location = new System.Drawing.Point(458, 26);
+            this.imagePanel.Name = "imagePanel";
+            this.imagePanel.Size = new System.Drawing.Size(941, 406);
+            this.imagePanel.TabIndex = 35;
+            this.imagePanel.Visible = false;
             // 
             // marquee1
             // 
@@ -1328,23 +1266,22 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.Controls.Add(this.textPanel);
+            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.imageTabLabel);
+            this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.saveAndExitButton);
             this.Controls.Add(this.saveAndRunButton);
-            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.marquee1);
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
-            this.tabControl.ResumeLayout(false);
-            this.textTab.ResumeLayout(false);
-            this.textTab.PerformLayout();
-            this.createAMessageGroupBox.ResumeLayout(false);
-            this.createAMessageGroupBox.PerformLayout();
+            this.createASegmentGroupBox.ResumeLayout(false);
+            this.createASegmentGroupBox.PerformLayout();
             this.segmentPanel14.ResumeLayout(false);
             this.segmentPanel14.PerformLayout();
             this.segmentPanel13.ResumeLayout(false);
@@ -1374,6 +1311,9 @@ namespace Vision
             this.segmentPanel2.PerformLayout();
             this.segmentPanel3.ResumeLayout(false);
             this.segmentPanel3.PerformLayout();
+            this.textPanel.ResumeLayout(false);
+            this.imagePanel.ResumeLayout(false);
+            this.imagePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1381,8 +1321,6 @@ namespace Vision
 
         #endregion
         private System.Windows.Forms.Button populateMarqueeButton;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage imageTab;
         private System.Windows.Forms.Button addSegmentButton1;
         private System.Windows.Forms.Button addSegmentButton2;
         private System.Windows.Forms.Button addSegmentButton3;
@@ -1407,8 +1345,7 @@ namespace Vision
         private System.Windows.Forms.Panel segmentPanel2;
         private System.Windows.Forms.Label segmentLabel2;
         private System.Windows.Forms.Button closeButton2;
-        private System.Windows.Forms.TabPage textTab;
-        private System.Windows.Forms.GroupBox createAMessageGroupBox;
+        private System.Windows.Forms.GroupBox createASegmentGroupBox;
         private System.Windows.Forms.Label exitEffectLabel;
         private System.Windows.Forms.Label staticEffectLabel;
         private System.Windows.Forms.Label entranceEffectLabel;
@@ -1427,11 +1364,8 @@ namespace Vision
         private System.Windows.Forms.Label transitionLabel;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
-        private System.Windows.Forms.Button uploadButton;
-        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.Button loadXMLButton;
         private System.Windows.Forms.TextBox fileLocationTextBox;
-        private System.Windows.Forms.RadioButton uploadMessageFromFileButton;
-        private System.Windows.Forms.RadioButton createNewMessageButton;
         private System.Windows.Forms.Panel segmentPanel3;
         private System.Windows.Forms.Label segmentLabel3;
         private System.Windows.Forms.Button closeButton3;
@@ -1469,9 +1403,10 @@ namespace Vision
         private System.Windows.Forms.Label segmentLabel4;
         private System.Windows.Forms.Button closeButton4;
         private System.Windows.Forms.Label noTextPopUp;
-        private System.Windows.Forms.Label noOptionSelectedPopUp;
         private System.Windows.Forms.Label textTabLabel;
         private System.Windows.Forms.Label imageTabLabel;
+        private System.Windows.Forms.Panel textPanel;
+        private System.Windows.Forms.Panel imagePanel;
     }
 }
 
