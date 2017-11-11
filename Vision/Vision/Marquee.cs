@@ -231,17 +231,38 @@ namespace Vision
             Invalidate();
         }
 
-        //Heather - edited on 11/05/17
+        //Heather - edited on 11/10/17
+        //Displays segment by scrolling top half in from left and bottom half in from left.
         public void displaySplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
             clearMarquee(backgroundColor);
+            Segment seg = segment;
+            Color col = backgroundColor;
+            int speed = scrollSpeed;
+
+            //causes both methods to run concurrently.
+            Parallel.Invoke(() =>
+            {
+                displayUpperSplitEntrance(seg, col, speed);
+            },
+
+            () =>
+            {
+                displayLowerSplitEntrance(seg, col, speed);
+            }
+            );          
+        }
+        //Heather - Created on 11/10/17
+        //private method that will display upper half of segment.  
+        //To be used in displaySplitEntrance that will run concurrently with lower half
+        private void displayUpperSplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+           
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 4; //gives stop column for top half scrolling in from right
-            int bottomColumnStop = (96 - segmentLength) / 2;   //gives stop column for bottom half in from left.           
+            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 4; //gives stop column for top half scrolling in from right                     
 
-            //scroll top half from left-side of screen, and bottom half from right-side of screen. 
-            //Stop scrolling when they line up.
+            //scroll top half from left-side of screen 
             for (int s = segmentLength - 1; s > -1; s--)
             {
                 //Move top half of dots to the right, starting at the topColumnStop column
@@ -289,34 +310,43 @@ namespace Vision
                 Thread.Sleep(scrollSpeed);
                 Invalidate();
             }
+        }
+        //Heather - Created on 11/10/17
+        //private method that will display lower half of message scrolling in.
+        //Will be called in displaySplitEntrance and used to run concurrently with upper half method
+        private void displayLowerSplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        {   
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;           
+            int bottomColumnStop = (96 - segmentLength) / 2;   //gives stop column for bottom half in from left. 
+
             //scroll bottom half from left
-
             for (int q = 0; q < segmentLength; q++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
                 {
-                    //Move all dots 1 column left
-                    for (int c = 2; c < 93; c++)
+                    for (int row = 8; row < 14; row++)
                     {
-                        for (int row = 8; row < 14; row++)
-                        {
-                            setDot(row, c, getDotFore(row, c + 1));
-                        }
+                        setDot(row, c, getDotFore(row, c + 1));
                     }
-
-                    //Set last column to next column in segment
-                    for (int r = 8; r < 14; r++)
-                    {
-                        if (currSegment[r - 2][q].Equals('1'))
-                        {
-                            setDot(r, 93, segment.onColor);
-                        }
-                        else if (currSegment[r - 2][q].Equals('0'))
-                        {
-                            setDot(r, 93, backgroundColor);
-                        }
-                    }
-                    Invalidate();
-                    Thread.Sleep(scrollSpeed);
                 }
+
+                //Set last column to next column in segment
+                for (int r = 8; r < 14; r++)
+                {
+                    if (currSegment[r - 2][q].Equals('1'))
+                    {
+                        setDot(r, 93, segment.onColor);
+                    }
+                    else if (currSegment[r - 2][q].Equals('0'))
+                    {
+                        setDot(r, 93, backgroundColor);
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(scrollSpeed);
+            }
             //////center lower half of message
             for (int i = 0; i < bottomColumnStop; i++)
             {
@@ -338,7 +368,6 @@ namespace Vision
                 Invalidate();
             }
         }
-        
 
         //Ahmad
         public void displayUpEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
@@ -645,10 +674,28 @@ namespace Vision
          * 
          */
         #region Exit Effects
-        //Heather edited on 11/05/17
+        //Heather edited on 11/10/17
+        //Uses 2 helper methods to split and exit the segment concurrently
         public void displaySplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
         {
+            //causes both methods to run concurrently.
+            Parallel.Invoke(() =>
+            {
+                displayUpperSplitExit(segment, backgroundColor, scrollSpeed);
+            },
 
+            () =>
+            {
+                displayLowerSplitExit(segment, backgroundColor, scrollSpeed);
+            }
+            );
+
+        }
+
+        //Heather - Created on 11/10/17
+        //Private method that is used in the displaySplitExit method.
+        private void displayUpperSplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
             //Exit top half to right
             for (int i = 0; i < 94; i++)
             {
@@ -666,8 +713,14 @@ namespace Vision
                     setDot(r, 1, backgroundColor);
                 }
                 Thread.Sleep(scrollSpeed);
-                Invalidate();              
+                Invalidate();
             }
+        }
+
+        //Heather - Created on 11/10/17
+        //Private method that is used in the displaySplitExit method. Moves lower half of message off screen to the left
+        private void displayLowerSplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
             //Exit rest of segment to the left
             for (int i = 0; i < 94; i++)
             {
