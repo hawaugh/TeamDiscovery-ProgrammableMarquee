@@ -41,6 +41,7 @@ namespace Vision
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.noTextPopUp = new System.Windows.Forms.Label();
             this.exitEffectLabel = new System.Windows.Forms.Label();
             this.staticEffectLabel = new System.Windows.Forms.Label();
@@ -56,8 +57,7 @@ namespace Vision
             this.colorLabel = new System.Windows.Forms.Label();
             this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.repeatLabel = new System.Windows.Forms.Label();
-            this.transitionComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionLabel = new System.Windows.Forms.Label();
+            this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.loadXMLButton = new System.Windows.Forms.Button();
@@ -112,7 +112,7 @@ namespace Vision
             this.saveAndExitButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.segmentPanel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.segmentLabel1 = new System.Windows.Forms.Label();
             this.closeButton1 = new System.Windows.Forms.Button();
             this.segmentPanel2 = new System.Windows.Forms.Panel();
             this.segmentLabel2 = new System.Windows.Forms.Label();
@@ -158,6 +158,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
+            this.createASegmentGroupBox.Controls.Add(this.label2);
             this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.staticEffectLabel);
@@ -173,16 +174,23 @@ namespace Vision
             this.createASegmentGroupBox.Controls.Add(this.colorLabel);
             this.createASegmentGroupBox.Controls.Add(this.repeatComboBox);
             this.createASegmentGroupBox.Controls.Add(this.repeatLabel);
-            this.createASegmentGroupBox.Controls.Add(this.transitionComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.transitionLabel);
+            this.createASegmentGroupBox.Controls.Add(this.borderEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.textTextBox);
             this.createASegmentGroupBox.Controls.Add(this.textLabel);
             this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
             this.createASegmentGroupBox.Name = "createASegmentGroupBox";
-            this.createASegmentGroupBox.Size = new System.Drawing.Size(711, 237);
+            this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 237);
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
-            this.createASegmentGroupBox.Text = "Create A Segment";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Border Effect:";
             // 
             // noTextPopUp
             // 
@@ -240,6 +248,9 @@ namespace Vision
             // 
             this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staticEffectComboBox.FormattingEnabled = true;
+            this.staticEffectComboBox.Items.AddRange(new object[] {
+            "Random Dots",
+            "Fade"});
             this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
             this.staticEffectComboBox.Name = "staticEffectComboBox";
             this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -290,7 +301,7 @@ namespace Vision
             // 
             this.transitionSpeedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(395, 108);
+            this.transitionSpeedComboBox.Location = new System.Drawing.Point(423, 108);
             this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
             this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
             this.transitionSpeedComboBox.TabIndex = 9;
@@ -314,7 +325,7 @@ namespace Vision
             "BlueViolet",
             "Cyan",
             "Fuchsia"});
-            this.colorComboBox.Location = new System.Drawing.Point(77, 108);
+            this.colorComboBox.Location = new System.Drawing.Point(92, 108);
             this.colorComboBox.Name = "colorComboBox";
             this.colorComboBox.Size = new System.Drawing.Size(191, 21);
             this.colorComboBox.TabIndex = 7;
@@ -323,7 +334,7 @@ namespace Vision
             // colorLabel
             // 
             this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(34, 111);
+            this.colorLabel.Location = new System.Drawing.Point(14, 111);
             this.colorLabel.Name = "colorLabel";
             this.colorLabel.Size = new System.Drawing.Size(34, 13);
             this.colorLabel.TabIndex = 6;
@@ -333,7 +344,7 @@ namespace Vision
             // 
             this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.repeatComboBox.FormattingEnabled = true;
-            this.repeatComboBox.Location = new System.Drawing.Point(395, 70);
+            this.repeatComboBox.Location = new System.Drawing.Point(423, 70);
             this.repeatComboBox.Name = "repeatComboBox";
             this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
             this.repeatComboBox.TabIndex = 5;
@@ -341,29 +352,20 @@ namespace Vision
             // repeatLabel
             // 
             this.repeatLabel.AutoSize = true;
-            this.repeatLabel.Location = new System.Drawing.Point(335, 70);
+            this.repeatLabel.Location = new System.Drawing.Point(341, 70);
             this.repeatLabel.Name = "repeatLabel";
             this.repeatLabel.Size = new System.Drawing.Size(45, 13);
             this.repeatLabel.TabIndex = 4;
             this.repeatLabel.Text = "Repeat:";
             // 
-            // transitionComboBox
+            // borderEffectComboBox
             // 
-            this.transitionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.transitionComboBox.FormattingEnabled = true;
-            this.transitionComboBox.Location = new System.Drawing.Point(77, 67);
-            this.transitionComboBox.Name = "transitionComboBox";
-            this.transitionComboBox.Size = new System.Drawing.Size(191, 21);
-            this.transitionComboBox.TabIndex = 3;
-            // 
-            // transitionLabel
-            // 
-            this.transitionLabel.AutoSize = true;
-            this.transitionLabel.Location = new System.Drawing.Point(14, 70);
-            this.transitionLabel.Name = "transitionLabel";
-            this.transitionLabel.Size = new System.Drawing.Size(56, 13);
-            this.transitionLabel.TabIndex = 2;
-            this.transitionLabel.Text = "Transition:";
+            this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.borderEffectComboBox.FormattingEnabled = true;
+            this.borderEffectComboBox.Location = new System.Drawing.Point(92, 67);
+            this.borderEffectComboBox.Name = "borderEffectComboBox";
+            this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.borderEffectComboBox.TabIndex = 3;
             // 
             // textTextBox
             // 
@@ -1071,7 +1073,7 @@ namespace Vision
             // segmentPanel1
             // 
             this.segmentPanel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.segmentPanel1.Controls.Add(this.label1);
+            this.segmentPanel1.Controls.Add(this.segmentLabel1);
             this.segmentPanel1.Controls.Add(this.closeButton1);
             this.segmentPanel1.Location = new System.Drawing.Point(3, 3);
             this.segmentPanel1.Name = "segmentPanel1";
@@ -1079,16 +1081,16 @@ namespace Vision
             this.segmentPanel1.TabIndex = 6;
             this.segmentPanel1.Click += new System.EventHandler(this.segmentPanel1_Click);
             // 
-            // label1
+            // segmentLabel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(17, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Segment 1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.segmentLabel1.AutoSize = true;
+            this.segmentLabel1.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel1.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel1.Name = "segmentLabel1";
+            this.segmentLabel1.Size = new System.Drawing.Size(58, 13);
+            this.segmentLabel1.TabIndex = 8;
+            this.segmentLabel1.Text = "Segment 1";
+            this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
             // 
             // closeButton1
             // 
@@ -1341,7 +1343,7 @@ namespace Vision
         private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.Panel segmentPanel1;
         private System.Windows.Forms.Button closeButton1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label segmentLabel1;
         private System.Windows.Forms.Panel segmentPanel2;
         private System.Windows.Forms.Label segmentLabel2;
         private System.Windows.Forms.Button closeButton2;
@@ -1360,8 +1362,7 @@ namespace Vision
         private System.Windows.Forms.Label colorLabel;
         private System.Windows.Forms.ComboBox repeatComboBox;
         private System.Windows.Forms.Label repeatLabel;
-        private System.Windows.Forms.ComboBox transitionComboBox;
-        private System.Windows.Forms.Label transitionLabel;
+        private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
         private System.Windows.Forms.Button loadXMLButton;
@@ -1407,6 +1408,7 @@ namespace Vision
         private System.Windows.Forms.Label imageTabLabel;
         private System.Windows.Forms.Panel textPanel;
         private System.Windows.Forms.Panel imagePanel;
+        private System.Windows.Forms.Label label2;
     }
 }
 

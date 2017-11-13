@@ -82,6 +82,12 @@ namespace Vision
             }
         }
 
+        /*
+         * 
+         *   Segment Buttons
+         * 
+         */
+        #region Segment Buttons
         private void addSegmentButton1_Click(object sender, EventArgs e)
         {        
             /*
@@ -196,19 +202,6 @@ namespace Vision
             segmentPanel14.Visible = true;
         }
 
-        private void saveAndExitButton_Click(object sender, EventArgs e)
-        {
-            //Closes the form
-            Application.Exit();
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {
-                    myDisplayThread.Abort();
-                }
-            }
-        }
-
         private void resetSegments()
         {
             segmentPanel1.BackColor = Color.Gray;
@@ -225,154 +218,6 @@ namespace Vision
             segmentPanel12.BackColor = Color.Gray;
             segmentPanel13.BackColor = Color.Gray;
             segmentPanel14.BackColor = Color.Gray;
-        }
-
-        private void saveAndRunButton_Click(object sender, EventArgs e)
-        {
-            //Start at the highest to decided how big the array should be.
-            //If segment14 is visable then the user added all segments.
-            if (segmentPanel14.Visible == true)
-            {
-                
-            }
-            else if (segmentPanel13.Visible == true)
-            {
-
-            }
-            else if (segmentPanel12.Visible == true)
-            {
-
-            }
-            else if (segmentPanel11.Visible == true)
-            {
-
-            }
-            else if (segmentPanel10.Visible == true)
-            {
-
-            }
-            else if (segmentPanel9.Visible == true)
-            {
-
-            }
-            else if (segmentPanel8.Visible == true)
-            {
-
-            }
-            else if (segmentPanel7.Visible == true)
-            {
-
-            }
-            else if (segmentPanel6.Visible == true)
-            {
-
-            }
-            else if (segmentPanel5.Visible == true)
-            {
-
-            }
-            else if (segmentPanel4.Visible == true)
-            {
-
-            }
-            else if (segmentPanel3.Visible == true)
-            {
-
-            }
-            else if (segmentPanel2.Visible == true)
-            {
-                /* Test data */
-                /*
-                Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
-                Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
-                Image myImageSegment = new Image("..\\..\\panthers.jpg");
-                Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 2, 4);
-                mySegmentArray = new Segment[] { myThirdSegment, mySecondSegment, myImageSegment, };
-                Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
-                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-                myDisplayThread.Start();
-                */
-            }
-            else //only segment one is active.
-            {
-                if (myDisplayThread != null)
-                {
-                    if (myDisplayThread.IsAlive)
-                    {
-                        myDisplayThread.Abort();
-                    }
-                }
-                clearForMarquee();
-                marquee1.Visible = true;
-                //Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
-                //segment1.onColor = Color.Blue;
-                mySegmentArray = new Segment[] { mySegmentArray[0] };  //make direct calls to indexes for now, but once we get ignore field up this line will go away (since the whole array will be passed every time)
-                Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
-                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-                myDisplayThread.Start();
-            }
-        }
-
-        private void textTextBox_TextChanged(object sender, EventArgs e)
-        {
-            noTextPopUp.Visible = false;
-            //Test which segment button is active
-            if (segmentPanel14.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[13].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel13.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[12].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel12.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[11].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel11.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[10].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel10.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[9].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel9.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[8].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel8.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[7].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel7.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[6].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel6.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[5].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel5.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[4].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel4.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[3].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel3.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[2].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel2.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[1].messageText = textTextBox.Text;
-            }
-            else if (segmentPanel1.BackColor == Color.DeepSkyBlue)
-            {
-                mySegmentArray[0].messageText = textTextBox.Text;
-            }
         }
 
         private void segmentPanel1_Click(object sender, EventArgs e)
@@ -654,46 +499,15 @@ namespace Vision
             //Adds the Text thats saved the the segment into the TextBox
             textTextBox.Text = mySegmentArray[0].messageText;
         }
+        #endregion
 
-        private void clearForMarquee()
-        {
-            fileLocationTextBox.Visible = false;
-            loadXMLButton.Visible = false;
-            segmentPanel1.Visible = false;
-            segmentPanel2.Visible = false;
-            segmentPanel3.Visible = false;
-            segmentPanel4.Visible = false;
-            segmentPanel5.Visible = false;
-            segmentPanel6.Visible = false;
-            segmentPanel7.Visible = false;
-            segmentPanel8.Visible = false;
-            segmentPanel9.Visible = false;
-            segmentPanel10.Visible = false;
-            segmentPanel11.Visible = false;
-            segmentPanel12.Visible = false;
-            segmentPanel13.Visible = false;
-            segmentPanel14.Visible = false;
-            addSegmentButton1.Visible = false;
-            addSegmentButton2.Visible = false;
-            addSegmentButton3.Visible = false;
-            addSegmentButton4.Visible = false;
-            addSegmentButton5.Visible = false;
-            addSegmentButton6.Visible = false;
-            addSegmentButton7.Visible = false;
-            addSegmentButton8.Visible = false;
-            addSegmentButton9.Visible = false;
-            addSegmentButton10.Visible = false;
-            addSegmentButton11.Visible = false;
-            addSegmentButton12.Visible = false;
-            addSegmentButton13.Visible = false;
-            flowLayoutPanel1.Visible = false;
-            logoLabel.Visible = false;
-            textTabLabel.Visible = false;
-            imageTabLabel.Visible = false;
-            textPanel.Visible = false;
-            imagePanel.Visible = false;
-        }
 
+        /*
+         * 
+         *   ComboBoxes
+         * 
+         */
+        #region ComboBoxes
         private void colorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //noTextPopUp.Visible = false;
@@ -783,6 +597,7 @@ namespace Vision
                 return Color.Yellow;
             }
         }
+        #endregion
 
         private void textTabLabel_MouseEnter(object sender, EventArgs e)
         {
@@ -873,6 +688,205 @@ namespace Vision
                 exitEffectLabel.Visible = false;
                 exitEffectComboBox.Visible = false;
             }
+        }
+
+        private void saveAndExitButton_Click(object sender, EventArgs e)
+        {
+            //Closes the form
+            Application.Exit();
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Abort();
+                }
+            }
+        }
+        private void saveAndRunButton_Click(object sender, EventArgs e)
+        {
+            //Start at the highest to decided how big the array should be.
+            //If segment14 is visable then the user added all segments.
+            if (segmentPanel14.Visible == true)
+            {
+
+            }
+            else if (segmentPanel13.Visible == true)
+            {
+
+            }
+            else if (segmentPanel12.Visible == true)
+            {
+
+            }
+            else if (segmentPanel11.Visible == true)
+            {
+
+            }
+            else if (segmentPanel10.Visible == true)
+            {
+
+            }
+            else if (segmentPanel9.Visible == true)
+            {
+
+            }
+            else if (segmentPanel8.Visible == true)
+            {
+
+            }
+            else if (segmentPanel7.Visible == true)
+            {
+
+            }
+            else if (segmentPanel6.Visible == true)
+            {
+
+            }
+            else if (segmentPanel5.Visible == true)
+            {
+
+            }
+            else if (segmentPanel4.Visible == true)
+            {
+
+            }
+            else if (segmentPanel3.Visible == true)
+            {
+
+            }
+            else if (segmentPanel2.Visible == true)
+            {
+                /* Test data */
+                /*
+                Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
+                Segment mySecondSegment = new Segment("Discovery", Color.Aqua, -1, -1, -1);
+                Image myImageSegment = new Image("..\\..\\panthers.jpg");
+                Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 2, 4);
+                mySegmentArray = new Segment[] { myThirdSegment, mySecondSegment, myImageSegment, };
+                Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
+                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
+                myDisplayThread.Start();
+                */
+            }
+            else //only segment one is active.
+            {
+                if (myDisplayThread != null)
+                {
+                    if (myDisplayThread.IsAlive)
+                    {
+                        myDisplayThread.Abort();
+                    }
+                }
+                clearForMarquee();
+                marquee1.Visible = true;
+                //Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);
+                //segment1.onColor = Color.Blue;
+                mySegmentArray = new Segment[] { mySegmentArray[0] };  //make direct calls to indexes for now, but once we get ignore field up this line will go away (since the whole array will be passed every time)
+                Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
+                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
+                myDisplayThread.Start();
+            }
+        }
+
+        private void textTextBox_TextChanged(object sender, EventArgs e)
+        {
+            noTextPopUp.Visible = false;
+            //Test which segment button is active
+            if (segmentPanel14.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[13].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel13.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[12].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel12.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[11].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel11.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[10].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel10.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[9].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel9.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[8].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel8.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[7].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel7.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[6].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel6.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[5].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel5.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[4].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel4.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[3].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel3.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[2].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel2.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[1].messageText = textTextBox.Text;
+            }
+            else if (segmentPanel1.BackColor == Color.DeepSkyBlue)
+            {
+                mySegmentArray[0].messageText = textTextBox.Text;
+            }
+        }
+
+        private void clearForMarquee()
+        {
+            fileLocationTextBox.Visible = false;
+            loadXMLButton.Visible = false;
+            segmentPanel1.Visible = false;
+            segmentPanel2.Visible = false;
+            segmentPanel3.Visible = false;
+            segmentPanel4.Visible = false;
+            segmentPanel5.Visible = false;
+            segmentPanel6.Visible = false;
+            segmentPanel7.Visible = false;
+            segmentPanel8.Visible = false;
+            segmentPanel9.Visible = false;
+            segmentPanel10.Visible = false;
+            segmentPanel11.Visible = false;
+            segmentPanel12.Visible = false;
+            segmentPanel13.Visible = false;
+            segmentPanel14.Visible = false;
+            addSegmentButton1.Visible = false;
+            addSegmentButton2.Visible = false;
+            addSegmentButton3.Visible = false;
+            addSegmentButton4.Visible = false;
+            addSegmentButton5.Visible = false;
+            addSegmentButton6.Visible = false;
+            addSegmentButton7.Visible = false;
+            addSegmentButton8.Visible = false;
+            addSegmentButton9.Visible = false;
+            addSegmentButton10.Visible = false;
+            addSegmentButton11.Visible = false;
+            addSegmentButton12.Visible = false;
+            addSegmentButton13.Visible = false;
+            flowLayoutPanel1.Visible = false;
+            logoLabel.Visible = false;
+            textTabLabel.Visible = false;
+            imageTabLabel.Visible = false;
+            textPanel.Visible = false;
+            imagePanel.Visible = false;
         }
     }
 }
