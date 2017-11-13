@@ -54,3 +54,12 @@ C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-Programmable
 C:\Users\brook\OneDrive\Documents\School\project 11-3\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.pdb
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.UIForm.resources
+C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
