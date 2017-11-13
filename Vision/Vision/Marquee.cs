@@ -824,6 +824,7 @@ namespace Vision
             }
 
             //Clear Border
+            clearMarquee(BackColor);
             clearBorder(BackColor);
             Invalidate();
 
