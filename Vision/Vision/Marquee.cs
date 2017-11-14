@@ -429,13 +429,16 @@ namespace Vision
         }
 
         //Ahmad
+        //Edited on 11/14/2017
         public void displayDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            for (int s = 0; s < segmentLength; s++)
-                {
+            int stopMiddle = (14 - segmentLength) / 2;
+
+            for (int i = 0; i < 12; i++)
+            {
                 //Move all dots 1 row up
                  for (int c = 2; c < 94; c++)
                  {
@@ -449,12 +452,12 @@ namespace Vision
                 //Set last row to next row in segment
                 for (int c = 2; c < segmentLength; c++)
                 {
-                    if (currSegment[s][c-2].Equals('1'))
+                   if (currSegment[i][c-2].Equals('1'))
                     {
                         //setDot(14, c, segment.onColor);
                         setDot(14, ((96 - segmentLength) / 2) + c, segment.onColor);
                     }
-                    else if (currSegment[s][c-2].Equals('0'))
+                    else if (currSegment[i][c-2].Equals('0'))
                     {
                         //setDot(14, c, backgroundColor);
                         setDot(14, ((96 - segmentLength) / 2) + c, backgroundColor);
@@ -468,7 +471,7 @@ namespace Vision
 
 
             //Exit rest of segment to the up
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < stopMiddle; i++)
                 {
                     //Move all dots 1 column up
                     for (int c = 2; c < 93; c++)
@@ -730,12 +733,33 @@ namespace Vision
         {
 
         }
-
+        
         //Ahmad
-        public void displayDownExit()
+        //Edited on 11/14/2017
+        public void displayDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
         {
+            for (int i = 0; i < 14; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 93; c > 0 ; c--)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 93; c++)
+                {
+                    setDot(14, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
 
         }
+        
 
         public void displayRandomExit(Segment segment, Color backgroundColor)
         {
