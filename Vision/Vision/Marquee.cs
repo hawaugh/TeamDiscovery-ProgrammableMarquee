@@ -934,6 +934,31 @@ namespace Vision
 
         }
         
+        //Ahmad 
+        //Added On 11/14/2017
+        public void displayUpsideDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+            for (int i = 0; i < 14; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 93; c > 0; c--)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 93; c++)
+                {
+                    setDot(14, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+        }
+        
         //Ahmad
         //Added on 11/14/2017
         public void displaySidewayExit(Segment segment, Color backgroundColor, int scrollSpeed)
