@@ -375,27 +375,30 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            for (int s = 0; s < segmentLength; s++)
+            int stopMiddle = (14 - segmentLength) / 2;
+
+            for (int i = 12; i > 0; i--)
             {
                 //Move all dots 1 row down
-                for (int c = 2; c < 94; c++)
+                for (int r = 2; r < 14; r++)
                 {
-                    for (int r = 14; r > 2; r--)
+                    for (int c = 2; c < 94; c++)
                     {
-                        setDot(r, c, getDotFore(r- 1, c));
+                        setDot(r, c, getDotFore(r + 1, c));
                     }
                 }
-
-
+                
                 //Set last row to next row in segment
                 for (int c = 2; c < segmentLength; c++)
                 {
-                    if (currSegment[s][c  - 2].Equals('1'))
+                    if (currSegment[i][c - 2].Equals('1'))
                     {
+                        
                         setDot(2, ((96 - segmentLength) / 2) + c, segment.onColor);
                     }
-                    else if (currSegment[s][c  - 2].Equals('0'))
+                    else if (currSegment[i][c - 2].Equals('0'))
                     {
+                      
                         setDot(2, ((96 - segmentLength) / 2) + c, backgroundColor);
                     }
 
@@ -405,9 +408,8 @@ namespace Vision
 
             }
 
-
             //Exit rest of segment to the down
-            for (int i = 14; i > 0; i--)
+            for (int i = 0; i < stopMiddle; i++)
             {
                 //Move all dots 1 column up
                 for (int c = 2; c < 94; c++)
