@@ -924,7 +924,7 @@ namespace Vision
                 }
 
                 //Set last column to blank
-                for (int c = 2; c > 94; c++)
+                for (int c = 2; c < 94; c++)
                 {
                     setDot(2, c, backgroundColor);
                 }
