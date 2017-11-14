@@ -193,12 +193,12 @@ namespace Vision
             }
             else if (segment.exitEffect == 2)
             {
-                displayUpExit();
+                displayUpExit(segment, backgroundColor, scrollSpeed);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 3)
             {
-                displayDownExit();
+                displayDownExit(segment, backgroundColor, scrollSpeed);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 4)
@@ -884,7 +884,7 @@ namespace Vision
 
         //Ahmad
         //Edited on 11/14/2017
-        public void displayUpExit()
+        public void displayUpExit(Segment segment, Color backgroundColor, int scrollSpeed)
         {
             for (int i = 0; i < 14; i++)
             {
