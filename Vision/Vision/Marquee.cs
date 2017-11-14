@@ -152,6 +152,16 @@ namespace Vision
                 displayRandomEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
+                  else if (segment.entranceEffect == 5)
+            {
+                displayUpsideDownEntrance(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
+                  else if (segment.entranceEffect == 6)
+            {
+                displaySidewayEntrance(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(segmentSpeed);
+            }
 
             //Display Middle
             if (segment.middleEffect == -1)
@@ -196,7 +206,19 @@ namespace Vision
                 displayRandomExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
+            else if (segment.exitEffect == 5)
+            {
+                displayUpsideDownExit(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(500);
+            }
+            else if (segment.exitEffect == 6)
+            {
+                 displaySidewayExit(segment, backgroundColor, scrollSpeed);
+                Thread.Sleep(500);
+            }
         }
+        
+        
         #endregion
 
 
@@ -494,6 +516,135 @@ namespace Vision
                 }
         }
 
+
+        //Ahmad
+        //Added on 11/14/2017
+        public void displayUpsideDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            int stopMiddle = (14 - segmentLength) / 2;
+
+            for (int i = 0; i < 12; i++)
+            {
+                //Move all dots 1 row up
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c + 1));
+                    }
+                }
+
+
+                //Set last row to next row in segment
+                for (int c = 2; c < segmentLength; c++)
+                {
+                    if (currSegment[i][c - 2].Equals('1'))
+                    {
+                        //setDot(14, c, segment.onColor);
+                        setDot(2, ((96 - segmentLength) / 2) + c, segment.onColor);
+                    }
+                    else if (currSegment[i][c - 2].Equals('0'))
+                    {
+                        //setDot(14, c, backgroundColor);
+                        setDot(2, ((96 - segmentLength) / 2) + c, backgroundColor);
+                    }
+
+                }
+                Invalidate();
+                Thread.Sleep(scrollSpeed);
+
+            }
+
+            //Exit rest of segment to the down
+            for (int i = 0; i < stopMiddle; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c > 94; c++)
+                {
+                    setDot(2, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+        }
+
+        //Ahmad
+        //Added on 11/14/2017
+        public void displaySidewayEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            int stopMiddle = (14 - segmentLength) / 2;
+
+            for (int i = 0; i < 12; i++)
+            {
+                //Move all dots 1 row up
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c + 1));
+                    }
+                }
+
+
+                //Set last row to next row in segment
+                for (int c = 2; c < segmentLength; c++)
+                {
+                    if (currSegment[i][c - 2].Equals('1'))
+                    {
+                        //setDot(14, c, segment.onColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c, segment.onColor);
+                    }
+                    else if (currSegment[i][c - 2].Equals('0'))
+                    {
+                        //setDot(14, c, backgroundColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c, backgroundColor);
+                    }
+
+                }
+                Invalidate();
+                Thread.Sleep(scrollSpeed);
+
+            }
+
+
+            //Exit rest of segment to the up
+            for (int i = 0; i < stopMiddle; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 93; c++)
+                {
+                    setDot(14, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+        }
+
+
         public void displayRandomEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -783,6 +934,33 @@ namespace Vision
 
         }
         
+        //Ahmad
+        //Added on 11/14/2017
+        public void displaySidewayExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+
+            //Exit rest of segment to the up
+            for (int i = 0; i < 14; i++)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c + 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 93; c++)
+                {
+                    setDot(14, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+        }
+    
 
         public void displayRandomExit(Segment segment, Color backgroundColor)
         {
