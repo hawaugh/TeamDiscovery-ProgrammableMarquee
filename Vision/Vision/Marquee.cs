@@ -533,7 +533,7 @@ namespace Vision
                 {
                     for (int r = 14; r > 2; r--)
                     {
-                        setDot(r, c, getDotFore(r - 1, c + 1));
+                        setDot(r, c, getDotFore(r - 1, c));
                     }
                 }
 
