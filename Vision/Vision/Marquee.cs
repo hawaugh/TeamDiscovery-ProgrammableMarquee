@@ -455,12 +455,12 @@ namespace Vision
                    if (currSegment[i][c-2].Equals('1'))
                     {
                         //setDot(14, c, segment.onColor);
-                        setDot(14, ((96 - segmentLength) / 2) + c, segment.onColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c, segment.onColor);
                     }
                     else if (currSegment[i][c-2].Equals('0'))
                     {
                         //setDot(14, c, backgroundColor);
-                        setDot(14, ((96 - segmentLength) / 2) + c, backgroundColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c, backgroundColor);
                     }
 
                 }
@@ -491,6 +491,7 @@ namespace Vision
                     Invalidate();
                 }
         }
+
         public void displayRandomEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
