@@ -729,14 +729,8 @@ namespace Vision
         }
 
         //Ahmad
-        public void displayUpExit()
-        {
-
-        }
-        
-        //Ahmad
         //Edited on 11/14/2017
-        public void displayDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayUpExit()
         {
             for (int i = 0; i < 14; i++)
             {
@@ -753,6 +747,32 @@ namespace Vision
                 for (int c = 2; c < 93; c++)
                 {
                     setDot(14, c, backgroundColor);
+                }
+                Thread.Sleep(scrollSpeed);
+                Invalidate();
+            }
+        }
+        
+        //Ahmad
+        //Edited on 11/14/2017
+        public void displayDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        {
+            //Exit rest of segment to the down
+            for (int i = 14; i > 0; i--)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c > 94; c++)
+                {
+                    setDot(2, c, backgroundColor);
                 }
                 Thread.Sleep(scrollSpeed);
                 Invalidate();
