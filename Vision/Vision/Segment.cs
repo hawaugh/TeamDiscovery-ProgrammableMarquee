@@ -23,31 +23,28 @@ namespace Vision
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
-        private int _entranceEffect;
-        /*
-         * Entrance Effect int values:
-         * 0: TODO
-        */
-        private int _middleEffect;
-        /*
-         * Middle Effect int values:
-         * 0: TODO
-        */
-        private int _exitEffect;
-        /*
-         * Exit Effect int values:
-         * 0: TODO
-        */
 
+        private bool _isImage;
+        private Bitmap _scaledBitmap;
+        private float _imageAspect;
+        private const float ASPECT_RATIO = 6;
+
+        private int _entranceEffect;        
+        private int _middleEffect;        
+        private int _exitEffect;
+        
+        //Default Constructor
         public Segment()
         {
             _messageText = "";
             _onColor = Color.Black;
+            _isImage = false;
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
         }
 
+        //Text Constructor
         public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect)
         {
             _messageText = segmentText;
@@ -56,8 +53,39 @@ namespace Vision
             _entranceEffect = entranceEffect;
             _middleEffect = middleEffect;
             _exitEffect = exitEffect;
+            _isImage = false;
         }
 
+        //Image Constructor
+        public Segment(string filename)
+        {
+            _isImage = true;
+            //creates the image from file
+            Bitmap imageBitmap = new Bitmap(filename);
+            _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
+
+            if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
+            {
+                _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
+            }
+            else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
+            {
+                _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+            }
+            else //Aspect ratio equals marquee
+            {
+                _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
+            }
+        }
+
+        
+
+        /*
+         * 
+         *   Text Segment
+         * 
+         */
+        #region Text Segment
         public string messageText
         {
             get { return _messageText; }
@@ -93,7 +121,58 @@ namespace Vision
             get { return _onColor; }
             set { _onColor = value; }
         }
+        #endregion
 
+        /*
+         * 
+         *   Image Segment
+         * 
+         */
+        #region Image Segment
+
+        public bool isImage
+        {
+            get { return _isImage; }
+            set { _isImage = value; }
+        }
+
+        public Color getPixel(int c, int r)
+        {
+            return _scaledBitmap.GetPixel(c, r);
+        }
+
+        public int getWidth()
+        {
+            return _scaledBitmap.Width;
+        }
+
+        public int getHeight()
+        {
+            return _scaledBitmap.Height;
+        }
+
+        //getter/setter for scaledBitmap
+        public float imageAspect
+        {
+            get { return _imageAspect; }
+            set { }
+        }
+
+        //getter/setter for scaledBitmap
+        public Bitmap scaledBitmap
+        {
+            get { return _scaledBitmap; }
+            set { }
+        }
+
+        #endregion
+
+        /*
+         * 
+         *   Effect Options
+         * 
+         */
+        #region Effect Options
         //getter/setter for entranceEffect
         public int entranceEffect
         {
@@ -114,7 +193,14 @@ namespace Vision
             get { return _exitEffect; }
             set { _exitEffect = value; }
         }
-        
+        #endregion
+
+        /*
+         * 
+         *   Character Build Library
+         * 
+         */
+        #region Character Build Library
         //Contains the library of character builds
         public string[] characterBuild(char character)
         {
@@ -1461,5 +1547,6 @@ namespace Vision
             }
             return returnString;
         }
+        #endregion
     }
 }

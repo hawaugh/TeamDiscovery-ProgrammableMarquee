@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dot.cs" />
-    <Compile Include="Image.cs" />
     <Compile Include="Marquee.cs">
       <SubType>Component</SubType>
     </Compile>

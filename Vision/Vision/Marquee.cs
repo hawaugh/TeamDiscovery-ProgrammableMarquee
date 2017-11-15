@@ -121,9 +121,9 @@ namespace Vision
         public void displaySegment(Segment segment, Color backgroundColor, int scrollSpeed, int segmentSpeed)
         {
             //If segment is image then display image and return
-            if (segment is Image)
+            if (segment.isImage)
             {
-                displayImage((Image) segment, segmentSpeed);
+                displayImage(segment, segmentSpeed);
                 return;
             }
             //Display Entrance
@@ -1086,7 +1086,7 @@ namespace Vision
          * 
          */
         #region Image Effects
-        public void displayImage(Image image, int segmentSpeed)
+        public void displayImage(Segment image, int segmentSpeed)
         {
             //Stop Border Effect
             if (myBorderThread != null)
