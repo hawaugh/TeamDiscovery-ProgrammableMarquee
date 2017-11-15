@@ -110,20 +110,36 @@ namespace Vision
             this.addSegmentButton13 = new System.Windows.Forms.Button();
             this.saveAndRunButton = new System.Windows.Forms.Button();
             this.saveAndExitButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.segmentPanel3 = new System.Windows.Forms.Panel();
+            this.segmentLabel3 = new System.Windows.Forms.Label();
+            this.closeButton3 = new System.Windows.Forms.Button();
             this.segmentPanel1 = new System.Windows.Forms.Panel();
             this.segmentLabel1 = new System.Windows.Forms.Label();
             this.closeButton1 = new System.Windows.Forms.Button();
             this.segmentPanel2 = new System.Windows.Forms.Panel();
             this.segmentLabel2 = new System.Windows.Forms.Label();
             this.closeButton2 = new System.Windows.Forms.Button();
-            this.segmentPanel3 = new System.Windows.Forms.Panel();
-            this.segmentLabel3 = new System.Windows.Forms.Label();
-            this.closeButton3 = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
+            this.SegmentHolderPanel = new System.Windows.Forms.Panel();
+            this.addSegmentButton17 = new System.Windows.Forms.Button();
+            this.addSegmentButton15 = new System.Windows.Forms.Button();
+            this.addSegmentButton16 = new System.Windows.Forms.Button();
+            this.addSegmentButton14 = new System.Windows.Forms.Button();
+            this.segmentPanel15 = new System.Windows.Forms.Panel();
+            this.segmentLabel15 = new System.Windows.Forms.Label();
+            this.closeButton15 = new System.Windows.Forms.Button();
+            this.segmentPanel17 = new System.Windows.Forms.Panel();
+            this.segmentLabel17 = new System.Windows.Forms.Label();
+            this.closeButton17 = new System.Windows.Forms.Button();
+            this.segmentPanel16 = new System.Windows.Forms.Panel();
+            this.segmentLabel16 = new System.Windows.Forms.Label();
+            this.closeButton16 = new System.Windows.Forms.Button();
+            this.segmentPanel18 = new System.Windows.Forms.Panel();
+            this.segmentLabel18 = new System.Windows.Forms.Label();
+            this.closeButton18 = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
@@ -138,17 +154,21 @@ namespace Vision
             this.segmentPanel6.SuspendLayout();
             this.segmentPanel5.SuspendLayout();
             this.segmentPanel4.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.segmentPanel3.SuspendLayout();
             this.segmentPanel1.SuspendLayout();
             this.segmentPanel2.SuspendLayout();
-            this.segmentPanel3.SuspendLayout();
             this.textPanel.SuspendLayout();
+            this.SegmentHolderPanel.SuspendLayout();
+            this.segmentPanel15.SuspendLayout();
+            this.segmentPanel17.SuspendLayout();
+            this.segmentPanel16.SuspendLayout();
+            this.segmentPanel18.SuspendLayout();
             this.imagePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
             // 
-            this.populateMarqueeButton.Location = new System.Drawing.Point(12, 481);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(12, 490);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 29);
             this.populateMarqueeButton.TabIndex = 1;
@@ -238,6 +258,11 @@ namespace Vision
             // 
             this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exitEffectComboBox.FormattingEnabled = true;
+            this.exitEffectComboBox.Items.AddRange(new object[] {
+            "Split",
+            "Scroll Up",
+            "Scroll Down",
+            "Random Dots"});
             this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
             this.exitEffectComboBox.Name = "exitEffectComboBox";
             this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -386,7 +411,7 @@ namespace Vision
             // 
             // loadXMLButton
             // 
-            this.loadXMLButton.Location = new System.Drawing.Point(938, 473);
+            this.loadXMLButton.Location = new System.Drawing.Point(939, 482);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 3;
@@ -408,7 +433,7 @@ namespace Vision
             this.segmentPanel14.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel14.Controls.Add(this.segmentLabel14);
             this.segmentPanel14.Controls.Add(this.closeButton14);
-            this.segmentPanel14.Location = new System.Drawing.Point(3, 601);
+            this.segmentPanel14.Location = new System.Drawing.Point(120, 282);
             this.segmentPanel14.Name = "segmentPanel14";
             this.segmentPanel14.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel14.TabIndex = 21;
@@ -447,7 +472,7 @@ namespace Vision
             this.segmentPanel13.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel13.Controls.Add(this.segmentLabel13);
             this.segmentPanel13.Controls.Add(this.closeButton13);
-            this.segmentPanel13.Location = new System.Drawing.Point(3, 555);
+            this.segmentPanel13.Location = new System.Drawing.Point(5, 282);
             this.segmentPanel13.Name = "segmentPanel13";
             this.segmentPanel13.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel13.TabIndex = 20;
@@ -486,7 +511,7 @@ namespace Vision
             this.segmentPanel12.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel12.Controls.Add(this.segmentLabel12);
             this.segmentPanel12.Controls.Add(this.closeButton12);
-            this.segmentPanel12.Location = new System.Drawing.Point(3, 509);
+            this.segmentPanel12.Location = new System.Drawing.Point(120, 236);
             this.segmentPanel12.Name = "segmentPanel12";
             this.segmentPanel12.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel12.TabIndex = 19;
@@ -525,7 +550,7 @@ namespace Vision
             this.segmentPanel11.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel11.Controls.Add(this.segmentLabel11);
             this.segmentPanel11.Controls.Add(this.closeButton11);
-            this.segmentPanel11.Location = new System.Drawing.Point(3, 463);
+            this.segmentPanel11.Location = new System.Drawing.Point(5, 236);
             this.segmentPanel11.Name = "segmentPanel11";
             this.segmentPanel11.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel11.TabIndex = 18;
@@ -564,7 +589,7 @@ namespace Vision
             this.segmentPanel10.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel10.Controls.Add(this.segmentLabel10);
             this.segmentPanel10.Controls.Add(this.closeButton10);
-            this.segmentPanel10.Location = new System.Drawing.Point(3, 417);
+            this.segmentPanel10.Location = new System.Drawing.Point(120, 190);
             this.segmentPanel10.Name = "segmentPanel10";
             this.segmentPanel10.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel10.TabIndex = 17;
@@ -603,7 +628,7 @@ namespace Vision
             this.segmentPanel9.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel9.Controls.Add(this.segmentLabel9);
             this.segmentPanel9.Controls.Add(this.closeButton9);
-            this.segmentPanel9.Location = new System.Drawing.Point(3, 371);
+            this.segmentPanel9.Location = new System.Drawing.Point(5, 190);
             this.segmentPanel9.Name = "segmentPanel9";
             this.segmentPanel9.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel9.TabIndex = 16;
@@ -642,7 +667,7 @@ namespace Vision
             this.segmentPanel8.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel8.Controls.Add(this.segmentLabel8);
             this.segmentPanel8.Controls.Add(this.closeButton8);
-            this.segmentPanel8.Location = new System.Drawing.Point(3, 325);
+            this.segmentPanel8.Location = new System.Drawing.Point(120, 144);
             this.segmentPanel8.Name = "segmentPanel8";
             this.segmentPanel8.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel8.TabIndex = 15;
@@ -681,7 +706,7 @@ namespace Vision
             this.segmentPanel7.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel7.Controls.Add(this.segmentLabel7);
             this.segmentPanel7.Controls.Add(this.closeButton7);
-            this.segmentPanel7.Location = new System.Drawing.Point(3, 279);
+            this.segmentPanel7.Location = new System.Drawing.Point(5, 144);
             this.segmentPanel7.Name = "segmentPanel7";
             this.segmentPanel7.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel7.TabIndex = 14;
@@ -720,7 +745,7 @@ namespace Vision
             this.segmentPanel6.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel6.Controls.Add(this.segmentLabel6);
             this.segmentPanel6.Controls.Add(this.closeButton6);
-            this.segmentPanel6.Location = new System.Drawing.Point(3, 233);
+            this.segmentPanel6.Location = new System.Drawing.Point(120, 98);
             this.segmentPanel6.Name = "segmentPanel6";
             this.segmentPanel6.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel6.TabIndex = 13;
@@ -759,7 +784,7 @@ namespace Vision
             this.segmentPanel5.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel5.Controls.Add(this.segmentLabel5);
             this.segmentPanel5.Controls.Add(this.closeButton5);
-            this.segmentPanel5.Location = new System.Drawing.Point(3, 187);
+            this.segmentPanel5.Location = new System.Drawing.Point(5, 98);
             this.segmentPanel5.Name = "segmentPanel5";
             this.segmentPanel5.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel5.TabIndex = 12;
@@ -798,7 +823,7 @@ namespace Vision
             this.segmentPanel4.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel4.Controls.Add(this.segmentLabel4);
             this.segmentPanel4.Controls.Add(this.closeButton4);
-            this.segmentPanel4.Location = new System.Drawing.Point(3, 141);
+            this.segmentPanel4.Location = new System.Drawing.Point(120, 52);
             this.segmentPanel4.Name = "segmentPanel4";
             this.segmentPanel4.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel4.TabIndex = 11;
@@ -837,9 +862,9 @@ namespace Vision
             this.addSegmentButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton1.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton1.Location = new System.Drawing.Point(119, 11);
+            this.addSegmentButton1.Location = new System.Drawing.Point(164, 13);
             this.addSegmentButton1.Name = "addSegmentButton1";
-            this.addSegmentButton1.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton1.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton1.TabIndex = 14;
             this.addSegmentButton1.Text = "+";
             this.addSegmentButton1.UseVisualStyleBackColor = false;
@@ -850,9 +875,9 @@ namespace Vision
             this.addSegmentButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton2.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton2.Location = new System.Drawing.Point(119, 57);
+            this.addSegmentButton2.Location = new System.Drawing.Point(47, 59);
             this.addSegmentButton2.Name = "addSegmentButton2";
-            this.addSegmentButton2.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton2.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton2.TabIndex = 15;
             this.addSegmentButton2.Text = "+";
             this.addSegmentButton2.UseVisualStyleBackColor = false;
@@ -864,9 +889,9 @@ namespace Vision
             this.addSegmentButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton3.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton3.Location = new System.Drawing.Point(119, 103);
+            this.addSegmentButton3.Location = new System.Drawing.Point(164, 59);
             this.addSegmentButton3.Name = "addSegmentButton3";
-            this.addSegmentButton3.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton3.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton3.TabIndex = 16;
             this.addSegmentButton3.Text = "+";
             this.addSegmentButton3.UseVisualStyleBackColor = false;
@@ -878,9 +903,9 @@ namespace Vision
             this.addSegmentButton4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton4.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton4.Location = new System.Drawing.Point(119, 149);
+            this.addSegmentButton4.Location = new System.Drawing.Point(47, 105);
             this.addSegmentButton4.Name = "addSegmentButton4";
-            this.addSegmentButton4.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton4.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton4.TabIndex = 17;
             this.addSegmentButton4.Text = "+";
             this.addSegmentButton4.UseVisualStyleBackColor = false;
@@ -892,9 +917,9 @@ namespace Vision
             this.addSegmentButton5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton5.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton5.Location = new System.Drawing.Point(119, 195);
+            this.addSegmentButton5.Location = new System.Drawing.Point(164, 105);
             this.addSegmentButton5.Name = "addSegmentButton5";
-            this.addSegmentButton5.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton5.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton5.TabIndex = 18;
             this.addSegmentButton5.Text = "+";
             this.addSegmentButton5.UseVisualStyleBackColor = false;
@@ -906,9 +931,9 @@ namespace Vision
             this.addSegmentButton6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton6.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton6.Location = new System.Drawing.Point(119, 241);
+            this.addSegmentButton6.Location = new System.Drawing.Point(47, 151);
             this.addSegmentButton6.Name = "addSegmentButton6";
-            this.addSegmentButton6.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton6.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton6.TabIndex = 19;
             this.addSegmentButton6.Text = "+";
             this.addSegmentButton6.UseVisualStyleBackColor = false;
@@ -920,9 +945,9 @@ namespace Vision
             this.addSegmentButton7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton7.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton7.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton7.Location = new System.Drawing.Point(119, 287);
+            this.addSegmentButton7.Location = new System.Drawing.Point(164, 151);
             this.addSegmentButton7.Name = "addSegmentButton7";
-            this.addSegmentButton7.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton7.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton7.TabIndex = 20;
             this.addSegmentButton7.Text = "+";
             this.addSegmentButton7.UseVisualStyleBackColor = false;
@@ -934,9 +959,9 @@ namespace Vision
             this.addSegmentButton8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton8.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton8.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.addSegmentButton8.Location = new System.Drawing.Point(119, 333);
+            this.addSegmentButton8.Location = new System.Drawing.Point(47, 197);
             this.addSegmentButton8.Name = "addSegmentButton8";
-            this.addSegmentButton8.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton8.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton8.TabIndex = 21;
             this.addSegmentButton8.Text = "+";
             this.addSegmentButton8.UseVisualStyleBackColor = false;
@@ -948,9 +973,9 @@ namespace Vision
             this.addSegmentButton9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton9.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton9.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton9.Location = new System.Drawing.Point(119, 379);
+            this.addSegmentButton9.Location = new System.Drawing.Point(164, 197);
             this.addSegmentButton9.Name = "addSegmentButton9";
-            this.addSegmentButton9.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton9.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton9.TabIndex = 22;
             this.addSegmentButton9.Text = "+";
             this.addSegmentButton9.UseVisualStyleBackColor = false;
@@ -962,9 +987,9 @@ namespace Vision
             this.addSegmentButton10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton10.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton10.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton10.Location = new System.Drawing.Point(119, 425);
+            this.addSegmentButton10.Location = new System.Drawing.Point(47, 243);
             this.addSegmentButton10.Name = "addSegmentButton10";
-            this.addSegmentButton10.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton10.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton10.TabIndex = 23;
             this.addSegmentButton10.Text = "+";
             this.addSegmentButton10.UseVisualStyleBackColor = false;
@@ -976,9 +1001,9 @@ namespace Vision
             this.addSegmentButton11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton11.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton11.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton11.Location = new System.Drawing.Point(119, 471);
+            this.addSegmentButton11.Location = new System.Drawing.Point(164, 243);
             this.addSegmentButton11.Name = "addSegmentButton11";
-            this.addSegmentButton11.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton11.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton11.TabIndex = 24;
             this.addSegmentButton11.Text = "+";
             this.addSegmentButton11.UseVisualStyleBackColor = false;
@@ -990,9 +1015,9 @@ namespace Vision
             this.addSegmentButton12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton12.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton12.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton12.Location = new System.Drawing.Point(119, 517);
+            this.addSegmentButton12.Location = new System.Drawing.Point(47, 289);
             this.addSegmentButton12.Name = "addSegmentButton12";
-            this.addSegmentButton12.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton12.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton12.TabIndex = 25;
             this.addSegmentButton12.Text = "+";
             this.addSegmentButton12.UseVisualStyleBackColor = false;
@@ -1004,9 +1029,9 @@ namespace Vision
             this.addSegmentButton13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addSegmentButton13.BackColor = System.Drawing.Color.Gray;
             this.addSegmentButton13.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.addSegmentButton13.Location = new System.Drawing.Point(119, 563);
+            this.addSegmentButton13.Location = new System.Drawing.Point(164, 289);
             this.addSegmentButton13.Name = "addSegmentButton13";
-            this.addSegmentButton13.Size = new System.Drawing.Size(23, 23);
+            this.addSegmentButton13.Size = new System.Drawing.Size(25, 25);
             this.addSegmentButton13.TabIndex = 26;
             this.addSegmentButton13.Text = "+";
             this.addSegmentButton13.UseVisualStyleBackColor = false;
@@ -1015,7 +1040,7 @@ namespace Vision
             // 
             // saveAndRunButton
             // 
-            this.saveAndRunButton.Location = new System.Drawing.Point(1100, 473);
+            this.saveAndRunButton.Location = new System.Drawing.Point(1101, 482);
             this.saveAndRunButton.Name = "saveAndRunButton";
             this.saveAndRunButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndRunButton.TabIndex = 27;
@@ -1025,7 +1050,7 @@ namespace Vision
             // 
             // saveAndExitButton
             // 
-            this.saveAndExitButton.Location = new System.Drawing.Point(1019, 473);
+            this.saveAndExitButton.Location = new System.Drawing.Point(1020, 482);
             this.saveAndExitButton.Name = "saveAndExitButton";
             this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndExitButton.TabIndex = 29;
@@ -1033,126 +1058,12 @@ namespace Vision
             this.saveAndExitButton.UseVisualStyleBackColor = true;
             this.saveAndExitButton.Click += new System.EventHandler(this.saveAndExitButton_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel1);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton1);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton2);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel3);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton3);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel4);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton4);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel5);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton5);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel6);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton6);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel7);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton7);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel8);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton8);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel9);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton9);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel10);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton10);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel11);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton11);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel12);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton12);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel13);
-            this.flowLayoutPanel1.Controls.Add(this.addSegmentButton13);
-            this.flowLayoutPanel1.Controls.Add(this.segmentPanel14);
-            this.flowLayoutPanel1.ForeColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 55);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(235, 406);
-            this.flowLayoutPanel1.TabIndex = 30;
-            // 
-            // segmentPanel1
-            // 
-            this.segmentPanel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.segmentPanel1.Controls.Add(this.segmentLabel1);
-            this.segmentPanel1.Controls.Add(this.closeButton1);
-            this.segmentPanel1.Location = new System.Drawing.Point(3, 3);
-            this.segmentPanel1.Name = "segmentPanel1";
-            this.segmentPanel1.Size = new System.Drawing.Size(110, 40);
-            this.segmentPanel1.TabIndex = 6;
-            this.segmentPanel1.Click += new System.EventHandler(this.segmentPanel1_Click);
-            // 
-            // segmentLabel1
-            // 
-            this.segmentLabel1.AutoSize = true;
-            this.segmentLabel1.ForeColor = System.Drawing.Color.White;
-            this.segmentLabel1.Location = new System.Drawing.Point(17, 11);
-            this.segmentLabel1.Name = "segmentLabel1";
-            this.segmentLabel1.Size = new System.Drawing.Size(58, 13);
-            this.segmentLabel1.TabIndex = 8;
-            this.segmentLabel1.Text = "Segment 1";
-            this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // closeButton1
-            // 
-            this.closeButton1.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeButton1.FlatAppearance.BorderSize = 0;
-            this.closeButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.closeButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton1.ForeColor = System.Drawing.Color.White;
-            this.closeButton1.Location = new System.Drawing.Point(87, 0);
-            this.closeButton1.Name = "closeButton1";
-            this.closeButton1.Size = new System.Drawing.Size(23, 23);
-            this.closeButton1.TabIndex = 7;
-            this.closeButton1.Text = "X";
-            this.closeButton1.UseVisualStyleBackColor = false;
-            // 
-            // segmentPanel2
-            // 
-            this.segmentPanel2.BackColor = System.Drawing.Color.Gray;
-            this.segmentPanel2.Controls.Add(this.segmentLabel2);
-            this.segmentPanel2.Controls.Add(this.closeButton2);
-            this.segmentPanel2.Location = new System.Drawing.Point(3, 49);
-            this.segmentPanel2.Name = "segmentPanel2";
-            this.segmentPanel2.Size = new System.Drawing.Size(110, 40);
-            this.segmentPanel2.TabIndex = 9;
-            this.segmentPanel2.Visible = false;
-            this.segmentPanel2.Click += new System.EventHandler(this.segmentPanel2_Click);
-            // 
-            // segmentLabel2
-            // 
-            this.segmentLabel2.AutoSize = true;
-            this.segmentLabel2.ForeColor = System.Drawing.Color.White;
-            this.segmentLabel2.Location = new System.Drawing.Point(17, 11);
-            this.segmentLabel2.Name = "segmentLabel2";
-            this.segmentLabel2.Size = new System.Drawing.Size(58, 13);
-            this.segmentLabel2.TabIndex = 8;
-            this.segmentLabel2.Text = "Segment 2";
-            this.segmentLabel2.Click += new System.EventHandler(this.segmentLabel2_Click);
-            // 
-            // closeButton2
-            // 
-            this.closeButton2.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeButton2.FlatAppearance.BorderSize = 0;
-            this.closeButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.closeButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.closeButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton2.ForeColor = System.Drawing.Color.White;
-            this.closeButton2.Location = new System.Drawing.Point(87, 0);
-            this.closeButton2.Name = "closeButton2";
-            this.closeButton2.Size = new System.Drawing.Size(23, 23);
-            this.closeButton2.TabIndex = 7;
-            this.closeButton2.Text = "X";
-            this.closeButton2.UseVisualStyleBackColor = false;
-            // 
             // segmentPanel3
             // 
             this.segmentPanel3.BackColor = System.Drawing.Color.Gray;
             this.segmentPanel3.Controls.Add(this.segmentLabel3);
             this.segmentPanel3.Controls.Add(this.closeButton3);
-            this.segmentPanel3.Location = new System.Drawing.Point(3, 95);
+            this.segmentPanel3.Location = new System.Drawing.Point(5, 52);
             this.segmentPanel3.Name = "segmentPanel3";
             this.segmentPanel3.Size = new System.Drawing.Size(110, 40);
             this.segmentPanel3.TabIndex = 10;
@@ -1185,6 +1096,89 @@ namespace Vision
             this.closeButton3.TabIndex = 7;
             this.closeButton3.Text = "X";
             this.closeButton3.UseVisualStyleBackColor = false;
+            // 
+            // segmentPanel1
+            // 
+            this.segmentPanel1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.segmentPanel1.Controls.Add(this.segmentLabel1);
+            this.segmentPanel1.Controls.Add(this.closeButton1);
+            this.segmentPanel1.Location = new System.Drawing.Point(5, 6);
+            this.segmentPanel1.Name = "segmentPanel1";
+            this.segmentPanel1.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel1.TabIndex = 6;
+            this.segmentPanel1.Click += new System.EventHandler(this.segmentPanel1_Click);
+            this.segmentPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseDown);
+            this.segmentPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseMove);
+            this.segmentPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseUp);
+            // 
+            // segmentLabel1
+            // 
+            this.segmentLabel1.AutoSize = true;
+            this.segmentLabel1.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel1.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel1.Name = "segmentLabel1";
+            this.segmentLabel1.Size = new System.Drawing.Size(58, 13);
+            this.segmentLabel1.TabIndex = 8;
+            this.segmentLabel1.Text = "Segment 1";
+            this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
+            this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseDown);
+            this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseMove);
+            this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseUp);
+            // 
+            // closeButton1
+            // 
+            this.closeButton1.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton1.FlatAppearance.BorderSize = 0;
+            this.closeButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton1.ForeColor = System.Drawing.Color.White;
+            this.closeButton1.Location = new System.Drawing.Point(87, 0);
+            this.closeButton1.Name = "closeButton1";
+            this.closeButton1.Size = new System.Drawing.Size(23, 23);
+            this.closeButton1.TabIndex = 7;
+            this.closeButton1.Text = "X";
+            this.closeButton1.UseVisualStyleBackColor = false;
+            // 
+            // segmentPanel2
+            // 
+            this.segmentPanel2.BackColor = System.Drawing.Color.Gray;
+            this.segmentPanel2.Controls.Add(this.segmentLabel2);
+            this.segmentPanel2.Controls.Add(this.closeButton2);
+            this.segmentPanel2.Location = new System.Drawing.Point(120, 6);
+            this.segmentPanel2.Name = "segmentPanel2";
+            this.segmentPanel2.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel2.TabIndex = 9;
+            this.segmentPanel2.Visible = false;
+            this.segmentPanel2.Click += new System.EventHandler(this.segmentPanel2_Click);
+            // 
+            // segmentLabel2
+            // 
+            this.segmentLabel2.AutoSize = true;
+            this.segmentLabel2.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel2.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel2.Name = "segmentLabel2";
+            this.segmentLabel2.Size = new System.Drawing.Size(58, 13);
+            this.segmentLabel2.TabIndex = 8;
+            this.segmentLabel2.Text = "Segment 2";
+            this.segmentLabel2.Click += new System.EventHandler(this.segmentLabel2_Click);
+            // 
+            // closeButton2
+            // 
+            this.closeButton2.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton2.FlatAppearance.BorderSize = 0;
+            this.closeButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton2.ForeColor = System.Drawing.Color.White;
+            this.closeButton2.Location = new System.Drawing.Point(87, 0);
+            this.closeButton2.Name = "closeButton2";
+            this.closeButton2.Size = new System.Drawing.Size(23, 23);
+            this.closeButton2.TabIndex = 7;
+            this.closeButton2.Text = "X";
+            this.closeButton2.UseVisualStyleBackColor = false;
             // 
             // logoLabel
             // 
@@ -1239,16 +1233,271 @@ namespace Vision
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(235, 55);
             this.textPanel.Name = "textPanel";
-            this.textPanel.Size = new System.Drawing.Size(941, 406);
+            this.textPanel.Size = new System.Drawing.Size(941, 420);
             this.textPanel.TabIndex = 34;
+            this.textPanel.DragLeave += new System.EventHandler(this.textPanel_DragLeave);
+            // 
+            // SegmentHolderPanel
+            // 
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton17);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton15);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton16);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton14);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton3);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton4);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton5);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel4);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton6);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton7);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton8);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton9);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton10);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton11);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton12);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton13);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton2);
+            this.SegmentHolderPanel.Controls.Add(this.addSegmentButton1);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel1);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel5);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel3);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel7);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel9);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel11);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel13);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel15);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel17);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel6);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel8);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel10);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel12);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel14);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel16);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel18);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel2);
+            this.SegmentHolderPanel.Location = new System.Drawing.Point(0, 55);
+            this.SegmentHolderPanel.Name = "SegmentHolderPanel";
+            this.SegmentHolderPanel.Size = new System.Drawing.Size(235, 420);
+            this.SegmentHolderPanel.TabIndex = 36;
+            // 
+            // addSegmentButton17
+            // 
+            this.addSegmentButton17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addSegmentButton17.BackColor = System.Drawing.Color.Gray;
+            this.addSegmentButton17.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.addSegmentButton17.Location = new System.Drawing.Point(164, 381);
+            this.addSegmentButton17.Name = "addSegmentButton17";
+            this.addSegmentButton17.Size = new System.Drawing.Size(25, 25);
+            this.addSegmentButton17.TabIndex = 30;
+            this.addSegmentButton17.Text = "+";
+            this.addSegmentButton17.UseVisualStyleBackColor = false;
+            this.addSegmentButton17.Visible = false;
+            this.addSegmentButton17.Click += new System.EventHandler(this.addSegmentButton17_Click);
+            // 
+            // addSegmentButton15
+            // 
+            this.addSegmentButton15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addSegmentButton15.BackColor = System.Drawing.Color.Gray;
+            this.addSegmentButton15.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.addSegmentButton15.Location = new System.Drawing.Point(164, 335);
+            this.addSegmentButton15.Name = "addSegmentButton15";
+            this.addSegmentButton15.Size = new System.Drawing.Size(25, 25);
+            this.addSegmentButton15.TabIndex = 29;
+            this.addSegmentButton15.Text = "+";
+            this.addSegmentButton15.UseVisualStyleBackColor = false;
+            this.addSegmentButton15.Visible = false;
+            this.addSegmentButton15.Click += new System.EventHandler(this.addSegmentButton15_Click);
+            // 
+            // addSegmentButton16
+            // 
+            this.addSegmentButton16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addSegmentButton16.BackColor = System.Drawing.Color.Gray;
+            this.addSegmentButton16.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.addSegmentButton16.Location = new System.Drawing.Point(47, 381);
+            this.addSegmentButton16.Name = "addSegmentButton16";
+            this.addSegmentButton16.Size = new System.Drawing.Size(25, 25);
+            this.addSegmentButton16.TabIndex = 28;
+            this.addSegmentButton16.Text = "+";
+            this.addSegmentButton16.UseVisualStyleBackColor = false;
+            this.addSegmentButton16.Visible = false;
+            this.addSegmentButton16.Click += new System.EventHandler(this.addSegmentButton16_Click);
+            // 
+            // addSegmentButton14
+            // 
+            this.addSegmentButton14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addSegmentButton14.BackColor = System.Drawing.Color.Gray;
+            this.addSegmentButton14.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.addSegmentButton14.Location = new System.Drawing.Point(47, 335);
+            this.addSegmentButton14.Name = "addSegmentButton14";
+            this.addSegmentButton14.Size = new System.Drawing.Size(25, 25);
+            this.addSegmentButton14.TabIndex = 27;
+            this.addSegmentButton14.Text = "+";
+            this.addSegmentButton14.UseVisualStyleBackColor = false;
+            this.addSegmentButton14.Visible = false;
+            this.addSegmentButton14.Click += new System.EventHandler(this.addSegmentButton14_Click);
+            // 
+            // segmentPanel15
+            // 
+            this.segmentPanel15.BackColor = System.Drawing.Color.Gray;
+            this.segmentPanel15.Controls.Add(this.segmentLabel15);
+            this.segmentPanel15.Controls.Add(this.closeButton15);
+            this.segmentPanel15.Location = new System.Drawing.Point(5, 328);
+            this.segmentPanel15.Name = "segmentPanel15";
+            this.segmentPanel15.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel15.TabIndex = 21;
+            this.segmentPanel15.Visible = false;
+            this.segmentPanel15.Click += new System.EventHandler(this.segmentPanel15_Click);
+            // 
+            // segmentLabel15
+            // 
+            this.segmentLabel15.AutoSize = true;
+            this.segmentLabel15.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel15.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel15.Name = "segmentLabel15";
+            this.segmentLabel15.Size = new System.Drawing.Size(64, 13);
+            this.segmentLabel15.TabIndex = 8;
+            this.segmentLabel15.Text = "Segment 15";
+            this.segmentLabel15.Click += new System.EventHandler(this.segmentLabel15_Click);
+            // 
+            // closeButton15
+            // 
+            this.closeButton15.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton15.FlatAppearance.BorderSize = 0;
+            this.closeButton15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton15.ForeColor = System.Drawing.Color.White;
+            this.closeButton15.Location = new System.Drawing.Point(87, 0);
+            this.closeButton15.Name = "closeButton15";
+            this.closeButton15.Size = new System.Drawing.Size(23, 23);
+            this.closeButton15.TabIndex = 7;
+            this.closeButton15.Text = "X";
+            this.closeButton15.UseVisualStyleBackColor = false;
+            // 
+            // segmentPanel17
+            // 
+            this.segmentPanel17.BackColor = System.Drawing.Color.Gray;
+            this.segmentPanel17.Controls.Add(this.segmentLabel17);
+            this.segmentPanel17.Controls.Add(this.closeButton17);
+            this.segmentPanel17.Location = new System.Drawing.Point(5, 374);
+            this.segmentPanel17.Name = "segmentPanel17";
+            this.segmentPanel17.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel17.TabIndex = 21;
+            this.segmentPanel17.Visible = false;
+            this.segmentPanel17.Click += new System.EventHandler(this.segmentPanel17_Click);
+            // 
+            // segmentLabel17
+            // 
+            this.segmentLabel17.AutoSize = true;
+            this.segmentLabel17.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel17.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel17.Name = "segmentLabel17";
+            this.segmentLabel17.Size = new System.Drawing.Size(64, 13);
+            this.segmentLabel17.TabIndex = 8;
+            this.segmentLabel17.Text = "Segment 17";
+            this.segmentLabel17.Click += new System.EventHandler(this.segmentLabel17_Click);
+            // 
+            // closeButton17
+            // 
+            this.closeButton17.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton17.FlatAppearance.BorderSize = 0;
+            this.closeButton17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton17.ForeColor = System.Drawing.Color.White;
+            this.closeButton17.Location = new System.Drawing.Point(87, 0);
+            this.closeButton17.Name = "closeButton17";
+            this.closeButton17.Size = new System.Drawing.Size(23, 23);
+            this.closeButton17.TabIndex = 7;
+            this.closeButton17.Text = "X";
+            this.closeButton17.UseVisualStyleBackColor = false;
+            // 
+            // segmentPanel16
+            // 
+            this.segmentPanel16.BackColor = System.Drawing.Color.Gray;
+            this.segmentPanel16.Controls.Add(this.segmentLabel16);
+            this.segmentPanel16.Controls.Add(this.closeButton16);
+            this.segmentPanel16.Location = new System.Drawing.Point(120, 328);
+            this.segmentPanel16.Name = "segmentPanel16";
+            this.segmentPanel16.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel16.TabIndex = 21;
+            this.segmentPanel16.Visible = false;
+            this.segmentPanel16.Click += new System.EventHandler(this.segmentPanel16_Click);
+            // 
+            // segmentLabel16
+            // 
+            this.segmentLabel16.AutoSize = true;
+            this.segmentLabel16.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel16.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel16.Name = "segmentLabel16";
+            this.segmentLabel16.Size = new System.Drawing.Size(64, 13);
+            this.segmentLabel16.TabIndex = 8;
+            this.segmentLabel16.Text = "Segment 16";
+            this.segmentLabel16.Click += new System.EventHandler(this.segmentLabel16_Click);
+            // 
+            // closeButton16
+            // 
+            this.closeButton16.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton16.FlatAppearance.BorderSize = 0;
+            this.closeButton16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton16.ForeColor = System.Drawing.Color.White;
+            this.closeButton16.Location = new System.Drawing.Point(87, 0);
+            this.closeButton16.Name = "closeButton16";
+            this.closeButton16.Size = new System.Drawing.Size(23, 23);
+            this.closeButton16.TabIndex = 7;
+            this.closeButton16.Text = "X";
+            this.closeButton16.UseVisualStyleBackColor = false;
+            // 
+            // segmentPanel18
+            // 
+            this.segmentPanel18.BackColor = System.Drawing.Color.Gray;
+            this.segmentPanel18.Controls.Add(this.segmentLabel18);
+            this.segmentPanel18.Controls.Add(this.closeButton18);
+            this.segmentPanel18.Location = new System.Drawing.Point(120, 374);
+            this.segmentPanel18.Name = "segmentPanel18";
+            this.segmentPanel18.Size = new System.Drawing.Size(110, 40);
+            this.segmentPanel18.TabIndex = 21;
+            this.segmentPanel18.Visible = false;
+            this.segmentPanel18.Click += new System.EventHandler(this.segmentPanel18_Click);
+            // 
+            // segmentLabel18
+            // 
+            this.segmentLabel18.AutoSize = true;
+            this.segmentLabel18.ForeColor = System.Drawing.Color.White;
+            this.segmentLabel18.Location = new System.Drawing.Point(17, 11);
+            this.segmentLabel18.Name = "segmentLabel18";
+            this.segmentLabel18.Size = new System.Drawing.Size(64, 13);
+            this.segmentLabel18.TabIndex = 8;
+            this.segmentLabel18.Text = "Segment 18";
+            this.segmentLabel18.Click += new System.EventHandler(this.segmentLabel18_Click);
+            // 
+            // closeButton18
+            // 
+            this.closeButton18.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton18.FlatAppearance.BorderSize = 0;
+            this.closeButton18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.closeButton18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.closeButton18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton18.ForeColor = System.Drawing.Color.White;
+            this.closeButton18.Location = new System.Drawing.Point(87, 0);
+            this.closeButton18.Name = "closeButton18";
+            this.closeButton18.Size = new System.Drawing.Size(23, 23);
+            this.closeButton18.TabIndex = 7;
+            this.closeButton18.Text = "X";
+            this.closeButton18.UseVisualStyleBackColor = false;
             // 
             // imagePanel
             // 
-            this.imagePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imagePanel.BackColor = System.Drawing.Color.White;
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
             this.imagePanel.Location = new System.Drawing.Point(458, 26);
             this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(941, 406);
+            this.imagePanel.Size = new System.Drawing.Size(941, 420);
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
@@ -1267,14 +1516,14 @@ namespace Vision
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1203, 516);
+            this.ClientSize = new System.Drawing.Size(1203, 527);
+            this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.logoLabel);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.saveAndExitButton);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.populateMarqueeButton);
@@ -1306,14 +1555,22 @@ namespace Vision
             this.segmentPanel5.PerformLayout();
             this.segmentPanel4.ResumeLayout(false);
             this.segmentPanel4.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.segmentPanel3.ResumeLayout(false);
+            this.segmentPanel3.PerformLayout();
             this.segmentPanel1.ResumeLayout(false);
             this.segmentPanel1.PerformLayout();
             this.segmentPanel2.ResumeLayout(false);
             this.segmentPanel2.PerformLayout();
-            this.segmentPanel3.ResumeLayout(false);
-            this.segmentPanel3.PerformLayout();
             this.textPanel.ResumeLayout(false);
+            this.SegmentHolderPanel.ResumeLayout(false);
+            this.segmentPanel15.ResumeLayout(false);
+            this.segmentPanel15.PerformLayout();
+            this.segmentPanel17.ResumeLayout(false);
+            this.segmentPanel17.PerformLayout();
+            this.segmentPanel16.ResumeLayout(false);
+            this.segmentPanel16.PerformLayout();
+            this.segmentPanel18.ResumeLayout(false);
+            this.segmentPanel18.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
             this.ResumeLayout(false);
@@ -1339,7 +1596,6 @@ namespace Vision
         private System.Windows.Forms.Button saveAndRunButton;
         private Marquee marquee1;
         private System.Windows.Forms.Button saveAndExitButton;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.Panel segmentPanel1;
         private System.Windows.Forms.Button closeButton1;
@@ -1409,6 +1665,23 @@ namespace Vision
         private System.Windows.Forms.Panel textPanel;
         private System.Windows.Forms.Panel imagePanel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel SegmentHolderPanel;
+        private System.Windows.Forms.Button addSegmentButton17;
+        private System.Windows.Forms.Button addSegmentButton15;
+        private System.Windows.Forms.Button addSegmentButton16;
+        private System.Windows.Forms.Button addSegmentButton14;
+        private System.Windows.Forms.Panel segmentPanel15;
+        private System.Windows.Forms.Label segmentLabel15;
+        private System.Windows.Forms.Button closeButton15;
+        private System.Windows.Forms.Panel segmentPanel16;
+        private System.Windows.Forms.Label segmentLabel16;
+        private System.Windows.Forms.Button closeButton16;
+        private System.Windows.Forms.Panel segmentPanel17;
+        private System.Windows.Forms.Label segmentLabel17;
+        private System.Windows.Forms.Button closeButton17;
+        private System.Windows.Forms.Panel segmentPanel18;
+        private System.Windows.Forms.Label segmentLabel18;
+        private System.Windows.Forms.Button closeButton18;
     }
 }
 
