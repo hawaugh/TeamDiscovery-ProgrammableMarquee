@@ -1235,7 +1235,6 @@ namespace Vision
             this.textPanel.Name = "textPanel";
             this.textPanel.Size = new System.Drawing.Size(941, 420);
             this.textPanel.TabIndex = 34;
-            this.textPanel.DragLeave += new System.EventHandler(this.textPanel_DragLeave);
             // 
             // SegmentHolderPanel
             // 

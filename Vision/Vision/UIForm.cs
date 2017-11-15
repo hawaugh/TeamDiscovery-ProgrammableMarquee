@@ -48,8 +48,8 @@ namespace Vision
             {
                 mySegmentArray[i] = new Segment();
             }
-            getLocations();
             InitializeComponent();
+            getLocations();
         }
 
         private void UIForm_Load(object sender, EventArgs e)
@@ -1108,12 +1108,96 @@ namespace Vision
             imagePanel.Visible = false;
         }
 
-        private Point MouseDownLocation;
-        private bool grapper1 = true;
-        private Point segment1Point;
-        private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
-
+        private int findLocation(double x, double y)
         {
+            int result = 0;
+            //test whether the mouse location is in a segment zone
+            if (x > 5 && x < 115 && y > 6 && y < 46)
+            {
+                result = 1;
+            }
+            else if (x > 120 && x < 230 && y > 6 && y < 46)
+            {
+                result = 2;
+            }
+            else if (x > 5 && x < 115 && y > 52 && y < 92)
+            {
+                result = 3;
+            }
+            else if (x > 120 && x < 230 && y > 52 && y < 92)
+            {
+                result = 4;
+            }
+            else if (x > 5 && x < 115 && y > 98 && y < 138)
+            {
+                result = 5;
+            }
+            else if (x > 120 && x < 230 && y > 98 && y < 138)
+            {
+                result = 6;
+            }
+            else if (x > 5 && x < 115 && y > 144 && y < 184)
+            {
+                result = 7;
+            }
+            else if (x > 120 && x < 230 && y > 144 && y < 184)
+            {
+                result = 8;
+            }
+            else if (x > 5 && x < 115 && y > 190 && y < 230)
+            {
+                result = 9;
+            }
+            else if (x > 120 && x < 230 && y > 190 && y < 230)
+            {
+                result = 10;
+            }
+            else if (x > 5 && x < 115 && y > 236 && y < 276)
+            {
+                result = 11;
+            }
+            else if (x > 120 && x < 230 && y > 236 && y < 276)
+            {
+                result = 12;
+            }
+            else if (x > 5 && x < 115 && y > 282 && y < 322)
+            {
+                result = 13;
+            }
+            else if (x > 120 && x < 230 && y > 282 && y < 322)
+            {
+                result = 14;
+            }
+            else if (x > 5 && x < 115 && y > 328 && y < 348)
+            {
+                result = 15;
+            }
+            else if (x > 120 && x < 230 && y > 328 && y < 348)
+            {
+                result = 16;
+            }
+            else if (x > 5 && x < 115 && y > 374 && y < 414)
+            {
+                result = 17;
+            }
+            else if (x > 120 && x < 230 && y > 374 && y < 414)
+            {
+                result = 18;
+            }
+            else
+            {
+                result = 0;
+            }
+            return result;
+        }
+
+        private Point MouseDownLocation;
+        private Point segment1Point;
+
+        private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
+            segmentPanel1.BringToFront();
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 MouseDownLocation = e.Location;
@@ -1124,31 +1208,219 @@ namespace Vision
 
         private void segmentPanel1_MouseMove(object sender, MouseEventArgs e)
         {
+
+
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
                 segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
+
                 //segmentPanel1.Location = e.Location;
                 //segmentLabel1.Location = e.Location;
                 //closeButton1.Location = e.Location;
             }
-        }
-
-        private void textPanel_DragLeave(object sender, EventArgs e)
-        {
-
+            /*
+            double x;
+            double y;
+            
+            x = e.X;
+            y = e.Y;
+            if (x > 5 && x < 115 && y > 6 && y < 46)
+            {
+                
+            }
+            if (x > 120 && x < 230 && y > 6 && y < 46)
+            {
+                segmentPanel2.Left = mySegmentPanelArray[0].X;
+                segmentPanel2.Top = mySegmentPanelArray[0].Y;
+                //segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel2.ForeColor = Color.White;
+                
+            }
+            if (x > 5 && x < 115 && y > 52 && y < 92)
+            {
+                segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel3.Location = mySegmentPanelArray[1];
+            }
+            else if (x > 120 && x < 230 && y > 52 && y < 92)
+            {
+                segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel3.Location = mySegmentPanelArray[1];
+                segmentPanel4.Location = mySegmentPanelArray[2];
+            }
+            else if (x > 5 && x < 115 && y > 98 && y < 138)
+            {
+                segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel3.Location = mySegmentPanelArray[1];
+                segmentPanel4.Location = mySegmentPanelArray[2];
+                segmentPanel5.Location = mySegmentPanelArray[3];
+            }
+            else if (x > 120 && x < 230 && y > 98 && y < 138)
+            {
+                segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel3.Location = mySegmentPanelArray[1];
+                segmentPanel4.Location = mySegmentPanelArray[2];
+                segmentPanel5.Location = mySegmentPanelArray[3];
+                segmentPanel6.Location = mySegmentPanelArray[4];
+            }
+            else if (x > 5 && x < 115 && y > 144 && y < 184)
+            {
+                segmentPanel2.Location = mySegmentPanelArray[0];
+                segmentPanel3.Location = mySegmentPanelArray[1];
+                segmentPanel4.Location = mySegmentPanelArray[2];
+                segmentPanel5.Location = mySegmentPanelArray[3];
+                segmentPanel6.Location = mySegmentPanelArray[4];
+                segmentPanel7.Location = mySegmentPanelArray[5];
+            }
+            else if (x > 120 && x < 230 && y > 144 && y < 184)
+            {
+                //result = 8;
+            }
+            else if (x > 5 && x < 115 && y > 190 && y < 230)
+            {
+                //result = 9;
+            }
+            else if (x > 120 && x < 230 && y > 190 && y < 230)
+            {
+                //result = 10;
+            }
+            else if (x > 5 && x < 115 && y > 236 && y < 276)
+            {
+                //result = 11;
+            }
+            else if (x > 120 && x < 230 && y > 236 && y < 276)
+            {
+                //result = 12;
+            }
+            else if (x > 5 && x < 115 && y > 282 && y < 322)
+            {
+                //result = 13;
+            }
+            else if (x > 120 && x < 230 && y > 282 && y < 322)
+            {
+                //result = 14;
+            }
+            else if (x > 5 && x < 115 && y > 328 && y < 348)
+            {
+                //result = 15;
+            }
+            else if (x > 120 && x < 230 && y > 328 && y < 348)
+            {
+                //result = 16;
+            }
+            else if (x > 5 && x < 115 && y > 374 && y < 414)
+            {
+                //result = 17;
+            }
+            else if (x > 120 && x < 230 && y > 374 && y < 414)
+            {
+                //result = 18;
+            }
+            
+            */
         }
 
         private void segmentPanel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (grapper1 == false)
+            //segmentPanel1.Left = mySegmentPanelArray[1].X;
+            //segmentPanel1.Top = mySegmentPanelArray[1].Y;
+            //segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
+            //segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
+
+
+            if (e.X > 120 && e.X < 230 && e.Y > 6 && e.Y < 46)
             {
-                segmentPanel1.Location = segment1Point;
+                segmentPanel2.ForeColor = Color.White;
+                
+            }
+
+            /*
+            int mouseLocation = findLocation(e.X, e.Y);
+            if (mouseLocation != 0)
+            {
+
+                if (mouseLocation == 1)
+                {
+                    segmentPanel1.Location = mySegmentPanelArray[0];
+                    //getLocations();
+                }
+                else if (mouseLocation == 2)
+                {
+                    segmentPanel1.Location = mySegmentPanelArray[1];
+                    //getLocations();
+                }
+                else if (mouseLocation == 3)
+                {
+                    segmentPanel1.Location = mySegmentPanelArray[2];
+                    //getLocations();
+                }
+                else if (mouseLocation == 4)
+                {
+                    segmentPanel1.Location = mySegmentPanelArray[3];
+                    //getLocations();
+                }
+                else if (mouseLocation == 5)
+                {
+                    segmentPanel1.Location = mySegmentPanelArray[4];
+                }
+                else if (mouseLocation == 6)
+                {
+
+                }
+                else if (mouseLocation == 7)
+                {
+
+                }
+                else if (mouseLocation == 8)
+                {
+
+                }
+                else if (mouseLocation == 9)
+                {
+
+                }
+                else if (mouseLocation == 10)
+                {
+
+                }
+                else if (mouseLocation == 11)
+                {
+
+                }
+                else if (mouseLocation == 12)
+                {
+
+                }
+                else if (mouseLocation == 13)
+                {
+
+                }
+                else if (mouseLocation == 14)
+                {
+
+                }
+                else if (mouseLocation == 15)
+                {
+
+                }
+                else if (mouseLocation == 16)
+                {
+
+                }
+                else if (mouseLocation == 17)
+                {
+
+                }
+                else if (mouseLocation == 18)
+                {
+
+                }
             }
             else
             {
-                
+                segmentPanel1.Location = mySegmentPanelArray[0];
             }
+            */
         }
 
         private void segmentLabel1_MouseDown(object sender, MouseEventArgs e)
