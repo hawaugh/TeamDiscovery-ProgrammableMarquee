@@ -1063,15 +1063,17 @@ namespace Vision
             }
             Invalidate();
 
+            Color oneColor;
             while (true)
             {
+                oneColor = border[0].ForeColor;
                 for (int i = 0; i < 219; i++)
                 {
                     border[i].ForeColor = border[i + 1].ForeColor;
                 }
-                border[219].ForeColor = border[0].ForeColor;
+                border[219].ForeColor = oneColor;
                 Invalidate();
-                Thread.Sleep(50);
+                Thread.Sleep(200);
             }
 
         }
