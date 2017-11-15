@@ -1052,6 +1052,28 @@ namespace Vision
         public void displayBorderHighlight()
         {
 
+            for (int a = 0; a < 220; a = a + 2)
+            {
+                border[a].ForeColor = borderColor;
+            }
+
+            for (int a = 1; a < 220; a = a + 2)
+            {
+                border[a].ForeColor = BackColor;
+            }
+            Invalidate();
+
+            while (true)
+            {
+                for (int i = 0; i < 219; i++)
+                {
+                    border[i].ForeColor = border[i + 1].ForeColor;
+                }
+                border[219].ForeColor = border[0].ForeColor;
+                Invalidate();
+                Thread.Sleep(50);
+            }
+
         }
         #endregion
 

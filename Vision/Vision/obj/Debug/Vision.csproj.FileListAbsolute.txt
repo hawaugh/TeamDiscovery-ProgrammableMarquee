@@ -63,3 +63,13 @@ C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-P
 C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
 C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.UIForm.resources
 C:\Users\Jeremy\Desktop\TeamDiscovery-ProgrammableMarquee-master\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.UIForm.resources
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.exe
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\obj\Debug\Vision.pdb
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe.config
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe
+E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.pdb

@@ -135,7 +135,7 @@ namespace Vision
             Image myImageSegment = new Image("..\\..\\panthers.jpg");
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4, 2, 4);
             mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };
-            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 0, 25, 2000);
+            Message myMessage = new Vision.Message(mySegmentArray, Color.Black, Color.Red, 1, 25, 2000);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             myDisplayThread.Start();
             
