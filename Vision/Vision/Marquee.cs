@@ -113,12 +113,12 @@ namespace Vision
             //Display Segments
             for (int i = 0; i < message.getSegmentArray().Length; i++)
             {
-                displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.scrollSpeed, message.segmentSpeed);
+                displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.segmentSpeed);
             }
         }
 
         //Selects the correct effects to use to display the segment
-        public void displaySegment(Segment segment, Color backgroundColor, int scrollSpeed, int segmentSpeed)
+        public void displaySegment(Segment segment, Color backgroundColor, int segmentSpeed)
         {
             //If segment is image then display image and return
             if (segment.isImage)
@@ -126,6 +126,15 @@ namespace Vision
                 displayImage(segment, segmentSpeed);
                 return;
             }
+
+            //If segment is Scrolling then display scrolling message
+            if (segment.isScrolling)
+            {
+                displayScrollingSegment(segment, backgroundColor);
+                Thread.Sleep(500);
+                return;
+            }
+
             //Display Entrance
             if (segment.entranceEffect == 0)
             {
@@ -134,17 +143,17 @@ namespace Vision
             }
             else if (segment.entranceEffect == 1)
             {
-                displaySplitEntrance(segment, backgroundColor, scrollSpeed);
+                displaySplitEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 2)
             {
-                displayUpEntrance(segment, backgroundColor, scrollSpeed);
+                displayUpEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 3)
             {
-                displayDownEntrance(segment, backgroundColor, scrollSpeed);
+                displayDownEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 4)
@@ -154,22 +163,17 @@ namespace Vision
             }
                   else if (segment.entranceEffect == 5)
             {
-                displayUpsideDownEntrance(segment, backgroundColor, scrollSpeed);
+                displayUpsideDownEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
                   else if (segment.entranceEffect == 6)
             {
-                displaySidewayEntrance(segment, backgroundColor, scrollSpeed);
+                displaySidewayEntrance(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
             }
 
-            //Display Middle
-            if (segment.middleEffect == -1)
-            {
-                displayScrollingSegment(segment, backgroundColor, scrollSpeed);
-                Thread.Sleep(500);
-            }
-            else if (segment.middleEffect == 1)
+            //Display Middle            
+            if (segment.middleEffect == 1)
             {
                 displayRandomColors(segment, backgroundColor);
                 Thread.Sleep(segmentSpeed);
@@ -188,17 +192,17 @@ namespace Vision
             }
             else if (segment.exitEffect == 1)
             {
-                displaySplitExit(segment, backgroundColor, scrollSpeed);
+                displaySplitExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 2)
             {
-                displayUpExit(segment, backgroundColor, scrollSpeed);
+                displayUpExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 3)
             {
-                displayDownExit(segment, backgroundColor, scrollSpeed);
+                displayDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 4)
@@ -208,12 +212,12 @@ namespace Vision
             }
             else if (segment.exitEffect == 5)
             {
-                displayUpsideDownExit(segment, backgroundColor, scrollSpeed);
+                displayUpsideDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 6)
             {
-                 displaySidewayExit(segment, backgroundColor, scrollSpeed);
+                 displaySidewayExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
         }
@@ -255,29 +259,28 @@ namespace Vision
 
         //Heather - edited on 11/10/17
         //Displays segment by scrolling top half in from left and bottom half in from left.
-        public void displaySplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displaySplitEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             Segment seg = segment;
-            Color col = backgroundColor;
-            int speed = scrollSpeed;
+            Color col = backgroundColor;            
 
             //causes both methods to run concurrently.
             Parallel.Invoke(() =>
             {
-                displayUpperSplitEntrance(seg, col, speed);
+                displayUpperSplitEntrance(seg, col);
             },
 
             () =>
             {
-                displayLowerSplitEntrance(seg, col, speed);
+                displayLowerSplitEntrance(seg, col);
             }
             );          
         }
         //Heather - Created on 11/10/17
         //private method that will display upper half of segment.  
         //To be used in displaySplitEntrance that will run concurrently with lower half
-        private void displayUpperSplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        private void displayUpperSplitEntrance(Segment segment, Color backgroundColor)
         {
            
             String[] currSegment = segment.getMessageMatrix();
@@ -310,7 +313,7 @@ namespace Vision
                     }
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
             }
             ////////center upper half of message
             for (int i = 96; i > topColumnStop; i--)
@@ -329,14 +332,14 @@ namespace Vision
                 {
                     setDot(r, 1, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
         //Heather - Created on 11/10/17
         //private method that will display lower half of message scrolling in.
         //Will be called in displaySplitEntrance and used to run concurrently with upper half method
-        private void displayLowerSplitEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        private void displayLowerSplitEntrance(Segment segment, Color backgroundColor)
         {   
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;           
@@ -367,7 +370,7 @@ namespace Vision
                     }
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
             }
             //////center lower half of message
             for (int i = 0; i < bottomColumnStop; i++)
@@ -386,13 +389,13 @@ namespace Vision
                 {
                     setDot(r, 93, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
 
          //Ahmad
-        public void displayUpEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayUpEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
@@ -426,7 +429,7 @@ namespace Vision
 
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
 
             }
 
@@ -447,14 +450,14 @@ namespace Vision
                 {
                     setDot(2, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
 
         //Ahmad
         //Edited on 11/14/2017
-        public void displayDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayDownEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
@@ -489,7 +492,7 @@ namespace Vision
 
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
 
             }
 
@@ -511,7 +514,7 @@ namespace Vision
                     {
                         setDot(14, c, backgroundColor);
                     }
-                    Thread.Sleep(scrollSpeed);
+                    Thread.Sleep(25);
                     Invalidate();
                 }
         }
@@ -519,7 +522,7 @@ namespace Vision
 
         //Ahmad
         //Added on 11/14/2017
-        public void displayUpsideDownEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayUpsideDownEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
@@ -554,7 +557,7 @@ namespace Vision
 
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
 
             }
 
@@ -575,14 +578,14 @@ namespace Vision
                 {
                     setDot(2, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
 
         //Ahmad
         //Added on 11/14/2017
-        public void displaySidewayEntrance(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displaySidewayEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
@@ -617,7 +620,7 @@ namespace Vision
 
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
 
             }
 
@@ -639,7 +642,7 @@ namespace Vision
                 {
                     setDot(14, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
@@ -683,7 +686,7 @@ namespace Vision
          */
         #region Middle Effects
         //Logan
-        public void displayScrollingSegment(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayScrollingSegment(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
@@ -712,7 +715,7 @@ namespace Vision
                     }
                 }
                 Invalidate();
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(segment.scrollSpeed);
             }
 
             //Exit rest of segment to the left
@@ -732,7 +735,7 @@ namespace Vision
                 {
                     setDot(r, 93, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(segment.scrollSpeed);
                 Invalidate();
             }
         }
@@ -815,17 +818,17 @@ namespace Vision
         #region Exit Effects
         //Heather edited on 11/10/17
         //Uses 2 helper methods to split and exit the segment concurrently
-        public void displaySplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displaySplitExit(Segment segment, Color backgroundColor)
         {
             //causes both methods to run concurrently.
             Parallel.Invoke(() =>
             {
-                displayUpperSplitExit(segment, backgroundColor, scrollSpeed);
+                displayUpperSplitExit(segment, backgroundColor);
             },
 
             () =>
             {
-                displayLowerSplitExit(segment, backgroundColor, scrollSpeed);
+                displayLowerSplitExit(segment, backgroundColor);
             }
             );
 
@@ -833,7 +836,7 @@ namespace Vision
 
         //Heather - Created on 11/10/17
         //Private method that is used in the displaySplitExit method.
-        private void displayUpperSplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        private void displayUpperSplitExit(Segment segment, Color backgroundColor)
         {
             //Exit top half to right
             for (int i = 0; i < 94; i++)
@@ -851,14 +854,14 @@ namespace Vision
                 {
                     setDot(r, 1, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
 
         //Heather - Created on 11/10/17
         //Private method that is used in the displaySplitExit method. Moves lower half of message off screen to the left
-        private void displayLowerSplitExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        private void displayLowerSplitExit(Segment segment, Color backgroundColor)
         {
             //Exit rest of segment to the left
             for (int i = 0; i < 94; i++)
@@ -877,14 +880,14 @@ namespace Vision
                 {
                     setDot(r, 93, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
 
         //Ahmad
         //Edited on 11/14/2017
-        public void displayUpExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayUpExit(Segment segment, Color backgroundColor)
         {
             for (int i = 0; i < 14; i++)
             {
@@ -902,14 +905,14 @@ namespace Vision
                 {
                     setDot(14, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
         
         //Ahmad
         //Edited on 11/14/2017
-        public void displayDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayDownExit(Segment segment, Color backgroundColor)
         {
             //Exit rest of segment to the down
             for (int i = 14; i > 0; i--)
@@ -928,7 +931,7 @@ namespace Vision
                 {
                     setDot(2, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
 
@@ -936,7 +939,7 @@ namespace Vision
         
         //Ahmad 
         //Added On 11/14/2017
-        public void displayUpsideDownExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displayUpsideDownExit(Segment segment, Color backgroundColor)
         {
             for (int i = 0; i < 14; i++)
             {
@@ -954,14 +957,14 @@ namespace Vision
                 {
                     setDot(14, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }
         
         //Ahmad
         //Added on 11/14/2017
-        public void displaySidewayExit(Segment segment, Color backgroundColor, int scrollSpeed)
+        public void displaySidewayExit(Segment segment, Color backgroundColor)
         {
 
             //Exit rest of segment to the up
@@ -981,7 +984,7 @@ namespace Vision
                 {
                     setDot(14, c, backgroundColor);
                 }
-                Thread.Sleep(scrollSpeed);
+                Thread.Sleep(25);
                 Invalidate();
             }
         }

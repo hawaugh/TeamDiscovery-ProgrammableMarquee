@@ -19,10 +19,13 @@ using System.Threading.Tasks;
 namespace Vision
 {
     class Segment
-    {
+    {        
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
+
+        private bool _isScrolling;
+        private int _scrollSpeed;
 
         private bool _isImage;
         private Bitmap _scaledBitmap;
@@ -35,21 +38,34 @@ namespace Vision
         
         //Default Constructor
         public Segment()
-        {
+        {            
             _messageText = "";
             _onColor = Color.Black;
+            _isScrolling = false;
             _isImage = false;
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
         }
 
-        //Text Constructor
+        //Scrolling Text Constructor
+        public Segment(string segmentText, Color onColor, int scrollSpeed)
+        {
+            _messageText = segmentText;
+            setMessageMatrix(_messageText);
+            _onColor = onColor;
+            _scrollSpeed = scrollSpeed;
+            _isScrolling = true;            
+            _isImage = false;
+        }
+
+        //Static Text Constructor
         public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect)
         {
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
+            _isScrolling = isScrolling;
             _entranceEffect = entranceEffect;
             _middleEffect = middleEffect;
             _exitEffect = exitEffect;
@@ -120,6 +136,18 @@ namespace Vision
         {
             get { return _onColor; }
             set { _onColor = value; }
+        }
+
+        public bool isScrolling
+        {
+            get { return _isScrolling; }
+            set { _isScrolling = value; }
+        }
+
+        public int scrollSpeed
+        {
+            get { return _scrollSpeed; }
+            set { _scrollSpeed = value; }
         }
         #endregion
 

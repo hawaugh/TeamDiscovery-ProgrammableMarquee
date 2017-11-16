@@ -24,17 +24,15 @@ namespace Vision
         private Color _backgroundColor;
         private Color _borderColor;
         private int _borderEffect;
-        private int _scrollSpeed;
         private int _segmentSpeed;    
 
         //Constructor
-        public Message(Segment[] newSegmentArray, Color backgroundColor, Color borderColor, int borderEffect, int scrollSpeed, int segmentSpeed)
+        public Message(Segment[] newSegmentArray, Color backgroundColor, Color borderColor, int borderEffect, int segmentSpeed)
         {
             segmentArray = newSegmentArray;
             _backgroundColor = backgroundColor;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
-            _scrollSpeed = scrollSpeed;
             _segmentSpeed = segmentSpeed;
         }
 
@@ -62,13 +60,6 @@ namespace Vision
         {
             get { return _borderEffect; }
             set { _borderEffect = value; }
-        }
-
-        //getter/setter for scrollSpeed
-        public int scrollSpeed
-        {
-            get { return _scrollSpeed; }
-            set { _scrollSpeed = value; }
         }
 
         //getter/setter for segmentSpeed
