@@ -41,10 +41,12 @@ namespace Vision
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.noTextPopUp = new System.Windows.Forms.Label();
+            this.randomColorCheckBox = new System.Windows.Forms.CheckBox();
             this.exitEffectLabel = new System.Windows.Forms.Label();
             this.staticEffectLabel = new System.Windows.Forms.Label();
+            this.scrollSpeedControl = new System.Windows.Forms.NumericUpDown();
+            this.scrollSpeedLabel = new System.Windows.Forms.Label();
             this.entranceEffectLabel = new System.Windows.Forms.Label();
             this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
             this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
@@ -52,14 +54,15 @@ namespace Vision
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
             this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionSpeedLabel = new System.Windows.Forms.Label();
+            this.displayTimeLabel = new System.Windows.Forms.Label();
             this.colorComboBox = new System.Windows.Forms.ComboBox();
             this.colorLabel = new System.Windows.Forms.Label();
-            this.repeatComboBox = new System.Windows.Forms.ComboBox();
-            this.repeatLabel = new System.Windows.Forms.Label();
-            this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.repeatComboBox = new System.Windows.Forms.ComboBox();
+            this.borderColorLabel = new System.Windows.Forms.Label();
+            this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.loadXMLButton = new System.Windows.Forms.Button();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.segmentPanel14 = new System.Windows.Forms.Panel();
@@ -123,6 +126,8 @@ namespace Vision
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
+            this.IgnoreCheckBox = new System.Windows.Forms.CheckBox();
+            this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.addSegmentButton17 = new System.Windows.Forms.Button();
             this.addSegmentButton15 = new System.Windows.Forms.Button();
@@ -141,8 +146,15 @@ namespace Vision
             this.segmentLabel18 = new System.Windows.Forms.Label();
             this.closeButton18 = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
+            this.backToMenuButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
             this.segmentPanel13.SuspendLayout();
             this.segmentPanel12.SuspendLayout();
@@ -158,17 +170,20 @@ namespace Vision
             this.segmentPanel1.SuspendLayout();
             this.segmentPanel2.SuspendLayout();
             this.textPanel.SuspendLayout();
+            this.borderOptionsGroupBox.SuspendLayout();
             this.SegmentHolderPanel.SuspendLayout();
             this.segmentPanel15.SuspendLayout();
             this.segmentPanel17.SuspendLayout();
             this.segmentPanel16.SuspendLayout();
             this.segmentPanel18.SuspendLayout();
             this.imagePanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
             // 
-            this.populateMarqueeButton.Location = new System.Drawing.Point(12, 490);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(11, 579);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 29);
             this.populateMarqueeButton.TabIndex = 1;
@@ -178,10 +193,12 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
-            this.createASegmentGroupBox.Controls.Add(this.label2);
             this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
+            this.createASegmentGroupBox.Controls.Add(this.randomColorCheckBox);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.staticEffectLabel);
+            this.createASegmentGroupBox.Controls.Add(this.scrollSpeedControl);
+            this.createASegmentGroupBox.Controls.Add(this.scrollSpeedLabel);
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.staticEffectComboBox);
@@ -189,28 +206,16 @@ namespace Vision
             this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
             this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
             this.createASegmentGroupBox.Controls.Add(this.transitionSpeedComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.transitionSpeedLabel);
+            this.createASegmentGroupBox.Controls.Add(this.displayTimeLabel);
             this.createASegmentGroupBox.Controls.Add(this.colorComboBox);
             this.createASegmentGroupBox.Controls.Add(this.colorLabel);
-            this.createASegmentGroupBox.Controls.Add(this.repeatComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.repeatLabel);
-            this.createASegmentGroupBox.Controls.Add(this.borderEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.textTextBox);
             this.createASegmentGroupBox.Controls.Add(this.textLabel);
             this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
             this.createASegmentGroupBox.Name = "createASegmentGroupBox";
-            this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 237);
+            this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 206);
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Border Effect:";
             // 
             // noTextPopUp
             // 
@@ -224,10 +229,21 @@ namespace Vision
             this.noTextPopUp.Text = "Please Enter Some Text Before Continuing.";
             this.noTextPopUp.Visible = false;
             // 
+            // randomColorCheckBox
+            // 
+            this.randomColorCheckBox.AutoSize = true;
+            this.randomColorCheckBox.Location = new System.Drawing.Point(222, 152);
+            this.randomColorCheckBox.Name = "randomColorCheckBox";
+            this.randomColorCheckBox.Size = new System.Drawing.Size(98, 17);
+            this.randomColorCheckBox.TabIndex = 23;
+            this.randomColorCheckBox.Text = "Random Colors";
+            this.randomColorCheckBox.UseVisualStyleBackColor = true;
+            this.randomColorCheckBox.Visible = false;
+            // 
             // exitEffectLabel
             // 
             this.exitEffectLabel.AutoSize = true;
-            this.exitEffectLabel.Location = new System.Drawing.Point(571, 175);
+            this.exitEffectLabel.Location = new System.Drawing.Point(571, 134);
             this.exitEffectLabel.Name = "exitEffectLabel";
             this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
             this.exitEffectLabel.TabIndex = 16;
@@ -237,17 +253,35 @@ namespace Vision
             // staticEffectLabel
             // 
             this.staticEffectLabel.AutoSize = true;
-            this.staticEffectLabel.Location = new System.Drawing.Point(315, 175);
+            this.staticEffectLabel.Location = new System.Drawing.Point(315, 134);
             this.staticEffectLabel.Name = "staticEffectLabel";
             this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
             this.staticEffectLabel.TabIndex = 15;
             this.staticEffectLabel.Text = "Static Effect";
             this.staticEffectLabel.Visible = false;
             // 
+            // scrollSpeedControl
+            // 
+            this.scrollSpeedControl.Location = new System.Drawing.Point(14, 151);
+            this.scrollSpeedControl.Name = "scrollSpeedControl";
+            this.scrollSpeedControl.Size = new System.Drawing.Size(120, 20);
+            this.scrollSpeedControl.TabIndex = 6;
+            this.scrollSpeedControl.Visible = false;
+            // 
+            // scrollSpeedLabel
+            // 
+            this.scrollSpeedLabel.AutoSize = true;
+            this.scrollSpeedLabel.Location = new System.Drawing.Point(39, 134);
+            this.scrollSpeedLabel.Name = "scrollSpeedLabel";
+            this.scrollSpeedLabel.Size = new System.Drawing.Size(67, 13);
+            this.scrollSpeedLabel.TabIndex = 21;
+            this.scrollSpeedLabel.Text = "Scroll Speed";
+            this.scrollSpeedLabel.Visible = false;
+            // 
             // entranceEffectLabel
             // 
             this.entranceEffectLabel.AutoSize = true;
-            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 175);
+            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 134);
             this.entranceEffectLabel.Name = "entranceEffectLabel";
             this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
             this.entranceEffectLabel.TabIndex = 14;
@@ -263,7 +297,7 @@ namespace Vision
             "Scroll Up",
             "Scroll Down",
             "Random Dots"});
-            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
+            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 150);
             this.exitEffectComboBox.Name = "exitEffectComboBox";
             this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.exitEffectComboBox.TabIndex = 13;
@@ -274,9 +308,9 @@ namespace Vision
             this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staticEffectComboBox.FormattingEnabled = true;
             this.staticEffectComboBox.Items.AddRange(new object[] {
-            "Random Dots",
+            "Random Color Dots",
             "Fade"});
-            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
+            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 150);
             this.staticEffectComboBox.Name = "staticEffectComboBox";
             this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.staticEffectComboBox.TabIndex = 12;
@@ -292,7 +326,7 @@ namespace Vision
             "Raise",
             "Lower",
             "Random Dots"});
-            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 191);
+            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 150);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.entranceEffectComboBox.TabIndex = 11;
@@ -301,7 +335,7 @@ namespace Vision
             // scrollingTextButton
             // 
             this.scrollingTextButton.AutoSize = true;
-            this.scrollingTextButton.Location = new System.Drawing.Point(168, 146);
+            this.scrollingTextButton.Location = new System.Drawing.Point(168, 105);
             this.scrollingTextButton.Name = "scrollingTextButton";
             this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
             this.scrollingTextButton.TabIndex = 10;
@@ -313,7 +347,7 @@ namespace Vision
             // specialEffectButton
             // 
             this.specialEffectButton.AutoSize = true;
-            this.specialEffectButton.Location = new System.Drawing.Point(17, 146);
+            this.specialEffectButton.Location = new System.Drawing.Point(17, 105);
             this.specialEffectButton.Name = "specialEffectButton";
             this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
             this.specialEffectButton.TabIndex = 6;
@@ -326,19 +360,19 @@ namespace Vision
             // 
             this.transitionSpeedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(423, 108);
+            this.transitionSpeedComboBox.Location = new System.Drawing.Point(423, 60);
             this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
             this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
             this.transitionSpeedComboBox.TabIndex = 9;
             // 
-            // transitionSpeedLabel
+            // displayTimeLabel
             // 
-            this.transitionSpeedLabel.AutoSize = true;
-            this.transitionSpeedLabel.Location = new System.Drawing.Point(296, 111);
-            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
-            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
-            this.transitionSpeedLabel.TabIndex = 8;
-            this.transitionSpeedLabel.Text = "Transition Speed:";
+            this.displayTimeLabel.AutoSize = true;
+            this.displayTimeLabel.Location = new System.Drawing.Point(316, 63);
+            this.displayTimeLabel.Name = "displayTimeLabel";
+            this.displayTimeLabel.Size = new System.Drawing.Size(70, 13);
+            this.displayTimeLabel.TabIndex = 8;
+            this.displayTimeLabel.Text = "Display Time:";
             // 
             // colorComboBox
             // 
@@ -350,7 +384,7 @@ namespace Vision
             "BlueViolet",
             "Cyan",
             "Fuchsia"});
-            this.colorComboBox.Location = new System.Drawing.Point(92, 108);
+            this.colorComboBox.Location = new System.Drawing.Point(92, 60);
             this.colorComboBox.Name = "colorComboBox";
             this.colorComboBox.Size = new System.Drawing.Size(191, 21);
             this.colorComboBox.TabIndex = 7;
@@ -359,38 +393,11 @@ namespace Vision
             // colorLabel
             // 
             this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(14, 111);
+            this.colorLabel.Location = new System.Drawing.Point(14, 63);
             this.colorLabel.Name = "colorLabel";
             this.colorLabel.Size = new System.Drawing.Size(34, 13);
             this.colorLabel.TabIndex = 6;
             this.colorLabel.Text = "Color:";
-            // 
-            // repeatComboBox
-            // 
-            this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.repeatComboBox.FormattingEnabled = true;
-            this.repeatComboBox.Location = new System.Drawing.Point(423, 70);
-            this.repeatComboBox.Name = "repeatComboBox";
-            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
-            this.repeatComboBox.TabIndex = 5;
-            // 
-            // repeatLabel
-            // 
-            this.repeatLabel.AutoSize = true;
-            this.repeatLabel.Location = new System.Drawing.Point(341, 70);
-            this.repeatLabel.Name = "repeatLabel";
-            this.repeatLabel.Size = new System.Drawing.Size(45, 13);
-            this.repeatLabel.TabIndex = 4;
-            this.repeatLabel.Text = "Repeat:";
-            // 
-            // borderEffectComboBox
-            // 
-            this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.borderEffectComboBox.FormattingEnabled = true;
-            this.borderEffectComboBox.Location = new System.Drawing.Point(92, 67);
-            this.borderEffectComboBox.Name = "borderEffectComboBox";
-            this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.borderEffectComboBox.TabIndex = 3;
             // 
             // textTextBox
             // 
@@ -409,9 +416,45 @@ namespace Vision
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "Text: ";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Border Effect:";
+            // 
+            // repeatComboBox
+            // 
+            this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.repeatComboBox.FormattingEnabled = true;
+            this.repeatComboBox.Location = new System.Drawing.Point(405, 29);
+            this.repeatComboBox.Name = "repeatComboBox";
+            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
+            this.repeatComboBox.TabIndex = 5;
+            // 
+            // borderColorLabel
+            // 
+            this.borderColorLabel.AutoSize = true;
+            this.borderColorLabel.Location = new System.Drawing.Point(317, 33);
+            this.borderColorLabel.Name = "borderColorLabel";
+            this.borderColorLabel.Size = new System.Drawing.Size(68, 13);
+            this.borderColorLabel.TabIndex = 4;
+            this.borderColorLabel.Text = "Border Color:";
+            // 
+            // borderEffectComboBox
+            // 
+            this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.borderEffectComboBox.FormattingEnabled = true;
+            this.borderEffectComboBox.Location = new System.Drawing.Point(91, 30);
+            this.borderEffectComboBox.Name = "borderEffectComboBox";
+            this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.borderEffectComboBox.TabIndex = 3;
+            // 
             // loadXMLButton
             // 
-            this.loadXMLButton.Location = new System.Drawing.Point(939, 482);
+            this.loadXMLButton.Location = new System.Drawing.Point(938, 571);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 3;
@@ -1040,7 +1083,7 @@ namespace Vision
             // 
             // saveAndRunButton
             // 
-            this.saveAndRunButton.Location = new System.Drawing.Point(1101, 482);
+            this.saveAndRunButton.Location = new System.Drawing.Point(1100, 571);
             this.saveAndRunButton.Name = "saveAndRunButton";
             this.saveAndRunButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndRunButton.TabIndex = 27;
@@ -1050,7 +1093,7 @@ namespace Vision
             // 
             // saveAndExitButton
             // 
-            this.saveAndExitButton.Location = new System.Drawing.Point(1020, 482);
+            this.saveAndExitButton.Location = new System.Drawing.Point(1019, 571);
             this.saveAndExitButton.Name = "saveAndExitButton";
             this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndExitButton.TabIndex = 29;
@@ -1229,12 +1272,38 @@ namespace Vision
             // 
             // textPanel
             // 
+            this.textPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textPanel.BackColor = System.Drawing.Color.White;
+            this.textPanel.Controls.Add(this.IgnoreCheckBox);
+            this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(235, 55);
             this.textPanel.Name = "textPanel";
             this.textPanel.Size = new System.Drawing.Size(941, 420);
             this.textPanel.TabIndex = 34;
+            // 
+            // IgnoreCheckBox
+            // 
+            this.IgnoreCheckBox.AutoSize = true;
+            this.IgnoreCheckBox.Location = new System.Drawing.Point(885, 3);
+            this.IgnoreCheckBox.Name = "IgnoreCheckBox";
+            this.IgnoreCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.IgnoreCheckBox.TabIndex = 24;
+            this.IgnoreCheckBox.Text = "Ignore";
+            this.IgnoreCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // borderOptionsGroupBox
+            // 
+            this.borderOptionsGroupBox.Controls.Add(this.borderEffectComboBox);
+            this.borderOptionsGroupBox.Controls.Add(this.repeatComboBox);
+            this.borderOptionsGroupBox.Controls.Add(this.label2);
+            this.borderOptionsGroupBox.Controls.Add(this.borderColorLabel);
+            this.borderOptionsGroupBox.Location = new System.Drawing.Point(12, 236);
+            this.borderOptionsGroupBox.Name = "borderOptionsGroupBox";
+            this.borderOptionsGroupBox.Size = new System.Drawing.Size(832, 100);
+            this.borderOptionsGroupBox.TabIndex = 22;
+            this.borderOptionsGroupBox.TabStop = false;
+            this.borderOptionsGroupBox.Text = "Border Options";
             // 
             // SegmentHolderPanel
             // 
@@ -1493,32 +1562,96 @@ namespace Vision
             // imagePanel
             // 
             this.imagePanel.BackColor = System.Drawing.Color.White;
+            this.imagePanel.Controls.Add(this.browseButton);
+            this.imagePanel.Controls.Add(this.groupBox2);
+            this.imagePanel.Controls.Add(this.groupBox1);
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
-            this.imagePanel.Location = new System.Drawing.Point(458, 26);
+            this.imagePanel.Location = new System.Drawing.Point(435, 25);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(941, 420);
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(566, 17);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(75, 23);
+            this.browseButton.TabIndex = 6;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(41, 247);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(644, 148);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Scaled Image";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Location = new System.Drawing.Point(41, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(739, 185);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Original Image";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(8, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(636, 144);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(948, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Marquee Background";
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
-            this.marquee1.Location = new System.Drawing.Point(24, 69);
+            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marquee1.Location = new System.Drawing.Point(0, 0);
             this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1168, 202);
+            this.marquee1.Size = new System.Drawing.Size(1203, 620);
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
+            // 
+            // backToMenuButton
+            // 
+            this.backToMenuButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.backToMenuButton.Location = new System.Drawing.Point(552, 585);
+            this.backToMenuButton.Name = "backToMenuButton";
+            this.backToMenuButton.Size = new System.Drawing.Size(105, 23);
+            this.backToMenuButton.TabIndex = 39;
+            this.backToMenuButton.Text = "Back to Menu";
+            this.backToMenuButton.UseVisualStyleBackColor = true;
+            this.backToMenuButton.Visible = false;
+            this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
             // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1203, 527);
-            this.Controls.Add(this.SegmentHolderPanel);
+            this.ClientSize = new System.Drawing.Size(1203, 620);
+            this.Controls.Add(this.backToMenuButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
+            this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
@@ -1527,11 +1660,14 @@ namespace Vision
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.marquee1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.segmentPanel14.ResumeLayout(false);
             this.segmentPanel14.PerformLayout();
             this.segmentPanel13.ResumeLayout(false);
@@ -1561,6 +1697,9 @@ namespace Vision
             this.segmentPanel2.ResumeLayout(false);
             this.segmentPanel2.PerformLayout();
             this.textPanel.ResumeLayout(false);
+            this.textPanel.PerformLayout();
+            this.borderOptionsGroupBox.ResumeLayout(false);
+            this.borderOptionsGroupBox.PerformLayout();
             this.SegmentHolderPanel.ResumeLayout(false);
             this.segmentPanel15.ResumeLayout(false);
             this.segmentPanel15.PerformLayout();
@@ -1572,6 +1711,8 @@ namespace Vision
             this.segmentPanel18.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1612,11 +1753,11 @@ namespace Vision
         private System.Windows.Forms.RadioButton scrollingTextButton;
         private System.Windows.Forms.RadioButton specialEffectButton;
         private System.Windows.Forms.ComboBox transitionSpeedComboBox;
-        private System.Windows.Forms.Label transitionSpeedLabel;
+        private System.Windows.Forms.Label displayTimeLabel;
         private System.Windows.Forms.ComboBox colorComboBox;
         private System.Windows.Forms.Label colorLabel;
         private System.Windows.Forms.ComboBox repeatComboBox;
-        private System.Windows.Forms.Label repeatLabel;
+        private System.Windows.Forms.Label borderColorLabel;
         private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
@@ -1681,6 +1822,17 @@ namespace Vision
         private System.Windows.Forms.Panel segmentPanel18;
         private System.Windows.Forms.Label segmentLabel18;
         private System.Windows.Forms.Button closeButton18;
+        private System.Windows.Forms.Label scrollSpeedLabel;
+        private System.Windows.Forms.NumericUpDown scrollSpeedControl;
+        private System.Windows.Forms.GroupBox borderOptionsGroupBox;
+        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox IgnoreCheckBox;
+        private System.Windows.Forms.CheckBox randomColorCheckBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button backToMenuButton;
     }
 }
 
