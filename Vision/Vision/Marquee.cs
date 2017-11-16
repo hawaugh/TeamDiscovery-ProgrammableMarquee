@@ -27,16 +27,12 @@ namespace Vision
         private Dot[,] matrix = new Dot[16, 96];
         private Dot[] border = new Dot[220];
         private Thread myBorderThread = null;
-        private Color borderColor;
-        private int borderEffect;
 
         public Marquee()
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
 
             this.BackColor = Color.Black;
-            this.borderColor = Color.Black;
-            this.borderEffect = 0;
 
             //Populate matrix array of Dots
             for (int r = 0; r < 16; r++)
@@ -103,17 +99,51 @@ namespace Vision
         public void displayMessage(Message message)
         {
             this.BackColor = message.backgroundColor;
-            this.borderColor = message.borderColor;
-            this.borderEffect = message.borderEffect;
-
-            //Start Border Effect
-            myBorderThread = new Thread(delegate () { displayBorder(); });
-            myBorderThread.Start();
 
             //Display Segments
             for (int i = 0; i < message.getSegmentArray().Length; i++)
             {
+                if (!message.getSegmentArray()[i].isImage)
+                {
+                    if (i == 0)
+                    {
+                        //Start Border Effect
+                        myBorderThread = new Thread(delegate () { displayBorder(message.getSegmentArray()[i].borderColor, message.getSegmentArray()[i].borderEffect); });
+                        myBorderThread.Start();
+                    }
+                    else if (message.getSegmentArray()[i - 1].isImage)
+                    {
+                        //Start Border Effect
+                        myBorderThread = new Thread(delegate () { displayBorder(message.getSegmentArray()[i].borderColor, message.getSegmentArray()[i].borderEffect); });
+                        myBorderThread.Start();
+                    }
+                    else if (message.getSegmentArray()[i].borderColor != message.getSegmentArray()[i - 1].borderColor || message.getSegmentArray()[i].borderEffect != message.getSegmentArray()[i - 1].borderEffect)
+                    {
+                        if (myBorderThread != null)
+                        {
+                            if (myBorderThread.IsAlive)
+                            {
+                                myBorderThread.Abort();
+                            }
+                        }
+
+                        //Start Border Effect
+                        myBorderThread = new Thread(delegate () { displayBorder(message.getSegmentArray()[i].borderColor, message.getSegmentArray()[i].borderEffect); });
+                        myBorderThread.Start();
+                    }
+                }
+
+                //Display Current Segment
                 displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.segmentSpeed);
+            }
+
+            //Stop Border Thread if running
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    myBorderThread.Abort();
+                }
             }
         }
 
@@ -123,7 +153,7 @@ namespace Vision
             //If segment is image then display image and return
             if (segment.isImage)
             {
-                displayImage(segment, segmentSpeed);
+                displayImage(segment);
                 return;
             }
 
@@ -131,7 +161,7 @@ namespace Vision
             if (segment.isScrolling)
             {
                 displayScrollingSegment(segment, backgroundColor);
-                Thread.Sleep(500);
+                Thread.Sleep(segmentSpeed);
                 return;
             }
 
@@ -1031,19 +1061,19 @@ namespace Vision
             }
         }
 
-        public void displayBorder()
+        public void displayBorder(Color borderColor, int borderEffect)
         {
             if (borderEffect == 1)
             {
-                displayBorderHighlight();
+                displayBorderHighlight(borderColor);
             }
             else
             {
-                staticBorder();
+                staticBorder(borderColor);
             }
         }
 
-        public void staticBorder()
+        public void staticBorder(Color borderColor)
         {
             for (int b = 0; b < 220; b++)
             {
@@ -1052,7 +1082,7 @@ namespace Vision
         }
 
         //Brooks
-        public void displayBorderHighlight()
+        public void displayBorderHighlight(Color borderColor)
         {
 
             for (int a = 0; a < 220; a = a + 2)
@@ -1089,7 +1119,7 @@ namespace Vision
          * 
          */
         #region Image Effects
-        public void displayImage(Segment image, int segmentSpeed)
+        public void displayImage(Segment image)
         {
             //Stop Border Effect
             if (myBorderThread != null)
@@ -1121,12 +1151,7 @@ namespace Vision
             //Clear Whole Marquee
             clearMarquee(BackColor);
             clearBorder(BackColor);
-            Invalidate();
-            Thread.Sleep(500);
-
-            //Resume Border effect
-            myBorderThread = new Thread(delegate () { displayBorder(); });
-            myBorderThread.Start();
+            Invalidate();          
         }
         #endregion
 

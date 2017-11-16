@@ -24,18 +24,25 @@ namespace Vision
         private string[] messageMatrix = new string[12];
         private Color _onColor;
 
+        //Scrolling fields
         private bool _isScrolling;
         private int _scrollSpeed;
 
+        //Image fields
         private bool _isImage;
         private Bitmap _scaledBitmap;
         private float _imageAspect;
         private const float ASPECT_RATIO = 6;
 
+        //Effect fields
         private int _entranceEffect;        
         private int _middleEffect;        
         private int _exitEffect;
-        
+
+        //Border fields
+        private Color _borderColor;
+        private int _borderEffect;
+
         //Default Constructor
         public Segment()
         {            
@@ -46,21 +53,25 @@ namespace Vision
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
+            _borderColor = Color.Black;
+            _borderEffect = 0;
         }
 
         //Scrolling Text Constructor
-        public Segment(string segmentText, Color onColor, int scrollSpeed)
+        public Segment(string segmentText, Color onColor, int scrollSpeed, Color borderColor, int borderEffect)
         {
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
             _scrollSpeed = scrollSpeed;
+            _borderColor = borderColor;
+            _borderEffect = borderEffect;
             _isScrolling = true;            
             _isImage = false;
         }
 
         //Static Text Constructor
-        public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect)
+        public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect, Color borderColor, int borderEffect)
         {
             _messageText = segmentText;
             setMessageMatrix(_messageText);
@@ -69,6 +80,8 @@ namespace Vision
             _entranceEffect = entranceEffect;
             _middleEffect = middleEffect;
             _exitEffect = exitEffect;
+            _borderColor = borderColor;
+            _borderEffect = borderEffect;
             _isImage = false;
         }
 
@@ -221,6 +234,29 @@ namespace Vision
             get { return _exitEffect; }
             set { _exitEffect = value; }
         }
+        #endregion
+
+        /*
+         * 
+         *   Border Options
+         * 
+         */
+        #region Border Options
+
+        //getter/setter for borderColor
+        public Color borderColor
+        {
+            get { return _borderColor; }
+            set { _borderColor = value; }
+        }
+
+        //getter/setter for borderEffect
+        public int borderEffect
+        {
+            get { return _borderEffect; }
+            set { _borderEffect = value; }
+        }
+
         #endregion
 
         /*
