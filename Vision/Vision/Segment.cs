@@ -19,7 +19,8 @@ using System.Threading.Tasks;
 namespace Vision
 {
     class Segment
-    {        
+    {
+        private bool _ignore;     
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
@@ -45,7 +46,8 @@ namespace Vision
 
         //Default Constructor
         public Segment()
-        {            
+        {
+            _ignore = true;    
             _messageText = "";
             _onColor = Color.Black;
             _isScrolling = false;
@@ -60,6 +62,7 @@ namespace Vision
         //Scrolling Text Constructor
         public Segment(string segmentText, Color onColor, int scrollSpeed, Color borderColor, int borderEffect)
         {
+            _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
@@ -73,6 +76,7 @@ namespace Vision
         //Static Text Constructor
         public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect, Color borderColor, int borderEffect)
         {
+            _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
@@ -88,6 +92,7 @@ namespace Vision
         //Image Constructor
         public Segment(string filename)
         {
+            _ignore = false;
             _isImage = true;
             //creates the image from file
             Bitmap imageBitmap = new Bitmap(filename);
@@ -107,7 +112,12 @@ namespace Vision
             }
         }
 
-        
+        //ignore setter/getter
+        public bool ignore
+        {
+            get { return _ignore; }
+            set { _ignore = value; }
+        }
 
         /*
          * 
