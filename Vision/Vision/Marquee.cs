@@ -170,6 +170,9 @@ namespace Vision
                     myBorderThread.Abort();
                 }
             }
+            //Clear Marquee
+            clearBorder(BackColor);
+            clearMarquee(BackColor);
         }
 
         //Selects the correct effects to use to display the segment
