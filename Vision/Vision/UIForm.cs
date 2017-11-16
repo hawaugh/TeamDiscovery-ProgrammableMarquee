@@ -32,8 +32,12 @@ namespace Vision
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
         private Point[] mySegmentPanelArray = new Point[18];
+        //Holder for all locations in order
+        private Point[] mySegmentPanelArrayLoc;
         //Parallel Array for the location of all SegmentLabels
         private Point[] mySegmentLabelArray = new Point[18];
+        //Holder for all locations in order
+        private Point[] mySegmentLabelArrayLoc;
         //Parallel Array for the location of all SegmentCloseButtons
         private Point[] mySegmentCloseButtonArray = new Point[18];
 
@@ -159,6 +163,12 @@ namespace Vision
             mySegmentCloseButtonArray[15] = closeButton16.Location;
             mySegmentCloseButtonArray[16] = closeButton17.Location;
             mySegmentCloseButtonArray[17] = closeButton18.Location;
+
+            //Holder for all locations in order
+            mySegmentPanelArrayLoc = mySegmentPanelArray;
+
+            //Holder for all locations in order
+            mySegmentLabelArrayLoc = mySegmentLabelArray;
         }
         
         private void clearForMarquee()
@@ -206,6 +216,15 @@ namespace Vision
             imageTabLabel.Visible = false;
             textPanel.Visible = false;
             imagePanel.Visible = false;
+        }
+
+        private bool mouseIsOverPanel(Panel pnl)
+        {
+            if (pnl.ClientRectangle.Contains(pnl.PointToClient(Cursor.Position)))
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
 
@@ -734,6 +753,185 @@ namespace Vision
             //Adds the Text thats saved the the segment into the TextBox
             textTextBox.Text = mySegmentArray[17].messageText;
         }
+
+        private int findLocation(double x, double y)
+        {
+            int result = 0;
+            //test whether the mouse location is in a segment zone
+            if (x > 5 && x < 115 && y > 6 && y < 46)
+            {
+                result = 1;
+            }
+            else if (x > 120 && x < 230 && y > 6 && y < 46)
+            {
+                result = 2;
+            }
+            else if (x > 5 && x < 115 && y > 52 && y < 92)
+            {
+                result = 3;
+            }
+            else if (x > 120 && x < 230 && y > 52 && y < 92)
+            {
+                result = 4;
+            }
+            else if (x > 5 && x < 115 && y > 98 && y < 138)
+            {
+                result = 5;
+            }
+            else if (x > 120 && x < 230 && y > 98 && y < 138)
+            {
+                result = 6;
+            }
+            else if (x > 5 && x < 115 && y > 144 && y < 184)
+            {
+                result = 7;
+            }
+            else if (x > 120 && x < 230 && y > 144 && y < 184)
+            {
+                result = 8;
+            }
+            else if (x > 5 && x < 115 && y > 190 && y < 230)
+            {
+                result = 9;
+            }
+            else if (x > 120 && x < 230 && y > 190 && y < 230)
+            {
+                result = 10;
+            }
+            else if (x > 5 && x < 115 && y > 236 && y < 276)
+            {
+                result = 11;
+            }
+            else if (x > 120 && x < 230 && y > 236 && y < 276)
+            {
+                result = 12;
+            }
+            else if (x > 5 && x < 115 && y > 282 && y < 322)
+            {
+                result = 13;
+            }
+            else if (x > 120 && x < 230 && y > 282 && y < 322)
+            {
+                result = 14;
+            }
+            else if (x > 5 && x < 115 && y > 328 && y < 348)
+            {
+                result = 15;
+            }
+            else if (x > 120 && x < 230 && y > 328 && y < 348)
+            {
+                result = 16;
+            }
+            else if (x > 5 && x < 115 && y > 374 && y < 414)
+            {
+                result = 17;
+            }
+            else if (x > 120 && x < 230 && y > 374 && y < 414)
+            {
+                result = 18;
+            }
+            else
+            {
+                result = 0;
+            }
+            return result;
+        }
+
+        private Point MouseDownLocation;
+        private Point segment1Point;
+
+        private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
+            segmentPanel1.BringToFront();
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+
+            segment1Point = segmentPanel1.Location;
+        }
+
+        private void segmentPanel1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
+                segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
+            }
+        }
+
+        private void segmentMoveAnimation(Panel panel, Point a, Point b)
+        {
+
+            for (int i = 0; i < 23; i++)
+            {
+                panel.Left = a.X + 5;
+                /*
+                if (a.X < b.X)
+                {
+                    panel.Left = a.X + 1;
+                    a.X += 1;
+                }
+                if (a.Y < b.Y)
+                {
+                    panel.Top = a.Y + 1;
+                    a.Y += 1;
+                }
+                */
+            }
+        }
+
+        private void segmentPanel1_MouseUp(object sender, MouseEventArgs e)
+        {  
+
+            //segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
+            //segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
+
+            if (mouseIsOverPanel(segmentPanel2))
+            {
+                segmentPanel1.Left = mySegmentPanelArray[1].X;
+                segmentPanel1.Top = mySegmentPanelArray[1].Y;
+
+                for (int i = 0; i < 23; i++)
+                {
+                    segmentPanel2.Left = segmentPanel2.Left - 5;
+                    /*
+                    if (a.X < b.X)
+                    {
+                        panel.Left = a.X + 1;
+                        a.X += 1;
+                    }
+                    if (a.Y < b.Y)
+                    {
+                        panel.Top = a.Y + 1;
+                        a.Y += 1;
+                    }
+                    */
+                    Thread.Sleep(20);
+                }
+                //segmentMoveAnimation(segmentPanel2, segmentPanel2.Location, segmentPanel1.Location);
+                
+            }
+            else if (mouseIsOverPanel(segmentPanel3))
+            {
+                segmentMoveAnimation(segmentPanel1, segmentPanel1.Location, segmentPanel2.Location);
+                segmentPanel1.Left = mySegmentPanelArray[2].X;
+                segmentPanel1.Top = mySegmentPanelArray[2].Y;
+            }
+            else if (mouseIsOverPanel(segmentPanel4))
+            {
+                segmentMoveAnimation(segmentPanel1, segmentPanel1.Location, segmentPanel2.Location);
+                segmentPanel1.Left = mySegmentPanelArray[3].X;
+                segmentPanel1.Top = mySegmentPanelArray[3].Y;
+            }
+            else
+            {
+                //segmentPanel1.Left = mySegmentPanelArray[0].X;
+                //segmentPanel1.Top = mySegmentPanelArray[0].Y;
+            }
+        }
         #endregion
 
 
@@ -839,7 +1037,7 @@ namespace Vision
          *   Bottom Buttons
          * 
          */
-        #region Segment Buttons
+        #region Bottom Buttons
         private void saveAndExitButton_Click(object sender, EventArgs e)
         {
             //Closes the form
@@ -953,336 +1151,6 @@ namespace Vision
                 myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
                 myDisplayThread.Start();
             }
-        }
-        
-                private int findLocation(double x, double y)
-        {
-            int result = 0;
-            //test whether the mouse location is in a segment zone
-            if (x > 5 && x < 115 && y > 6 && y < 46)
-            {
-                result = 1;
-            }
-            else if (x > 120 && x < 230 && y > 6 && y < 46)
-            {
-                result = 2;
-            }
-            else if (x > 5 && x < 115 && y > 52 && y < 92)
-            {
-                result = 3;
-            }
-            else if (x > 120 && x < 230 && y > 52 && y < 92)
-            {
-                result = 4;
-            }
-            else if (x > 5 && x < 115 && y > 98 && y < 138)
-            {
-                result = 5;
-            }
-            else if (x > 120 && x < 230 && y > 98 && y < 138)
-            {
-                result = 6;
-            }
-            else if (x > 5 && x < 115 && y > 144 && y < 184)
-            {
-                result = 7;
-            }
-            else if (x > 120 && x < 230 && y > 144 && y < 184)
-            {
-                result = 8;
-            }
-            else if (x > 5 && x < 115 && y > 190 && y < 230)
-            {
-                result = 9;
-            }
-            else if (x > 120 && x < 230 && y > 190 && y < 230)
-            {
-                result = 10;
-            }
-            else if (x > 5 && x < 115 && y > 236 && y < 276)
-            {
-                result = 11;
-            }
-            else if (x > 120 && x < 230 && y > 236 && y < 276)
-            {
-                result = 12;
-            }
-            else if (x > 5 && x < 115 && y > 282 && y < 322)
-            {
-                result = 13;
-            }
-            else if (x > 120 && x < 230 && y > 282 && y < 322)
-            {
-                result = 14;
-            }
-            else if (x > 5 && x < 115 && y > 328 && y < 348)
-            {
-                result = 15;
-            }
-            else if (x > 120 && x < 230 && y > 328 && y < 348)
-            {
-                result = 16;
-            }
-            else if (x > 5 && x < 115 && y > 374 && y < 414)
-            {
-                result = 17;
-            }
-            else if (x > 120 && x < 230 && y > 374 && y < 414)
-            {
-                result = 18;
-            }
-            else
-            {
-                result = 0;
-            }
-            return result;
-        }
-
-        private Point MouseDownLocation;
-        private Point segment1Point;
-
-        private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
-            segmentPanel1.BringToFront();
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-            }
-
-            segment1Point = segmentPanel1.Location;
-        }
-
-        private void segmentPanel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
-                segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
-
-                //segmentPanel1.Location = e.Location;
-                //segmentLabel1.Location = e.Location;
-                //closeButton1.Location = e.Location;
-            }
-            /*
-            double x;
-            double y;
-            
-            x = e.X;
-            y = e.Y;
-            if (x > 5 && x < 115 && y > 6 && y < 46)
-            {
-                
-            }
-            if (x > 120 && x < 230 && y > 6 && y < 46)
-            {
-                segmentPanel2.Left = mySegmentPanelArray[0].X;
-                segmentPanel2.Top = mySegmentPanelArray[0].Y;
-                //segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel2.ForeColor = Color.White;
-                
-            }
-            if (x > 5 && x < 115 && y > 52 && y < 92)
-            {
-                segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel3.Location = mySegmentPanelArray[1];
-            }
-            else if (x > 120 && x < 230 && y > 52 && y < 92)
-            {
-                segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel3.Location = mySegmentPanelArray[1];
-                segmentPanel4.Location = mySegmentPanelArray[2];
-            }
-            else if (x > 5 && x < 115 && y > 98 && y < 138)
-            {
-                segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel3.Location = mySegmentPanelArray[1];
-                segmentPanel4.Location = mySegmentPanelArray[2];
-                segmentPanel5.Location = mySegmentPanelArray[3];
-            }
-            else if (x > 120 && x < 230 && y > 98 && y < 138)
-            {
-                segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel3.Location = mySegmentPanelArray[1];
-                segmentPanel4.Location = mySegmentPanelArray[2];
-                segmentPanel5.Location = mySegmentPanelArray[3];
-                segmentPanel6.Location = mySegmentPanelArray[4];
-            }
-            else if (x > 5 && x < 115 && y > 144 && y < 184)
-            {
-                segmentPanel2.Location = mySegmentPanelArray[0];
-                segmentPanel3.Location = mySegmentPanelArray[1];
-                segmentPanel4.Location = mySegmentPanelArray[2];
-                segmentPanel5.Location = mySegmentPanelArray[3];
-                segmentPanel6.Location = mySegmentPanelArray[4];
-                segmentPanel7.Location = mySegmentPanelArray[5];
-            }
-            else if (x > 120 && x < 230 && y > 144 && y < 184)
-            {
-                //result = 8;
-            }
-            else if (x > 5 && x < 115 && y > 190 && y < 230)
-            {
-                //result = 9;
-            }
-            else if (x > 120 && x < 230 && y > 190 && y < 230)
-            {
-                //result = 10;
-            }
-            else if (x > 5 && x < 115 && y > 236 && y < 276)
-            {
-                //result = 11;
-            }
-            else if (x > 120 && x < 230 && y > 236 && y < 276)
-            {
-                //result = 12;
-            }
-            else if (x > 5 && x < 115 && y > 282 && y < 322)
-            {
-                //result = 13;
-            }
-            else if (x > 120 && x < 230 && y > 282 && y < 322)
-            {
-                //result = 14;
-            }
-            else if (x > 5 && x < 115 && y > 328 && y < 348)
-            {
-                //result = 15;
-            }
-            else if (x > 120 && x < 230 && y > 328 && y < 348)
-            {
-                //result = 16;
-            }
-            else if (x > 5 && x < 115 && y > 374 && y < 414)
-            {
-                //result = 17;
-            }
-            else if (x > 120 && x < 230 && y > 374 && y < 414)
-            {
-                //result = 18;
-            }
-            
-            */
-        }
-
-        private void segmentPanel1_MouseUp(object sender, MouseEventArgs e)
-        {
-            //segmentPanel1.Left = mySegmentPanelArray[1].X;
-            //segmentPanel1.Top = mySegmentPanelArray[1].Y;
-            //segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
-            //segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
-
-
-            if (e.X > 120 && e.X < 230 && e.Y > 6 && e.Y < 46)
-            {
-                segmentPanel2.ForeColor = Color.White;
-                
-            }
-
-            /*
-            int mouseLocation = findLocation(e.X, e.Y);
-            if (mouseLocation != 0)
-            {
-
-                if (mouseLocation == 1)
-                {
-                    segmentPanel1.Location = mySegmentPanelArray[0];
-                    //getLocations();
-                }
-                else if (mouseLocation == 2)
-                {
-                    segmentPanel1.Location = mySegmentPanelArray[1];
-                    //getLocations();
-                }
-                else if (mouseLocation == 3)
-                {
-                    segmentPanel1.Location = mySegmentPanelArray[2];
-                    //getLocations();
-                }
-                else if (mouseLocation == 4)
-                {
-                    segmentPanel1.Location = mySegmentPanelArray[3];
-                    //getLocations();
-                }
-                else if (mouseLocation == 5)
-                {
-                    segmentPanel1.Location = mySegmentPanelArray[4];
-                }
-                else if (mouseLocation == 6)
-                {
-
-                }
-                else if (mouseLocation == 7)
-                {
-
-                }
-                else if (mouseLocation == 8)
-                {
-
-                }
-                else if (mouseLocation == 9)
-                {
-
-                }
-                else if (mouseLocation == 10)
-                {
-
-                }
-                else if (mouseLocation == 11)
-                {
-
-                }
-                else if (mouseLocation == 12)
-                {
-
-                }
-                else if (mouseLocation == 13)
-                {
-
-                }
-                else if (mouseLocation == 14)
-                {
-
-                }
-                else if (mouseLocation == 15)
-                {
-
-                }
-                else if (mouseLocation == 16)
-                {
-
-                }
-                else if (mouseLocation == 17)
-                {
-
-                }
-                else if (mouseLocation == 18)
-                {
-
-                }
-            }
-            else
-            {
-                segmentPanel1.Location = mySegmentPanelArray[0];
-            }
-            */
-        }
-
-        private void segmentLabel1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void segmentLabel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void segmentLabel1_MouseUp(object sender, MouseEventArgs e)
-        {
-
         }
         #endregion
         

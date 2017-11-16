@@ -1121,9 +1121,9 @@ namespace Vision
             this.segmentLabel1.TabIndex = 8;
             this.segmentLabel1.Text = "Segment 1";
             this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
-            this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseDown);
-            this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseMove);
-            this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseUp);
+            this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseDown);
+            this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseMove);
+            this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseUp);
             // 
             // closeButton1
             // 
@@ -1239,6 +1239,7 @@ namespace Vision
             // SegmentHolderPanel
             // 
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton17);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel1);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton15);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton16);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton14);
@@ -1256,7 +1257,6 @@ namespace Vision
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton13);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton2);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton1);
-            this.SegmentHolderPanel.Controls.Add(this.segmentPanel1);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel5);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel3);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel7);
