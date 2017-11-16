@@ -34,6 +34,7 @@ namespace Vision
         //Image fields
         private bool _isImage;
         private string _filename;
+        private Bitmap _originalBitmap;
         private Bitmap _scaledBitmap;
         private float _imageAspect;
         private const float ASPECT_RATIO = 6;
@@ -105,20 +106,20 @@ namespace Vision
             _filename = filename;
             _segmentSpeed = segmentSpeed;
             //creates the image from file
-            Bitmap imageBitmap = new Bitmap(_filename);
-            _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
+            _originalBitmap = new Bitmap(_filename);
+            _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
 
             if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
             }
             else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
             }
             else //Aspect ratio equals marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
+                _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
             }
         }
 
@@ -217,20 +218,20 @@ namespace Vision
             {
                 _filename = value;
                 //creates the image from file
-                Bitmap imageBitmap = new Bitmap(_filename);
-                _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
+                _originalBitmap = new Bitmap(_filename);
+                _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
 
                 if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
                 {
-                    _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                    _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
                 }
                 else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
                 {
-                    _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                    _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
                 }
                 else //Aspect ratio equals marquee
                 {
-                    _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
+                    _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
                 }
             }
         }
@@ -254,6 +255,13 @@ namespace Vision
         public float imageAspect
         {
             get { return _imageAspect; }
+            set { }
+        }
+
+        //getter/setter for scaledBitmap
+        public Bitmap originalBitmap
+        {
+            get { return _originalBitmap; }
             set { }
         }
 
