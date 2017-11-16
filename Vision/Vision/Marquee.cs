@@ -158,7 +158,7 @@ namespace Vision
                     }
 
                     //Display Current Segment
-                    displaySegment(message.getSegmentArray()[i], message.backgroundColor, message.segmentSpeed);
+                    displaySegment(message.getSegmentArray()[i], message.backgroundColor);
                 }
             }
 
@@ -176,7 +176,7 @@ namespace Vision
         }
 
         //Selects the correct effects to use to display the segment
-        public void displaySegment(Segment segment, Color backgroundColor, int segmentSpeed)
+        public void displaySegment(Segment segment, Color backgroundColor)
         {
             //If segment is image then display image and return
             if (segment.isImage)
@@ -189,7 +189,7 @@ namespace Vision
             if (segment.isScrolling)
             {
                 displayScrollingSegment(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(500);
                 return;
             }
 
@@ -197,49 +197,41 @@ namespace Vision
             if (segment.entranceEffect == 0)
             {
                 displayStaticEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 1)
             {
                 displaySplitEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 2)
             {
                 displayUpEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 3)
             {
                 displayDownEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
             else if (segment.entranceEffect == 4)
             {
                 displayRandomEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
                   else if (segment.entranceEffect == 5)
             {
                 displayUpsideDownEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
                   else if (segment.entranceEffect == 6)
             {
                 displaySidewayEntrance(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
 
             //Display Middle            
             if (segment.middleEffect == 1)
             {
                 displayRandomColors(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
+                Thread.Sleep(segment.segmentSpeed);
             }
             else if (segment.middleEffect == 2)
             {
                 displayFadeEffect(segment, backgroundColor);
-                Thread.Sleep(segmentSpeed);
             }
 
             //Display Exit
@@ -828,8 +820,12 @@ namespace Vision
         //Jeremy
         public void displayFadeEffect(Segment segment, Color backgroundColor)
         {
-            
-            for (int a = 4; a > 0; a--)
+            //Change this to affect speed of the effect
+            int effectCycleTime = 1020;
+
+            int updateIntervalTime = effectCycleTime / 102;
+            int extraTime = (segment.segmentSpeed % 1020);   
+            for (int a = segment.segmentSpeed / 1020; a > 0; a--)
             {
                 for (int i = 255; i > -1; i -= 5)
                 {
@@ -845,7 +841,7 @@ namespace Vision
                     }
                     
                     Invalidate();
-                    Thread.Sleep(10);
+                    Thread.Sleep(updateIntervalTime);
                 }
                 for (int i = 0; i < 256; i += 5)
                 {
@@ -861,9 +857,10 @@ namespace Vision
                     }
                     
                     Invalidate();
-                    Thread.Sleep(10);
+                    Thread.Sleep(updateIntervalTime);
                 }
             }
+            Thread.Sleep(extraTime);
         }
         #endregion
 
@@ -1188,7 +1185,7 @@ namespace Vision
             Invalidate();
 
             //Hold Image on marquee for set time
-            Thread.Sleep(10000);
+            Thread.Sleep(image.segmentSpeed);
 
             //Clear Whole Marquee
             clearMarquee(BackColor);

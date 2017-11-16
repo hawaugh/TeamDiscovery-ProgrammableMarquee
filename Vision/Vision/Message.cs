@@ -21,15 +21,13 @@ namespace Vision
     class Message
     {
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
-        private Color _backgroundColor;        
-        private int _segmentSpeed;    
+        private Color _backgroundColor;            
 
         //Constructor
         public Message(Segment[] newSegmentArray, Color backgroundColor, int segmentSpeed)
         {
             segmentArray = newSegmentArray;
             _backgroundColor = backgroundColor;
-            _segmentSpeed = segmentSpeed;
         }
 
         public Segment[] getSegmentArray()
@@ -43,12 +41,5 @@ namespace Vision
             get { return _backgroundColor; }
             set { _backgroundColor = value; }
         }        
-
-        //getter/setter for segmentSpeed
-        public int segmentSpeed
-        {
-            get { return _segmentSpeed; }
-            set { _segmentSpeed = value; }
-        }
     }
 }

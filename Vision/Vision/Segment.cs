@@ -24,6 +24,7 @@ namespace Vision
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
+        private int _segmentSpeed;
 
         //Scrolling fields
         private bool _isScrolling;
@@ -50,6 +51,7 @@ namespace Vision
             _ignore = true;    
             _messageText = "";
             _onColor = Color.Black;
+            _segmentSpeed = 2000;
             _isScrolling = false;
             _isImage = false;
             _entranceEffect = 0;
@@ -60,12 +62,13 @@ namespace Vision
         }
 
         //Scrolling Text Constructor
-        public Segment(string segmentText, Color onColor, int scrollSpeed, Color borderColor, int borderEffect)
+        public Segment(string segmentText, Color onColor, int segmentSpeed, int scrollSpeed, Color borderColor, int borderEffect)
         {
             _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
+            _segmentSpeed = segmentSpeed;
             _scrollSpeed = scrollSpeed;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
@@ -74,12 +77,13 @@ namespace Vision
         }
 
         //Static Text Constructor
-        public Segment(string segmentText, Color onColor, int entranceEffect, int middleEffect, int exitEffect, Color borderColor, int borderEffect)
+        public Segment(string segmentText, Color onColor, int segmentSpeed, int entranceEffect, int middleEffect, int exitEffect, Color borderColor, int borderEffect)
         {
             _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
+            _segmentSpeed = segmentSpeed;
             _isScrolling = isScrolling;
             _entranceEffect = entranceEffect;
             _middleEffect = middleEffect;
@@ -90,10 +94,11 @@ namespace Vision
         }
 
         //Image Constructor
-        public Segment(string filename)
+        public Segment(string filename, int segmentSpeed)
         {
             _ignore = false;
             _isImage = true;
+            _segmentSpeed = segmentSpeed;
             //creates the image from file
             Bitmap imageBitmap = new Bitmap(filename);
             _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
@@ -117,6 +122,13 @@ namespace Vision
         {
             get { return _ignore; }
             set { _ignore = value; }
+        }
+
+        //getter/setter for segmentSpeed
+        public int segmentSpeed
+        {
+            get { return _segmentSpeed; }
+            set { _segmentSpeed = value; }
         }
 
         /*
