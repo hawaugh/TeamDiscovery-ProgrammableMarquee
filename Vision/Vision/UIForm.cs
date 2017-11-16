@@ -67,6 +67,7 @@ namespace Vision
                     myDisplayThread.Abort();
                 }
             }
+            marquee1.borderThreadAbort();
             clearForMarquee();
             marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1, Color.Red, 1);
@@ -942,6 +943,7 @@ namespace Vision
                         myDisplayThread.Abort();
                     }
                 }
+                marquee1.borderThreadAbort();
                 clearForMarquee();
                 marquee1.Visible = true;
                 //Segment mySegment = new Segment("TEAM", Color.Red, 1, 1, 1);

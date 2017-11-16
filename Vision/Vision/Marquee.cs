@@ -1080,7 +1080,21 @@ namespace Vision
          *   Border Effects
          * 
          */
+
         #region Border Effects
+        public void borderThreadAbort()
+        {
+            //Stop Border Thread if running
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    myBorderThread.Abort();
+                }
+            }
+            clearBorder(BackColor);
+        }
+
         public void clearBorder(Color backgroundColor)
         {
             for (int b = 0; b < 220; b++)
