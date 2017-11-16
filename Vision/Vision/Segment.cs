@@ -55,6 +55,7 @@ namespace Vision
             _segmentSpeed = 2000;
             _isScrolling = false;
             _isImage = false;
+            _filename = "";
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
