@@ -28,6 +28,7 @@ namespace Vision
 
         //Scrolling fields
         private bool _isScrolling;
+        private bool _isRandomColorScrolling;
         private int _scrollSpeed;
 
         //Image fields
@@ -54,6 +55,7 @@ namespace Vision
             _onColor = Color.Black;
             _segmentSpeed = 2000;
             _isScrolling = false;
+            _isRandomColorScrolling = false;
             _isImage = false;
             _filename = "";
             _entranceEffect = 0;
@@ -64,13 +66,13 @@ namespace Vision
         }
 
         //Scrolling Text Constructor
-        public Segment(string segmentText, Color onColor, int segmentSpeed, int scrollSpeed, Color borderColor, int borderEffect)
+        public Segment(string segmentText, Color onColor, bool isRandomColorScrolling, int scrollSpeed, Color borderColor, int borderEffect)
         {
             _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
-            _segmentSpeed = segmentSpeed;
+            _isRandomColorScrolling = isRandomColorScrolling;
             _scrollSpeed = scrollSpeed;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
@@ -180,6 +182,12 @@ namespace Vision
         {
             get { return _isScrolling; }
             set { _isScrolling = value; }
+        }
+
+        public bool isRandomColorScrolling
+        {
+            get { return _isRandomColorScrolling; }
+            set { _isRandomColorScrolling = value; }
         }
 
         public int scrollSpeed

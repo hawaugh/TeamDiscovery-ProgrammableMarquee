@@ -75,7 +75,7 @@ namespace Vision
             clearForMarquee();
             marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 2000, 1, 1, 1, Color.Red, 1);
-            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, 2000, 25, Color.Red, 1);
+            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, false, 25, Color.Red, 1);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Red, 1);
             mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };
