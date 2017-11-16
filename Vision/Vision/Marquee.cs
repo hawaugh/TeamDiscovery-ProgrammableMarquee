@@ -741,8 +741,10 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
+            Color onColor = segment.onColor;
+            int counter = 1;
             for (int s = 0; s < segmentLength; s++)
-            {                
+            {                           
                 //Move all dots 1 column left
                 for (int c = 2; c < 93; c++)
                 {
@@ -757,13 +759,29 @@ namespace Vision
                 {
                     if (currSegment[r - 2][s].Equals('1'))
                     {
-                        setDot(r, 93, segment.onColor);
+                        setDot(r, 93, onColor);
                     }
                     else if (currSegment[r - 2][s].Equals('0'))
                     {                        
                         setDot(r, 93, backgroundColor);                        
                     }
                 }
+
+                //Counter for random color effect
+                if(counter == 10)
+                {
+                    //If effect active change to random color
+                    if(segment.isRandomColorScrolling)
+                    {
+                        onColor = randomColor();
+                    }
+                    counter = 1;
+                }
+                else
+                {
+                    counter++;
+                }
+
                 Invalidate();
                 Thread.Sleep(segment.scrollSpeed);
             }
@@ -1228,6 +1246,105 @@ namespace Vision
             }
             this.ResumeLayout();
         }
+        #endregion
+
+
+        /*
+         * 
+         *   Utility Methods
+         * 
+         */
+        #region Utility Methods
+        public Color randomColor()
+        {
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(0, 20);
+            if (randomNumber == 0)
+            {
+                return Color.Aqua;
+            }
+            else if (randomNumber == 1)
+            {
+                return Color.Blue;
+            }
+            else if (randomNumber == 2)
+            {
+                return Color.BlueViolet;
+            }
+            else if (randomNumber == 3)
+            {
+                return Color.Cyan;
+            }
+            else if (randomNumber == 4)
+            {
+                return Color.Fuchsia;
+            }
+            else if (randomNumber == 5)
+            {
+                return Color.DeepPink;
+            }
+            else if (randomNumber == 6)
+            {
+                return Color.Gold;
+            }
+            else if (randomNumber == 7)
+            {
+                return Color.GreenYellow;
+            }
+            else if (randomNumber == 8)
+            {
+                return Color.HotPink;
+            }
+            else if (randomNumber == 9)
+            {
+                return Color.LightCoral;
+            }
+            else if (randomNumber == 10)
+            {
+                return Color.Lime;
+            }
+            else if (randomNumber == 11)
+            {
+                return Color.MediumSpringGreen;
+            }
+            else if (randomNumber == 12)
+            {
+                return Color.Navy;
+            }
+            else if (randomNumber == 13)
+            {
+                return Color.OrangeRed;
+            }
+            else if (randomNumber == 14)
+            {
+                return Color.Purple;
+            }
+            else if (randomNumber == 15)
+            {
+                return Color.Red;
+            }
+            else if (randomNumber == 16)
+            {
+                return Color.Snow;
+            }
+            else if (randomNumber == 17)
+            {
+                return Color.SpringGreen;
+            }
+            else if (randomNumber == 18)
+            {
+                return Color.Turquoise;
+            }
+            else if (randomNumber == 19)
+            {
+                return Color.Violet;
+            }
+            else
+            {
+                return Color.Yellow;
+            }
+        }
+
         #endregion
     }
 }
