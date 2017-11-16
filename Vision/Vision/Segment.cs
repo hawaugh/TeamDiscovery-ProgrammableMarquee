@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Vision
 {
-    class Segment
+    public class Segment
     {        
         private string _messageText;
         private string[] messageMatrix = new string[12];

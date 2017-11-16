@@ -18,7 +18,7 @@ using System.Drawing;
 
 namespace Vision
 {
-    class Message
+    public class Message
     {
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
         private Color _backgroundColor;
