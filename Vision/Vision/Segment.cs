@@ -32,6 +32,7 @@ namespace Vision
 
         //Image fields
         private bool _isImage;
+        private string _filename;
         private Bitmap _scaledBitmap;
         private float _imageAspect;
         private const float ASPECT_RATIO = 6;
@@ -98,9 +99,10 @@ namespace Vision
         {
             _ignore = false;
             _isImage = true;
+            _filename = filename;
             _segmentSpeed = segmentSpeed;
             //creates the image from file
-            Bitmap imageBitmap = new Bitmap(filename);
+            Bitmap imageBitmap = new Bitmap(_filename);
             _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
 
             if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
@@ -197,6 +199,31 @@ namespace Vision
         {
             get { return _isImage; }
             set { _isImage = value; }
+        }
+
+        public string filename
+        {
+            get { return _filename; }
+            set
+            {
+                _filename = value;
+                //creates the image from file
+                Bitmap imageBitmap = new Bitmap(_filename);
+                _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
+
+                if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
+                {
+                    _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                }
+                else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
+                {
+                    _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                }
+                else //Aspect ratio equals marquee
+                {
+                    _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
+                }
+            }
         }
 
         public Color getPixel(int c, int r)
