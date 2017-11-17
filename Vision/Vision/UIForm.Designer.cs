@@ -54,9 +54,7 @@ namespace Vision
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
             this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
-            this.displayTimeLabel = new System.Windows.Forms.Label();
-            this.colorComboBox = new System.Windows.Forms.ComboBox();
-            this.colorLabel = new System.Windows.Forms.Label();
+            this.displayDurationLabel = new System.Windows.Forms.Label();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -126,7 +124,7 @@ namespace Vision
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
-            this.IgnoreCheckBox = new System.Windows.Forms.CheckBox();
+            this.ignoreCheckBox = new System.Windows.Forms.CheckBox();
             this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.addSegmentButton17 = new System.Windows.Forms.Button();
@@ -151,8 +149,10 @@ namespace Vision
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.marquee1 = new Vision.Marquee();
             this.backToMenuButton = new System.Windows.Forms.Button();
+            this.colorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.colorButton = new System.Windows.Forms.Button();
+            this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
@@ -193,6 +193,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
+            this.createASegmentGroupBox.Controls.Add(this.colorButton);
             this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
             this.createASegmentGroupBox.Controls.Add(this.randomColorCheckBox);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectLabel);
@@ -206,9 +207,7 @@ namespace Vision
             this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
             this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
             this.createASegmentGroupBox.Controls.Add(this.transitionSpeedComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.displayTimeLabel);
-            this.createASegmentGroupBox.Controls.Add(this.colorComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.colorLabel);
+            this.createASegmentGroupBox.Controls.Add(this.displayDurationLabel);
             this.createASegmentGroupBox.Controls.Add(this.textTextBox);
             this.createASegmentGroupBox.Controls.Add(this.textLabel);
             this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
@@ -222,7 +221,7 @@ namespace Vision
             this.noTextPopUp.AutoSize = true;
             this.noTextPopUp.BackColor = System.Drawing.Color.White;
             this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
-            this.noTextPopUp.Location = new System.Drawing.Point(402, 26);
+            this.noTextPopUp.Location = new System.Drawing.Point(191, 26);
             this.noTextPopUp.Name = "noTextPopUp";
             this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
             this.noTextPopUp.TabIndex = 17;
@@ -293,6 +292,7 @@ namespace Vision
             this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exitEffectComboBox.FormattingEnabled = true;
             this.exitEffectComboBox.Items.AddRange(new object[] {
+            "None",
             "Split",
             "Scroll Up",
             "Scroll Down",
@@ -308,6 +308,7 @@ namespace Vision
             this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staticEffectComboBox.FormattingEnabled = true;
             this.staticEffectComboBox.Items.AddRange(new object[] {
+            "None",
             "Random Color Dots",
             "Fade"});
             this.staticEffectComboBox.Location = new System.Drawing.Point(256, 150);
@@ -315,13 +316,14 @@ namespace Vision
             this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.staticEffectComboBox.TabIndex = 12;
             this.staticEffectComboBox.Visible = false;
+            this.staticEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.staticEffectComboBox_SelectedIndexChanged);
             // 
             // entranceEffectComboBox
             // 
             this.entranceEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entranceEffectComboBox.FormattingEnabled = true;
             this.entranceEffectComboBox.Items.AddRange(new object[] {
-            "Static",
+            "None",
             "Split",
             "Raise",
             "Lower",
@@ -331,6 +333,7 @@ namespace Vision
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.entranceEffectComboBox.TabIndex = 11;
             this.entranceEffectComboBox.Visible = false;
+            this.entranceEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.entranceEffectComboBox_SelectedIndexChanged);
             // 
             // scrollingTextButton
             // 
@@ -360,50 +363,25 @@ namespace Vision
             // 
             this.transitionSpeedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(423, 60);
+            this.transitionSpeedComboBox.Location = new System.Drawing.Point(104, 60);
             this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
             this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
             this.transitionSpeedComboBox.TabIndex = 9;
             // 
-            // displayTimeLabel
+            // displayDurationLabel
             // 
-            this.displayTimeLabel.AutoSize = true;
-            this.displayTimeLabel.Location = new System.Drawing.Point(316, 63);
-            this.displayTimeLabel.Name = "displayTimeLabel";
-            this.displayTimeLabel.Size = new System.Drawing.Size(70, 13);
-            this.displayTimeLabel.TabIndex = 8;
-            this.displayTimeLabel.Text = "Display Time:";
-            // 
-            // colorComboBox
-            // 
-            this.colorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.colorComboBox.FormattingEnabled = true;
-            this.colorComboBox.Items.AddRange(new object[] {
-            "Aqua",
-            "Blue",
-            "BlueViolet",
-            "Cyan",
-            "Fuchsia"});
-            this.colorComboBox.Location = new System.Drawing.Point(92, 60);
-            this.colorComboBox.Name = "colorComboBox";
-            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
-            this.colorComboBox.TabIndex = 7;
-            this.colorComboBox.SelectedIndexChanged += new System.EventHandler(this.colorComboBox_SelectedIndexChanged);
-            // 
-            // colorLabel
-            // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(14, 63);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(34, 13);
-            this.colorLabel.TabIndex = 6;
-            this.colorLabel.Text = "Color:";
+            this.displayDurationLabel.AutoSize = true;
+            this.displayDurationLabel.Location = new System.Drawing.Point(14, 63);
+            this.displayDurationLabel.Name = "displayDurationLabel";
+            this.displayDurationLabel.Size = new System.Drawing.Size(87, 13);
+            this.displayDurationLabel.TabIndex = 8;
+            this.displayDurationLabel.Text = "Display Duration:";
             // 
             // textTextBox
             // 
-            this.textTextBox.Location = new System.Drawing.Point(69, 23);
+            this.textTextBox.Location = new System.Drawing.Point(104, 23);
             this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(545, 20);
+            this.textTextBox.Size = new System.Drawing.Size(298, 20);
             this.textTextBox.TabIndex = 1;
             this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
             // 
@@ -1274,7 +1252,7 @@ namespace Vision
             // 
             this.textPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textPanel.BackColor = System.Drawing.Color.White;
-            this.textPanel.Controls.Add(this.IgnoreCheckBox);
+            this.textPanel.Controls.Add(this.ignoreCheckBox);
             this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(235, 55);
@@ -1282,15 +1260,18 @@ namespace Vision
             this.textPanel.Size = new System.Drawing.Size(941, 420);
             this.textPanel.TabIndex = 34;
             // 
-            // IgnoreCheckBox
+            // ignoreCheckBox
             // 
-            this.IgnoreCheckBox.AutoSize = true;
-            this.IgnoreCheckBox.Location = new System.Drawing.Point(885, 3);
-            this.IgnoreCheckBox.Name = "IgnoreCheckBox";
-            this.IgnoreCheckBox.Size = new System.Drawing.Size(56, 17);
-            this.IgnoreCheckBox.TabIndex = 24;
-            this.IgnoreCheckBox.Text = "Ignore";
-            this.IgnoreCheckBox.UseVisualStyleBackColor = true;
+            this.ignoreCheckBox.AutoSize = true;
+            this.ignoreCheckBox.Checked = true;
+            this.ignoreCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ignoreCheckBox.Location = new System.Drawing.Point(885, 3);
+            this.ignoreCheckBox.Name = "ignoreCheckBox";
+            this.ignoreCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.ignoreCheckBox.TabIndex = 24;
+            this.ignoreCheckBox.Text = "Ignore";
+            this.ignoreCheckBox.UseVisualStyleBackColor = true;
+            this.ignoreCheckBox.Click += new System.EventHandler(this.ignoreCheckBox_Click);
             // 
             // borderOptionsGroupBox
             // 
@@ -1615,20 +1596,9 @@ namespace Vision
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(948, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.Size = new System.Drawing.Size(137, 13);
             this.label1.TabIndex = 37;
-            this.label1.Text = "Marquee Background";
-            // 
-            // marquee1
-            // 
-            this.marquee1.BackColor = System.Drawing.Color.Black;
-            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.marquee1.Location = new System.Drawing.Point(0, 0);
-            this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1203, 620);
-            this.marquee1.TabIndex = 28;
-            this.marquee1.Text = "marquee";
-            this.marquee1.Visible = false;
+            this.label1.Text = "Marquee Background Color";
             // 
             // backToMenuButton
             // 
@@ -1641,6 +1611,31 @@ namespace Vision
             this.backToMenuButton.UseVisualStyleBackColor = true;
             this.backToMenuButton.Visible = false;
             this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
+            // 
+            // colorDialogBox
+            // 
+            this.colorDialogBox.Color = System.Drawing.Color.White;
+            // 
+            // colorButton
+            // 
+            this.colorButton.Location = new System.Drawing.Point(327, 60);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(75, 23);
+            this.colorButton.TabIndex = 40;
+            this.colorButton.Text = "Color";
+            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // marquee1
+            // 
+            this.marquee1.BackColor = System.Drawing.Color.Black;
+            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marquee1.Location = new System.Drawing.Point(0, 0);
+            this.marquee1.Name = "marquee1";
+            this.marquee1.Size = new System.Drawing.Size(1203, 620);
+            this.marquee1.TabIndex = 28;
+            this.marquee1.Text = "marquee";
+            this.marquee1.Visible = false;
             // 
             // UIForm
             // 
@@ -1754,9 +1749,7 @@ namespace Vision
         private System.Windows.Forms.RadioButton scrollingTextButton;
         private System.Windows.Forms.RadioButton specialEffectButton;
         private System.Windows.Forms.ComboBox transitionSpeedComboBox;
-        private System.Windows.Forms.Label displayTimeLabel;
-        private System.Windows.Forms.ComboBox colorComboBox;
-        private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.Label displayDurationLabel;
         private System.Windows.Forms.ComboBox repeatComboBox;
         private System.Windows.Forms.Label borderColorLabel;
         private System.Windows.Forms.ComboBox borderEffectComboBox;
@@ -1830,10 +1823,12 @@ namespace Vision
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox IgnoreCheckBox;
+        private System.Windows.Forms.CheckBox ignoreCheckBox;
         private System.Windows.Forms.CheckBox randomColorCheckBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button backToMenuButton;
+        private System.Windows.Forms.ColorDialog colorDialogBox;
+        private System.Windows.Forms.Button colorButton;
     }
 }
 
