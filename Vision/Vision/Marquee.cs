@@ -224,7 +224,11 @@ namespace Vision
             }
 
             //Display Middle            
-            if (segment.middleEffect == 1)
+            if (segment.middleEffect == 0)
+            {
+                Thread.Sleep(segment.segmentSpeed);
+            }
+            else if (segment.middleEffect == 1)
             {
                 displayRandomColors(segment, backgroundColor);
                 Thread.Sleep(segment.segmentSpeed);
