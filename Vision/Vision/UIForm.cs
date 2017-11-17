@@ -1185,6 +1185,7 @@ namespace Vision
             if (colorDialogBox.ShowDialog() == DialogResult.OK)
             {
                 mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
+                colorButton.BackColor = colorDialogBox.Color;
             }
         }
     }

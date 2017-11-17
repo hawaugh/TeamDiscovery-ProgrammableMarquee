@@ -152,6 +152,7 @@ namespace Vision
             this.backToMenuButton = new System.Windows.Forms.Button();
             this.colorDialogBox = new System.Windows.Forms.ColorDialog();
             this.colorButton = new System.Windows.Forms.Button();
+            this.colorLabel = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -193,6 +194,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
+            this.createASegmentGroupBox.Controls.Add(this.colorLabel);
             this.createASegmentGroupBox.Controls.Add(this.colorButton);
             this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
             this.createASegmentGroupBox.Controls.Add(this.randomColorCheckBox);
@@ -381,7 +383,7 @@ namespace Vision
             // 
             this.textTextBox.Location = new System.Drawing.Point(104, 23);
             this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(298, 20);
+            this.textTextBox.Size = new System.Drawing.Size(351, 20);
             this.textTextBox.TabIndex = 1;
             this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
             // 
@@ -1618,13 +1620,21 @@ namespace Vision
             // 
             // colorButton
             // 
-            this.colorButton.Location = new System.Drawing.Point(327, 60);
+            this.colorButton.Location = new System.Drawing.Point(380, 58);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(75, 23);
             this.colorButton.TabIndex = 40;
-            this.colorButton.Text = "Color";
             this.colorButton.UseVisualStyleBackColor = true;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(328, 63);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(34, 13);
+            this.colorLabel.TabIndex = 41;
+            this.colorLabel.Text = "Color:";
             // 
             // marquee1
             // 
@@ -1829,6 +1839,7 @@ namespace Vision
         private System.Windows.Forms.Button backToMenuButton;
         private System.Windows.Forms.ColorDialog colorDialogBox;
         private System.Windows.Forms.Button colorButton;
+        private System.Windows.Forms.Label colorLabel;
     }
 }
 
