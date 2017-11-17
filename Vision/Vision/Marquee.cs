@@ -223,8 +223,12 @@ namespace Vision
                 displaySidewayEntrance(segment, backgroundColor);
             }
 
-            //Display Middle            
-            if (segment.middleEffect == 1)
+            //Display Middle   
+            if (segment.middleEffect == 0)
+            {
+                Thread.Sleep(segment.segmentSpeed);
+            }
+            else if (segment.middleEffect == 1)
             {
                 displayRandomColors(segment, backgroundColor);
                 Thread.Sleep(segment.segmentSpeed);
