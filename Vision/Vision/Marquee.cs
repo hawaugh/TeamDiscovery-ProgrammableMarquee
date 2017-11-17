@@ -1202,8 +1202,12 @@ namespace Vision
 
             Invalidate();
 
-            //Hold Image on marquee for set time
-            Thread.Sleep(image.segmentSpeed);
+            //Hold Image on marquee for set time, redrawing over intervals
+            for (int i = 0; i < (image.segmentSpeed / 25); i++)
+            {
+                Invalidate();
+                Thread.Sleep(25);
+            }
 
             //Clear Whole Marquee
             clearMarquee(BackColor);
