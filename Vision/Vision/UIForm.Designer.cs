@@ -492,7 +492,7 @@ namespace Vision
             this.segmentLabel14.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel14.TabIndex = 8;
             this.segmentLabel14.Text = "Segment 14";
-            this.segmentLabel14.Click += new System.EventHandler(this.segmentLabel14_Click);
+            this.segmentLabel14.Click += new System.EventHandler(this.segmentPanel14_Click);
             // 
             // closeButton14
             // 
@@ -531,7 +531,7 @@ namespace Vision
             this.segmentLabel13.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel13.TabIndex = 8;
             this.segmentLabel13.Text = "Segment 13";
-            this.segmentLabel13.Click += new System.EventHandler(this.segmentLabel13_Click);
+            this.segmentLabel13.Click += new System.EventHandler(this.segmentPanel13_Click);
             // 
             // closeButton13
             // 
@@ -570,7 +570,7 @@ namespace Vision
             this.segmentLabel12.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel12.TabIndex = 8;
             this.segmentLabel12.Text = "Segment 12";
-            this.segmentLabel12.Click += new System.EventHandler(this.segmentLabel12_Click);
+            this.segmentLabel12.Click += new System.EventHandler(this.segmentPanel12_Click);
             // 
             // closeButton12
             // 
@@ -609,7 +609,7 @@ namespace Vision
             this.segmentLabel11.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel11.TabIndex = 8;
             this.segmentLabel11.Text = "Segment 11";
-            this.segmentLabel11.Click += new System.EventHandler(this.segmentLabel11_Click);
+            this.segmentLabel11.Click += new System.EventHandler(this.segmentPanel11_Click);
             // 
             // closeButton11
             // 
@@ -648,7 +648,7 @@ namespace Vision
             this.segmentLabel10.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel10.TabIndex = 8;
             this.segmentLabel10.Text = "Segment 10";
-            this.segmentLabel10.Click += new System.EventHandler(this.segmentLabel10_Click);
+            this.segmentLabel10.Click += new System.EventHandler(this.segmentPanel10_Click);
             // 
             // closeButton10
             // 
@@ -687,7 +687,7 @@ namespace Vision
             this.segmentLabel9.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel9.TabIndex = 8;
             this.segmentLabel9.Text = "Segment 9";
-            this.segmentLabel9.Click += new System.EventHandler(this.segmentLabel9_Click);
+            this.segmentLabel9.Click += new System.EventHandler(this.segmentPanel9_Click);
             // 
             // closeButton9
             // 
@@ -726,7 +726,7 @@ namespace Vision
             this.segmentLabel8.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel8.TabIndex = 8;
             this.segmentLabel8.Text = "Segment 8";
-            this.segmentLabel8.Click += new System.EventHandler(this.segmentLabel8_Click);
+            this.segmentLabel8.Click += new System.EventHandler(this.segmentPanel8_Click);
             // 
             // closeButton8
             // 
@@ -765,7 +765,7 @@ namespace Vision
             this.segmentLabel7.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel7.TabIndex = 8;
             this.segmentLabel7.Text = "Segment 7";
-            this.segmentLabel7.Click += new System.EventHandler(this.segmentLabel7_Click);
+            this.segmentLabel7.Click += new System.EventHandler(this.segmentPanel7_Click);
             // 
             // closeButton7
             // 
@@ -804,7 +804,7 @@ namespace Vision
             this.segmentLabel6.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel6.TabIndex = 8;
             this.segmentLabel6.Text = "Segment 6";
-            this.segmentLabel6.Click += new System.EventHandler(this.segmentLabel6_Click);
+            this.segmentLabel6.Click += new System.EventHandler(this.segmentPanel6_Click);
             // 
             // closeButton6
             // 
@@ -843,7 +843,7 @@ namespace Vision
             this.segmentLabel5.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel5.TabIndex = 8;
             this.segmentLabel5.Text = "Segment 5";
-            this.segmentLabel5.Click += new System.EventHandler(this.segmentLabel5_Click);
+            this.segmentLabel5.Click += new System.EventHandler(this.segmentPanel5_Click);
             // 
             // closeButton5
             // 
@@ -882,7 +882,7 @@ namespace Vision
             this.segmentLabel4.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel4.TabIndex = 8;
             this.segmentLabel4.Text = "Segment 4";
-            this.segmentLabel4.Click += new System.EventHandler(this.segmentLabel4_Click);
+            this.segmentLabel4.Click += new System.EventHandler(this.segmentPanel4_Click);
             // 
             // closeButton4
             // 
@@ -1122,7 +1122,7 @@ namespace Vision
             this.segmentLabel3.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel3.TabIndex = 8;
             this.segmentLabel3.Text = "Segment 3";
-            this.segmentLabel3.Click += new System.EventHandler(this.segmentLabel3_Click);
+            this.segmentLabel3.Click += new System.EventHandler(this.segmentPanel3_Click);
             // 
             // closeButton3
             // 
@@ -1163,7 +1163,7 @@ namespace Vision
             this.segmentLabel1.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel1.TabIndex = 8;
             this.segmentLabel1.Text = "Segment 1";
-            this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
+            this.segmentLabel1.Click += new System.EventHandler(this.segmentPanel1_Click);
             this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseDown);
             this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseMove);
             this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseUp);
@@ -1205,7 +1205,7 @@ namespace Vision
             this.segmentLabel2.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel2.TabIndex = 8;
             this.segmentLabel2.Text = "Segment 2";
-            this.segmentLabel2.Click += new System.EventHandler(this.segmentLabel2_Click);
+            this.segmentLabel2.Click += new System.EventHandler(this.segmentPanel2_Click);
             // 
             // closeButton2
             // 
@@ -1424,7 +1424,7 @@ namespace Vision
             this.segmentLabel15.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel15.TabIndex = 8;
             this.segmentLabel15.Text = "Segment 15";
-            this.segmentLabel15.Click += new System.EventHandler(this.segmentLabel15_Click);
+            this.segmentLabel15.Click += new System.EventHandler(this.segmentPanel15_Click);
             // 
             // closeButton15
             // 
@@ -1463,7 +1463,7 @@ namespace Vision
             this.segmentLabel17.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel17.TabIndex = 8;
             this.segmentLabel17.Text = "Segment 17";
-            this.segmentLabel17.Click += new System.EventHandler(this.segmentLabel17_Click);
+            this.segmentLabel17.Click += new System.EventHandler(this.segmentPanel17_Click);
             // 
             // closeButton17
             // 
@@ -1502,7 +1502,7 @@ namespace Vision
             this.segmentLabel16.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel16.TabIndex = 8;
             this.segmentLabel16.Text = "Segment 16";
-            this.segmentLabel16.Click += new System.EventHandler(this.segmentLabel16_Click);
+            this.segmentLabel16.Click += new System.EventHandler(this.segmentPanel16_Click);
             // 
             // closeButton16
             // 
@@ -1541,7 +1541,7 @@ namespace Vision
             this.segmentLabel18.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel18.TabIndex = 8;
             this.segmentLabel18.Text = "Segment 18";
-            this.segmentLabel18.Click += new System.EventHandler(this.segmentLabel18_Click);
+            this.segmentLabel18.Click += new System.EventHandler(this.segmentPanel18_Click);
             // 
             // closeButton18
             // 
@@ -1580,6 +1580,7 @@ namespace Vision
             this.browseButton.TabIndex = 6;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // groupBox2
             // 
@@ -1647,10 +1648,10 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 620);
-            this.Controls.Add(this.backToMenuButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
+            this.Controls.Add(this.backToMenuButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.loadXMLButton);
