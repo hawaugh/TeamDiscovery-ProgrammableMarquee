@@ -1141,16 +1141,47 @@ namespace Vision
         //Brooks
         public void displayBorderHighlight(Color borderColor)
         {
+            #region 1 on:1 off
+            //for (int a = 0; a < 220; a = a + 2)
+            //{
+            //    border[a].ForeColor = borderColor;
+            //}
 
-            for (int a = 0; a < 220; a = a + 2)
+            //for (int a = 1; a < 220; a = a + 2)
+            //{
+            //    border[a].ForeColor = BackColor;
+            //}
+            #endregion
+
+
+            #region 2 on:2 off
+            //for (int a = 0; a < 220; a = a + 4)
+            //{
+            //    border[a].ForeColor = borderColor;
+            //    border[a + 1].ForeColor = borderColor;
+            //}
+
+            //for (int a = 2; a < 220; a = a + 4)
+            //{
+            //    border[a].ForeColor = BackColor;
+            //    border[a + 1].ForeColor = BackColor;
+            //}
+            #endregion
+
+            #region 3 on:1 off
+            for (int a = 0; a < 220; a = a + 4)
             {
                 border[a].ForeColor = borderColor;
+                border[a + 1].ForeColor = borderColor;
+                border[a + 2].ForeColor = borderColor;
             }
 
-            for (int a = 1; a < 220; a = a + 2)
+            for (int a = 3; a < 220; a = a + 4)
             {
                 border[a].ForeColor = BackColor;
             }
+            #endregion
+
             Invalidate();
 
             Color oneColor;
