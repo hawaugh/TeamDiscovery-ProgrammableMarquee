@@ -151,7 +151,7 @@ namespace Vision
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.marqueeBackgroundColorLabel = new System.Windows.Forms.Label();
             this.backToMenuButton = new System.Windows.Forms.Button();
             this.colorDialogBox = new System.Windows.Forms.ColorDialog();
             this.borderColorDialogBox = new System.Windows.Forms.ColorDialog();
@@ -1649,15 +1649,15 @@ namespace Vision
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // marqueeBackgroundColorLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(979, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Marquee Background Color";
+            this.marqueeBackgroundColorLabel.AutoSize = true;
+            this.marqueeBackgroundColorLabel.ForeColor = System.Drawing.Color.White;
+            this.marqueeBackgroundColorLabel.Location = new System.Drawing.Point(979, 8);
+            this.marqueeBackgroundColorLabel.Name = "marqueeBackgroundColorLabel";
+            this.marqueeBackgroundColorLabel.Size = new System.Drawing.Size(137, 13);
+            this.marqueeBackgroundColorLabel.TabIndex = 37;
+            this.marqueeBackgroundColorLabel.Text = "Marquee Background Color";
             // 
             // backToMenuButton
             // 
@@ -1705,7 +1705,7 @@ namespace Vision
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.backToMenuButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.loadXMLButton);
@@ -1883,7 +1883,7 @@ namespace Vision
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox ignoreCheckBox;
         private System.Windows.Forms.CheckBox randomColorCheckBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label marqueeBackgroundColorLabel;
         private System.Windows.Forms.Button backToMenuButton;
         private System.Windows.Forms.ColorDialog colorDialogBox;
         private System.Windows.Forms.Button colorButton;
