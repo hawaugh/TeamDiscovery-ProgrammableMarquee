@@ -56,15 +56,7 @@ namespace Vision
             getLocations();
             activeIndex = 0;
 
-            //mySegmentArray[activeIndex] = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
-            mySegmentArray[activeIndex].messageText = "Test";
-            mySegmentArray[activeIndex].onColor = Color.Pink;
-            mySegmentArray[activeIndex].segmentSpeed = 4000;
-            mySegmentArray[activeIndex].entranceEffect = 0;
-            mySegmentArray[activeIndex].middleEffect = 0;
-            mySegmentArray[activeIndex].exitEffect = 0;
-            mySegmentArray[activeIndex].borderColor = Color.Purple;
-            mySegmentArray[activeIndex].borderEffect = 0;
+            mySegmentArray[activeIndex].ignore = false;
         }
 
         private void UIForm_Load(object sender, EventArgs e)
@@ -87,7 +79,16 @@ namespace Vision
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
-            Segment mySegment = new Segment("TEAM", Color.Red, 2000, 0, 0, 0, Color.Red, 1);
+            Segment mySegment = new Segment();
+            mySegment.messageText = "Test";
+            mySegment.onColor = Color.Aqua;
+            mySegment.segmentSpeed = 4000;
+            mySegment.entranceEffect = 0;
+            mySegment.middleEffect = 0;
+            mySegment.exitEffect = 0;
+            mySegment.borderEffect = 1;
+            mySegment.borderColor = Color.Red;
+            // Testing Segment mySegment = new Segment("TEAM", Color.Red, 2000, 0, 0, 0, Color.Red, 1);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 1);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
@@ -1120,6 +1121,51 @@ namespace Vision
                 exitEffectComboBox.Text = "";
             }
         }
+        
+        private void borderEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mySegmentArray[activeIndex].borderEffect = 1;
+        }
+
+        private int findBorderEffect(String text)
+        {
+            if (text == "None")
+            {
+                return 0;
+            }
+            else if (text == "Static")
+            {
+                return 1; //need option for static
+            }
+            else if (text == "Rotate")
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private void setBorderEffectText()
+        {
+            if (mySegmentArray[activeIndex].borderEffect == 0)
+            {
+                exitEffectComboBox.Text = "";
+            }
+            else if (mySegmentArray[activeIndex].borderEffect == 1)
+            {
+                exitEffectComboBox.Text = "Static";
+            }
+            else if (mySegmentArray[activeIndex].borderEffect == 2)
+            {
+                exitEffectComboBox.Text = "Rotate";
+            }
+            else
+            {
+                exitEffectComboBox.Text = "";
+            }
+        }
         #endregion
 
         /*
@@ -1315,7 +1361,7 @@ namespace Vision
         }
         #endregion
 
-        private void ignoreCheckBox_Click(object sender, EventArgs e)
+        private void ignoreCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (ignoreCheckBox.Checked == false)
             {
@@ -1327,5 +1373,13 @@ namespace Vision
             }
         }
 
+        private void borderColorButton_Click(object sender, EventArgs e)
+        {
+            if (borderColorDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
+                borderColorButton.BackColor = borderColorDialogBox.Color;
+            }
+        }
     }
 }

@@ -41,6 +41,8 @@ namespace Vision
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.colorLabel = new System.Windows.Forms.Label();
+            this.colorButton = new System.Windows.Forms.Button();
             this.noTextPopUp = new System.Windows.Forms.Label();
             this.randomColorCheckBox = new System.Windows.Forms.CheckBox();
             this.exitEffectLabel = new System.Windows.Forms.Label();
@@ -58,7 +60,6 @@ namespace Vision
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.repeatComboBox = new System.Windows.Forms.ComboBox();
             this.borderColorLabel = new System.Windows.Forms.Label();
             this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.loadXMLButton = new System.Windows.Forms.Button();
@@ -151,9 +152,9 @@ namespace Vision
             this.label1 = new System.Windows.Forms.Label();
             this.backToMenuButton = new System.Windows.Forms.Button();
             this.colorDialogBox = new System.Windows.Forms.ColorDialog();
-            this.colorButton = new System.Windows.Forms.Button();
-            this.colorLabel = new System.Windows.Forms.Label();
+            this.borderColorButton = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
+            this.borderColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
@@ -217,6 +218,24 @@ namespace Vision
             this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 206);
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(328, 63);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(34, 13);
+            this.colorLabel.TabIndex = 41;
+            this.colorLabel.Text = "Color:";
+            // 
+            // colorButton
+            // 
+            this.colorButton.Location = new System.Drawing.Point(380, 58);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(75, 23);
+            this.colorButton.TabIndex = 40;
+            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // noTextPopUp
             // 
@@ -406,15 +425,6 @@ namespace Vision
             this.label2.TabIndex = 18;
             this.label2.Text = "Border Effect:";
             // 
-            // repeatComboBox
-            // 
-            this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.repeatComboBox.FormattingEnabled = true;
-            this.repeatComboBox.Location = new System.Drawing.Point(405, 29);
-            this.repeatComboBox.Name = "repeatComboBox";
-            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
-            this.repeatComboBox.TabIndex = 5;
-            // 
             // borderColorLabel
             // 
             this.borderColorLabel.AutoSize = true;
@@ -428,10 +438,15 @@ namespace Vision
             // 
             this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.borderEffectComboBox.FormattingEnabled = true;
+            this.borderEffectComboBox.Items.AddRange(new object[] {
+            "None",
+            "Satic",
+            "Rotate"});
             this.borderEffectComboBox.Location = new System.Drawing.Point(91, 30);
             this.borderEffectComboBox.Name = "borderEffectComboBox";
             this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.borderEffectComboBox.TabIndex = 3;
+            this.borderEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.borderEffectComboBox_SelectedIndexChanged);
             // 
             // loadXMLButton
             // 
@@ -1266,18 +1281,20 @@ namespace Vision
             // ignoreCheckBox
             // 
             this.ignoreCheckBox.AutoSize = true;
+            this.ignoreCheckBox.Checked = true;
+            this.ignoreCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ignoreCheckBox.Location = new System.Drawing.Point(885, 3);
             this.ignoreCheckBox.Name = "ignoreCheckBox";
             this.ignoreCheckBox.Size = new System.Drawing.Size(56, 17);
             this.ignoreCheckBox.TabIndex = 24;
             this.ignoreCheckBox.Text = "Ignore";
             this.ignoreCheckBox.UseVisualStyleBackColor = true;
-            this.ignoreCheckBox.Click += new System.EventHandler(this.ignoreCheckBox_Click);
+            this.ignoreCheckBox.CheckedChanged += new System.EventHandler(this.ignoreCheckBox_CheckedChanged);
             // 
             // borderOptionsGroupBox
             // 
+            this.borderOptionsGroupBox.Controls.Add(this.borderColorButton);
             this.borderOptionsGroupBox.Controls.Add(this.borderEffectComboBox);
-            this.borderOptionsGroupBox.Controls.Add(this.repeatComboBox);
             this.borderOptionsGroupBox.Controls.Add(this.label2);
             this.borderOptionsGroupBox.Controls.Add(this.borderColorLabel);
             this.borderOptionsGroupBox.Location = new System.Drawing.Point(12, 236);
@@ -1617,23 +1634,14 @@ namespace Vision
             // 
             this.colorDialogBox.Color = System.Drawing.Color.White;
             // 
-            // colorButton
+            // borderColorButton
             // 
-            this.colorButton.Location = new System.Drawing.Point(380, 58);
-            this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(75, 23);
-            this.colorButton.TabIndex = 40;
-            this.colorButton.UseVisualStyleBackColor = true;
-            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // colorLabel
-            // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(328, 63);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(34, 13);
-            this.colorLabel.TabIndex = 41;
-            this.colorLabel.Text = "Color:";
+            this.borderColorButton.Location = new System.Drawing.Point(405, 30);
+            this.borderColorButton.Name = "borderColorButton";
+            this.borderColorButton.Size = new System.Drawing.Size(75, 23);
+            this.borderColorButton.TabIndex = 42;
+            this.borderColorButton.UseVisualStyleBackColor = true;
+            this.borderColorButton.Click += new System.EventHandler(this.borderColorButton_Click);
             // 
             // marquee1
             // 
@@ -1759,7 +1767,6 @@ namespace Vision
         private System.Windows.Forms.RadioButton specialEffectButton;
         private System.Windows.Forms.ComboBox transitionSpeedComboBox;
         private System.Windows.Forms.Label displayDurationLabel;
-        private System.Windows.Forms.ComboBox repeatComboBox;
         private System.Windows.Forms.Label borderColorLabel;
         private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
@@ -1839,6 +1846,8 @@ namespace Vision
         private System.Windows.Forms.ColorDialog colorDialogBox;
         private System.Windows.Forms.Button colorButton;
         private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.Button borderColorButton;
+        private System.Windows.Forms.ColorDialog borderColorDialogBox;
     }
 }
 
