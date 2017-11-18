@@ -1155,11 +1155,11 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].borderEffect == 1)
             {
-                exitEffectComboBox.Text = "Rotate";
+                exitEffectComboBox.Text = "Static";
             }
             else if (mySegmentArray[activeIndex].borderEffect == 2)
             {
-                exitEffectComboBox.Text = "Static";
+                exitEffectComboBox.Text = "Rotate";
             }
             else
             {
@@ -1264,7 +1264,17 @@ namespace Vision
         private void textTextBox_TextChanged(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].messageText = textTextBox.Text;
-            //noTextPopUp.Visible = false;
+            if (textTextBox.Text.Length > 9)
+            {
+                scrollingTextButton.Checked = true;
+                specialEffectButton.Visible = false;
+                longTextPopUp.Visible = true;
+            }
+            else
+            {
+                longTextPopUp.Visible = false;
+                specialEffectButton.Visible = true;
+            }
         }
         #endregion
 
@@ -1427,6 +1437,13 @@ namespace Vision
                     colorButton.BackColor = colorDialogBox.Color;
                 }
             }
+        }
+
+        private void displayDurationControl_ValueChanged(object sender, EventArgs e)
+        {
+            //Max set to 2147482 so int doesnt throw an error if the number is to large.
+            int input = (int)Math.Floor(displayDurationControl.Value)*1000;
+            mySegmentArray[activeIndex].segmentSpeed = input;
         }
     }
 }
