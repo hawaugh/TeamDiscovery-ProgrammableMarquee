@@ -1124,25 +1124,50 @@ namespace Vision
 
         public void displayBorder(Color borderColor, int borderEffect)
         {
-            if (borderEffect == 1)
+            if (borderEffect == 0)
+            {
+                noBorder();
+            }
+            else if (borderEffect == 1)
             {
                 displayBorderHighlight(borderColor);
             }
-            else
+            else if (borderEffect == 2)
             {
                 staticBorder(borderColor);
             }
         }
 
+        //Border effect 0
+        public void noBorder()
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = BackColor;
+            }
+            while (true)
+            {
+                Invalidate();
+                Thread.Sleep(200);
+            }
+        }
+
+        //Border effect 1
         public void staticBorder(Color borderColor)
         {
             for (int b = 0; b < 220; b++)
             {
                 border[b].ForeColor = borderColor;
             }
+
+            while (true)
+            {
+                Invalidate();
+                Thread.Sleep(200);
+            }
         }
 
-        //Brooks
+        //Border effect 2
         public void displayBorderHighlight(Color borderColor)
         {
             #region 1 on:1 off
