@@ -72,3 +72,4 @@ E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master
 E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe.config
 E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.exe
 E:\SCHOOL\CSC 289\Project\Project 11-15\TeamDiscovery-ProgrammableMarquee-master\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache

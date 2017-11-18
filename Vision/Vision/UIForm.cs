@@ -55,6 +55,16 @@ namespace Vision
             InitializeComponent();
             getLocations();
             activeIndex = 0;
+
+            //mySegmentArray[activeIndex] = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
+            mySegmentArray[activeIndex].messageText = "Test";
+            mySegmentArray[activeIndex].onColor = Color.Pink;
+            mySegmentArray[activeIndex].segmentSpeed = 4000;
+            mySegmentArray[activeIndex].entranceEffect = 0;
+            mySegmentArray[activeIndex].middleEffect = 0;
+            mySegmentArray[activeIndex].exitEffect = 0;
+            mySegmentArray[activeIndex].borderColor = Color.Purple;
+            mySegmentArray[activeIndex].borderEffect = 0;
         }
 
         private void UIForm_Load(object sender, EventArgs e)
@@ -252,6 +262,10 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = true;
             }
+            //Sets values for Effect combo boxes
+            setEntranceEffectText();
+            setMiddleEffectText();
+            setExitEffectText();
             //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
         }
@@ -286,6 +300,10 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = true;
             }
+            //Sets values for Effect combo boxes
+            setEntranceEffectText();
+            setMiddleEffectText();
+            setExitEffectText();
             //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
         }
@@ -536,6 +554,10 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = true;
             }
+            //Sets values for Effect combo boxes
+            setEntranceEffectText();
+            setMiddleEffectText();
+            setExitEffectText();
             //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
         }
@@ -555,6 +577,10 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = true;
             }
+            //Sets values for Effect combo boxes
+            setEntranceEffectText();
+            setMiddleEffectText();
+            setExitEffectText();
             //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
         }
@@ -940,11 +966,11 @@ namespace Vision
             {
                 return 1;
             }
-            else if (text == "Raise")
+            else if (text == "Scroll Up")
             {
                 return 2;
             }
-            else if (text == "Lower")
+            else if (text == "Scroll Down")
             {
                 return 3;
             }
@@ -958,9 +984,38 @@ namespace Vision
             }
         }
 
+        //Stored here so when added new effects everything can be changed in the same place.
+        private void setEntranceEffectText()
+        {
+            if (mySegmentArray[activeIndex].exitEffect == 0)
+            {
+                exitEffectComboBox.Text = "";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 1)
+            {
+                exitEffectComboBox.Text = "Split";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 2)
+            {
+                exitEffectComboBox.Text = "Scroll Up";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 3)
+            {
+                exitEffectComboBox.Text = "Scroll Down";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 4)
+            {
+                exitEffectComboBox.Text = "Random Dots";
+            }
+            else
+            {
+                exitEffectComboBox.Text = "";
+            }
+        }
+
         private void staticEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            mySegmentArray[activeIndex].middleEffect = findMiddleEffect(staticEffectComboBox.Text);
         }
 
         private int findMiddleEffect(String text)
@@ -980,6 +1035,89 @@ namespace Vision
             else
             {
                 return 0;
+            }
+        }
+
+        //Stored here so when added new effects everything can be changed in the same place.
+        private void setMiddleEffectText()
+        {
+            if (mySegmentArray[activeIndex].exitEffect == 0)
+            {
+                exitEffectComboBox.Text = "";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 1)
+            {
+                exitEffectComboBox.Text = "Random Color Dots";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 2)
+            {
+                exitEffectComboBox.Text = "Fade";
+            }
+            else
+            {
+                exitEffectComboBox.Text = "";
+            }
+        }
+
+        private void exitEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mySegmentArray[activeIndex].exitEffect = findExitEffect(exitEffectComboBox.Text);
+        }
+
+        private int findExitEffect(String text)
+        {
+            if (text == "None")
+            {
+                return 0;
+            }
+            else if (text == "Split")
+            {
+                return 1;
+            }
+            else if (text == "Scroll Up")
+            {
+                return 2;
+            }
+            else if (text == "Scroll Down")
+            {
+                return 3;
+            }
+            else if (text == "Random Dots")
+            {
+                return 4;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        //Stored here so when added new effects everything can be changed in the same place.
+        private void setExitEffectText()
+        {
+            if (mySegmentArray[activeIndex].exitEffect == 0)
+            {
+                exitEffectComboBox.Text = "";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 1)
+            {
+                exitEffectComboBox.Text = "Split";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 2)
+            {
+                exitEffectComboBox.Text = "Scroll Up";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 3)
+            {
+                exitEffectComboBox.Text = "Scroll Down";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 4)
+            {
+                exitEffectComboBox.Text = "Random Dots";
+            }
+            else
+            {
+                exitEffectComboBox.Text = "";
             }
         }
         #endregion
@@ -1014,6 +1152,15 @@ namespace Vision
             imageTabLabel.BackColor = darkerGray;
             imageTabLabel.ForeColor = Color.White;
 
+        }
+
+        private void colorButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
+                colorButton.BackColor = colorDialogBox.Color;
+            }
         }
 
         private void textTabLabel_BackColorChanged(object sender, EventArgs e)
@@ -1180,13 +1327,5 @@ namespace Vision
             }
         }
 
-        private void colorButton_Click(object sender, EventArgs e)
-        {
-            if (colorDialogBox.ShowDialog() == DialogResult.OK)
-            {
-                mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
-                colorButton.BackColor = colorDialogBox.Color;
-            }
-        }
     }
 }

@@ -223,7 +223,7 @@ namespace Vision
             this.noTextPopUp.AutoSize = true;
             this.noTextPopUp.BackColor = System.Drawing.Color.White;
             this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
-            this.noTextPopUp.Location = new System.Drawing.Point(191, 26);
+            this.noTextPopUp.Location = new System.Drawing.Point(236, 26);
             this.noTextPopUp.Name = "noTextPopUp";
             this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
             this.noTextPopUp.TabIndex = 17;
@@ -304,6 +304,7 @@ namespace Vision
             this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.exitEffectComboBox.TabIndex = 13;
             this.exitEffectComboBox.Visible = false;
+            this.exitEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.exitEffectComboBox_SelectedIndexChanged);
             // 
             // staticEffectComboBox
             // 
@@ -327,8 +328,8 @@ namespace Vision
             this.entranceEffectComboBox.Items.AddRange(new object[] {
             "None",
             "Split",
-            "Raise",
-            "Lower",
+            "Scroll Up",
+            "Scroll Down",
             "Random Dots"});
             this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 150);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
@@ -1265,8 +1266,6 @@ namespace Vision
             // ignoreCheckBox
             // 
             this.ignoreCheckBox.AutoSize = true;
-            this.ignoreCheckBox.Checked = true;
-            this.ignoreCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ignoreCheckBox.Location = new System.Drawing.Point(885, 3);
             this.ignoreCheckBox.Name = "ignoreCheckBox";
             this.ignoreCheckBox.Size = new System.Drawing.Size(56, 17);
