@@ -1124,7 +1124,7 @@ namespace Vision
         
         private void borderEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mySegmentArray[activeIndex].borderEffect = 1;
+            mySegmentArray[activeIndex].borderEffect = findBorderEffect(borderEffectComboBox.Text);
         }
 
         private int findBorderEffect(String text)
@@ -1135,11 +1135,11 @@ namespace Vision
             }
             else if (text == "Static")
             {
-                return 1; //need option for static
+                return 1;
             }
             else if (text == "Rotate")
             {
-                return 1;
+                return 2;
             }
             else
             {
@@ -1155,11 +1155,11 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].borderEffect == 1)
             {
-                exitEffectComboBox.Text = "Static";
+                exitEffectComboBox.Text = "Rotate";
             }
             else if (mySegmentArray[activeIndex].borderEffect == 2)
             {
-                exitEffectComboBox.Text = "Rotate";
+                exitEffectComboBox.Text = "Static";
             }
             else
             {
@@ -1226,6 +1226,9 @@ namespace Vision
         {
             if (specialEffectButton.Checked == true)
             {
+                mySegmentArray[activeIndex].isScrolling = false;
+                //For some reason setting the default value in designer doesnt work. But this fixes it.
+                scrollSpeedControl.Value = 0;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
@@ -1243,6 +1246,9 @@ namespace Vision
         {
             if (scrollingTextButton.Checked == true)
             {
+                mySegmentArray[activeIndex].isScrolling = true;
+                //For some reason setting the default value in designer doesnt work. But this fixes it.
+                scrollSpeedControl.Value = 10;
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
@@ -1379,6 +1385,47 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
                 borderColorButton.BackColor = borderColorDialogBox.Color;
+            }
+        }
+
+        private void marqueeBackgroundColorButton_Click(object sender, EventArgs e)
+        {
+            if (marqueeBackgroundColorDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                marquee1.BackColor = marqueeBackgroundColorDialogBox.Color;
+                marqueeBackgroundColorButton.BackColor = marqueeBackgroundColorDialogBox.Color;
+            }
+        }
+
+        private void scrollSpeedControl_ValueChanged(object sender, EventArgs e)
+        {
+            int input = (int)Math.Floor(scrollSpeedControl.Value);
+            mySegmentArray[activeIndex].scrollSpeed = input;
+        }
+
+        private void randomColorCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (randomColorCheckBox.Checked == true)
+            {
+                mySegmentArray[activeIndex].isRandomColorScrolling = true;
+                //test is a color option is selected.
+                if (colorButton.BackColor != lightGray)
+                {
+                    //if true. Sets button color back to normal and displays pop up.
+                    colorButton.BackColor = lightGray;
+                    randomColorPopUp.Visible = true;
+                }
+            }
+            else
+            {
+                mySegmentArray[activeIndex].isRandomColorScrolling = false;
+                //Test if pop up is visible. (randomColorCheckBox is already true)
+                if (randomColorPopUp.Visible == true)
+                {
+                    //if true. removes popup and sets the color option back to normal.
+                    randomColorPopUp.Visible = false;
+                    colorButton.BackColor = colorDialogBox.Color;
+                }
             }
         }
     }

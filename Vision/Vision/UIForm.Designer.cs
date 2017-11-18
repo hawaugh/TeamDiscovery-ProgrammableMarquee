@@ -153,8 +153,11 @@ namespace Vision
             this.backToMenuButton = new System.Windows.Forms.Button();
             this.colorDialogBox = new System.Windows.Forms.ColorDialog();
             this.borderColorButton = new System.Windows.Forms.Button();
-            this.marquee1 = new Vision.Marquee();
             this.borderColorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.marqueeBackgroundColorButton = new System.Windows.Forms.Button();
+            this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.marquee1 = new Vision.Marquee();
+            this.randomColorPopUp = new System.Windows.Forms.Label();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
@@ -195,6 +198,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
+            this.createASegmentGroupBox.Controls.Add(this.randomColorPopUp);
             this.createASegmentGroupBox.Controls.Add(this.colorLabel);
             this.createASegmentGroupBox.Controls.Add(this.colorButton);
             this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
@@ -230,11 +234,12 @@ namespace Vision
             // 
             // colorButton
             // 
+            this.colorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colorButton.Location = new System.Drawing.Point(380, 58);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(75, 23);
             this.colorButton.TabIndex = 40;
-            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.UseVisualStyleBackColor = false;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // noTextPopUp
@@ -259,6 +264,7 @@ namespace Vision
             this.randomColorCheckBox.Text = "Random Colors";
             this.randomColorCheckBox.UseVisualStyleBackColor = true;
             this.randomColorCheckBox.Visible = false;
+            this.randomColorCheckBox.CheckedChanged += new System.EventHandler(this.randomColorCheckBox_CheckedChanged);
             // 
             // exitEffectLabel
             // 
@@ -287,6 +293,7 @@ namespace Vision
             this.scrollSpeedControl.Size = new System.Drawing.Size(120, 20);
             this.scrollSpeedControl.TabIndex = 6;
             this.scrollSpeedControl.Visible = false;
+            this.scrollSpeedControl.ValueChanged += new System.EventHandler(this.scrollSpeedControl_ValueChanged);
             // 
             // scrollSpeedLabel
             // 
@@ -1612,7 +1619,7 @@ namespace Vision
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(948, 9);
+            this.label1.Location = new System.Drawing.Point(979, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 13);
             this.label1.TabIndex = 37;
@@ -1643,6 +1650,15 @@ namespace Vision
             this.borderColorButton.UseVisualStyleBackColor = true;
             this.borderColorButton.Click += new System.EventHandler(this.borderColorButton_Click);
             // 
+            // marqueeBackgroundColorButton
+            // 
+            this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(1125, 4);
+            this.marqueeBackgroundColorButton.Name = "marqueeBackgroundColorButton";
+            this.marqueeBackgroundColorButton.Size = new System.Drawing.Size(75, 23);
+            this.marqueeBackgroundColorButton.TabIndex = 42;
+            this.marqueeBackgroundColorButton.UseVisualStyleBackColor = true;
+            this.marqueeBackgroundColorButton.Click += new System.EventHandler(this.marqueeBackgroundColorButton_Click);
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
@@ -1654,12 +1670,25 @@ namespace Vision
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
             // 
+            // randomColorPopUp
+            // 
+            this.randomColorPopUp.AutoSize = true;
+            this.randomColorPopUp.BackColor = System.Drawing.Color.Transparent;
+            this.randomColorPopUp.ForeColor = System.Drawing.Color.Red;
+            this.randomColorPopUp.Location = new System.Drawing.Point(291, 47);
+            this.randomColorPopUp.Name = "randomColorPopUp";
+            this.randomColorPopUp.Size = new System.Drawing.Size(274, 13);
+            this.randomColorPopUp.TabIndex = 42;
+            this.randomColorPopUp.Text = "Color option is removed when Random Colors is selected";
+            this.randomColorPopUp.Visible = false;
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 620);
+            this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.backToMenuButton);
@@ -1848,6 +1877,9 @@ namespace Vision
         private System.Windows.Forms.Label colorLabel;
         private System.Windows.Forms.Button borderColorButton;
         private System.Windows.Forms.ColorDialog borderColorDialogBox;
+        private System.Windows.Forms.Button marqueeBackgroundColorButton;
+        private System.Windows.Forms.ColorDialog marqueeBackgroundColorDialogBox;
+        private System.Windows.Forms.Label randomColorPopUp;
     }
 }
 
