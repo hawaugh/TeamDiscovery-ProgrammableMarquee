@@ -1809,5 +1809,27 @@ namespace Vision
             //create XML file
         }
         #endregion
+
+        /*
+         * 
+         *   XML Methods
+         * 
+         */
+        #region XML Methods
+
+        //Don't know what parameters you will need
+        //Save all fields but "filename" in every segment object in array
+        //Also save the marqueeBackgroundColor from this class
+        public void saveXML()
+        {
+
+        }
+
+        public void loadXML()
+        {
+
+        }
+
+        #endregion
     }
 }
