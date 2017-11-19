@@ -28,10 +28,13 @@ namespace Vision
 
         //Scrolling fields
         private bool _isScrolling;
+        private bool _isRandomColorScrolling;
         private int _scrollSpeed;
 
         //Image fields
         private bool _isImage;
+        private string _filename;
+        private Bitmap _originalBitmap;
         private Bitmap _scaledBitmap;
         private float _imageAspect;
         private const float ASPECT_RATIO = 6;
@@ -53,7 +56,9 @@ namespace Vision
             _onColor = Color.Black;
             _segmentSpeed = 2000;
             _isScrolling = false;
+            _isRandomColorScrolling = false;
             _isImage = false;
+            _filename = "";
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
@@ -62,13 +67,13 @@ namespace Vision
         }
 
         //Scrolling Text Constructor
-        public Segment(string segmentText, Color onColor, int segmentSpeed, int scrollSpeed, Color borderColor, int borderEffect)
+        public Segment(string segmentText, Color onColor, bool isRandomColorScrolling, int scrollSpeed, Color borderColor, int borderEffect)
         {
             _ignore = false;
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
-            _segmentSpeed = segmentSpeed;
+            _isRandomColorScrolling = isRandomColorScrolling;
             _scrollSpeed = scrollSpeed;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
@@ -98,22 +103,23 @@ namespace Vision
         {
             _ignore = false;
             _isImage = true;
+            _filename = filename;
             _segmentSpeed = segmentSpeed;
             //creates the image from file
-            Bitmap imageBitmap = new Bitmap(filename);
-            _imageAspect = ((float)imageBitmap.Width) / ((float)imageBitmap.Height);
+            _originalBitmap = new Bitmap(_filename);
+            _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
 
             if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
             }
             else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
             }
             else //Aspect ratio equals marquee
             {
-                _scaledBitmap = new Bitmap(imageBitmap, 96, 16);
+                _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
             }
         }
 
@@ -179,6 +185,12 @@ namespace Vision
             set { _isScrolling = value; }
         }
 
+        public bool isRandomColorScrolling
+        {
+            get { return _isRandomColorScrolling; }
+            set { _isRandomColorScrolling = value; }
+        }
+
         public int scrollSpeed
         {
             get { return _scrollSpeed; }
@@ -197,6 +209,31 @@ namespace Vision
         {
             get { return _isImage; }
             set { _isImage = value; }
+        }
+
+        public string filename
+        {
+            get { return _filename; }
+            set
+            {
+                _filename = value;
+                //creates the image from file
+                _originalBitmap = new Bitmap(_filename);
+                _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
+
+                if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
+                {
+                    _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                }
+                else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
+                {
+                    _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                }
+                else //Aspect ratio equals marquee
+                {
+                    _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
+                }
+            }
         }
 
         public Color getPixel(int c, int r)
@@ -218,6 +255,13 @@ namespace Vision
         public float imageAspect
         {
             get { return _imageAspect; }
+            set { }
+        }
+
+        //getter/setter for scaledBitmap
+        public Bitmap originalBitmap
+        {
+            get { return _originalBitmap; }
             set { }
         }
 

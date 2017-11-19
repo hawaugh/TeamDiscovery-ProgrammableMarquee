@@ -223,8 +223,12 @@ namespace Vision
                 displaySidewayEntrance(segment, backgroundColor);
             }
 
-            //Display Middle            
-            if (segment.middleEffect == 1)
+            //Display Middle   
+            if (segment.middleEffect == 0)
+            {
+                Thread.Sleep(segment.segmentSpeed);
+            }
+            else if (segment.middleEffect == 1)
             {
                 displayRandomColors(segment, backgroundColor);
                 Thread.Sleep(segment.segmentSpeed);
@@ -741,8 +745,10 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
+            Color onColor = segment.onColor;
+            int counter = 1;
             for (int s = 0; s < segmentLength; s++)
-            {                
+            {                           
                 //Move all dots 1 column left
                 for (int c = 2; c < 93; c++)
                 {
@@ -757,13 +763,29 @@ namespace Vision
                 {
                     if (currSegment[r - 2][s].Equals('1'))
                     {
-                        setDot(r, 93, segment.onColor);
+                        setDot(r, 93, onColor);
                     }
                     else if (currSegment[r - 2][s].Equals('0'))
                     {                        
                         setDot(r, 93, backgroundColor);                        
                     }
                 }
+
+                //Counter for random color effect
+                if(counter == 10)
+                {
+                    //If effect active change to random color
+                    if(segment.isRandomColorScrolling)
+                    {
+                        onColor = randomColor();
+                    }
+                    counter = 1;
+                }
+                else
+                {
+                    counter++;
+                }
+
                 Invalidate();
                 Thread.Sleep(segment.scrollSpeed);
             }
@@ -1102,37 +1124,93 @@ namespace Vision
 
         public void displayBorder(Color borderColor, int borderEffect)
         {
-            if (borderEffect == 1)
+            if (borderEffect == 0)
+            {
+                noBorder();
+            }
+            else if (borderEffect == 1)
             {
                 displayBorderHighlight(borderColor);
             }
-            else
+            else if (borderEffect == 2)
             {
                 staticBorder(borderColor);
             }
         }
 
+        //Border effect 0
+        public void noBorder()
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = BackColor;
+            }
+            while (true)
+            {
+                Invalidate();
+                Thread.Sleep(200);
+            }
+        }
+
+        //Border effect 1
         public void staticBorder(Color borderColor)
         {
             for (int b = 0; b < 220; b++)
             {
                 border[b].ForeColor = borderColor;
             }
+
+            while (true)
+            {
+                Invalidate();
+                Thread.Sleep(200);
+            }
         }
 
-        //Brooks
+        //Border effect 2
         public void displayBorderHighlight(Color borderColor)
         {
+            #region 1 on:1 off
+            //for (int a = 0; a < 220; a = a + 2)
+            //{
+            //    border[a].ForeColor = borderColor;
+            //}
 
-            for (int a = 0; a < 220; a = a + 2)
+            //for (int a = 1; a < 220; a = a + 2)
+            //{
+            //    border[a].ForeColor = BackColor;
+            //}
+            #endregion
+
+
+            #region 2 on:2 off
+            //for (int a = 0; a < 220; a = a + 4)
+            //{
+            //    border[a].ForeColor = borderColor;
+            //    border[a + 1].ForeColor = borderColor;
+            //}
+
+            //for (int a = 2; a < 220; a = a + 4)
+            //{
+            //    border[a].ForeColor = BackColor;
+            //    border[a + 1].ForeColor = BackColor;
+            //}
+            #endregion
+
+            #region 3 on:1 off
+            for (int a = 0; a < 220; a = a + 4)
             {
                 border[a].ForeColor = borderColor;
+                border[a + 1].ForeColor = borderColor;
+                border[a + 2].ForeColor = borderColor;
             }
 
-            for (int a = 1; a < 220; a = a + 2)
+            for (int a = 3; a < 220; a = a + 4)
             {
                 border[a].ForeColor = BackColor;
             }
+            #endregion
+
             Invalidate();
 
             Color oneColor;
@@ -1184,8 +1262,12 @@ namespace Vision
 
             Invalidate();
 
-            //Hold Image on marquee for set time
-            Thread.Sleep(image.segmentSpeed);
+            //Hold Image on marquee for set time, redrawing over intervals
+            for (int i = 0; i < (image.segmentSpeed / 25); i++)
+            {
+                Invalidate();
+                Thread.Sleep(25);
+            }
 
             //Clear Whole Marquee
             clearMarquee(BackColor);
@@ -1228,6 +1310,105 @@ namespace Vision
             }
             this.ResumeLayout();
         }
+        #endregion
+
+
+        /*
+         * 
+         *   Utility Methods
+         * 
+         */
+        #region Utility Methods
+        public Color randomColor()
+        {
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(0, 20);
+            if (randomNumber == 0)
+            {
+                return Color.Aqua;
+            }
+            else if (randomNumber == 1)
+            {
+                return Color.Blue;
+            }
+            else if (randomNumber == 2)
+            {
+                return Color.BlueViolet;
+            }
+            else if (randomNumber == 3)
+            {
+                return Color.Cyan;
+            }
+            else if (randomNumber == 4)
+            {
+                return Color.Fuchsia;
+            }
+            else if (randomNumber == 5)
+            {
+                return Color.DeepPink;
+            }
+            else if (randomNumber == 6)
+            {
+                return Color.Gold;
+            }
+            else if (randomNumber == 7)
+            {
+                return Color.GreenYellow;
+            }
+            else if (randomNumber == 8)
+            {
+                return Color.HotPink;
+            }
+            else if (randomNumber == 9)
+            {
+                return Color.LightCoral;
+            }
+            else if (randomNumber == 10)
+            {
+                return Color.Lime;
+            }
+            else if (randomNumber == 11)
+            {
+                return Color.MediumSpringGreen;
+            }
+            else if (randomNumber == 12)
+            {
+                return Color.Navy;
+            }
+            else if (randomNumber == 13)
+            {
+                return Color.OrangeRed;
+            }
+            else if (randomNumber == 14)
+            {
+                return Color.Purple;
+            }
+            else if (randomNumber == 15)
+            {
+                return Color.Red;
+            }
+            else if (randomNumber == 16)
+            {
+                return Color.Snow;
+            }
+            else if (randomNumber == 17)
+            {
+                return Color.SpringGreen;
+            }
+            else if (randomNumber == 18)
+            {
+                return Color.Turquoise;
+            }
+            else if (randomNumber == 19)
+            {
+                return Color.Violet;
+            }
+            else
+            {
+                return Color.Yellow;
+            }
+        }
+
         #endregion
     }
 }

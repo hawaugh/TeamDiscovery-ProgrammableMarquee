@@ -41,25 +41,28 @@ namespace Vision
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.noTextPopUp = new System.Windows.Forms.Label();
+            this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
+            this.randomColorPopUp = new System.Windows.Forms.Label();
+            this.colorLabel = new System.Windows.Forms.Label();
+            this.colorButton = new System.Windows.Forms.Button();
+            this.longTextPopUp = new System.Windows.Forms.Label();
+            this.randomColorCheckBox = new System.Windows.Forms.CheckBox();
             this.exitEffectLabel = new System.Windows.Forms.Label();
             this.staticEffectLabel = new System.Windows.Forms.Label();
+            this.scrollSpeedControl = new System.Windows.Forms.NumericUpDown();
+            this.scrollSpeedLabel = new System.Windows.Forms.Label();
             this.entranceEffectLabel = new System.Windows.Forms.Label();
             this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
             this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
             this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
-            this.transitionSpeedComboBox = new System.Windows.Forms.ComboBox();
-            this.transitionSpeedLabel = new System.Windows.Forms.Label();
-            this.colorComboBox = new System.Windows.Forms.ComboBox();
-            this.colorLabel = new System.Windows.Forms.Label();
-            this.repeatComboBox = new System.Windows.Forms.ComboBox();
-            this.repeatLabel = new System.Windows.Forms.Label();
-            this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.displayDurationLabel = new System.Windows.Forms.Label();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.borderColorLabel = new System.Windows.Forms.Label();
+            this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.loadXMLButton = new System.Windows.Forms.Button();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.segmentPanel14 = new System.Windows.Forms.Panel();
@@ -123,6 +126,9 @@ namespace Vision
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
+            this.ignoreCheckBox = new System.Windows.Forms.CheckBox();
+            this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.borderColorButton = new System.Windows.Forms.Button();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.addSegmentButton17 = new System.Windows.Forms.Button();
             this.addSegmentButton15 = new System.Windows.Forms.Button();
@@ -141,8 +147,20 @@ namespace Vision
             this.segmentLabel18 = new System.Windows.Forms.Label();
             this.closeButton18 = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
+            this.browseButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.marqueeBackgroundColorLabel = new System.Windows.Forms.Label();
+            this.backToMenuButton = new System.Windows.Forms.Button();
+            this.colorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.borderColorDialogBox = new System.Windows.Forms.ColorDialog();
+            this.marqueeBackgroundColorButton = new System.Windows.Forms.Button();
+            this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
             this.segmentPanel13.SuspendLayout();
             this.segmentPanel12.SuspendLayout();
@@ -158,17 +176,20 @@ namespace Vision
             this.segmentPanel1.SuspendLayout();
             this.segmentPanel2.SuspendLayout();
             this.textPanel.SuspendLayout();
+            this.borderOptionsGroupBox.SuspendLayout();
             this.SegmentHolderPanel.SuspendLayout();
             this.segmentPanel15.SuspendLayout();
             this.segmentPanel17.SuspendLayout();
             this.segmentPanel16.SuspendLayout();
             this.segmentPanel18.SuspendLayout();
             this.imagePanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
             // 
-            this.populateMarqueeButton.Location = new System.Drawing.Point(12, 490);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(11, 579);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 29);
             this.populateMarqueeButton.TabIndex = 1;
@@ -178,56 +199,110 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
-            this.createASegmentGroupBox.Controls.Add(this.label2);
-            this.createASegmentGroupBox.Controls.Add(this.noTextPopUp);
+            this.createASegmentGroupBox.Controls.Add(this.displayDurationControl);
+            this.createASegmentGroupBox.Controls.Add(this.randomColorPopUp);
+            this.createASegmentGroupBox.Controls.Add(this.colorLabel);
+            this.createASegmentGroupBox.Controls.Add(this.colorButton);
+            this.createASegmentGroupBox.Controls.Add(this.longTextPopUp);
+            this.createASegmentGroupBox.Controls.Add(this.randomColorCheckBox);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.staticEffectLabel);
+            this.createASegmentGroupBox.Controls.Add(this.scrollSpeedControl);
+            this.createASegmentGroupBox.Controls.Add(this.scrollSpeedLabel);
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.staticEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
             this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
-            this.createASegmentGroupBox.Controls.Add(this.transitionSpeedComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.transitionSpeedLabel);
-            this.createASegmentGroupBox.Controls.Add(this.colorComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.colorLabel);
-            this.createASegmentGroupBox.Controls.Add(this.repeatComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.repeatLabel);
-            this.createASegmentGroupBox.Controls.Add(this.borderEffectComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.displayDurationLabel);
             this.createASegmentGroupBox.Controls.Add(this.textTextBox);
             this.createASegmentGroupBox.Controls.Add(this.textLabel);
             this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
             this.createASegmentGroupBox.Name = "createASegmentGroupBox";
-            this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 237);
+            this.createASegmentGroupBox.Size = new System.Drawing.Size(832, 206);
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
             // 
-            // label2
+            // displayDurationControl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Border Effect:";
+            this.displayDurationControl.Location = new System.Drawing.Point(104, 59);
+            this.displayDurationControl.Maximum = new decimal(new int[] {
+            2147482,
+            0,
+            0,
+            0});
+            this.displayDurationControl.Name = "displayDurationControl";
+            this.displayDurationControl.Size = new System.Drawing.Size(120, 20);
+            this.displayDurationControl.TabIndex = 43;
+            this.displayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.displayDurationControl.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.displayDurationControl.ValueChanged += new System.EventHandler(this.displayDurationControl_ValueChanged);
             // 
-            // noTextPopUp
+            // randomColorPopUp
             // 
-            this.noTextPopUp.AutoSize = true;
-            this.noTextPopUp.BackColor = System.Drawing.Color.White;
-            this.noTextPopUp.ForeColor = System.Drawing.Color.Red;
-            this.noTextPopUp.Location = new System.Drawing.Point(402, 26);
-            this.noTextPopUp.Name = "noTextPopUp";
-            this.noTextPopUp.Size = new System.Drawing.Size(211, 13);
-            this.noTextPopUp.TabIndex = 17;
-            this.noTextPopUp.Text = "Please Enter Some Text Before Continuing.";
-            this.noTextPopUp.Visible = false;
+            this.randomColorPopUp.AutoSize = true;
+            this.randomColorPopUp.BackColor = System.Drawing.Color.Transparent;
+            this.randomColorPopUp.ForeColor = System.Drawing.Color.Red;
+            this.randomColorPopUp.Location = new System.Drawing.Point(291, 46);
+            this.randomColorPopUp.Name = "randomColorPopUp";
+            this.randomColorPopUp.Size = new System.Drawing.Size(274, 13);
+            this.randomColorPopUp.TabIndex = 42;
+            this.randomColorPopUp.Text = "Color option is removed when Random Colors is selected";
+            this.randomColorPopUp.Visible = false;
+            // 
+            // colorLabel
+            // 
+            this.colorLabel.AutoSize = true;
+            this.colorLabel.Location = new System.Drawing.Point(328, 63);
+            this.colorLabel.Name = "colorLabel";
+            this.colorLabel.Size = new System.Drawing.Size(34, 13);
+            this.colorLabel.TabIndex = 41;
+            this.colorLabel.Text = "Color:";
+            // 
+            // colorButton
+            // 
+            this.colorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.colorButton.Location = new System.Drawing.Point(380, 58);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(75, 23);
+            this.colorButton.TabIndex = 40;
+            this.colorButton.UseVisualStyleBackColor = false;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // longTextPopUp
+            // 
+            this.longTextPopUp.AutoSize = true;
+            this.longTextPopUp.BackColor = System.Drawing.Color.Transparent;
+            this.longTextPopUp.ForeColor = System.Drawing.Color.Red;
+            this.longTextPopUp.Location = new System.Drawing.Point(106, 10);
+            this.longTextPopUp.Name = "longTextPopUp";
+            this.longTextPopUp.Size = new System.Drawing.Size(395, 13);
+            this.longTextPopUp.TabIndex = 17;
+            this.longTextPopUp.Text = "Messages with more than 9 characters must be split up or use Scrolling Text Effec" +
+    "t";
+            this.longTextPopUp.Visible = false;
+            // 
+            // randomColorCheckBox
+            // 
+            this.randomColorCheckBox.AutoSize = true;
+            this.randomColorCheckBox.Location = new System.Drawing.Point(222, 152);
+            this.randomColorCheckBox.Name = "randomColorCheckBox";
+            this.randomColorCheckBox.Size = new System.Drawing.Size(98, 17);
+            this.randomColorCheckBox.TabIndex = 23;
+            this.randomColorCheckBox.Text = "Random Colors";
+            this.randomColorCheckBox.UseVisualStyleBackColor = true;
+            this.randomColorCheckBox.Visible = false;
+            this.randomColorCheckBox.CheckedChanged += new System.EventHandler(this.randomColorCheckBox_CheckedChanged);
             // 
             // exitEffectLabel
             // 
             this.exitEffectLabel.AutoSize = true;
-            this.exitEffectLabel.Location = new System.Drawing.Point(571, 175);
+            this.exitEffectLabel.Location = new System.Drawing.Point(571, 134);
             this.exitEffectLabel.Name = "exitEffectLabel";
             this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
             this.exitEffectLabel.TabIndex = 16;
@@ -237,17 +312,37 @@ namespace Vision
             // staticEffectLabel
             // 
             this.staticEffectLabel.AutoSize = true;
-            this.staticEffectLabel.Location = new System.Drawing.Point(315, 175);
+            this.staticEffectLabel.Location = new System.Drawing.Point(315, 134);
             this.staticEffectLabel.Name = "staticEffectLabel";
             this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
             this.staticEffectLabel.TabIndex = 15;
             this.staticEffectLabel.Text = "Static Effect";
             this.staticEffectLabel.Visible = false;
             // 
+            // scrollSpeedControl
+            // 
+            this.scrollSpeedControl.Location = new System.Drawing.Point(14, 151);
+            this.scrollSpeedControl.Name = "scrollSpeedControl";
+            this.scrollSpeedControl.Size = new System.Drawing.Size(120, 20);
+            this.scrollSpeedControl.TabIndex = 6;
+            this.scrollSpeedControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.scrollSpeedControl.Visible = false;
+            this.scrollSpeedControl.ValueChanged += new System.EventHandler(this.scrollSpeedControl_ValueChanged);
+            // 
+            // scrollSpeedLabel
+            // 
+            this.scrollSpeedLabel.AutoSize = true;
+            this.scrollSpeedLabel.Location = new System.Drawing.Point(39, 134);
+            this.scrollSpeedLabel.Name = "scrollSpeedLabel";
+            this.scrollSpeedLabel.Size = new System.Drawing.Size(67, 13);
+            this.scrollSpeedLabel.TabIndex = 21;
+            this.scrollSpeedLabel.Text = "Scroll Speed";
+            this.scrollSpeedLabel.Visible = false;
+            // 
             // entranceEffectLabel
             // 
             this.entranceEffectLabel.AutoSize = true;
-            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 175);
+            this.entranceEffectLabel.Location = new System.Drawing.Point(60, 134);
             this.entranceEffectLabel.Name = "entranceEffectLabel";
             this.entranceEffectLabel.Size = new System.Drawing.Size(81, 13);
             this.entranceEffectLabel.TabIndex = 14;
@@ -259,49 +354,54 @@ namespace Vision
             this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exitEffectComboBox.FormattingEnabled = true;
             this.exitEffectComboBox.Items.AddRange(new object[] {
+            "None",
             "Split",
             "Scroll Up",
             "Scroll Down",
             "Random Dots"});
-            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 191);
+            this.exitEffectComboBox.Location = new System.Drawing.Point(506, 150);
             this.exitEffectComboBox.Name = "exitEffectComboBox";
             this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.exitEffectComboBox.TabIndex = 13;
             this.exitEffectComboBox.Visible = false;
+            this.exitEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.exitEffectComboBox_SelectedIndexChanged);
             // 
             // staticEffectComboBox
             // 
             this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staticEffectComboBox.FormattingEnabled = true;
             this.staticEffectComboBox.Items.AddRange(new object[] {
-            "Random Dots",
+            "None",
+            "Random Color Dots",
             "Fade"});
-            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 191);
+            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 150);
             this.staticEffectComboBox.Name = "staticEffectComboBox";
             this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.staticEffectComboBox.TabIndex = 12;
             this.staticEffectComboBox.Visible = false;
+            this.staticEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.staticEffectComboBox_SelectedIndexChanged);
             // 
             // entranceEffectComboBox
             // 
             this.entranceEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entranceEffectComboBox.FormattingEnabled = true;
             this.entranceEffectComboBox.Items.AddRange(new object[] {
-            "Static",
+            "None",
             "Split",
-            "Raise",
-            "Lower",
+            "Scroll Up",
+            "Scroll Down",
             "Random Dots"});
-            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 191);
+            this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 150);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.entranceEffectComboBox.TabIndex = 11;
             this.entranceEffectComboBox.Visible = false;
+            this.entranceEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.entranceEffectComboBox_SelectedIndexChanged);
             // 
             // scrollingTextButton
             // 
             this.scrollingTextButton.AutoSize = true;
-            this.scrollingTextButton.Location = new System.Drawing.Point(168, 146);
+            this.scrollingTextButton.Location = new System.Drawing.Point(168, 105);
             this.scrollingTextButton.Name = "scrollingTextButton";
             this.scrollingTextButton.Size = new System.Drawing.Size(89, 17);
             this.scrollingTextButton.TabIndex = 10;
@@ -313,7 +413,7 @@ namespace Vision
             // specialEffectButton
             // 
             this.specialEffectButton.AutoSize = true;
-            this.specialEffectButton.Location = new System.Drawing.Point(17, 146);
+            this.specialEffectButton.Location = new System.Drawing.Point(17, 105);
             this.specialEffectButton.Name = "specialEffectButton";
             this.specialEffectButton.Size = new System.Drawing.Size(96, 17);
             this.specialEffectButton.TabIndex = 6;
@@ -322,81 +422,20 @@ namespace Vision
             this.specialEffectButton.UseVisualStyleBackColor = true;
             this.specialEffectButton.CheckedChanged += new System.EventHandler(this.specialEffectButton_CheckedChanged);
             // 
-            // transitionSpeedComboBox
+            // displayDurationLabel
             // 
-            this.transitionSpeedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.transitionSpeedComboBox.FormattingEnabled = true;
-            this.transitionSpeedComboBox.Location = new System.Drawing.Point(423, 108);
-            this.transitionSpeedComboBox.Name = "transitionSpeedComboBox";
-            this.transitionSpeedComboBox.Size = new System.Drawing.Size(191, 21);
-            this.transitionSpeedComboBox.TabIndex = 9;
-            // 
-            // transitionSpeedLabel
-            // 
-            this.transitionSpeedLabel.AutoSize = true;
-            this.transitionSpeedLabel.Location = new System.Drawing.Point(296, 111);
-            this.transitionSpeedLabel.Name = "transitionSpeedLabel";
-            this.transitionSpeedLabel.Size = new System.Drawing.Size(90, 13);
-            this.transitionSpeedLabel.TabIndex = 8;
-            this.transitionSpeedLabel.Text = "Transition Speed:";
-            // 
-            // colorComboBox
-            // 
-            this.colorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.colorComboBox.FormattingEnabled = true;
-            this.colorComboBox.Items.AddRange(new object[] {
-            "Aqua",
-            "Blue",
-            "BlueViolet",
-            "Cyan",
-            "Fuchsia"});
-            this.colorComboBox.Location = new System.Drawing.Point(92, 108);
-            this.colorComboBox.Name = "colorComboBox";
-            this.colorComboBox.Size = new System.Drawing.Size(191, 21);
-            this.colorComboBox.TabIndex = 7;
-            this.colorComboBox.SelectedIndexChanged += new System.EventHandler(this.colorComboBox_SelectedIndexChanged);
-            // 
-            // colorLabel
-            // 
-            this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(14, 111);
-            this.colorLabel.Name = "colorLabel";
-            this.colorLabel.Size = new System.Drawing.Size(34, 13);
-            this.colorLabel.TabIndex = 6;
-            this.colorLabel.Text = "Color:";
-            // 
-            // repeatComboBox
-            // 
-            this.repeatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.repeatComboBox.FormattingEnabled = true;
-            this.repeatComboBox.Location = new System.Drawing.Point(423, 70);
-            this.repeatComboBox.Name = "repeatComboBox";
-            this.repeatComboBox.Size = new System.Drawing.Size(191, 21);
-            this.repeatComboBox.TabIndex = 5;
-            // 
-            // repeatLabel
-            // 
-            this.repeatLabel.AutoSize = true;
-            this.repeatLabel.Location = new System.Drawing.Point(341, 70);
-            this.repeatLabel.Name = "repeatLabel";
-            this.repeatLabel.Size = new System.Drawing.Size(45, 13);
-            this.repeatLabel.TabIndex = 4;
-            this.repeatLabel.Text = "Repeat:";
-            // 
-            // borderEffectComboBox
-            // 
-            this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.borderEffectComboBox.FormattingEnabled = true;
-            this.borderEffectComboBox.Location = new System.Drawing.Point(92, 67);
-            this.borderEffectComboBox.Name = "borderEffectComboBox";
-            this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.borderEffectComboBox.TabIndex = 3;
+            this.displayDurationLabel.AutoSize = true;
+            this.displayDurationLabel.Location = new System.Drawing.Point(14, 63);
+            this.displayDurationLabel.Name = "displayDurationLabel";
+            this.displayDurationLabel.Size = new System.Drawing.Size(87, 13);
+            this.displayDurationLabel.TabIndex = 8;
+            this.displayDurationLabel.Text = "Display Duration:";
             // 
             // textTextBox
             // 
-            this.textTextBox.Location = new System.Drawing.Point(69, 23);
+            this.textTextBox.Location = new System.Drawing.Point(104, 23);
             this.textTextBox.Name = "textTextBox";
-            this.textTextBox.Size = new System.Drawing.Size(545, 20);
+            this.textTextBox.Size = new System.Drawing.Size(351, 20);
             this.textTextBox.TabIndex = 1;
             this.textTextBox.TextChanged += new System.EventHandler(this.textTextBox_TextChanged);
             // 
@@ -409,9 +448,41 @@ namespace Vision
             this.textLabel.TabIndex = 0;
             this.textLabel.Text = "Text: ";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Border Effect:";
+            // 
+            // borderColorLabel
+            // 
+            this.borderColorLabel.AutoSize = true;
+            this.borderColorLabel.Location = new System.Drawing.Point(317, 33);
+            this.borderColorLabel.Name = "borderColorLabel";
+            this.borderColorLabel.Size = new System.Drawing.Size(68, 13);
+            this.borderColorLabel.TabIndex = 4;
+            this.borderColorLabel.Text = "Border Color:";
+            // 
+            // borderEffectComboBox
+            // 
+            this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.borderEffectComboBox.FormattingEnabled = true;
+            this.borderEffectComboBox.Items.AddRange(new object[] {
+            "None",
+            "Satic",
+            "Rotate"});
+            this.borderEffectComboBox.Location = new System.Drawing.Point(91, 30);
+            this.borderEffectComboBox.Name = "borderEffectComboBox";
+            this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.borderEffectComboBox.TabIndex = 3;
+            this.borderEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.borderEffectComboBox_SelectedIndexChanged);
+            // 
             // loadXMLButton
             // 
-            this.loadXMLButton.Location = new System.Drawing.Point(939, 482);
+            this.loadXMLButton.Location = new System.Drawing.Point(938, 571);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 3;
@@ -449,7 +520,7 @@ namespace Vision
             this.segmentLabel14.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel14.TabIndex = 8;
             this.segmentLabel14.Text = "Segment 14";
-            this.segmentLabel14.Click += new System.EventHandler(this.segmentLabel14_Click);
+            this.segmentLabel14.Click += new System.EventHandler(this.segmentPanel14_Click);
             // 
             // closeButton14
             // 
@@ -488,7 +559,7 @@ namespace Vision
             this.segmentLabel13.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel13.TabIndex = 8;
             this.segmentLabel13.Text = "Segment 13";
-            this.segmentLabel13.Click += new System.EventHandler(this.segmentLabel13_Click);
+            this.segmentLabel13.Click += new System.EventHandler(this.segmentPanel13_Click);
             // 
             // closeButton13
             // 
@@ -527,7 +598,7 @@ namespace Vision
             this.segmentLabel12.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel12.TabIndex = 8;
             this.segmentLabel12.Text = "Segment 12";
-            this.segmentLabel12.Click += new System.EventHandler(this.segmentLabel12_Click);
+            this.segmentLabel12.Click += new System.EventHandler(this.segmentPanel12_Click);
             // 
             // closeButton12
             // 
@@ -566,7 +637,7 @@ namespace Vision
             this.segmentLabel11.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel11.TabIndex = 8;
             this.segmentLabel11.Text = "Segment 11";
-            this.segmentLabel11.Click += new System.EventHandler(this.segmentLabel11_Click);
+            this.segmentLabel11.Click += new System.EventHandler(this.segmentPanel11_Click);
             // 
             // closeButton11
             // 
@@ -605,7 +676,7 @@ namespace Vision
             this.segmentLabel10.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel10.TabIndex = 8;
             this.segmentLabel10.Text = "Segment 10";
-            this.segmentLabel10.Click += new System.EventHandler(this.segmentLabel10_Click);
+            this.segmentLabel10.Click += new System.EventHandler(this.segmentPanel10_Click);
             // 
             // closeButton10
             // 
@@ -644,7 +715,7 @@ namespace Vision
             this.segmentLabel9.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel9.TabIndex = 8;
             this.segmentLabel9.Text = "Segment 9";
-            this.segmentLabel9.Click += new System.EventHandler(this.segmentLabel9_Click);
+            this.segmentLabel9.Click += new System.EventHandler(this.segmentPanel9_Click);
             // 
             // closeButton9
             // 
@@ -683,7 +754,7 @@ namespace Vision
             this.segmentLabel8.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel8.TabIndex = 8;
             this.segmentLabel8.Text = "Segment 8";
-            this.segmentLabel8.Click += new System.EventHandler(this.segmentLabel8_Click);
+            this.segmentLabel8.Click += new System.EventHandler(this.segmentPanel8_Click);
             // 
             // closeButton8
             // 
@@ -722,7 +793,7 @@ namespace Vision
             this.segmentLabel7.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel7.TabIndex = 8;
             this.segmentLabel7.Text = "Segment 7";
-            this.segmentLabel7.Click += new System.EventHandler(this.segmentLabel7_Click);
+            this.segmentLabel7.Click += new System.EventHandler(this.segmentPanel7_Click);
             // 
             // closeButton7
             // 
@@ -761,7 +832,7 @@ namespace Vision
             this.segmentLabel6.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel6.TabIndex = 8;
             this.segmentLabel6.Text = "Segment 6";
-            this.segmentLabel6.Click += new System.EventHandler(this.segmentLabel6_Click);
+            this.segmentLabel6.Click += new System.EventHandler(this.segmentPanel6_Click);
             // 
             // closeButton6
             // 
@@ -800,7 +871,7 @@ namespace Vision
             this.segmentLabel5.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel5.TabIndex = 8;
             this.segmentLabel5.Text = "Segment 5";
-            this.segmentLabel5.Click += new System.EventHandler(this.segmentLabel5_Click);
+            this.segmentLabel5.Click += new System.EventHandler(this.segmentPanel5_Click);
             // 
             // closeButton5
             // 
@@ -839,7 +910,7 @@ namespace Vision
             this.segmentLabel4.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel4.TabIndex = 8;
             this.segmentLabel4.Text = "Segment 4";
-            this.segmentLabel4.Click += new System.EventHandler(this.segmentLabel4_Click);
+            this.segmentLabel4.Click += new System.EventHandler(this.segmentPanel4_Click);
             // 
             // closeButton4
             // 
@@ -1040,7 +1111,7 @@ namespace Vision
             // 
             // saveAndRunButton
             // 
-            this.saveAndRunButton.Location = new System.Drawing.Point(1101, 482);
+            this.saveAndRunButton.Location = new System.Drawing.Point(1100, 571);
             this.saveAndRunButton.Name = "saveAndRunButton";
             this.saveAndRunButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndRunButton.TabIndex = 27;
@@ -1050,7 +1121,7 @@ namespace Vision
             // 
             // saveAndExitButton
             // 
-            this.saveAndExitButton.Location = new System.Drawing.Point(1020, 482);
+            this.saveAndExitButton.Location = new System.Drawing.Point(1019, 571);
             this.saveAndExitButton.Name = "saveAndExitButton";
             this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
             this.saveAndExitButton.TabIndex = 29;
@@ -1079,7 +1150,7 @@ namespace Vision
             this.segmentLabel3.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel3.TabIndex = 8;
             this.segmentLabel3.Text = "Segment 3";
-            this.segmentLabel3.Click += new System.EventHandler(this.segmentLabel3_Click);
+            this.segmentLabel3.Click += new System.EventHandler(this.segmentPanel3_Click);
             // 
             // closeButton3
             // 
@@ -1120,10 +1191,10 @@ namespace Vision
             this.segmentLabel1.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel1.TabIndex = 8;
             this.segmentLabel1.Text = "Segment 1";
-            this.segmentLabel1.Click += new System.EventHandler(this.label1_Click);
-            this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseDown);
-            this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseMove);
-            this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentLabel1_MouseUp);
+            this.segmentLabel1.Click += new System.EventHandler(this.segmentPanel1_Click);
+            this.segmentLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseDown);
+            this.segmentLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseMove);
+            this.segmentLabel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.segmentPanel1_MouseUp);
             // 
             // closeButton1
             // 
@@ -1162,7 +1233,7 @@ namespace Vision
             this.segmentLabel2.Size = new System.Drawing.Size(58, 13);
             this.segmentLabel2.TabIndex = 8;
             this.segmentLabel2.Text = "Segment 2";
-            this.segmentLabel2.Click += new System.EventHandler(this.segmentLabel2_Click);
+            this.segmentLabel2.Click += new System.EventHandler(this.segmentPanel2_Click);
             // 
             // closeButton2
             // 
@@ -1229,16 +1300,55 @@ namespace Vision
             // 
             // textPanel
             // 
+            this.textPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textPanel.BackColor = System.Drawing.Color.White;
+            this.textPanel.Controls.Add(this.ignoreCheckBox);
+            this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(235, 55);
             this.textPanel.Name = "textPanel";
             this.textPanel.Size = new System.Drawing.Size(941, 420);
             this.textPanel.TabIndex = 34;
             // 
+            // ignoreCheckBox
+            // 
+            this.ignoreCheckBox.AutoSize = true;
+            this.ignoreCheckBox.Checked = true;
+            this.ignoreCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ignoreCheckBox.Location = new System.Drawing.Point(885, 3);
+            this.ignoreCheckBox.Name = "ignoreCheckBox";
+            this.ignoreCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.ignoreCheckBox.TabIndex = 24;
+            this.ignoreCheckBox.Text = "Ignore";
+            this.ignoreCheckBox.UseVisualStyleBackColor = true;
+            this.ignoreCheckBox.CheckedChanged += new System.EventHandler(this.ignoreCheckBox_CheckedChanged);
+            // 
+            // borderOptionsGroupBox
+            // 
+            this.borderOptionsGroupBox.Controls.Add(this.borderColorButton);
+            this.borderOptionsGroupBox.Controls.Add(this.borderEffectComboBox);
+            this.borderOptionsGroupBox.Controls.Add(this.label2);
+            this.borderOptionsGroupBox.Controls.Add(this.borderColorLabel);
+            this.borderOptionsGroupBox.Location = new System.Drawing.Point(12, 236);
+            this.borderOptionsGroupBox.Name = "borderOptionsGroupBox";
+            this.borderOptionsGroupBox.Size = new System.Drawing.Size(832, 100);
+            this.borderOptionsGroupBox.TabIndex = 22;
+            this.borderOptionsGroupBox.TabStop = false;
+            this.borderOptionsGroupBox.Text = "Border Options";
+            // 
+            // borderColorButton
+            // 
+            this.borderColorButton.Location = new System.Drawing.Point(405, 30);
+            this.borderColorButton.Name = "borderColorButton";
+            this.borderColorButton.Size = new System.Drawing.Size(75, 23);
+            this.borderColorButton.TabIndex = 42;
+            this.borderColorButton.UseVisualStyleBackColor = true;
+            this.borderColorButton.Click += new System.EventHandler(this.borderColorButton_Click);
+            // 
             // SegmentHolderPanel
             // 
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton17);
+            this.SegmentHolderPanel.Controls.Add(this.segmentPanel1);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton15);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton16);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton14);
@@ -1256,7 +1366,6 @@ namespace Vision
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton13);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton2);
             this.SegmentHolderPanel.Controls.Add(this.addSegmentButton1);
-            this.SegmentHolderPanel.Controls.Add(this.segmentPanel1);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel5);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel3);
             this.SegmentHolderPanel.Controls.Add(this.segmentPanel7);
@@ -1355,7 +1464,7 @@ namespace Vision
             this.segmentLabel15.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel15.TabIndex = 8;
             this.segmentLabel15.Text = "Segment 15";
-            this.segmentLabel15.Click += new System.EventHandler(this.segmentLabel15_Click);
+            this.segmentLabel15.Click += new System.EventHandler(this.segmentPanel15_Click);
             // 
             // closeButton15
             // 
@@ -1394,7 +1503,7 @@ namespace Vision
             this.segmentLabel17.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel17.TabIndex = 8;
             this.segmentLabel17.Text = "Segment 17";
-            this.segmentLabel17.Click += new System.EventHandler(this.segmentLabel17_Click);
+            this.segmentLabel17.Click += new System.EventHandler(this.segmentPanel17_Click);
             // 
             // closeButton17
             // 
@@ -1433,7 +1542,7 @@ namespace Vision
             this.segmentLabel16.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel16.TabIndex = 8;
             this.segmentLabel16.Text = "Segment 16";
-            this.segmentLabel16.Click += new System.EventHandler(this.segmentLabel16_Click);
+            this.segmentLabel16.Click += new System.EventHandler(this.segmentPanel16_Click);
             // 
             // closeButton16
             // 
@@ -1472,7 +1581,7 @@ namespace Vision
             this.segmentLabel18.Size = new System.Drawing.Size(64, 13);
             this.segmentLabel18.TabIndex = 8;
             this.segmentLabel18.Text = "Segment 18";
-            this.segmentLabel18.Click += new System.EventHandler(this.segmentLabel18_Click);
+            this.segmentLabel18.Click += new System.EventHandler(this.segmentPanel18_Click);
             // 
             // closeButton18
             // 
@@ -1493,19 +1602,95 @@ namespace Vision
             // imagePanel
             // 
             this.imagePanel.BackColor = System.Drawing.Color.White;
+            this.imagePanel.Controls.Add(this.browseButton);
+            this.imagePanel.Controls.Add(this.groupBox2);
+            this.imagePanel.Controls.Add(this.groupBox1);
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
-            this.imagePanel.Location = new System.Drawing.Point(458, 26);
+            this.imagePanel.Location = new System.Drawing.Point(435, 25);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(941, 420);
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(566, 17);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(75, 23);
+            this.browseButton.TabIndex = 6;
+            this.browseButton.Text = "Browse";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(41, 247);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(644, 148);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Scaled Image";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Location = new System.Drawing.Point(41, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(739, 185);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Original Image";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(8, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(636, 144);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // marqueeBackgroundColorLabel
+            // 
+            this.marqueeBackgroundColorLabel.AutoSize = true;
+            this.marqueeBackgroundColorLabel.ForeColor = System.Drawing.Color.White;
+            this.marqueeBackgroundColorLabel.Location = new System.Drawing.Point(979, 8);
+            this.marqueeBackgroundColorLabel.Name = "marqueeBackgroundColorLabel";
+            this.marqueeBackgroundColorLabel.Size = new System.Drawing.Size(137, 13);
+            this.marqueeBackgroundColorLabel.TabIndex = 37;
+            this.marqueeBackgroundColorLabel.Text = "Marquee Background Color";
+            // 
+            // backToMenuButton
+            // 
+            this.backToMenuButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.backToMenuButton.Location = new System.Drawing.Point(552, 585);
+            this.backToMenuButton.Name = "backToMenuButton";
+            this.backToMenuButton.Size = new System.Drawing.Size(105, 23);
+            this.backToMenuButton.TabIndex = 39;
+            this.backToMenuButton.Text = "Back to Menu";
+            this.backToMenuButton.UseVisualStyleBackColor = true;
+            this.backToMenuButton.Visible = false;
+            this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
+            // 
+            // colorDialogBox
+            // 
+            this.colorDialogBox.Color = System.Drawing.Color.White;
+            // 
+            // marqueeBackgroundColorButton
+            // 
+            this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(1125, 4);
+            this.marqueeBackgroundColorButton.Name = "marqueeBackgroundColorButton";
+            this.marqueeBackgroundColorButton.Size = new System.Drawing.Size(75, 23);
+            this.marqueeBackgroundColorButton.TabIndex = 42;
+            this.marqueeBackgroundColorButton.UseVisualStyleBackColor = true;
+            this.marqueeBackgroundColorButton.Click += new System.EventHandler(this.marqueeBackgroundColorButton_Click);
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
-            this.marquee1.Location = new System.Drawing.Point(24, 69);
+            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marquee1.Location = new System.Drawing.Point(0, 0);
             this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1168, 202);
+            this.marquee1.Size = new System.Drawing.Size(1203, 620);
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
@@ -1515,10 +1700,13 @@ namespace Vision
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1203, 527);
-            this.Controls.Add(this.SegmentHolderPanel);
+            this.ClientSize = new System.Drawing.Size(1203, 620);
+            this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
+            this.Controls.Add(this.backToMenuButton);
+            this.Controls.Add(this.marqueeBackgroundColorLabel);
+            this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
@@ -1527,11 +1715,15 @@ namespace Vision
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.marquee1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.segmentPanel14.ResumeLayout(false);
             this.segmentPanel14.PerformLayout();
             this.segmentPanel13.ResumeLayout(false);
@@ -1561,6 +1753,9 @@ namespace Vision
             this.segmentPanel2.ResumeLayout(false);
             this.segmentPanel2.PerformLayout();
             this.textPanel.ResumeLayout(false);
+            this.textPanel.PerformLayout();
+            this.borderOptionsGroupBox.ResumeLayout(false);
+            this.borderOptionsGroupBox.PerformLayout();
             this.SegmentHolderPanel.ResumeLayout(false);
             this.segmentPanel15.ResumeLayout(false);
             this.segmentPanel15.PerformLayout();
@@ -1572,6 +1767,8 @@ namespace Vision
             this.segmentPanel18.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1611,12 +1808,8 @@ namespace Vision
         private System.Windows.Forms.ComboBox entranceEffectComboBox;
         private System.Windows.Forms.RadioButton scrollingTextButton;
         private System.Windows.Forms.RadioButton specialEffectButton;
-        private System.Windows.Forms.ComboBox transitionSpeedComboBox;
-        private System.Windows.Forms.Label transitionSpeedLabel;
-        private System.Windows.Forms.ComboBox colorComboBox;
-        private System.Windows.Forms.Label colorLabel;
-        private System.Windows.Forms.ComboBox repeatComboBox;
-        private System.Windows.Forms.Label repeatLabel;
+        private System.Windows.Forms.Label displayDurationLabel;
+        private System.Windows.Forms.Label borderColorLabel;
         private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
@@ -1658,7 +1851,7 @@ namespace Vision
         private System.Windows.Forms.Panel segmentPanel4;
         private System.Windows.Forms.Label segmentLabel4;
         private System.Windows.Forms.Button closeButton4;
-        private System.Windows.Forms.Label noTextPopUp;
+        private System.Windows.Forms.Label longTextPopUp;
         private System.Windows.Forms.Label textTabLabel;
         private System.Windows.Forms.Label imageTabLabel;
         private System.Windows.Forms.Panel textPanel;
@@ -1681,6 +1874,26 @@ namespace Vision
         private System.Windows.Forms.Panel segmentPanel18;
         private System.Windows.Forms.Label segmentLabel18;
         private System.Windows.Forms.Button closeButton18;
+        private System.Windows.Forms.Label scrollSpeedLabel;
+        private System.Windows.Forms.NumericUpDown scrollSpeedControl;
+        private System.Windows.Forms.GroupBox borderOptionsGroupBox;
+        private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox ignoreCheckBox;
+        private System.Windows.Forms.CheckBox randomColorCheckBox;
+        private System.Windows.Forms.Label marqueeBackgroundColorLabel;
+        private System.Windows.Forms.Button backToMenuButton;
+        private System.Windows.Forms.ColorDialog colorDialogBox;
+        private System.Windows.Forms.Button colorButton;
+        private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.Button borderColorButton;
+        private System.Windows.Forms.ColorDialog borderColorDialogBox;
+        private System.Windows.Forms.Button marqueeBackgroundColorButton;
+        private System.Windows.Forms.ColorDialog marqueeBackgroundColorDialogBox;
+        private System.Windows.Forms.Label randomColorPopUp;
+        private System.Windows.Forms.NumericUpDown displayDurationControl;
     }
 }
 

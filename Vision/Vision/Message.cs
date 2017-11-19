@@ -24,7 +24,7 @@ namespace Vision
         private Color _backgroundColor;            
 
         //Constructor
-        public Message(Segment[] newSegmentArray, Color backgroundColor, int segmentSpeed)
+        public Message(Segment[] newSegmentArray, Color backgroundColor)
         {
             segmentArray = newSegmentArray;
             _backgroundColor = backgroundColor;
