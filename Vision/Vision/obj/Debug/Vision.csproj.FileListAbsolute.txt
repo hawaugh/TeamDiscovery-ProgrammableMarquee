@@ -81,3 +81,4 @@ C:\Users\Nick's Laptop\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision
 C:\Users\Nick's Laptop\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
 C:\Users\Nick's Laptop\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.UIForm.resources
 C:\Users\Nick's Laptop\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
