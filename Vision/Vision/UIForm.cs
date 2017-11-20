@@ -1530,6 +1530,8 @@ namespace Vision
             textTabLabel.ForeColor = Color.Black;
             imageTabLabel.BackColor = darkerGray;
             imageTabLabel.ForeColor = Color.White;
+            imagePanel.Visible = false;
+            textPanel.Visible = true;
 
         }
 
@@ -1645,7 +1647,7 @@ namespace Vision
         private void displayDurationControl_ValueChanged(object sender, EventArgs e)
         {
             //Max set to 2147482 so int doesnt throw an error if the number is to large.
-            int input = (int)Math.Floor(displayDurationControl.Value) * 1000;
+            int input = (int)Math.Floor(textDisplayDurationControl.Value) * 1000;
             mySegmentArray[activeIndex].segmentSpeed = input;
         }
         #endregion
@@ -1679,6 +1681,15 @@ namespace Vision
             imageTabLabel.ForeColor = Color.Black;
             textTabLabel.BackColor = darkerGray;
             textTabLabel.ForeColor = Color.White;
+            textPanel.Visible = false;
+            imagePanel.Visible = true;
+            
+        }
+
+        private void imageDisplayDurationControl_ValueChanged(object sender, EventArgs e)
+        {
+            int input = (int)Math.Floor(imageDisplayDurationControl.Value) * 1000;
+            mySegmentArray[activeIndex].segmentSpeed = input;
         }
 
         private void browseButton_Click(object sender, EventArgs e)
@@ -1688,8 +1699,10 @@ namespace Vision
 
             if (openFileDialog.ShowDialog() == DialogResult.OK) // Test result.
             {
+                int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
                 string filename = openFileDialog.SafeFileName;
-
+                fileLocationTextBox.Text = filename;
+                mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
             }
         }
         #endregion

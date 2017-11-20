@@ -41,7 +41,7 @@ namespace Vision
         {
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
+            this.textDisplayDurationControl = new System.Windows.Forms.NumericUpDown();
             this.randomColorPopUp = new System.Windows.Forms.Label();
             this.colorLabel = new System.Windows.Forms.Label();
             this.colorButton = new System.Windows.Forms.Button();
@@ -57,14 +57,13 @@ namespace Vision
             this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
-            this.displayDurationLabel = new System.Windows.Forms.Label();
+            this.textDisplayDurationLabel = new System.Windows.Forms.Label();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.borderColorLabel = new System.Windows.Forms.Label();
             this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.loadXMLButton = new System.Windows.Forms.Button();
-            this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.segmentPanel14 = new System.Windows.Forms.Panel();
             this.segmentLabel14 = new System.Windows.Forms.Label();
             this.closeButton14 = new System.Windows.Forms.Button();
@@ -157,11 +156,14 @@ namespace Vision
             this.borderColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.marqueeBackgroundColorButton = new System.Windows.Forms.Button();
             this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
-            this.marquee1 = new Vision.Marquee();
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
+            this.fileLocationTextBox = new System.Windows.Forms.TextBox();
+            this.imageDisplayDurationControl = new System.Windows.Forms.NumericUpDown();
+            this.imageDisplayDurationLabel = new System.Windows.Forms.Label();
+            this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textDisplayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.segmentPanel14.SuspendLayout();
             this.segmentPanel13.SuspendLayout();
@@ -187,6 +189,7 @@ namespace Vision
             this.imagePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageDisplayDurationControl)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -201,7 +204,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
-            this.createASegmentGroupBox.Controls.Add(this.displayDurationControl);
+            this.createASegmentGroupBox.Controls.Add(this.textDisplayDurationControl);
             this.createASegmentGroupBox.Controls.Add(this.randomColorPopUp);
             this.createASegmentGroupBox.Controls.Add(this.colorLabel);
             this.createASegmentGroupBox.Controls.Add(this.colorButton);
@@ -217,7 +220,7 @@ namespace Vision
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
             this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
-            this.createASegmentGroupBox.Controls.Add(this.displayDurationLabel);
+            this.createASegmentGroupBox.Controls.Add(this.textDisplayDurationLabel);
             this.createASegmentGroupBox.Controls.Add(this.textTextBox);
             this.createASegmentGroupBox.Controls.Add(this.textLabel);
             this.createASegmentGroupBox.Location = new System.Drawing.Point(12, 16);
@@ -226,24 +229,24 @@ namespace Vision
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
             // 
-            // displayDurationControl
+            // textDisplayDurationControl
             // 
-            this.displayDurationControl.Location = new System.Drawing.Point(104, 59);
-            this.displayDurationControl.Maximum = new decimal(new int[] {
+            this.textDisplayDurationControl.Location = new System.Drawing.Point(104, 59);
+            this.textDisplayDurationControl.Maximum = new decimal(new int[] {
             2147482,
             0,
             0,
             0});
-            this.displayDurationControl.Name = "displayDurationControl";
-            this.displayDurationControl.Size = new System.Drawing.Size(120, 20);
-            this.displayDurationControl.TabIndex = 43;
-            this.displayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.displayDurationControl.Value = new decimal(new int[] {
+            this.textDisplayDurationControl.Name = "textDisplayDurationControl";
+            this.textDisplayDurationControl.Size = new System.Drawing.Size(120, 20);
+            this.textDisplayDurationControl.TabIndex = 43;
+            this.textDisplayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textDisplayDurationControl.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.displayDurationControl.ValueChanged += new System.EventHandler(this.displayDurationControl_ValueChanged);
+            this.textDisplayDurationControl.ValueChanged += new System.EventHandler(this.displayDurationControl_ValueChanged);
             // 
             // randomColorPopUp
             // 
@@ -424,14 +427,14 @@ namespace Vision
             this.specialEffectButton.UseVisualStyleBackColor = true;
             this.specialEffectButton.CheckedChanged += new System.EventHandler(this.specialEffectButton_CheckedChanged);
             // 
-            // displayDurationLabel
+            // textDisplayDurationLabel
             // 
-            this.displayDurationLabel.AutoSize = true;
-            this.displayDurationLabel.Location = new System.Drawing.Point(14, 63);
-            this.displayDurationLabel.Name = "displayDurationLabel";
-            this.displayDurationLabel.Size = new System.Drawing.Size(87, 13);
-            this.displayDurationLabel.TabIndex = 8;
-            this.displayDurationLabel.Text = "Display Duration:";
+            this.textDisplayDurationLabel.AutoSize = true;
+            this.textDisplayDurationLabel.Location = new System.Drawing.Point(14, 63);
+            this.textDisplayDurationLabel.Name = "textDisplayDurationLabel";
+            this.textDisplayDurationLabel.Size = new System.Drawing.Size(87, 13);
+            this.textDisplayDurationLabel.TabIndex = 8;
+            this.textDisplayDurationLabel.Text = "Display Duration:";
             // 
             // textTextBox
             // 
@@ -491,15 +494,6 @@ namespace Vision
             this.loadXMLButton.Text = "Load XML";
             this.loadXMLButton.UseVisualStyleBackColor = true;
             this.loadXMLButton.Click += new System.EventHandler(this.browseButton_Click);
-            // 
-            // fileLocationTextBox
-            // 
-            this.fileLocationTextBox.Location = new System.Drawing.Point(74, 17);
-            this.fileLocationTextBox.Name = "fileLocationTextBox";
-            this.fileLocationTextBox.ReadOnly = true;
-            this.fileLocationTextBox.Size = new System.Drawing.Size(448, 20);
-            this.fileLocationTextBox.TabIndex = 2;
-            this.fileLocationTextBox.Visible = false;
             // 
             // segmentPanel14
             // 
@@ -1272,7 +1266,7 @@ namespace Vision
             this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(234, 1);
+            this.textTabLabel.Location = new System.Drawing.Point(234, 0);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -1290,7 +1284,7 @@ namespace Vision
             this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(313, 1);
+            this.imageTabLabel.Location = new System.Drawing.Point(313, 0);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
@@ -1604,11 +1598,13 @@ namespace Vision
             // imagePanel
             // 
             this.imagePanel.BackColor = System.Drawing.Color.White;
+            this.imagePanel.Controls.Add(this.imageDisplayDurationControl);
+            this.imagePanel.Controls.Add(this.imageDisplayDurationLabel);
+            this.imagePanel.Controls.Add(this.fileLocationTextBox);
             this.imagePanel.Controls.Add(this.browseButton);
             this.imagePanel.Controls.Add(this.groupBox2);
             this.imagePanel.Controls.Add(this.groupBox1);
-            this.imagePanel.Controls.Add(this.fileLocationTextBox);
-            this.imagePanel.Location = new System.Drawing.Point(435, 25);
+            this.imagePanel.Location = new System.Drawing.Point(235, 55);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(941, 420);
             this.imagePanel.TabIndex = 35;
@@ -1616,7 +1612,7 @@ namespace Vision
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(566, 17);
+            this.browseButton.Location = new System.Drawing.Point(705, 16);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 6;
@@ -1628,7 +1624,7 @@ namespace Vision
             // 
             this.groupBox2.Location = new System.Drawing.Point(41, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(644, 148);
+            this.groupBox2.Size = new System.Drawing.Size(737, 148);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Scaled Image";
@@ -1686,17 +1682,6 @@ namespace Vision
             this.marqueeBackgroundColorButton.UseVisualStyleBackColor = true;
             this.marqueeBackgroundColorButton.Click += new System.EventHandler(this.marqueeBackgroundColorButton_Click);
             // 
-            // marquee1
-            // 
-            this.marquee1.BackColor = System.Drawing.Color.Black;
-            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.marquee1.Location = new System.Drawing.Point(0, 0);
-            this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1203, 620);
-            this.marquee1.TabIndex = 28;
-            this.marquee1.Text = "marquee";
-            this.marquee1.Visible = false;
-            // 
             // pauseButton
             // 
             this.pauseButton.Location = new System.Drawing.Point(124, 579);
@@ -1717,6 +1702,52 @@ namespace Vision
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
+            // fileLocationTextBox
+            // 
+            this.fileLocationTextBox.Location = new System.Drawing.Point(268, 18);
+            this.fileLocationTextBox.Name = "fileLocationTextBox";
+            this.fileLocationTextBox.Size = new System.Drawing.Size(431, 20);
+            this.fileLocationTextBox.TabIndex = 8;
+            // 
+            // imageDisplayDurationControl
+            // 
+            this.imageDisplayDurationControl.Location = new System.Drawing.Point(128, 18);
+            this.imageDisplayDurationControl.Maximum = new decimal(new int[] {
+            2147482,
+            0,
+            0,
+            0});
+            this.imageDisplayDurationControl.Name = "imageDisplayDurationControl";
+            this.imageDisplayDurationControl.Size = new System.Drawing.Size(120, 20);
+            this.imageDisplayDurationControl.TabIndex = 45;
+            this.imageDisplayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.imageDisplayDurationControl.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.imageDisplayDurationControl.ValueChanged += new System.EventHandler(this.imageDisplayDurationControl_ValueChanged);
+            // 
+            // imageDisplayDurationLabel
+            // 
+            this.imageDisplayDurationLabel.AutoSize = true;
+            this.imageDisplayDurationLabel.Location = new System.Drawing.Point(38, 21);
+            this.imageDisplayDurationLabel.Name = "imageDisplayDurationLabel";
+            this.imageDisplayDurationLabel.Size = new System.Drawing.Size(87, 13);
+            this.imageDisplayDurationLabel.TabIndex = 44;
+            this.imageDisplayDurationLabel.Text = "Display Duration:";
+            // 
+            // marquee1
+            // 
+            this.marquee1.BackColor = System.Drawing.Color.Black;
+            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marquee1.Location = new System.Drawing.Point(0, 0);
+            this.marquee1.Name = "marquee1";
+            this.marquee1.Size = new System.Drawing.Size(1203, 620);
+            this.marquee1.TabIndex = 28;
+            this.marquee1.Text = "marquee";
+            this.marquee1.Visible = false;
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1726,8 +1757,6 @@ namespace Vision
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
-            this.Controls.Add(this.textPanel);
-            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
@@ -1738,7 +1767,9 @@ namespace Vision
             this.Controls.Add(this.saveAndExitButton);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.populateMarqueeButton);
+            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
+            this.Controls.Add(this.textPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
@@ -1746,7 +1777,7 @@ namespace Vision
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textDisplayDurationControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.segmentPanel14.ResumeLayout(false);
             this.segmentPanel14.PerformLayout();
@@ -1793,6 +1824,7 @@ namespace Vision
             this.imagePanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageDisplayDurationControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1832,13 +1864,12 @@ namespace Vision
         private System.Windows.Forms.ComboBox entranceEffectComboBox;
         private System.Windows.Forms.RadioButton scrollingTextButton;
         private System.Windows.Forms.RadioButton specialEffectButton;
-        private System.Windows.Forms.Label displayDurationLabel;
+        private System.Windows.Forms.Label textDisplayDurationLabel;
         private System.Windows.Forms.Label borderColorLabel;
         private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
         private System.Windows.Forms.Button loadXMLButton;
-        private System.Windows.Forms.TextBox fileLocationTextBox;
         private System.Windows.Forms.Panel segmentPanel3;
         private System.Windows.Forms.Label segmentLabel3;
         private System.Windows.Forms.Button closeButton3;
@@ -1917,9 +1948,12 @@ namespace Vision
         private System.Windows.Forms.Button marqueeBackgroundColorButton;
         private System.Windows.Forms.ColorDialog marqueeBackgroundColorDialogBox;
         private System.Windows.Forms.Label randomColorPopUp;
-        private System.Windows.Forms.NumericUpDown displayDurationControl;
+        private System.Windows.Forms.NumericUpDown textDisplayDurationControl;
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.TextBox fileLocationTextBox;
+        private System.Windows.Forms.NumericUpDown imageDisplayDurationControl;
+        private System.Windows.Forms.Label imageDisplayDurationLabel;
     }
 }
 
