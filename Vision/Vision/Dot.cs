@@ -22,6 +22,7 @@ namespace Vision
     class Dot
     {
         private Color _ForeColor;
+        private static Random rnd = new Random();
 
         public Dot()
         {
@@ -38,7 +39,6 @@ namespace Vision
         //sets dot color to a random color
         public void randColor()
         {
-            Random rnd = new Random();
             int randomNumber = rnd.Next(0, 20);
             if (randomNumber == 0)
             {

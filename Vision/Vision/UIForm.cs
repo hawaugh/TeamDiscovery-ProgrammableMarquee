@@ -80,8 +80,8 @@ namespace Vision
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
-            Segment mySegment = new Segment("DISCOVERY", Color.Red, 2000, 1, 0, 1, Color.Red, 1);
-            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 1);
+            Segment mySegment = new Segment("DISCOVERY", Color.Red, 2000, 1, 1, 1, Color.Red, 2);
+            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 3);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
             mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };

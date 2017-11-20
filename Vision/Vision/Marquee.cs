@@ -27,6 +27,7 @@ namespace Vision
         private Dot[,] matrix = new Dot[16, 96];
         private Dot[] border = new Dot[220];
         private Thread myBorderThread = null;
+        private static Random rnd = new Random();
 
         public Marquee()
         {
@@ -1161,11 +1162,15 @@ namespace Vision
             }
             else if (borderEffect == 1)
             {
-                displayBorderHighlight(borderColor);
+                staticBorder(borderColor);
             }
             else if (borderEffect == 2)
             {
-                staticBorder(borderColor);
+                displayBorderHighlight(borderColor);
+            }
+            else if (borderEffect == 3)
+            {
+                displayRandomColorBorder();
             }
         }
 
@@ -1201,46 +1206,17 @@ namespace Vision
         //Border effect 2
         public void displayBorderHighlight(Color borderColor)
         {
-            #region 1 on:1 off
-            //for (int a = 0; a < 220; a = a + 2)
-            //{
-            //    border[a].ForeColor = borderColor;
-            //}
-
-            //for (int a = 1; a < 220; a = a + 2)
-            //{
-            //    border[a].ForeColor = BackColor;
-            //}
-            #endregion
-
-
-            #region 2 on:2 off
-            //for (int a = 0; a < 220; a = a + 4)
-            //{
-            //    border[a].ForeColor = borderColor;
-            //    border[a + 1].ForeColor = borderColor;
-            //}
-
-            //for (int a = 2; a < 220; a = a + 4)
-            //{
-            //    border[a].ForeColor = BackColor;
-            //    border[a + 1].ForeColor = BackColor;
-            //}
-            #endregion
-
-            #region 3 on:1 off
             for (int a = 0; a < 220; a = a + 4)
             {
                 border[a].ForeColor = borderColor;
                 border[a + 1].ForeColor = borderColor;
                 border[a + 2].ForeColor = borderColor;
             }
-
             for (int a = 3; a < 220; a = a + 4)
             {
                 border[a].ForeColor = BackColor;
             }
-            #endregion
+
 
             Invalidate();
 
@@ -1257,6 +1233,38 @@ namespace Vision
                 Thread.Sleep(200);
             }
 
+        }
+
+        public void displayRandomColorBorder()
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].randColor();
+            }
+
+            while (true)
+            {
+                for (int i = 255; i > -1; i -= 5)
+                {
+                    for (int b = 0; b < 220; b++)
+                    {
+                        border[b].ForeColor = Color.FromArgb(i, border[b].ForeColor);
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+                for (int i = 0; i < 256; i += 5)
+                {
+                    for (int b = 0; b < 220; b++)
+                    {
+                        border[b].ForeColor = Color.FromArgb(i, border[b].ForeColor);
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+            }
         }
         #endregion
 
@@ -1351,8 +1359,7 @@ namespace Vision
          */
         #region Utility Methods
         public Color randomColor()
-        {
-            Random rnd = new Random();
+        {            
             int randomNumber = rnd.Next(0, 20);
             if (randomNumber == 0)
             {
