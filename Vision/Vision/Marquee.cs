@@ -240,7 +240,11 @@ namespace Vision
             }
             else if (segment.middleEffect == 3)
             {
-                displayWaveEffect(segment, backgroundColor);
+                displayWaveEffect(segment);
+            }
+            else if (segment.middleEffect == 4)
+            {
+                displaySpotlightEffect(segment);
             }
 
             //Display Exit
@@ -744,7 +748,6 @@ namespace Vision
          * 
          */
         #region Middle Effects
-        //Logan
         public void displayScrollingSegment(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -821,8 +824,6 @@ namespace Vision
             }
         }
 
-        //Nick
-        //The marquee will already have the message displayed and the dots are set for you to edit them in this method
         public void displayRandomColors(Segment segment, Color backgroundColor)
         {
             List<Dot> activeDotList = new List<Dot>();
@@ -830,7 +831,7 @@ namespace Vision
             {
                 for (int c = 2; c < 94; c++)
                 {
-                    if (getDotFore(r, c) != backgroundColor)
+                    if (getDotFore(r, c).ToArgb() != backgroundColor.ToArgb())
                     {
                         //add to storage for next loop
                         activeDotList.Add(matrix[r, c]);
@@ -848,7 +849,6 @@ namespace Vision
             }
         }
 
-        //Jeremy
         public void displayFadeEffect(Segment segment, Color backgroundColor)
         {
             //Change this to affect speed of the effect
@@ -894,7 +894,7 @@ namespace Vision
             Thread.Sleep(extraTime);
         }
 
-        public void displayWaveEffect(Segment segment, Color backgroundColor)
+        public void displayWaveEffect(Segment segment)
         {
             int waveOne = -15;
             int waveTwo = -45;
@@ -1018,6 +1018,110 @@ namespace Vision
                 waveTwo++;
                 waveThree++;
                 waveFour++;                
+            }
+        }
+
+        public void displaySpotlightEffect(Segment segment)
+        {
+            //Curtain down to zero the alpha
+
+            for (int curtain = -13; curtain < 14; curtain++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        if ((r - curtain) >= 0 && (r - curtain) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((r - curtain) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(50);
+            }
+
+            int spotlightC = ((96 - segment.getMessageMatrix()[0].Length) / 2) - 10;
+            int spotlightR = 0;
+            int radius;
+            int direction = 0;
+            for (int i = 0; i < (segment.segmentSpeed / 25); i++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        radius = (int)Math.Sqrt((double)((c - spotlightC) * (c - spotlightC)) + ((r - spotlightR) * (r - spotlightR)));
+                        if (radius <= 15)
+                        {
+                            setDot(r, c, Color.FromArgb((15 - radius) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+                //Spotlight moving right
+                if (direction == 0)
+                {
+                    spotlightC++;
+                    if (spotlightC == (((96 + segment.getMessageMatrix()[0].Length) / 2) + 8))
+                    {
+                        direction = 1;
+                    }
+                }
+                //Spotlight moving down
+                else if (direction == 1)
+                {
+                    spotlightR++;
+                    if (spotlightR == 15)
+                    {
+                        direction = 2;
+                    }
+                }
+                //Spotlight moving left
+                else if (direction == 2)
+                {
+                    spotlightC--;
+                    if (spotlightC == ((96 - segment.getMessageMatrix()[0].Length) / 2) - 10)
+                    {
+                        direction = 3;
+                    }
+                }
+                //Spotlight moving up
+                else if (direction == 3)
+                {
+                    spotlightR--;
+                    if (spotlightR == 0)
+                    {
+                        direction = 0;
+                    }
+                }
+            }
+
+            //Blank out Marquee
+            for (int c = 2; c < 94; c++)
+            {
+                for (int r = 2; r < 14; r++)
+                {
+                    setDot(r, c, Color.FromArgb(0, getDotFore(r, c)));
+                }
+            }
+
+            //Raise Curtain
+            for (int curtain = 29; curtain > 1; curtain--)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        if ((curtain - r) >= 0 && (curtain - r) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((15 - (curtain - r)) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(50);
             }
         }
         #endregion
@@ -1210,7 +1314,7 @@ namespace Vision
             {
                 for (int c = 2; c < 94; c++)
                 {
-                    if (getDotFore(r, c) != backgroundColor)
+                    if (getDotFore(r, c).ToArgb() != backgroundColor.ToArgb())
                     {
                         //add to storage for next loop
                         activeDotList.Add(matrix[r, c]);
