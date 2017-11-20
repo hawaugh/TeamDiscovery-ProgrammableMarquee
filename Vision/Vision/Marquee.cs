@@ -238,6 +238,10 @@ namespace Vision
             {
                 displayFadeEffect(segment, backgroundColor);
             }
+            else if (segment.middleEffect == 3)
+            {
+                displayWaveEffect(segment, backgroundColor);
+            }
 
             //Display Exit
             if (segment.exitEffect == 0)
@@ -888,6 +892,69 @@ namespace Vision
                 }
             }
             Thread.Sleep(extraTime);
+        }
+
+        public void displayWaveEffect(Segment segment, Color backgroundColor)
+        {
+            int waveOne = -15;
+            int waveTwo = -45;
+            int waveThree = -75;
+            for (int i = 0; i < (segment.segmentSpeed / 50); i++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        //Check wave one
+                        if ((c - waveOne) >= 0 && (c - waveOne) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveOne) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveOne) < 0 && (c - waveOne) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveOne - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave two
+                        if ((c - waveTwo) >= 0 && (c - waveTwo) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveTwo) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveTwo) < 0 && (c - waveTwo) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveTwo - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave three
+                        if ((c - waveThree) >= 0 && (c - waveThree) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveThree) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveThree) < 0 && (c - waveThree) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveThree - c) * 17, getDotFore(r, c)));
+                        }
+                    }                    
+                }
+                Invalidate();
+                Thread.Sleep(50);
+                //update wave indexes
+                waveOne++;
+                waveTwo++;
+                waveThree++;
+                if (waveOne > 135)
+                {
+                    waveOne = -15;
+                }
+                if (waveTwo > 135)
+                {
+                    waveTwo = -15;
+                }
+                if (waveThree > 135)
+                {
+                    waveThree = -15;
+                }
+            }
         }
         #endregion
 
