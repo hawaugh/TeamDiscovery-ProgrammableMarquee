@@ -1700,7 +1700,7 @@ namespace Vision
             if (openFileDialog.ShowDialog() == DialogResult.OK) // Test result.
             {
                 int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
-                string filename = openFileDialog.SafeFileName;
+                string filename = openFileDialog.FileName;
                 fileLocationTextBox.Text = filename;
                 mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
             }
