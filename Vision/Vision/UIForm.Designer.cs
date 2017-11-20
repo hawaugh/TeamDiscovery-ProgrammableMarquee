@@ -159,6 +159,7 @@ namespace Vision
             this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.marquee1 = new Vision.Marquee();
             this.pauseButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -1711,12 +1712,25 @@ namespace Vision
             this.pauseButton.Visible = false;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
+            // playButton
+            // 
+            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.playButton.Location = new System.Drawing.Point(185, 579);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(56, 29);
+            this.playButton.TabIndex = 44;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Visible = false;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 620);
+            this.Controls.Add(this.playButton);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.backToMenuButton);
@@ -1912,6 +1926,7 @@ namespace Vision
         private System.Windows.Forms.Label randomColorPopUp;
         private System.Windows.Forms.NumericUpDown displayDurationControl;
         private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Button playButton;
     }
 }
 

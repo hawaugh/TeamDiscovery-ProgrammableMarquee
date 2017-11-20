@@ -79,6 +79,7 @@ namespace Vision
             clearForMarquee();
             backToMenuButton.Visible = true;
             pauseButton.Visible = true;
+            playButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 2000, 0, 0, 0, Color.Red, 1);
@@ -1847,6 +1848,11 @@ namespace Vision
         #endregion
 
         private void pauseButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
         {
 
         }
