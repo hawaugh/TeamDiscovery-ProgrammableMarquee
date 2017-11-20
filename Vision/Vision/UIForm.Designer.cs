@@ -158,6 +158,8 @@ namespace Vision
             this.marqueeBackgroundColorButton = new System.Windows.Forms.Button();
             this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.marquee1 = new Vision.Marquee();
+            this.pauseButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -1694,7 +1696,26 @@ namespace Vision
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
-            this.marquee1.Click += new System.EventHandler(this.marquee1_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.Location = new System.Drawing.Point(124, 579);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(65, 29);
+            this.pauseButton.TabIndex = 43;
+            this.pauseButton.Text = "Pause";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
+            // playButton
+            // 
+            this.playButton.Location = new System.Drawing.Point(195, 579);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(64, 29);
+            this.playButton.TabIndex = 44;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // UIForm
             // 
@@ -1702,6 +1723,8 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 620);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
@@ -1895,6 +1918,8 @@ namespace Vision
         private System.Windows.Forms.ColorDialog marqueeBackgroundColorDialogBox;
         private System.Windows.Forms.Label randomColorPopUp;
         private System.Windows.Forms.NumericUpDown displayDurationControl;
+        private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Button playButton;
     }
 }
 

@@ -1832,7 +1832,12 @@ namespace Vision
 
         #endregion
 
-        private void marquee1_Click(object sender, EventArgs e)
+        private void playButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pauseButton_Click(object sender, EventArgs e)
         {
 
         }
