@@ -1172,6 +1172,10 @@ namespace Vision
             {
                 displayRandomColorBorder();
             }
+            else if (borderEffect == 4)
+            {
+                displayRandomShootingBorder(borderColor);
+            }
         }
 
         //Border effect 0
@@ -1259,6 +1263,60 @@ namespace Vision
                     for (int b = 0; b < 220; b++)
                     {
                         border[b].ForeColor = Color.FromArgb(i, border[b].ForeColor);
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+            }
+        }
+
+        public void displayRandomShootingBorder(Color borderColor)
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = borderColor;
+            }
+
+            Color newColor;
+            while (true)
+            {
+                //From Left to Right
+                newColor = randomColor();
+                for (int b = 212; b >= 103; b--)
+                {
+                    //Set Bottom dots
+                    border[b].ForeColor = newColor;
+
+                    //Set Top dots
+                    if (b > 205)
+                    {
+                        border[425 - b].ForeColor = newColor;
+                    }
+                    else
+                    {
+                        border[205 - b].ForeColor = newColor;
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+
+                //From Right to Left
+                newColor = randomColor();
+                for (int b = 103; b <= 212; b++)
+                {
+                    //Set Bottom dots
+                    border[b].ForeColor = newColor;
+
+                    //Set Top dots
+                    if (b > 205)
+                    {
+                        border[425 - b].ForeColor = newColor;
+                    }
+                    else
+                    {
+                        border[205 - b].ForeColor = newColor;
                     }
 
                     Invalidate();
