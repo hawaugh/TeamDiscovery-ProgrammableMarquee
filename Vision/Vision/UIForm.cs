@@ -78,6 +78,7 @@ namespace Vision
             marquee1.borderThreadAbort();
             clearForMarquee();
             backToMenuButton.Visible = true;
+            pauseButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
             Segment mySegment = new Segment("TEAM", Color.Red, 2000, 0, 0, 0, Color.Red, 1);
@@ -1692,6 +1693,18 @@ namespace Vision
 
             }
         }
+
+        private void imageTabLabel_BackColorChanged(object sender, EventArgs e)
+        {
+            if (imageTabLabel.BackColor == Color.White)
+            {
+                imagePanel.Visible = true;
+            }
+            else
+            {
+                imagePanel.Visible = false;
+            }
+        }
         #endregion
 
         /*
@@ -1830,6 +1843,12 @@ namespace Vision
 
         }
 
+
         #endregion
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
