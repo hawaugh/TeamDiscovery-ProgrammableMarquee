@@ -1112,6 +1112,8 @@ namespace Vision
             {
                 if (myBorderThread.IsAlive)
                 {
+                    myBorderThread.Suspend();
+                    myBorderThread.Resume();
                     myBorderThread.Abort();
                 }
             }
@@ -1120,7 +1122,6 @@ namespace Vision
 
         public void borderThreadSuspend()
         {
-            //Stop Border Thread if running
             if (myBorderThread != null)
             {
                 if (myBorderThread.IsAlive)
@@ -1132,7 +1133,6 @@ namespace Vision
 
         public void borderThreadResume()
         {
-            //Stop Border Thread if running
             if (myBorderThread != null)
             {
                 if (myBorderThread.IsAlive)

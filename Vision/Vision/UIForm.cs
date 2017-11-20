@@ -1766,7 +1766,9 @@ namespace Vision
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
-                {
+                {                  
+                    myDisplayThread.Suspend();
+                    myDisplayThread.Resume();
                     myDisplayThread.Abort();
                 }
             }
@@ -1851,6 +1853,8 @@ namespace Vision
                 }
                 else
                 {
+                    Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
+                    myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
                     myDisplayThread.Start();
                 }
             }
