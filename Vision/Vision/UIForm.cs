@@ -236,7 +236,7 @@ namespace Vision
             {
                 lastSegmentVisable = 0;
             }
-            populateMarqueeButton.Visible = false; //REMOVE
+            populateMarqueeButton.Visible = true; //REMOVE
             fileLocationTextBox.Visible = false;
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;

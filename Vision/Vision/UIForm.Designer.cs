@@ -1701,6 +1701,7 @@ namespace Vision
             // 
             // pauseButton
             // 
+            this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pauseButton.Location = new System.Drawing.Point(123, 579);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(56, 29);
