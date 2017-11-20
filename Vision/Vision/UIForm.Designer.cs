@@ -158,8 +158,6 @@ namespace Vision
             this.marqueeBackgroundColorButton = new System.Windows.Forms.Button();
             this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.marquee1 = new Vision.Marquee();
-            this.pauseButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -494,12 +492,12 @@ namespace Vision
             // 
             // fileLocationTextBox
             // 
-            this.fileLocationTextBox.Location = new System.Drawing.Point(49, 17);
+            this.fileLocationTextBox.Location = new System.Drawing.Point(74, 17);
             this.fileLocationTextBox.Name = "fileLocationTextBox";
             this.fileLocationTextBox.ReadOnly = true;
             this.fileLocationTextBox.Size = new System.Drawing.Size(448, 20);
             this.fileLocationTextBox.TabIndex = 2;
-            this.fileLocationTextBox.Text = "Load Image With Browse";
+            this.fileLocationTextBox.Visible = false;
             // 
             // segmentPanel14
             // 
@@ -1123,7 +1121,6 @@ namespace Vision
             // 
             // saveAndExitButton
             // 
-            this.saveAndExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveAndExitButton.Location = new System.Drawing.Point(1019, 571);
             this.saveAndExitButton.Name = "saveAndExitButton";
             this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
@@ -1258,12 +1255,11 @@ namespace Vision
             // 
             this.logoLabel.AutoSize = true;
             this.logoLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.logoLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.logoLabel.Location = new System.Drawing.Point(-1, -1);
+            this.logoLabel.Location = new System.Drawing.Point(-1, 0);
             this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(237, 57);
+            this.logoLabel.Size = new System.Drawing.Size(235, 55);
             this.logoLabel.TabIndex = 31;
             this.logoLabel.Text = "Discovery";
             // 
@@ -1274,7 +1270,7 @@ namespace Vision
             this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(234, 0);
+            this.textTabLabel.Location = new System.Drawing.Point(234, 1);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -1292,13 +1288,12 @@ namespace Vision
             this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(313, 0);
+            this.imageTabLabel.Location = new System.Drawing.Point(313, 1);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
             this.imageTabLabel.TabIndex = 33;
             this.imageTabLabel.Text = "Image";
-            this.imageTabLabel.BackColorChanged += new System.EventHandler(this.imageTabLabel_BackColorChanged);
             this.imageTabLabel.Click += new System.EventHandler(this.imageTabLabel_Click);
             this.imageTabLabel.MouseEnter += new System.EventHandler(this.imageTabLabel_MouseEnter);
             this.imageTabLabel.MouseLeave += new System.EventHandler(this.imageTabLabel_MouseLeave);
@@ -1611,7 +1606,7 @@ namespace Vision
             this.imagePanel.Controls.Add(this.groupBox2);
             this.imagePanel.Controls.Add(this.groupBox1);
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
-            this.imagePanel.Location = new System.Drawing.Point(235, 55);
+            this.imagePanel.Location = new System.Drawing.Point(435, 25);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(941, 420);
             this.imagePanel.TabIndex = 35;
@@ -1619,7 +1614,7 @@ namespace Vision
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(563, 15);
+            this.browseButton.Location = new System.Drawing.Point(566, 17);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 6;
@@ -1699,30 +1694,7 @@ namespace Vision
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pauseButton.Location = new System.Drawing.Point(123, 579);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(56, 29);
-            this.pauseButton.TabIndex = 43;
-            this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Visible = false;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
-            // 
-            // playButton
-            // 
-            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.playButton.Location = new System.Drawing.Point(185, 579);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(56, 29);
-            this.playButton.TabIndex = 44;
-            this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Visible = false;
-            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            this.marquee1.Click += new System.EventHandler(this.marquee1_Click);
             // 
             // UIForm
             // 
@@ -1730,9 +1702,9 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 620);
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
+            this.Controls.Add(this.textPanel);
+            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
@@ -1743,8 +1715,6 @@ namespace Vision
             this.Controls.Add(this.saveAndExitButton);
             this.Controls.Add(this.saveAndRunButton);
             this.Controls.Add(this.populateMarqueeButton);
-            this.Controls.Add(this.textPanel);
-            this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(500, 200);
@@ -1925,8 +1895,6 @@ namespace Vision
         private System.Windows.Forms.ColorDialog marqueeBackgroundColorDialogBox;
         private System.Windows.Forms.Label randomColorPopUp;
         private System.Windows.Forms.NumericUpDown displayDurationControl;
-        private System.Windows.Forms.Button pauseButton;
-        private System.Windows.Forms.Button playButton;
     }
 }
 

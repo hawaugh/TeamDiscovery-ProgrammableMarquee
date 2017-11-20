@@ -339,7 +339,7 @@ namespace Vision
            
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 4; //gives stop column for top half scrolling in from right                     
+            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 1; //gives stop column for top half scrolling in from right                     
 
             //scroll top half from left-side of screen 
             for (int s = segmentLength - 1; s > -1; s--)
@@ -373,7 +373,7 @@ namespace Vision
             for (int i = 96; i > topColumnStop; i--)
             {
                 //Move all dots 1 column right
-                for (int c = 93; c > 0; c--)
+                for (int c = 94; c > 0; c--)
                 {
                     for (int r = 2; r < 8; r++)
                     {
@@ -397,13 +397,13 @@ namespace Vision
         {   
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;           
-            int bottomColumnStop = (96 - segmentLength) / 2;   //gives stop column for bottom half in from left. 
+            int bottomColumnStop = (96 - segmentLength) / 2 - 2 ;   //gives stop column for bottom half in from left. 
 
             //scroll bottom half from left
             for (int q = 0; q < segmentLength; q++)
             {
                 //Move all dots 1 column left
-                for (int c = 2; c < 93; c++)
+                for (int c = 2; c < 94; c++)
                 {
                     for (int row = 8; row < 14; row++)
                     {
@@ -416,11 +416,11 @@ namespace Vision
                 {
                     if (currSegment[r - 2][q].Equals('1'))
                     {
-                        setDot(r, 93, segment.onColor);
+                        setDot(r, 94, segment.onColor);
                     }
                     else if (currSegment[r - 2][q].Equals('0'))
                     {
-                        setDot(r, 93, backgroundColor);
+                        setDot(r, 94, backgroundColor);
                     }
                 }
                 Invalidate();
@@ -430,7 +430,7 @@ namespace Vision
             for (int i = 0; i < bottomColumnStop; i++)
             {
                 //Move all dots 1 column left
-                for (int c = 2; c < 93; c++)
+                for (int c = 2; c < 94; c++)
                 {
                     for (int r = 8; r < 14; r++)
                     {
@@ -441,7 +441,7 @@ namespace Vision
                 //Set last column to blank
                 for (int r = 8; r < 14; r++)
                 {
-                    setDot(r, 93, backgroundColor);
+                    setDot(r, 94, backgroundColor);
                 }
                 Thread.Sleep(25);
                 Invalidate();

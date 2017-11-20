@@ -78,11 +78,9 @@ namespace Vision
             marquee1.borderThreadAbort();
             clearForMarquee();
             backToMenuButton.Visible = true;
-            pauseButton.Visible = true;
-            playButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
-            Segment mySegment = new Segment("TEAM", Color.Red, 2000, 0, 0, 0, Color.Red, 1);
+            Segment mySegment = new Segment("DISCOVERY", Color.Red, 2000, 1, 0, 1, Color.Red, 1);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 1);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
@@ -237,7 +235,7 @@ namespace Vision
             {
                 lastSegmentVisable = 0;
             }
-            populateMarqueeButton.Visible = true; //REMOVE
+            populateMarqueeButton.Visible = false; //REMOVE
             fileLocationTextBox.Visible = false;
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
@@ -1694,18 +1692,6 @@ namespace Vision
 
             }
         }
-
-        private void imageTabLabel_BackColorChanged(object sender, EventArgs e)
-        {
-            if (imageTabLabel.BackColor == Color.White)
-            {
-                imagePanel.Visible = true;
-            }
-            else
-            {
-                imagePanel.Visible = false;
-            }
-        }
         #endregion
 
         /*
@@ -1844,15 +1830,9 @@ namespace Vision
 
         }
 
-
         #endregion
 
-        private void pauseButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void playButton_Click(object sender, EventArgs e)
+        private void marquee1_Click(object sender, EventArgs e)
         {
 
         }
