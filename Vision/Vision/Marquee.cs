@@ -899,6 +899,7 @@ namespace Vision
             int waveOne = -15;
             int waveTwo = -45;
             int waveThree = -75;
+            int waveFour = -105;
             for (int i = 0; i < (segment.segmentSpeed / 50); i++)
             {
                 for (int c = 2; c < 94; c++)
@@ -934,6 +935,16 @@ namespace Vision
                         {
                             setDot(r, c, Color.FromArgb((waveThree - c) * 17, getDotFore(r, c)));
                         }
+
+                        //Check wave four
+                        if ((c - waveFour) >= 0 && (c - waveFour) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveFour) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveFour) < 0 && (c - waveFour) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveFour - c) * 17, getDotFore(r, c)));
+                        }
                     }                    
                 }
                 Invalidate();
@@ -942,18 +953,71 @@ namespace Vision
                 waveOne++;
                 waveTwo++;
                 waveThree++;
-                if (waveOne > 135)
+                waveFour++;
+                if (waveFour > 110)
                 {
                     waveOne = -15;
+                    waveTwo = -45;
+                    waveThree = -75;
+                    waveFour = -105;
                 }
-                if (waveTwo > 135)
+            }
+
+            //Clear waves off marquee for end of effect
+            for (int i = waveFour; i < 111; i++)
+            {
+                for (int c = 2; c < 94; c++)
                 {
-                    waveTwo = -15;
+                    for (int r = 2; r < 14; r++)
+                    {
+                        //Check wave one
+                        if ((c - waveOne) >= 0 && (c - waveOne) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveOne) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveOne) < 0 && (c - waveOne) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveOne - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave two
+                        if ((c - waveTwo) >= 0 && (c - waveTwo) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveTwo) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveTwo) < 0 && (c - waveTwo) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveTwo - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave three
+                        if ((c - waveThree) >= 0 && (c - waveThree) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveThree) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveThree) < 0 && (c - waveThree) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveThree - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave four
+                        if ((c - waveFour) >= 0 && (c - waveFour) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveFour) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveFour) < 0 && (c - waveFour) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveFour - c) * 17, getDotFore(r, c)));
+                        }
+                    }
                 }
-                if (waveThree > 135)
-                {
-                    waveThree = -15;
-                }
+                Invalidate();
+                Thread.Sleep(50);
+                //update wave indexes
+                waveOne++;
+                waveTwo++;
+                waveThree++;
+                waveFour++;                
             }
         }
         #endregion
