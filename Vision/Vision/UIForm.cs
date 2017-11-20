@@ -1832,14 +1832,42 @@ namespace Vision
 
         #endregion
 
+        /*
+         * 
+         *   Marquee Control Buttons
+         * 
+         */
+        #region Marquee Control Buttons
         private void playButton_Click(object sender, EventArgs e)
         {
-
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    if (myDisplayThread.ThreadState == ThreadState.Suspended)
+                    {
+                        myDisplayThread.Resume();
+                    }
+                }
+                else
+                {
+                    myDisplayThread.Start();
+                }
+            }
+            marquee1.borderThreadResume();
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Suspend();
+                }
+            }
+            marquee1.borderThreadSuspend();
         }
+        #endregion
     }
 }

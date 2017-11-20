@@ -746,6 +746,10 @@ namespace Vision
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             Color onColor = segment.onColor;
+            if (segment.isRandomColorScrolling)
+            {
+                onColor = randomColor();
+            }
             int counter = 1;
             for (int s = 0; s < segmentLength; s++)
             {                           
@@ -1112,6 +1116,33 @@ namespace Vision
                 }
             }
             clearBorder(BackColor);
+        }
+
+        public void borderThreadSuspend()
+        {
+            //Stop Border Thread if running
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    myBorderThread.Suspend();
+                }
+            }            
+        }
+
+        public void borderThreadResume()
+        {
+            //Stop Border Thread if running
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    if (myBorderThread.ThreadState == ThreadState.Suspended)
+                    {
+                        myBorderThread.Resume();
+                    }
+                }
+            }            
         }
 
         public void clearBorder(Color backgroundColor)
