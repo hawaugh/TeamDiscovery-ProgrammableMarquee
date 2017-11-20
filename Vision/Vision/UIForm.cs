@@ -1532,7 +1532,7 @@ namespace Vision
             imageTabLabel.ForeColor = Color.White;
             imagePanel.Visible = false;
             textPanel.Visible = true;
-
+            textPanel.Controls.Add(ignoreCheckBox);
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -1683,7 +1683,7 @@ namespace Vision
             textTabLabel.ForeColor = Color.White;
             textPanel.Visible = false;
             imagePanel.Visible = true;
-            
+            imagePanel.Controls.Add(ignoreCheckBox);
         }
 
         private void imageDisplayDurationControl_ValueChanged(object sender, EventArgs e)
