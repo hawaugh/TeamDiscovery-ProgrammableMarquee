@@ -1025,15 +1025,19 @@ namespace Vision
         {
             //Curtain down to zero the alpha
 
-            for (int curtain = -13; curtain < 14; curtain++)
+            for (int curtain = -15; curtain < 14; curtain++)
             {
                 for (int c = 2; c < 94; c++)
                 {
                     for (int r = 2; r < 14; r++)
                     {
-                        if ((r - curtain) >= 0 && (r - curtain) < 15)
+                        if ((r - curtain) >= 1 && (r - curtain) < 17)
                         {
-                            setDot(r, c, Color.FromArgb((r - curtain) * 17, getDotFore(r, c)));
+                            setDot(r, c, Color.FromArgb((r - curtain) * 15, getDotFore(r, c)));
+                        }
+                        if ((r - curtain) == 0)
+                        {
+                            setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
                         }
                     }
                 }
@@ -1052,9 +1056,13 @@ namespace Vision
                     for (int r = 2; r < 14; r++)
                     {
                         radius = (int)Math.Sqrt((double)((c - spotlightC) * (c - spotlightC)) + ((r - spotlightR) * (r - spotlightR)));
-                        if (radius <= 15)
+                        if (radius <= 16)
                         {
-                            setDot(r, c, Color.FromArgb((15 - radius) * 17, getDotFore(r, c)));
+                            setDot(r, c, Color.FromArgb((17 - radius) * 15, getDotFore(r, c)));
+                        }
+                        else if (radius == 17)
+                        {
+                            setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
                         }
                     }
                 }
@@ -1103,20 +1111,20 @@ namespace Vision
             {
                 for (int r = 2; r < 14; r++)
                 {
-                    setDot(r, c, Color.FromArgb(0, getDotFore(r, c)));
+                    setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
                 }
             }
 
             //Raise Curtain
-            for (int curtain = 29; curtain > 1; curtain--)
+            for (int curtain = 31; curtain > 1; curtain--)
             {
                 for (int c = 2; c < 94; c++)
                 {
                     for (int r = 2; r < 14; r++)
                     {
-                        if ((curtain - r) >= 0 && (curtain - r) < 15)
+                        if ((curtain - r) >= 0 && (curtain - r) < 17)
                         {
-                            setDot(r, c, Color.FromArgb((15 - (curtain - r)) * 17, getDotFore(r, c)));
+                            setDot(r, c, Color.FromArgb((17 - (curtain - r)) * 15, getDotFore(r, c)));
                         }
                     }
                 }
