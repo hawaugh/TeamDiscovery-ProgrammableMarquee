@@ -80,8 +80,8 @@ namespace Vision
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             marquee1.Visible = true;
-            Segment mySegment = new Segment("DISCOVERY", Color.Red, 2000, 1, 0, 1, Color.Red, 1);
-            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 1);
+            Segment mySegment = new Segment("DISCOVERY", Color.Red, 20000, 4, 4, 4, Color.Red, 4);
+            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 3);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
             Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
             mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };
@@ -1530,7 +1530,9 @@ namespace Vision
             textTabLabel.ForeColor = Color.Black;
             imageTabLabel.BackColor = darkerGray;
             imageTabLabel.ForeColor = Color.White;
-
+            imagePanel.Visible = false;
+            textPanel.Visible = true;
+            textPanel.Controls.Add(ignoreCheckBox);
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -1645,7 +1647,7 @@ namespace Vision
         private void displayDurationControl_ValueChanged(object sender, EventArgs e)
         {
             //Max set to 2147482 so int doesnt throw an error if the number is to large.
-            int input = (int)Math.Floor(displayDurationControl.Value) * 1000;
+            int input = (int)Math.Floor(textDisplayDurationControl.Value) * 1000;
             mySegmentArray[activeIndex].segmentSpeed = input;
         }
         #endregion
@@ -1679,6 +1681,15 @@ namespace Vision
             imageTabLabel.ForeColor = Color.Black;
             textTabLabel.BackColor = darkerGray;
             textTabLabel.ForeColor = Color.White;
+            textPanel.Visible = false;
+            imagePanel.Visible = true;
+            imagePanel.Controls.Add(ignoreCheckBox);
+        }
+
+        private void imageDisplayDurationControl_ValueChanged(object sender, EventArgs e)
+        {
+            int input = (int)Math.Floor(imageDisplayDurationControl.Value) * 1000;
+            mySegmentArray[activeIndex].segmentSpeed = input;
         }
 
         private void browseButton_Click(object sender, EventArgs e)
@@ -1688,8 +1699,10 @@ namespace Vision
 
             if (openFileDialog.ShowDialog() == DialogResult.OK) // Test result.
             {
-                string filename = openFileDialog.SafeFileName;
-
+                int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
+                string filename = openFileDialog.FileName;
+                fileLocationTextBox.Text = filename;
+                mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
             }
         }
         #endregion
@@ -1766,7 +1779,9 @@ namespace Vision
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
-                {
+                {                  
+                    myDisplayThread.Suspend();
+                    myDisplayThread.Resume();
                     myDisplayThread.Abort();
                 }
             }
@@ -1832,9 +1847,44 @@ namespace Vision
 
         #endregion
 
-        private void marquee1_Click(object sender, EventArgs e)
+        /*
+         * 
+         *   Marquee Control Buttons
+         * 
+         */
+        #region Marquee Control Buttons
+        private void playButton_Click(object sender, EventArgs e)
         {
-
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    if (myDisplayThread.ThreadState == ThreadState.Suspended)
+                    {
+                        myDisplayThread.Resume();
+                    }
+                }
+                else
+                {
+                    Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
+                    myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
+                    myDisplayThread.Start();
+                }
+            }
+            marquee1.borderThreadResume();
         }
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Suspend();
+                }
+            }
+            marquee1.borderThreadSuspend();
+        }
+        #endregion
     }
 }

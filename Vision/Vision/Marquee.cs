@@ -27,6 +27,7 @@ namespace Vision
         private Dot[,] matrix = new Dot[16, 96];
         private Dot[] border = new Dot[220];
         private Thread myBorderThread = null;
+        private static Random rnd = new Random();
 
         public Marquee()
         {
@@ -236,6 +237,14 @@ namespace Vision
             else if (segment.middleEffect == 2)
             {
                 displayFadeEffect(segment, backgroundColor);
+            }
+            else if (segment.middleEffect == 3)
+            {
+                displayWaveEffect(segment);
+            }
+            else if (segment.middleEffect == 4)
+            {
+                displaySpotlightEffect(segment);
             }
 
             //Display Exit
@@ -739,13 +748,16 @@ namespace Vision
          * 
          */
         #region Middle Effects
-        //Logan
         public void displayScrollingSegment(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
             Color onColor = segment.onColor;
+            if (segment.isRandomColorScrolling)
+            {
+                onColor = randomColor();
+            }
             int counter = 1;
             for (int s = 0; s < segmentLength; s++)
             {                           
@@ -812,8 +824,6 @@ namespace Vision
             }
         }
 
-        //Nick
-        //The marquee will already have the message displayed and the dots are set for you to edit them in this method
         public void displayRandomColors(Segment segment, Color backgroundColor)
         {
             List<Dot> activeDotList = new List<Dot>();
@@ -821,7 +831,7 @@ namespace Vision
             {
                 for (int c = 2; c < 94; c++)
                 {
-                    if (getDotFore(r, c) != backgroundColor)
+                    if (getDotFore(r, c).ToArgb() != backgroundColor.ToArgb())
                     {
                         //add to storage for next loop
                         activeDotList.Add(matrix[r, c]);
@@ -839,7 +849,6 @@ namespace Vision
             }
         }
 
-        //Jeremy
         public void displayFadeEffect(Segment segment, Color backgroundColor)
         {
             //Change this to affect speed of the effect
@@ -883,6 +892,237 @@ namespace Vision
                 }
             }
             Thread.Sleep(extraTime);
+        }
+
+        public void displayWaveEffect(Segment segment)
+        {
+            int waveOne = -15;
+            int waveTwo = -45;
+            int waveThree = -75;
+            int waveFour = -105;
+            for (int i = 0; i < (segment.segmentSpeed / 50); i++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        //Check wave one
+                        if ((c - waveOne) >= 0 && (c - waveOne) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveOne) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveOne) < 0 && (c - waveOne) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveOne - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave two
+                        if ((c - waveTwo) >= 0 && (c - waveTwo) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveTwo) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveTwo) < 0 && (c - waveTwo) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveTwo - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave three
+                        if ((c - waveThree) >= 0 && (c - waveThree) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveThree) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveThree) < 0 && (c - waveThree) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveThree - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave four
+                        if ((c - waveFour) >= 0 && (c - waveFour) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveFour) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveFour) < 0 && (c - waveFour) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveFour - c) * 17, getDotFore(r, c)));
+                        }
+                    }                    
+                }
+                Invalidate();
+                Thread.Sleep(50);
+                //update wave indexes
+                waveOne++;
+                waveTwo++;
+                waveThree++;
+                waveFour++;
+                if (waveFour > 110)
+                {
+                    waveOne = -15;
+                    waveTwo = -45;
+                    waveThree = -75;
+                    waveFour = -105;
+                }
+            }
+
+            //Clear waves off marquee for end of effect
+            for (int i = waveFour; i < 111; i++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        //Check wave one
+                        if ((c - waveOne) >= 0 && (c - waveOne) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveOne) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveOne) < 0 && (c - waveOne) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveOne - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave two
+                        if ((c - waveTwo) >= 0 && (c - waveTwo) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveTwo) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveTwo) < 0 && (c - waveTwo) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveTwo - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave three
+                        if ((c - waveThree) >= 0 && (c - waveThree) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveThree) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveThree) < 0 && (c - waveThree) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveThree - c) * 17, getDotFore(r, c)));
+                        }
+
+                        //Check wave four
+                        if ((c - waveFour) >= 0 && (c - waveFour) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((c - waveFour) * 17, getDotFore(r, c)));
+                        }
+                        if ((c - waveFour) < 0 && (c - waveFour) >= -15)
+                        {
+                            setDot(r, c, Color.FromArgb((waveFour - c) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(50);
+                //update wave indexes
+                waveOne++;
+                waveTwo++;
+                waveThree++;
+                waveFour++;                
+            }
+        }
+
+        public void displaySpotlightEffect(Segment segment)
+        {
+            //Curtain down to zero the alpha
+
+            for (int curtain = -13; curtain < 14; curtain++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        if ((r - curtain) >= 0 && (r - curtain) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((r - curtain) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(50);
+            }
+
+            int spotlightC = ((96 - segment.getMessageMatrix()[0].Length) / 2) - 10;
+            int spotlightR = 0;
+            int radius;
+            int direction = 0;
+            for (int i = 0; i < (segment.segmentSpeed / 25); i++)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        radius = (int)Math.Sqrt((double)((c - spotlightC) * (c - spotlightC)) + ((r - spotlightR) * (r - spotlightR)));
+                        if (radius <= 15)
+                        {
+                            setDot(r, c, Color.FromArgb((15 - radius) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+                //Spotlight moving right
+                if (direction == 0)
+                {
+                    spotlightC++;
+                    if (spotlightC == (((96 + segment.getMessageMatrix()[0].Length) / 2) + 8))
+                    {
+                        direction = 1;
+                    }
+                }
+                //Spotlight moving down
+                else if (direction == 1)
+                {
+                    spotlightR++;
+                    if (spotlightR == 15)
+                    {
+                        direction = 2;
+                    }
+                }
+                //Spotlight moving left
+                else if (direction == 2)
+                {
+                    spotlightC--;
+                    if (spotlightC == ((96 - segment.getMessageMatrix()[0].Length) / 2) - 10)
+                    {
+                        direction = 3;
+                    }
+                }
+                //Spotlight moving up
+                else if (direction == 3)
+                {
+                    spotlightR--;
+                    if (spotlightR == 0)
+                    {
+                        direction = 0;
+                    }
+                }
+            }
+
+            //Blank out Marquee
+            for (int c = 2; c < 94; c++)
+            {
+                for (int r = 2; r < 14; r++)
+                {
+                    setDot(r, c, Color.FromArgb(0, getDotFore(r, c)));
+                }
+            }
+
+            //Raise Curtain
+            for (int curtain = 29; curtain > 1; curtain--)
+            {
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        if ((curtain - r) >= 0 && (curtain - r) < 15)
+                        {
+                            setDot(r, c, Color.FromArgb((15 - (curtain - r)) * 17, getDotFore(r, c)));
+                        }
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(50);
+            }
         }
         #endregion
 
@@ -1074,7 +1314,7 @@ namespace Vision
             {
                 for (int c = 2; c < 94; c++)
                 {
-                    if (getDotFore(r, c) != backgroundColor)
+                    if (getDotFore(r, c).ToArgb() != backgroundColor.ToArgb())
                     {
                         //add to storage for next loop
                         activeDotList.Add(matrix[r, c]);
@@ -1108,10 +1348,37 @@ namespace Vision
             {
                 if (myBorderThread.IsAlive)
                 {
+                    myBorderThread.Suspend();
+                    myBorderThread.Resume();
                     myBorderThread.Abort();
                 }
             }
             clearBorder(BackColor);
+        }
+
+        public void borderThreadSuspend()
+        {
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    myBorderThread.Suspend();
+                }
+            }            
+        }
+
+        public void borderThreadResume()
+        {
+            if (myBorderThread != null)
+            {
+                if (myBorderThread.IsAlive)
+                {
+                    if (myBorderThread.ThreadState == ThreadState.Suspended)
+                    {
+                        myBorderThread.Resume();
+                    }
+                }
+            }            
         }
 
         public void clearBorder(Color backgroundColor)
@@ -1130,11 +1397,19 @@ namespace Vision
             }
             else if (borderEffect == 1)
             {
-                displayBorderHighlight(borderColor);
+                staticBorder(borderColor);
             }
             else if (borderEffect == 2)
             {
-                staticBorder(borderColor);
+                displayBorderHighlight(borderColor);
+            }
+            else if (borderEffect == 3)
+            {
+                displayRandomColorBorder();
+            }
+            else if (borderEffect == 4)
+            {
+                displayRandomShootingBorder(borderColor);
             }
         }
 
@@ -1170,46 +1445,17 @@ namespace Vision
         //Border effect 2
         public void displayBorderHighlight(Color borderColor)
         {
-            #region 1 on:1 off
-            //for (int a = 0; a < 220; a = a + 2)
-            //{
-            //    border[a].ForeColor = borderColor;
-            //}
-
-            //for (int a = 1; a < 220; a = a + 2)
-            //{
-            //    border[a].ForeColor = BackColor;
-            //}
-            #endregion
-
-
-            #region 2 on:2 off
-            //for (int a = 0; a < 220; a = a + 4)
-            //{
-            //    border[a].ForeColor = borderColor;
-            //    border[a + 1].ForeColor = borderColor;
-            //}
-
-            //for (int a = 2; a < 220; a = a + 4)
-            //{
-            //    border[a].ForeColor = BackColor;
-            //    border[a + 1].ForeColor = BackColor;
-            //}
-            #endregion
-
-            #region 3 on:1 off
             for (int a = 0; a < 220; a = a + 4)
             {
                 border[a].ForeColor = borderColor;
                 border[a + 1].ForeColor = borderColor;
                 border[a + 2].ForeColor = borderColor;
             }
-
             for (int a = 3; a < 220; a = a + 4)
             {
                 border[a].ForeColor = BackColor;
             }
-            #endregion
+
 
             Invalidate();
 
@@ -1226,6 +1472,92 @@ namespace Vision
                 Thread.Sleep(200);
             }
 
+        }
+
+        public void displayRandomColorBorder()
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].randColor();
+            }
+
+            while (true)
+            {
+                for (int i = 255; i > -1; i -= 5)
+                {
+                    for (int b = 0; b < 220; b++)
+                    {
+                        border[b].ForeColor = Color.FromArgb(i, border[b].ForeColor);
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+                for (int i = 0; i < 256; i += 5)
+                {
+                    for (int b = 0; b < 220; b++)
+                    {
+                        border[b].ForeColor = Color.FromArgb(i, border[b].ForeColor);
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+            }
+        }
+
+        public void displayRandomShootingBorder(Color borderColor)
+        {
+            for (int b = 0; b < 220; b++)
+            {
+                border[b].ForeColor = borderColor;
+            }
+
+            Color newColor;
+            while (true)
+            {
+                //From Left to Right
+                newColor = randomColor();
+                for (int b = 212; b >= 103; b--)
+                {
+                    //Set Bottom dots
+                    border[b].ForeColor = newColor;
+
+                    //Set Top dots
+                    if (b > 205)
+                    {
+                        border[425 - b].ForeColor = newColor;
+                    }
+                    else
+                    {
+                        border[205 - b].ForeColor = newColor;
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+
+                //From Right to Left
+                newColor = randomColor();
+                for (int b = 103; b <= 212; b++)
+                {
+                    //Set Bottom dots
+                    border[b].ForeColor = newColor;
+
+                    //Set Top dots
+                    if (b > 205)
+                    {
+                        border[425 - b].ForeColor = newColor;
+                    }
+                    else
+                    {
+                        border[205 - b].ForeColor = newColor;
+                    }
+
+                    Invalidate();
+                    Thread.Sleep(10);
+                }
+            }
         }
         #endregion
 
@@ -1320,8 +1652,7 @@ namespace Vision
          */
         #region Utility Methods
         public Color randomColor()
-        {
-            Random rnd = new Random();
+        {            
             int randomNumber = rnd.Next(0, 20);
             if (randomNumber == 0)
             {
