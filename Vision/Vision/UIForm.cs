@@ -303,19 +303,19 @@ namespace Vision
                     lastSegmentVisable = i;
                 }
             }
-            for (int i = 0; i < 24; i++)
-            {
-                //there is no addSegmentButtons[0]
-                if (i == 1)
-                {
-                    segmentPanels[i].Visible = false;
-                }
-                else
-                {
-                    segmentPanels[i].Visible = false;
-                    addSegmentButtons[i].Visible = false;
-                }
-            }
+            //for (int i = 0; i < 24; i++)
+            //{
+            //    //there is no addSegmentButtons[0]
+            //    if (i == 1)
+            //    {
+            //        segmentPanels[i].Visible = false;
+            //    }
+            //    else
+            //    {
+            //        segmentPanels[i].Visible = false;
+            //        addSegmentButtons[i].Visible = false;
+            //    }
+            //}
             populateMarqueeButton.Visible = false; //REMOVE
             fileLocationTextBox.Visible = false;
             SegmentHolderPanel.Visible = false;
