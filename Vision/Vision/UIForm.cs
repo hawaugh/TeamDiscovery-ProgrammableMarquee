@@ -199,14 +199,7 @@ namespace Vision
         private void button1_Click_1(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {
-                    myDisplayThread.Abort();
-                }
-            }
-            marquee1.borderThreadAbort();
+            abortDisplayThreads();
             clearForMarquee();
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
@@ -1142,18 +1135,7 @@ namespace Vision
         #region Bottom Buttons
         private void backToMenuButton_Click(object sender, EventArgs e)
         {
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {                  
-                    myDisplayThread.Suspend();
-                    myDisplayThread.Resume();
-                    myDisplayThread.Abort();
-                }
-            }
-            marquee1.borderThreadAbort();
-            marquee1.clearMarquee(marquee1.BackColor);
-            marquee1.clearBorder(marquee1.BackColor);
+            abortDisplayThreads();
 
             //show menu
             openMenu();
@@ -1163,25 +1145,12 @@ namespace Vision
         {
             //Closes the form
             Application.Exit();
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {
-                    myDisplayThread.Abort();
-                }
-            }
+            abortDisplayThreads();
         }
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {
-                    myDisplayThread.Abort();
-                }
-            }
-            marquee1.borderThreadAbort();
+            abortDisplayThreads();
             clearForMarquee();
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
@@ -1262,6 +1231,22 @@ namespace Vision
         private void logoLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void abortDisplayThreads()
+        {
+            if (myDisplayThread != null)
+            {
+                if (myDisplayThread.IsAlive)
+                {
+                    myDisplayThread.Suspend();
+                    myDisplayThread.Resume();
+                    myDisplayThread.Abort();
+                }
+            }
+            marquee1.borderThreadAbort();
+            marquee1.clearMarquee(marquee1.BackColor);
+            marquee1.clearBorder(marquee1.BackColor);
         }
     }
 }
