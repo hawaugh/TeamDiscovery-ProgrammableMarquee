@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Vision
 {
@@ -28,11 +29,16 @@ namespace Vision
         private Segment[] mySegmentArray = new Segment[18];
         private Color darkerGray = new Color();
         private Color lightGray = new Color();
+        private Color activeColor = new Color();
         private int activeIndex;
-        private Point mouseDownLocation; //lower case this!
+        private Point mouseDownLocation;
         private Color marqueeBackgroundColor = Color.Black;
         //holds the last visible segment for backToMenuButton
         private int lastSegmentVisable;
+        private Panel[] segmentPanels = new Panel[24];
+        private Label[] segmentLabels = new Label[24];
+        private Button[] segmentButtons = new Button[24];
+        private Button[] addSegmentButtons = new Button[24];
 
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
@@ -50,24 +56,149 @@ namespace Vision
         {
             darkerGray = Color.FromArgb(0, 64, 64, 64);
             lightGray = Color.FromArgb(0, 224, 224, 224);
-
+            activeColor = Color.DeepSkyBlue;
             for (int i = 0; i < 18; i++)
             {
                 mySegmentArray[i] = new Segment();
             }
-            InitializeComponent();
-            getLocations();
-            activeIndex = 0;
-        }
 
+            InitializeComponent();
+            int x = 5;
+            int y = 6;
+            int x2 = 60;
+            int y2 = 14;
+            for (int i = 0; i < 24; i++)
+            {
+                if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
+                {
+                    x = 5;
+                    x2 = 50;
+                    y += 46;
+                    y2 += 46;
+                }
+                else if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
+                {
+                    x = 120;
+                    x2 = 165;
+                }
+                else if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
+                {
+                    x = 235;
+                    x2 = 280;
+                }
+                segmentLabels[i] = new System.Windows.Forms.Label();
+                segmentButtons[i] = new System.Windows.Forms.Button();
+                segmentPanels[i] = new System.Windows.Forms.Panel();
+                if (i == 0)
+                {
+                    //The first segment will be automatically added. (no need for a button)
+                }
+                else
+                {
+                    addSegmentButtons[i] = new System.Windows.Forms.Button();
+                    // 
+                    // Create addSegmentButtons
+                    // 
+                    addSegmentButtons[i].Anchor = System.Windows.Forms.AnchorStyles.None;
+                    addSegmentButtons[i].BackColor = System.Drawing.Color.Gray;
+                    addSegmentButtons[i].FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+                    addSegmentButtons[i].Location = new System.Drawing.Point(x2, y2);
+                    addSegmentButtons[i].Size = new System.Drawing.Size(25, 25);
+                    addSegmentButtons[i].TabIndex = 14;
+                    addSegmentButtons[i].Text = "+";
+                    addSegmentButtons[i].UseVisualStyleBackColor = false;
+                    addSegmentButtons[i].Visible = false;
+                    addSegmentButtons[i].Click += new System.EventHandler(addSegmentClickEvent);
+                    addSegmentButtons[i].BringToFront();
+                }
+                SegmentHolderPanel.Controls.Add(addSegmentButtons[i]);
+                SegmentHolderPanel.Controls.Add(segmentPanels[i]);
+                // 
+                // Create Segment Panels
+                // 
+                segmentPanels[i].BackColor = System.Drawing.Color.Gray;
+                segmentPanels[i].Controls.Add(segmentLabels[i]);
+                segmentPanels[i].Controls.Add(segmentButtons[i]);
+                segmentPanels[i].Location = new System.Drawing.Point(x, y);
+                segmentPanels[i].Size = new System.Drawing.Size(110, 40);
+                segmentPanels[i].TabIndex = 14;
+                segmentPanels[i].Visible = false;
+                segmentPanels[i].Click += new System.EventHandler(segmentClickEvent);
+                // 
+                // Create Segment Label
+                // 
+                segmentLabels[i].AutoSize = true;
+                segmentLabels[i].ForeColor = System.Drawing.Color.White;
+                segmentLabels[i].Location = new System.Drawing.Point(17, 11);
+                segmentLabels[i].Size = new System.Drawing.Size(58, 13);
+                segmentLabels[i].TabIndex = 8;
+                segmentLabels[i].Text = "Segment " + (i + 1);
+                segmentLabels[i].Click += new System.EventHandler(segmentClickEvent);
+                // 
+                // Create Segment Close Buttons
+                // 
+                segmentButtons[i].BackColor = System.Drawing.Color.Transparent;
+                segmentButtons[i].BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+                segmentButtons[i].FlatAppearance.BorderSize = 0;
+                segmentButtons[i].FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+                segmentButtons[i].FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+                segmentButtons[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                segmentButtons[i].ForeColor = System.Drawing.Color.White;
+                segmentButtons[i].Location = new System.Drawing.Point(87, 0);
+                segmentButtons[i].Size = new System.Drawing.Size(23, 23);
+                segmentButtons[i].TabIndex = 7;
+                segmentButtons[i].Text = "X";
+                segmentButtons[i].UseVisualStyleBackColor = false;
+            }
+            
+            //getLocations();
+            activeIndex = 0;
+            segmentPanels[0].Visible = true;
+            segmentPanels[0].BackColor = activeColor;
+
+            addSegmentButtons[1].Visible = true;
+        }
+        
         private void UIForm_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void segmentClickEvent(object sender, EventArgs e)
+        {
+            //Util.Animate(segmentPanels[0], Util.Effect.Slide, 150, 180);
+            for (int i = 0; i < 24; i++)
+            {
+                if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
+                {
+                    activeIndex = i;
+                    resetSegments();
+                    //leave loop
+                    i = 24;
+                }
+            }
+        }
+
+        private void addSegmentClickEvent(object sender, EventArgs e)
+        {
+            for (int i = 1; i < 24; i++)
+            {
+                if (mouseIsOverButton(addSegmentButtons[i]))
+                {
+                    activeIndex = i;
+                    segmentPanels[i].Visible = true;
+                    resetSegments();
+                    addSegmentButtons[i].Visible = false;
+                    addSegmentButtons[i + 1].Visible = true;
+                    //leave loop
+                    i = 24;
+                }
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
+            pauseButton.Visible = true;
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
@@ -88,7 +219,6 @@ namespace Vision
             Message myMessage = new Vision.Message(mySegmentArray, Color.Black);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             myDisplayThread.Start();
-            
         }
 
         /*
@@ -98,6 +228,7 @@ namespace Vision
          */
         #region Generic Functions
         //Sets the locations of objects to a parallel array
+        /*
         private void getLocations()
         {
             mySegmentPanelArray[0] = segmentPanel1.Location;
@@ -160,120 +291,35 @@ namespace Vision
             //Holder for all locations in order
             mySegmentPanelArrayLoc = mySegmentPanelArray;
         }
+        */
         
         private void clearForMarquee()
         {
-            if (segmentPanel18.Visible == true)
+            //If it starts from 0 it will continue to overwrite until no more segments are visible
+            for (int i = 0; i < 24; i++)
             {
-                lastSegmentVisable = 17;
+                if (segmentPanels[i].Visible == true)
+                {
+                    lastSegmentVisable = i;
+                }
             }
-            else if (segmentPanel17.Visible == true)
+            for (int i = 0; i < 24; i++)
             {
-                lastSegmentVisable = 16;
-            }
-            else if (segmentPanel16.Visible == true)
-            {
-                lastSegmentVisable = 15;
-            }
-            else if (segmentPanel15.Visible == true)
-            {
-                lastSegmentVisable = 14;
-            }
-            else if (segmentPanel14.Visible == true)
-            {
-                lastSegmentVisable = 13;
-            }
-            else if (segmentPanel13.Visible == true)
-            {
-                lastSegmentVisable = 12;
-            }
-            else if (segmentPanel12.Visible == true)
-            {
-                lastSegmentVisable = 11;
-            }
-            else if (segmentPanel11.Visible == true)
-            {
-                lastSegmentVisable = 10;
-            }
-            else if (segmentPanel10.Visible == true)
-            {
-                lastSegmentVisable = 9;
-            }
-            else if (segmentPanel9.Visible == true)
-            {
-                lastSegmentVisable = 8;
-            }
-            else if (segmentPanel8.Visible == true)
-            {
-                lastSegmentVisable = 7;
-            }
-            else if (segmentPanel7.Visible == true)
-            {
-                lastSegmentVisable = 6;
-            }
-            else if (segmentPanel6.Visible == true)
-            {
-                lastSegmentVisable = 5;
-            }
-            else if (segmentPanel5.Visible == true)
-            {
-                lastSegmentVisable = 4;
-            }
-            else if (segmentPanel4.Visible == true)
-            {
-                lastSegmentVisable = 3;
-            }
-            else if (segmentPanel3.Visible == true)
-            {
-                lastSegmentVisable = 2;
-            }
-            else if (segmentPanel2.Visible == true)
-            {
-                lastSegmentVisable = 1;
-            }
-            else if (segmentPanel1.Visible == true)
-            {
-                lastSegmentVisable = 0;
+                //there is no addSegmentButtons[0]
+                if (i == 1)
+                {
+                    segmentPanels[i].Visible = false;
+                }
+                else
+                {
+                    segmentPanels[i].Visible = false;
+                    addSegmentButtons[i].Visible = false;
+                }
             }
             populateMarqueeButton.Visible = false; //REMOVE
             fileLocationTextBox.Visible = false;
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
-            segmentPanel1.Visible = false;
-            segmentPanel2.Visible = false;
-            segmentPanel3.Visible = false;
-            segmentPanel4.Visible = false;
-            segmentPanel5.Visible = false;
-            segmentPanel6.Visible = false;
-            segmentPanel7.Visible = false;
-            segmentPanel8.Visible = false;
-            segmentPanel9.Visible = false;
-            segmentPanel10.Visible = false;
-            segmentPanel11.Visible = false;
-            segmentPanel12.Visible = false;
-            segmentPanel13.Visible = false;
-            segmentPanel14.Visible = false;
-            segmentPanel15.Visible = false;
-            segmentPanel16.Visible = false;
-            segmentPanel17.Visible = false;
-            segmentPanel18.Visible = false;
-            addSegmentButton1.Visible = false;
-            addSegmentButton2.Visible = false;
-            addSegmentButton3.Visible = false;
-            addSegmentButton4.Visible = false;
-            addSegmentButton5.Visible = false;
-            addSegmentButton6.Visible = false;
-            addSegmentButton7.Visible = false;
-            addSegmentButton8.Visible = false;
-            addSegmentButton9.Visible = false;
-            addSegmentButton10.Visible = false;
-            addSegmentButton11.Visible = false;
-            addSegmentButton12.Visible = false;
-            addSegmentButton13.Visible = false;
-            addSegmentButton14.Visible = false;
-            addSegmentButton15.Visible = false;
-            addSegmentButton16.Visible = false;
-            addSegmentButton17.Visible = false;
             logoLabel.Visible = false;
             textTabLabel.Visible = false;
             imageTabLabel.Visible = false;
@@ -284,6 +330,7 @@ namespace Vision
             saveAndRunButton.Visible = false;
         }
 
+        /*
         private void openMenu()
         {
             populateMarqueeButton.Visible = true; //REMOVE
@@ -565,7 +612,7 @@ namespace Vision
             textPanel.Visible = true;
             imagePanel.Visible = true;
         }
-
+        */
         private bool mouseIsOverPanel(Panel pnl)
         {
             if (pnl.ClientRectangle.Contains(pnl.PointToClient(Cursor.Position)))
@@ -573,6 +620,57 @@ namespace Vision
                 return true;
             }
             return false;
+        }
+
+        private bool mouseIsOverButton(Button btn)
+        {
+            if (btn.ClientRectangle.Contains(btn.PointToClient(Cursor.Position)))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool mouseIsOverLabel(Label label)
+        {
+            if (label.ClientRectangle.Contains(label.PointToClient(Cursor.Position)))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        /*
+         *
+         *   UI Buttons
+         * 
+         */
+        #region UI Buttons
+        public static class Util
+        {
+            public enum Effect { Roll, Slide, Center, Blend }
+
+            public static void Animate(Control ctl, Effect effect, int msec, int angle)
+            {
+                int flags = effmap[(int)effect];
+                if (ctl.Visible) { flags |= 0x10000; angle += 180; }
+                else
+                {
+                    if (ctl.TopLevelControl == ctl) flags |= 0x20000;
+                    else if (effect == Effect.Blend) throw new ArgumentException();
+                }
+                flags |= dirmap[(angle % 360) / 45];
+                bool ok = AnimateWindow(ctl.Handle, msec, flags);
+                if (!ok) throw new Exception("Animation failed");
+                ctl.Visible = !ctl.Visible;
+            }
+
+            private static int[] dirmap = { 1, 5, 4, 6, 2, 10, 8, 9 };
+            private static int[] effmap = { 0, 0x40000, 0x10, 0x80000 };
+
+            [DllImport("user32.dll")]
+            private static extern bool AnimateWindow(IntPtr handle, int msec, int flags);
         }
         #endregion
 
@@ -598,321 +696,45 @@ namespace Vision
          * 
          */
         #region Segment Buttons
-        private void addSegmentButton1_Click(object sender, EventArgs e)
-        {        
-            /*
-            if (mySegmentArray[0].messageText == "")
-            {
-                noTextPopUp.Visible = true;
-            }
-            else
-            {
-                addSegmentButton1.Visible = false;
-                segmentPanel2.Visible = true;
-                addSegmentButton2.Visible = true;
-            }
-            */
-            addSegmentButton1.Visible = false;
-            segmentPanel2.Visible = true;
-            addSegmentButton2.Visible = true;
-            activeIndex = 1;
-            resetSegments();
-            segmentPanel2.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Sets ignore Check Box to the correct option
-            if (mySegmentArray[activeIndex].ignore == true)
-            {
-                ignoreCheckBox.Checked = false;
-            }
-            else
-            {
-                ignoreCheckBox.Checked = true;
-            }
-            //Sets values for Effect combo boxes
-            setEntranceEffectText();
-            setMiddleEffectText();
-            setExitEffectText();
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton2_Click(object sender, EventArgs e)
-        {
-            /*
-            if (mySegmentArray[0].messageText == "")
-            {
-                noTextPopUp.Visible = true;
-            }
-            else
-            {
-                addSegmentButton2.Visible = false;
-                segmentPanel3.Visible = true;
-                addSegmentButton3.Visible = true;
-            }
-            */
-            addSegmentButton2.Visible = false;
-            segmentPanel3.Visible = true;
-            addSegmentButton3.Visible = true;
-            activeIndex = 2;
-            resetSegments();
-            segmentPanel3.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            if (mySegmentArray[activeIndex].ignore == true)
-            {
-                ignoreCheckBox.Checked = false;
-            }
-            else
-            {
-                ignoreCheckBox.Checked = true;
-            }
-            //Sets values for Effect combo boxes
-            setEntranceEffectText();
-            setMiddleEffectText();
-            setExitEffectText();
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton3_Click(object sender, EventArgs e)
-        {
-            addSegmentButton3.Visible = false;
-            segmentPanel4.Visible = true;
-            addSegmentButton4.Visible = true;
-            activeIndex = 3;
-            resetSegments();
-            segmentPanel4.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton4_Click(object sender, EventArgs e)
-        {
-            addSegmentButton4.Visible = false;
-            segmentPanel5.Visible = true;
-            addSegmentButton5.Visible = true;
-            activeIndex = 4;
-            resetSegments();
-            segmentPanel5.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton5_Click(object sender, EventArgs e)
-        {
-            addSegmentButton5.Visible = false;
-            segmentPanel6.Visible = true;
-            addSegmentButton6.Visible = true;
-            activeIndex = 5;
-            resetSegments();
-            segmentPanel6.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton6_Click(object sender, EventArgs e)
-        {
-            addSegmentButton6.Visible = false;
-            segmentPanel7.Visible = true;
-            addSegmentButton7.Visible = true;
-            activeIndex = 6;
-            resetSegments();
-            segmentPanel7.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton7_Click(object sender, EventArgs e)
-        {
-            addSegmentButton7.Visible = false;
-            segmentPanel8.Visible = true;
-            addSegmentButton8.Visible = true;
-            activeIndex = 7;
-            resetSegments();
-            segmentPanel8.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton8_Click(object sender, EventArgs e)
-        {
-            addSegmentButton8.Visible = false;
-            segmentPanel9.Visible = true;
-            addSegmentButton9.Visible = true;
-            activeIndex = 8;
-            resetSegments();
-            segmentPanel9.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton9_Click(object sender, EventArgs e)
-        {
-            addSegmentButton9.Visible = false;
-            segmentPanel10.Visible = true;
-            addSegmentButton10.Visible = true;
-            activeIndex = 9;
-            resetSegments();
-            segmentPanel10.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton10_Click(object sender, EventArgs e)
-        {
-            addSegmentButton10.Visible = false;
-            segmentPanel11.Visible = true;
-            addSegmentButton11.Visible = true;
-            activeIndex = 10;
-            resetSegments();
-            segmentPanel11.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton11_Click(object sender, EventArgs e)
-        {
-            addSegmentButton11.Visible = false;
-            segmentPanel12.Visible = true;
-            addSegmentButton12.Visible = true;
-            activeIndex = 11;
-            resetSegments();
-            segmentPanel12.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton12_Click(object sender, EventArgs e)
-        {
-            addSegmentButton12.Visible = false;
-            segmentPanel13.Visible = true;
-            addSegmentButton13.Visible = true;
-            activeIndex = 12;
-            resetSegments();
-            segmentPanel13.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton13_Click(object sender, EventArgs e)
-        {
-            addSegmentButton13.Visible = false;
-            segmentPanel14.Visible = true;
-            addSegmentButton14.Visible = true;
-            activeIndex = 13;
-            resetSegments();
-            segmentPanel14.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton14_Click(object sender, EventArgs e)
-        {
-            addSegmentButton14.Visible = false;
-            segmentPanel15.Visible = true;
-            addSegmentButton15.Visible = true;
-            activeIndex = 14;
-            resetSegments();
-            segmentPanel15.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton15_Click(object sender, EventArgs e)
-        {
-            addSegmentButton15.Visible = false;
-            segmentPanel16.Visible = true;
-            addSegmentButton16.Visible = true;
-            activeIndex =  15;
-            resetSegments();
-            segmentPanel16.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton16_Click(object sender, EventArgs e)
-        {
-            addSegmentButton16.Visible = false;
-            segmentPanel17.Visible = true;
-            addSegmentButton17.Visible = true;
-            activeIndex = 16;
-            resetSegments();
-            segmentPanel17.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void addSegmentButton17_Click(object sender, EventArgs e)
-        {
-            addSegmentButton17.Visible = false;
-            segmentPanel18.Visible = true;
-            activeIndex = 17;
-            resetSegments();
-            segmentPanel18.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
         private void resetSegments()
         {
-            segmentPanel1.BackColor = Color.Gray;
-            segmentPanel2.BackColor = Color.Gray;
-            segmentPanel3.BackColor = Color.Gray;
-            segmentPanel4.BackColor = Color.Gray;
-            segmentPanel5.BackColor = Color.Gray;
-            segmentPanel6.BackColor = Color.Gray;
-            segmentPanel7.BackColor = Color.Gray;
-            segmentPanel8.BackColor = Color.Gray;
-            segmentPanel9.BackColor = Color.Gray;
-            segmentPanel10.BackColor = Color.Gray;
-            segmentPanel11.BackColor = Color.Gray;
-            segmentPanel12.BackColor = Color.Gray;
-            segmentPanel13.BackColor = Color.Gray;
-            segmentPanel14.BackColor = Color.Gray;
-            segmentPanel15.BackColor = Color.Gray;
-            segmentPanel16.BackColor = Color.Gray;
-            segmentPanel17.BackColor = Color.Gray;
-            segmentPanel18.BackColor = Color.Gray;
-        }
-
-        private void segmentPanel1_Click(object sender, EventArgs e)
-        {
-            activeIndex = 0;
-            resetSegments();
-            segmentPanel1.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
+            //set everything to default
+            segmentPanels[0].BackColor = Color.Gray;
+            segmentPanels[1].BackColor = Color.Gray;
+            segmentPanels[2].BackColor = Color.Gray;
+            segmentPanels[3].BackColor = Color.Gray;
+            segmentPanels[4].BackColor = Color.Gray;
+            segmentPanels[5].BackColor = Color.Gray;
+            segmentPanels[6].BackColor = Color.Gray;
+            segmentPanels[7].BackColor = Color.Gray;
+            segmentPanels[8].BackColor = Color.Gray;
+            segmentPanels[9].BackColor = Color.Gray;
+            segmentPanels[10].BackColor = Color.Gray;
+            segmentPanels[11].BackColor = Color.Gray;
+            segmentPanels[12].BackColor = Color.Gray;
+            segmentPanels[13].BackColor = Color.Gray;
+            segmentPanels[14].BackColor = Color.Gray;
+            segmentPanels[15].BackColor = Color.Gray;
+            segmentPanels[16].BackColor = Color.Gray;
+            segmentPanels[17].BackColor = Color.Gray;
             textTextBox.Text = "";
+            colorButton.BackColor = lightGray;
+            specialEffectButton.Checked = false;
+            scrollingTextButton.Checked = false;
+            entranceEffectComboBox.Text = "";
+            staticEffectComboBox.Text = "";
+            exitEffectComboBox.Text = "";
+            scrollSpeedControl.Value = 0;
+            randomColorCheckBox.Checked = false;
+            borderEffectComboBox.Text = "";
+            borderColorButton.BackColor = lightGray;
+            segmentPanels[activeIndex].BackColor = activeColor;
+
+            //Fill information into the text and image tabs
+            //Adds the text thats saved in the segment, into the TextBox
+            textTextBox.Text = mySegmentArray[activeIndex].messageText;
+            displayDurationControl.Value = mySegmentArray[activeIndex].segmentSpeed;
+            colorButton.BackColor = mySegmentArray[activeIndex].onColor;
             if (mySegmentArray[activeIndex].ignore == true)
             {
                 ignoreCheckBox.Checked = false;
@@ -921,211 +743,25 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = true;
             }
-            //Sets values for Effect combo boxes
-            setEntranceEffectText();
-            setMiddleEffectText();
-            setExitEffectText();
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel2_Click(object sender, EventArgs e)
-        {
-            activeIndex = 1;
-            resetSegments();
-            segmentPanel2.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            if (mySegmentArray[activeIndex].ignore == true)
+            if (mySegmentArray[activeIndex].isScrolling == true)
             {
-                ignoreCheckBox.Checked = false;
+                scrollingTextButton.Checked = true;
+                scrollSpeedControl.Value = mySegmentArray[activeIndex].scrollSpeed;
+                if (mySegmentArray[activeIndex].isRandomColorScrolling == true)
+                {
+                    randomColorCheckBox.Checked = true;
+                }
             }
-            else
+            else if (mySegmentArray[activeIndex].entranceEffect != 0 || mySegmentArray[activeIndex].middleEffect != 0 || mySegmentArray[activeIndex].exitEffect != 0)
             {
-                ignoreCheckBox.Checked = true;
+                specialEffectButton.Checked = true;
+                //Sets values for Effect combo boxes
+                setEntranceEffectText();
+                setMiddleEffectText();
+                setExitEffectText();
             }
-            //Sets values for Effect combo boxes
-            setEntranceEffectText();
-            setMiddleEffectText();
-            setExitEffectText();
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel3_Click(object sender, EventArgs e)
-        {
-            activeIndex = 2;
-            resetSegments();
-            segmentPanel3.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel4_Click(object sender, EventArgs e)
-        {
-            activeIndex = 3;
-            resetSegments();
-            segmentPanel4.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel5_Click(object sender, EventArgs e)
-        {
-            activeIndex = 4;
-            resetSegments();
-            segmentPanel5.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel6_Click(object sender, EventArgs e)
-        {
-            activeIndex = 5;
-            resetSegments();
-            segmentPanel6.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel7_Click(object sender, EventArgs e)
-        {
-            activeIndex = 6;
-            resetSegments();
-            segmentPanel7.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel8_Click(object sender, EventArgs e)
-        {
-            activeIndex = 7; 
-            resetSegments();
-            segmentPanel8.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel9_Click(object sender, EventArgs e)
-        {
-            activeIndex = 8;
-            resetSegments();
-            segmentPanel9.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel10_Click(object sender, EventArgs e)
-        {
-            activeIndex = 9;
-            resetSegments();
-            segmentPanel10.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel11_Click(object sender, EventArgs e)
-        {
-            activeIndex = 10;
-            resetSegments();
-            segmentPanel11.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel12_Click(object sender, EventArgs e)
-        {
-            activeIndex = 11;
-            resetSegments();
-            segmentPanel12.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel13_Click(object sender, EventArgs e)
-        {
-            activeIndex = 12;
-            resetSegments();
-            segmentPanel13.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel14_Click(object sender, EventArgs e)
-        {
-            activeIndex = 13;
-            resetSegments();
-            segmentPanel14.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel15_Click(object sender, EventArgs e)
-        {
-            activeIndex = 14;
-            resetSegments();
-            segmentPanel15.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel16_Click(object sender, EventArgs e)
-        {
-            activeIndex = 15;
-            resetSegments();
-            segmentPanel16.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel17_Click(object sender, EventArgs e)
-        {
-            activeIndex = 16;
-            resetSegments();
-            segmentPanel17.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
-        }
-
-        private void segmentPanel18_Click(object sender, EventArgs e)
-        {
-            activeIndex = 17;
-            resetSegments();
-            segmentPanel18.BackColor = Color.DeepSkyBlue;
-            //Clears the text in TextBox
-            textTextBox.Text = "";
-            //Adds the text thats saved in the segment, into the TextBox
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
+            setBorderEffectText();
+            borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
         }
 
         private int findLocation(double x, double y)
@@ -1210,7 +846,7 @@ namespace Vision
             }
             return result;
         }
-
+        /*
         private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
@@ -1220,7 +856,8 @@ namespace Vision
                 mouseDownLocation = e.Location;
             }
         }
-
+        */
+        /*
         private void segmentPanel1_MouseMove(object sender, MouseEventArgs e)
         {
 
@@ -1230,7 +867,8 @@ namespace Vision
                 segmentPanel1.Top = e.Y + segmentPanel1.Top - mouseDownLocation.Y;
             }
         }
-
+        */
+        /*
         //Save for later
         private void segmentMoveAnimation(Panel panel, Point a, Point b)
         {
@@ -1238,21 +876,22 @@ namespace Vision
             for (int i = 0; i < 23; i++)
             {
                 panel.Left = a.X + 5;
-                /*
-                if (a.X < b.X)
-                {
-                    panel.Left = a.X + 1;
-                    a.X += 1;
-                }
-                if (a.Y < b.Y)
-                {
-                    panel.Top = a.Y + 1;
-                    a.Y += 1;
-                }
-                */
+                
+                //if (a.X < b.X)
+                //{
+                //    panel.Left = a.X + 1;
+                //    a.X += 1;
+                //}
+                //if (a.Y < b.Y)
+                //{
+                //    panel.Top = a.Y + 1;
+                //    a.Y += 1;
+                //}
+                
             }
         }
-
+        */
+        /*
         private void segmentPanel1_MouseUp(object sender, MouseEventArgs e)
         {
 
@@ -1270,23 +909,24 @@ namespace Vision
                 for (int i = 0; i < 23; i++)
                 {
                     segmentPanel2.Left = segmentPanel2.Left - 5;
-                    /*
-                    if (a.X < b.X)
-                    {
-                        panel.Left = a.X + 1;
-                        a.X += 1;
-                    }
-                    if (a.Y < b.Y)
-                    {
-                        panel.Top = a.Y + 1;
-                        a.Y += 1;
-                    }
-                    */
+                    
+                    //if (a.X < b.X)
+                    //{
+                    //    panel.Left = a.X + 1;
+                    //    a.X += 1;
+                    //}
+                    //if (a.Y < b.Y)
+                    //{
+                    //    panel.Top = a.Y + 1;
+                    //    a.Y += 1;
+                    //}
+                    
                     Thread.Sleep(20);
                 }
                 //segmentMoveAnimation(segmentPanel2, segmentPanel2.Location, segmentPanel1.Location);
 
             }
+            
             else if (mouseIsOverPanel(segmentPanel3))
             {
                 segmentMoveAnimation(segmentPanel1, segmentPanel1.Location, segmentPanel2.Location);
@@ -1305,7 +945,7 @@ namespace Vision
                 //segmentPanel1.Top = mySegmentPanelArray[0].Y;
             }
         }
-
+        */
         private void tempop (int moreingIndex, int moreToIndex)
         {
             // call 2 other methods
@@ -1533,6 +1173,12 @@ namespace Vision
             imagePanel.Visible = false;
             textPanel.Visible = true;
             textPanel.Controls.Add(ignoreCheckBox);
+            displayDurationLabel.Location = new Point(14, 63);
+            textPanel.Controls.Add(displayDurationLabel);
+            createASegmentGroupBox.Controls.Add(displayDurationLabel);
+            displayDurationControl.Location = new Point(104, 59);
+            textPanel.Controls.Add(displayDurationControl);
+            createASegmentGroupBox.Controls.Add(displayDurationControl);
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -1643,13 +1289,6 @@ namespace Vision
                 }
             }
         }
-
-        private void displayDurationControl_ValueChanged(object sender, EventArgs e)
-        {
-            //Max set to 2147482 so int doesnt throw an error if the number is to large.
-            int input = (int)Math.Floor(textDisplayDurationControl.Value) * 1000;
-            mySegmentArray[activeIndex].segmentSpeed = input;
-        }
         #endregion
 
         /*
@@ -1684,11 +1323,15 @@ namespace Vision
             textPanel.Visible = false;
             imagePanel.Visible = true;
             imagePanel.Controls.Add(ignoreCheckBox);
+            imagePanel.Controls.Add(displayDurationLabel);
+            displayDurationLabel.Location = new Point (12, 21);
+            imagePanel.Controls.Add(displayDurationControl);
+            displayDurationControl.Location = new Point(102, 18);
         }
 
-        private void imageDisplayDurationControl_ValueChanged(object sender, EventArgs e)
+        private void displayDurationControl_ValueChanged(object sender, EventArgs e)
         {
-            int input = (int)Math.Floor(imageDisplayDurationControl.Value) * 1000;
+            int input = (int)Math.Floor(displayDurationControl.Value) * 1000;
             mySegmentArray[activeIndex].segmentSpeed = input;
         }
 
@@ -1806,6 +1449,7 @@ namespace Vision
         }
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
+            pauseButton.Visible = true;
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
@@ -1855,6 +1499,8 @@ namespace Vision
         #region Marquee Control Buttons
         private void playButton_Click(object sender, EventArgs e)
         {
+            playButton.Visible = false;
+            pauseButton.Visible = true;
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
@@ -1876,6 +1522,8 @@ namespace Vision
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
+            pauseButton.Visible = false;
+            playButton.Visible = true;
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
@@ -1886,5 +1534,10 @@ namespace Vision
             marquee1.borderThreadSuspend();
         }
         #endregion
+
+        private void logoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
