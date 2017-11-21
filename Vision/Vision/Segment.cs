@@ -12,8 +12,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -236,40 +234,6 @@ namespace Vision
                     _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
                 }
             }
-        }
-
-        public string originalBitmapToString()
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            _originalBitmap.Save(memoryStream, ImageFormat.Png);
-            byte[] bitmapBytes = memoryStream.GetBuffer();
-            string bitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
-            return bitmapString;
-        }
-
-        public string scaledBitmapToString()
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            _scaledBitmap.Save(memoryStream, ImageFormat.Png);
-            byte[] bitmapBytes = memoryStream.GetBuffer();
-            string bitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
-            return bitmapString;
-        }
-
-        public void setOriginalBitmap(string imageString)
-        {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            _originalBitmap = new Bitmap(image);
-        }
-
-        public void setScaledBitmap(string imageString)
-        {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            _scaledBitmap = new Bitmap(image);
         }
 
         public Color getPixel(int c, int r)
