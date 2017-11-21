@@ -26,7 +26,7 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
-        private Segment[] mySegmentArray = new Segment[18];
+        private Segment[] mySegmentArray = new Segment[24];
         private Color darkerGray = new Color();
         private Color lightGray = new Color();
         private Color activeColor = new Color();
@@ -57,7 +57,7 @@ namespace Vision
             darkerGray = Color.FromArgb(0, 64, 64, 64);
             lightGray = Color.FromArgb(0, 224, 224, 224);
             activeColor = Color.DeepSkyBlue;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 24; i++)
             {
                 mySegmentArray[i] = new Segment();
             }
@@ -303,21 +303,7 @@ namespace Vision
                     lastSegmentVisable = i;
                 }
             }
-            //for (int i = 0; i < 24; i++)
-            //{
-            //    //there is no addSegmentButtons[0]
-            //    if (i == 1)
-            //    {
-            //        segmentPanels[i].Visible = false;
-            //    }
-            //    else
-            //    {
-            //        segmentPanels[i].Visible = false;
-            //        addSegmentButtons[i].Visible = false;
-            //    }
-            //}
             populateMarqueeButton.Visible = false; //REMOVE
-            fileLocationTextBox.Visible = false;
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
             logoLabel.Visible = false;
@@ -330,7 +316,7 @@ namespace Vision
             saveAndRunButton.Visible = false;
         }
 
-        /*
+        
         private void openMenu()
         {
             populateMarqueeButton.Visible = true; //REMOVE
@@ -339,280 +325,17 @@ namespace Vision
             logoLabel.Visible = true;
             textTabLabel.Visible = true;
             imageTabLabel.Visible = true;
-            marqueeBackgroundColorLabel.Visible = true;
-            marqueeBackgroundColorButton.Visible = true;
-            saveAndRunButton.Visible = true;
-            if (lastSegmentVisable == 1)
-            {
-                segmentPanel1.Visible = true;
-                addSegmentButton1.Visible = true;
-                activeIndex = 1;
-                if (mySegmentArray[activeIndex].isImage == true)
-                {
-                    imagePanel.Visible = true;
-                    imageTabLabel.BackColor = Color.White;
-                    imageTabLabel.ForeColor = Color.Black;
-                    textTabLabel.BackColor = darkerGray;
-                    textTabLabel.ForeColor = Color.White;
-                    //FIll out data
-                }
-                else
-                {
-
-                }
-               
-                
-            }
-            else if (lastSegmentVisable == 2)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                addSegmentButton2.Visible = true;
-            }
-            else if (lastSegmentVisable == 3)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                addSegmentButton3.Visible = true;
-            }
-            else if (lastSegmentVisable == 4)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                addSegmentButton4.Visible = true;
-            }
-            else if (lastSegmentVisable == 5)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                addSegmentButton5.Visible = true;
-            }
-            else if (lastSegmentVisable == 6)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                addSegmentButton6.Visible = true;
-            }
-            else if (lastSegmentVisable == 7)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                addSegmentButton7.Visible = true;
-            }
-            else if (lastSegmentVisable == 8)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                addSegmentButton8.Visible = true;
-            }
-            else if (lastSegmentVisable == 9)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                addSegmentButton9.Visible = true;
-            }
-            else if (lastSegmentVisable == 10)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                addSegmentButton10.Visible = true;
-            }
-            else if (lastSegmentVisable == 11)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                addSegmentButton11.Visible = true;
-            }
-            else if (lastSegmentVisable == 12)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                addSegmentButton12.Visible = true;
-            }
-            else if (lastSegmentVisable == 13)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                addSegmentButton13.Visible = true;
-
-            }
-            else if (lastSegmentVisable == 14)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                segmentPanel14.Visible = true;
-                addSegmentButton14.Visible = true;
-            }
-            else if (lastSegmentVisable == 15)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                segmentPanel14.Visible = true;
-                segmentPanel15.Visible = true;
-                addSegmentButton15.Visible = true;
-            }
-            else if (lastSegmentVisable == 16)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                segmentPanel14.Visible = true;
-                segmentPanel15.Visible = true;
-                segmentPanel16.Visible = true;
-                addSegmentButton16.Visible = true;
-            }
-            else if (lastSegmentVisable == 17)
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                segmentPanel14.Visible = true;
-                segmentPanel15.Visible = true;
-                segmentPanel16.Visible = true;
-                segmentPanel17.Visible = true;
-                addSegmentButton17.Visible = true;
-            }
-            else
-            {
-                segmentPanel1.Visible = true;
-                segmentPanel2.Visible = true;
-                segmentPanel3.Visible = true;
-                segmentPanel4.Visible = true;
-                segmentPanel5.Visible = true;
-                segmentPanel6.Visible = true;
-                segmentPanel7.Visible = true;
-                segmentPanel8.Visible = true;
-                segmentPanel9.Visible = true;
-                segmentPanel10.Visible = true;
-                segmentPanel11.Visible = true;
-                segmentPanel12.Visible = true;
-                segmentPanel13.Visible = true;
-                segmentPanel14.Visible = true;
-                segmentPanel15.Visible = true;
-                segmentPanel16.Visible = true;
-                segmentPanel17.Visible = true;
-                segmentPanel18.Visible = true;
-            }
-
-
-
-
-            fileLocationTextBox.Visible = true;
-
-            
-            
             textPanel.Visible = true;
             imagePanel.Visible = true;
+            marqueeBackgroundColorLabel.Visible = true;
+            marqueeBackgroundColorButton.Visible = true;
+            playButton.Visible = false;
+            pauseButton.Visible = false;
+            saveAndRunButton.Visible = true;
+            resetSegments();
+            backToMenuButton.Visible = false;
+            this.Size = new System.Drawing.Size(1219, 513);
         }
-        */
         private bool mouseIsOverPanel(Panel pnl)
         {
             if (pnl.ClientRectangle.Contains(pnl.PointToClient(Cursor.Position)))
@@ -643,10 +366,10 @@ namespace Vision
 
         /*
          *
-         *   UI Buttons
+         *   Animations
          * 
          */
-        #region UI Buttons
+        #region Animations
         public static class Util
         {
             public enum Effect { Roll, Slide, Center, Blend }
@@ -733,7 +456,7 @@ namespace Vision
             //Fill information into the text and image tabs
             //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
-            displayDurationControl.Value = mySegmentArray[activeIndex].segmentSpeed;
+            displayDurationControl.Value = (mySegmentArray[activeIndex].segmentSpeed / 1000);
             colorButton.BackColor = mySegmentArray[activeIndex].onColor;
             if (mySegmentArray[activeIndex].ignore == true)
             {
@@ -1433,6 +1156,7 @@ namespace Vision
             marquee1.clearBorder(marquee1.BackColor);
 
             //show menu
+            openMenu();
         }
 
         private void saveAndExitButton_Click(object sender, EventArgs e)

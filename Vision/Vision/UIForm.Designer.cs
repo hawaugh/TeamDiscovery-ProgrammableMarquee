@@ -636,9 +636,9 @@ namespace Vision
             // playButton
             // 
             this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playButton.Location = new System.Drawing.Point(12, 433);
+            this.playButton.Location = new System.Drawing.Point(6, 433);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(64, 29);
+            this.playButton.Size = new System.Drawing.Size(65, 37);
             this.playButton.TabIndex = 44;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
@@ -662,7 +662,6 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1203, 474);
-            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
@@ -676,8 +675,9 @@ namespace Vision
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
-            this.Controls.Add(this.marquee1);
             this.Controls.Add(this.playButton);
+            this.Controls.Add(this.pauseButton);
+            this.Controls.Add(this.marquee1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
