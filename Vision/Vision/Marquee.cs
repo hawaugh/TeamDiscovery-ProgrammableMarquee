@@ -1037,7 +1037,7 @@ namespace Vision
                         }
                         if ((r - curtain) == 0)
                         {
-                            setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
+                            setDot(r, c, Color.FromArgb(10, getDotFore(r, c)));
                         }
                     }
                 }
@@ -1062,7 +1062,7 @@ namespace Vision
                         }
                         else if (radius == 17)
                         {
-                            setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
+                            setDot(r, c, Color.FromArgb(10, getDotFore(r, c)));
                         }
                     }
                 }
@@ -1111,7 +1111,7 @@ namespace Vision
             {
                 for (int r = 2; r < 14; r++)
                 {
-                    setDot(r, c, Color.FromArgb(5, getDotFore(r, c)));
+                    setDot(r, c, Color.FromArgb(10, getDotFore(r, c)));
                 }
             }
 
