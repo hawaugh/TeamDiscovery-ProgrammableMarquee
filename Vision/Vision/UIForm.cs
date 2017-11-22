@@ -154,8 +154,7 @@ namespace Vision
             //getLocations();
             activeIndex = 0;
             segmentPanels[0].Visible = true;
-            segmentPanels[0].BackColor = activeColor;
-
+            resetSegments();
             addSegmentButtons[1].Visible = true;
         }
         
@@ -203,6 +202,7 @@ namespace Vision
             clearForMarquee();
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
             marquee1.Visible = true;
             Segment mySegment = new Segment("DISCOVERY", Color.Red, 20000, 4, 4, 4, Color.Red, 4);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 3);
@@ -296,6 +296,15 @@ namespace Vision
                     lastSegmentVisable = i;
                 }
             }
+            //Test which tab is active and then sets that tab to the front so the open menu is called the correct tab is displayed first
+            if (textPanel.Visible == true)
+            {
+                textPanel.BringToFront();
+            }
+            else
+            {
+                imagePanel.BringToFront();
+            }
             populateMarqueeButton.Visible = false; //REMOVE
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
@@ -328,7 +337,8 @@ namespace Vision
             saveAndRunButton.Visible = true;
             resetSegments();
             backToMenuButton.Visible = false;
-            this.Size = new System.Drawing.Size(1219, 513);
+            this.MaximizeBox = false;
+            this.Size = new System.Drawing.Size(1219, 543);
         }
         private bool mouseIsOverPanel(Panel pnl)
         {
@@ -416,35 +426,21 @@ namespace Vision
         private void resetSegments()
         {
             //set everything to default
-            segmentPanels[0].BackColor = Color.Gray;
-            segmentPanels[1].BackColor = Color.Gray;
-            segmentPanels[2].BackColor = Color.Gray;
-            segmentPanels[3].BackColor = Color.Gray;
-            segmentPanels[4].BackColor = Color.Gray;
-            segmentPanels[5].BackColor = Color.Gray;
-            segmentPanels[6].BackColor = Color.Gray;
-            segmentPanels[7].BackColor = Color.Gray;
-            segmentPanels[8].BackColor = Color.Gray;
-            segmentPanels[9].BackColor = Color.Gray;
-            segmentPanels[10].BackColor = Color.Gray;
-            segmentPanels[11].BackColor = Color.Gray;
-            segmentPanels[12].BackColor = Color.Gray;
-            segmentPanels[13].BackColor = Color.Gray;
-            segmentPanels[14].BackColor = Color.Gray;
-            segmentPanels[15].BackColor = Color.Gray;
-            segmentPanels[16].BackColor = Color.Gray;
-            segmentPanels[17].BackColor = Color.Gray;
+            for (int i = 0; i < 24; i++)
+            {
+                segmentPanels[i].BackColor = Color.Gray;
+            }
             textTextBox.Text = "";
-            colorButton.BackColor = lightGray;
-            specialEffectButton.Checked = false;
+            colorButton.BackColor = Color.Red;
+            specialEffectButton.Checked = true;
             scrollingTextButton.Checked = false;
-            entranceEffectComboBox.Text = "";
-            staticEffectComboBox.Text = "";
-            exitEffectComboBox.Text = "";
+            entranceEffectComboBox.Text = "None";
+            staticEffectComboBox.Text = "None";
+            exitEffectComboBox.Text = "None";
             scrollSpeedControl.Value = 0;
             randomColorCheckBox.Checked = false;
-            borderEffectComboBox.Text = "";
-            borderColorButton.BackColor = lightGray;
+            borderEffectComboBox.Text = "None";
+            borderColorButton.BackColor = Color.Red;
             segmentPanels[activeIndex].BackColor = activeColor;
 
             //Fill information into the text and image tabs
@@ -902,17 +898,8 @@ namespace Vision
         {
             if (colorDialogBox.ShowDialog() == DialogResult.OK)
             {
-                //prevents use of default color
-                if (mySegmentArray[activeIndex].onColor == Color.FromArgb(0, 224, 224, 224))
-                {
-                    reservedColorPopup.Visible = true;
-                }
-                else
-                {
-                    mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
-                    colorButton.BackColor = colorDialogBox.Color;
-                    reservedColorPopup.Visible = false;
-                }
+                mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
+                colorButton.BackColor = colorDialogBox.Color;
             }
         }
 
@@ -1086,17 +1073,8 @@ namespace Vision
         {
             if (borderColorDialogBox.ShowDialog() == DialogResult.OK)
             {
-                //prevents use of default color
-                if (mySegmentArray[activeIndex].onColor == Color.FromArgb(0, 224, 224, 224))
-                {
-                    reservedBorderColorPopup.Visible = true;
-                }
-                else
-                {
-                    mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
-                    borderColorButton.BackColor = borderColorDialogBox.Color;
-                    reservedBorderColorPopup.Visible = false;
-                }
+                mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
+                borderColorButton.BackColor = borderColorDialogBox.Color;
             }
         }
 
@@ -1173,6 +1151,7 @@ namespace Vision
             clearForMarquee();
             backToMenuButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
             marquee1.Visible = true;
             Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });

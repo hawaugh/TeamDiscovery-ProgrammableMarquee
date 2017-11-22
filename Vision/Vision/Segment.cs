@@ -55,7 +55,11 @@ namespace Vision
         {
             _ignore = true;    
             _messageText = "";
-            _onColor = Color.FromArgb(0, 224, 224, 224);
+            for (int i = 0; i < 12; i++)
+            {
+                messageMatrix[i] = "";
+            }
+            _onColor = Color.Red;
             _segmentSpeed = 2000;
             _isScrolling = false;
             _isRandomColorScrolling = false;
@@ -64,7 +68,7 @@ namespace Vision
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
-            _borderColor = Color.FromArgb(0, 224, 224, 224);
+            _borderColor = Color.Red;
             _borderEffect = 0;
         }
 
