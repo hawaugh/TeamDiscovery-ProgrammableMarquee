@@ -88,6 +88,8 @@ namespace Vision
             this.marqueeBackgroundColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
+            this.reservedColorPopup = new System.Windows.Forms.Label();
+            this.reservedBorderColorPopup = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -112,6 +114,7 @@ namespace Vision
             // 
             // createASegmentGroupBox
             // 
+            this.createASegmentGroupBox.Controls.Add(this.reservedColorPopup);
             this.createASegmentGroupBox.Controls.Add(this.displayDurationControl);
             this.createASegmentGroupBox.Controls.Add(this.randomColorPopUp);
             this.createASegmentGroupBox.Controls.Add(this.colorLabel);
@@ -501,6 +504,7 @@ namespace Vision
             // 
             // borderOptionsGroupBox
             // 
+            this.borderOptionsGroupBox.Controls.Add(this.reservedBorderColorPopup);
             this.borderOptionsGroupBox.Controls.Add(this.borderColorButton);
             this.borderOptionsGroupBox.Controls.Add(this.borderEffectComboBox);
             this.borderOptionsGroupBox.Controls.Add(this.label2);
@@ -514,11 +518,12 @@ namespace Vision
             // 
             // borderColorButton
             // 
+            this.borderColorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.borderColorButton.Location = new System.Drawing.Point(405, 30);
             this.borderColorButton.Name = "borderColorButton";
             this.borderColorButton.Size = new System.Drawing.Size(75, 23);
             this.borderColorButton.TabIndex = 42;
-            this.borderColorButton.UseVisualStyleBackColor = true;
+            this.borderColorButton.UseVisualStyleBackColor = false;
             this.borderColorButton.Click += new System.EventHandler(this.borderColorButton_Click);
             // 
             // SegmentHolderPanel
@@ -614,11 +619,12 @@ namespace Vision
             // 
             // marqueeBackgroundColorButton
             // 
+            this.marqueeBackgroundColorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(1122, 7);
             this.marqueeBackgroundColorButton.Name = "marqueeBackgroundColorButton";
             this.marqueeBackgroundColorButton.Size = new System.Drawing.Size(75, 23);
             this.marqueeBackgroundColorButton.TabIndex = 42;
-            this.marqueeBackgroundColorButton.UseVisualStyleBackColor = true;
+            this.marqueeBackgroundColorButton.UseVisualStyleBackColor = false;
             this.marqueeBackgroundColorButton.Click += new System.EventHandler(this.marqueeBackgroundColorButton_Click);
             // 
             // pauseButton
@@ -644,6 +650,30 @@ namespace Vision
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Visible = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // reservedColorPopup
+            // 
+            this.reservedColorPopup.AutoSize = true;
+            this.reservedColorPopup.BackColor = System.Drawing.Color.Transparent;
+            this.reservedColorPopup.ForeColor = System.Drawing.Color.Red;
+            this.reservedColorPopup.Location = new System.Drawing.Point(304, 46);
+            this.reservedColorPopup.Name = "reservedColorPopup";
+            this.reservedColorPopup.Size = new System.Drawing.Size(238, 13);
+            this.reservedColorPopup.TabIndex = 44;
+            this.reservedColorPopup.Text = "Color is reserved. Please Select a Different Color.";
+            this.reservedColorPopup.Visible = false;
+            // 
+            // reservedBorderColorPopup
+            // 
+            this.reservedBorderColorPopup.AutoSize = true;
+            this.reservedBorderColorPopup.BackColor = System.Drawing.Color.Transparent;
+            this.reservedBorderColorPopup.ForeColor = System.Drawing.Color.Red;
+            this.reservedBorderColorPopup.Location = new System.Drawing.Point(327, 18);
+            this.reservedBorderColorPopup.Name = "reservedBorderColorPopup";
+            this.reservedBorderColorPopup.Size = new System.Drawing.Size(238, 13);
+            this.reservedBorderColorPopup.TabIndex = 45;
+            this.reservedBorderColorPopup.Text = "Color is reserved. Please Select a Different Color.";
+            this.reservedBorderColorPopup.Visible = false;
             // 
             // marquee1
             // 
@@ -751,6 +781,8 @@ namespace Vision
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.TextBox fileLocationTextBox;
+        private System.Windows.Forms.Label reservedColorPopup;
+        private System.Windows.Forms.Label reservedBorderColorPopup;
     }
 }
 

@@ -55,7 +55,7 @@ namespace Vision
         {
             _ignore = true;    
             _messageText = "";
-            _onColor = Color.Black;
+            _onColor = Color.FromArgb(0, 224, 224, 224);
             _segmentSpeed = 2000;
             _isScrolling = false;
             _isRandomColorScrolling = false;
@@ -64,7 +64,7 @@ namespace Vision
             _entranceEffect = 0;
             _middleEffect = 0;
             _exitEffect = 0;
-            _borderColor = Color.Black;
+            _borderColor = Color.FromArgb(0, 224, 224, 224);
             _borderEffect = 0;
         }
 

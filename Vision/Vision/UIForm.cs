@@ -324,6 +324,7 @@ namespace Vision
             marqueeBackgroundColorButton.Visible = true;
             playButton.Visible = false;
             pauseButton.Visible = false;
+            marquee1.Visible = false;
             saveAndRunButton.Visible = true;
             resetSegments();
             backToMenuButton.Visible = false;
@@ -901,8 +902,17 @@ namespace Vision
         {
             if (colorDialogBox.ShowDialog() == DialogResult.OK)
             {
-                mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
-                colorButton.BackColor = colorDialogBox.Color;
+                //prevents use of default color
+                if (mySegmentArray[activeIndex].onColor == Color.FromArgb(0, 224, 224, 224))
+                {
+                    reservedColorPopup.Visible = true;
+                }
+                else
+                {
+                    mySegmentArray[activeIndex].onColor = colorDialogBox.Color;
+                    colorButton.BackColor = colorDialogBox.Color;
+                    reservedColorPopup.Visible = false;
+                }
             }
         }
 
@@ -1076,8 +1086,17 @@ namespace Vision
         {
             if (borderColorDialogBox.ShowDialog() == DialogResult.OK)
             {
-                mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
-                borderColorButton.BackColor = borderColorDialogBox.Color;
+                //prevents use of default color
+                if (mySegmentArray[activeIndex].onColor == Color.FromArgb(0, 224, 224, 224))
+                {
+                    reservedBorderColorPopup.Visible = true;
+                }
+                else
+                {
+                    mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
+                    borderColorButton.BackColor = borderColorDialogBox.Color;
+                    reservedBorderColorPopup.Visible = false;
+                }
             }
         }
 
