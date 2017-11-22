@@ -430,21 +430,9 @@ namespace Vision
             {
                 segmentPanels[i].BackColor = Color.Gray;
             }
-            textTextBox.Text = "";
-            colorButton.BackColor = Color.Red;
-            specialEffectButton.Checked = true;
-            scrollingTextButton.Checked = false;
-            entranceEffectComboBox.Text = "None";
-            staticEffectComboBox.Text = "None";
-            exitEffectComboBox.Text = "None";
-            scrollSpeedControl.Value = 0;
-            randomColorCheckBox.Checked = false;
-            borderEffectComboBox.Text = "None";
-            borderColorButton.BackColor = Color.Red;
             segmentPanels[activeIndex].BackColor = activeColor;
 
             //Fill information into the text and image tabs
-            //Adds the text thats saved in the segment, into the TextBox
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
             displayDurationControl.Value = (mySegmentArray[activeIndex].segmentSpeed / 1000);
             colorButton.BackColor = mySegmentArray[activeIndex].onColor;
@@ -465,7 +453,7 @@ namespace Vision
                     randomColorCheckBox.Checked = true;
                 }
             }
-            else if (mySegmentArray[activeIndex].entranceEffect != 0 || mySegmentArray[activeIndex].middleEffect != 0 || mySegmentArray[activeIndex].exitEffect != 0)
+            else
             {
                 specialEffectButton.Checked = true;
                 //Sets values for Effect combo boxes
@@ -473,8 +461,18 @@ namespace Vision
                 setMiddleEffectText();
                 setExitEffectText();
             }
-            setBorderEffectText();
-            borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
+            if (mySegmentArray[activeIndex].borderEffect == 3 || mySegmentArray[activeIndex].borderEffect == 4)
+            {
+                borderColorPopUp.Visible = true;
+                borderColorButton.BackColor = lightGray;
+                setBorderEffectText();
+            }
+            else
+            {
+                borderColorPopUp.Visible = false;
+                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
+                setBorderEffectText();
+            }
         }
 
         private int findLocation(double x, double y)
@@ -686,6 +684,7 @@ namespace Vision
         private void entranceEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].entranceEffect = findEntranceEffect(entranceEffectComboBox.Text);
+            setEntranceEffectText();
         }
 
         private int findEntranceEffect(String text)
@@ -719,35 +718,36 @@ namespace Vision
         //Stored here so when added new effects everything can be changed in the same place.
         private void setEntranceEffectText()
         {
-            if (mySegmentArray[activeIndex].exitEffect == 0)
+            if (mySegmentArray[activeIndex].entranceEffect == 0)
             {
-                exitEffectComboBox.Text = "";
+                entranceEffectComboBox.Text = "None";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 1)
+            else if (mySegmentArray[activeIndex].entranceEffect == 1)
             {
-                exitEffectComboBox.Text = "Split";
+                entranceEffectComboBox.Text = "Split";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 2)
+            else if (mySegmentArray[activeIndex].entranceEffect == 2)
             {
-                exitEffectComboBox.Text = "Scroll Up";
+                entranceEffectComboBox.Text = "Scroll Up";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 3)
+            else if (mySegmentArray[activeIndex].entranceEffect == 3)
             {
-                exitEffectComboBox.Text = "Scroll Down";
+                entranceEffectComboBox.Text = "Scroll Down";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 4)
+            else if (mySegmentArray[activeIndex].entranceEffect == 4)
             {
-                exitEffectComboBox.Text = "Random Dots";
+                entranceEffectComboBox.Text = "Random Dots";
             }
             else
             {
-                exitEffectComboBox.Text = "";
+                entranceEffectComboBox.Text = "";
             }
         }
 
         private void staticEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mySegmentArray[activeIndex].middleEffect = findMiddleEffect(staticEffectComboBox.Text);
+            mySegmentArray[activeIndex].middleEffect = findMiddleEffect(middleEffectComboBox.Text);
+            setMiddleEffectText();
         }
 
         private int findMiddleEffect(String text)
@@ -773,27 +773,28 @@ namespace Vision
         //Stored here so when added new effects everything can be changed in the same place.
         private void setMiddleEffectText()
         {
-            if (mySegmentArray[activeIndex].exitEffect == 0)
+            if (mySegmentArray[activeIndex].middleEffect == 0)
             {
-                exitEffectComboBox.Text = "";
+                middleEffectComboBox.Text = "None";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 1)
+            else if (mySegmentArray[activeIndex].middleEffect == 1)
             {
-                exitEffectComboBox.Text = "Random Color Dots";
+                middleEffectComboBox.Text = "Random Color Dots";
             }
-            else if (mySegmentArray[activeIndex].exitEffect == 2)
+            else if (mySegmentArray[activeIndex].middleEffect == 2)
             {
-                exitEffectComboBox.Text = "Fade";
+                middleEffectComboBox.Text = "Fade";
             }
             else
             {
-                exitEffectComboBox.Text = "";
+                middleEffectComboBox.Text = "";
             }
         }
 
         private void exitEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].exitEffect = findExitEffect(exitEffectComboBox.Text);
+            setExitEffectText();
         }
 
         private int findExitEffect(String text)
@@ -829,7 +830,7 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].exitEffect == 0)
             {
-                exitEffectComboBox.Text = "";
+                exitEffectComboBox.Text = "None";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 1)
             {
@@ -926,14 +927,13 @@ namespace Vision
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
-                staticEffectComboBox.Visible = true;
+                middleEffectComboBox.Visible = true;
                 exitEffectLabel.Visible = true;
                 exitEffectComboBox.Visible = true;
                 scrollSpeedControl.Visible = false;
                 scrollSpeedLabel.Visible = false;
                 randomColorCheckBox.Visible = false;
             }
-
         }
 
         private void scrollingTextButton_CheckedChanged(object sender, EventArgs e)
@@ -946,7 +946,7 @@ namespace Vision
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
-                staticEffectComboBox.Visible = false;
+                middleEffectComboBox.Visible = false;
                 exitEffectLabel.Visible = false;
                 exitEffectComboBox.Visible = false;
                 scrollSpeedControl.Visible = true;
@@ -956,7 +956,7 @@ namespace Vision
         }
 
         private void textTextBox_TextChanged(object sender, EventArgs e)
-        {
+        { 
             mySegmentArray[activeIndex].messageText = textTextBox.Text;
             if (textTextBox.Text.Length > 9)
             {
@@ -1073,6 +1073,12 @@ namespace Vision
         {
             if (borderColorDialogBox.ShowDialog() == DialogResult.OK)
             {
+                if (borderColorPopUp.Visible == true)
+                {
+                    mySegmentArray[activeIndex].borderEffect = 0;
+                    borderColorPopUp.Visible = false;
+                    setBorderEffectText();
+                }
                 mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
                 borderColorButton.BackColor = borderColorDialogBox.Color;
             }
@@ -1081,10 +1087,12 @@ namespace Vision
         private void borderEffectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].borderEffect = findBorderEffect(borderEffectComboBox.Text);
+            setBorderEffectText();
         }
 
         private int findBorderEffect(String text)
         {
+            borderColorPopUp.Visible = false;
             if (text == "None")
             {
                 return 0;
@@ -1097,6 +1105,18 @@ namespace Vision
             {
                 return 2;
             }
+            else if (text == "Random Color")
+            {
+                borderColorPopUp.Visible = true;
+                borderColorButton.BackColor = lightGray;
+                return 3;
+            }
+            else if (text == "Random Shooting Colors")
+            {
+                borderColorPopUp.Visible = true;
+                borderColorButton.BackColor = lightGray;
+                return 4;
+            }
             else
             {
                 return 0;
@@ -1107,19 +1127,27 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].borderEffect == 0)
             {
-                exitEffectComboBox.Text = "";
+                borderEffectComboBox.Text = "None";
             }
             else if (mySegmentArray[activeIndex].borderEffect == 1)
             {
-                exitEffectComboBox.Text = "Static";
+                borderEffectComboBox.Text = "Static";
             }
             else if (mySegmentArray[activeIndex].borderEffect == 2)
             {
-                exitEffectComboBox.Text = "Rotate";
+                borderEffectComboBox.Text = "Rotate";
+            }
+            else if (mySegmentArray[activeIndex].borderEffect == 3)
+            {
+                borderEffectComboBox.Text = "Random Color";
+            }
+            else if (mySegmentArray[activeIndex].borderEffect == 4)
+            {
+                borderEffectComboBox.Text = "Random Shooting Colors";
             }
             else
             {
-                exitEffectComboBox.Text = "";
+                borderEffectComboBox.Text = "";
             }
         }
         #endregion
@@ -1245,6 +1273,11 @@ namespace Vision
             marquee1.borderThreadAbort();
             marquee1.clearMarquee(marquee1.BackColor);
             marquee1.clearBorder(marquee1.BackColor);
+        }
+
+        private void textTextBox_Leave(object sender, EventArgs e)
+        {
+            mySegmentArray[activeIndex].messageText = textTextBox.Text;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Vision
             this.scrollSpeedLabel = new System.Windows.Forms.Label();
             this.entranceEffectLabel = new System.Windows.Forms.Label();
             this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.staticEffectComboBox = new System.Windows.Forms.ComboBox();
+            this.middleEffectComboBox = new System.Windows.Forms.ComboBox();
             this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
@@ -90,6 +90,7 @@ namespace Vision
             this.playButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
+            this.borderColorPopUp = new System.Windows.Forms.Label();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -126,7 +127,7 @@ namespace Vision
             this.createASegmentGroupBox.Controls.Add(this.scrollSpeedLabel);
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectLabel);
             this.createASegmentGroupBox.Controls.Add(this.exitEffectComboBox);
-            this.createASegmentGroupBox.Controls.Add(this.staticEffectComboBox);
+            this.createASegmentGroupBox.Controls.Add(this.middleEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.entranceEffectComboBox);
             this.createASegmentGroupBox.Controls.Add(this.scrollingTextButton);
             this.createASegmentGroupBox.Controls.Add(this.specialEffectButton);
@@ -165,9 +166,9 @@ namespace Vision
             this.randomColorPopUp.ForeColor = System.Drawing.Color.Red;
             this.randomColorPopUp.Location = new System.Drawing.Point(291, 46);
             this.randomColorPopUp.Name = "randomColorPopUp";
-            this.randomColorPopUp.Size = new System.Drawing.Size(274, 13);
+            this.randomColorPopUp.Size = new System.Drawing.Size(272, 13);
             this.randomColorPopUp.TabIndex = 42;
-            this.randomColorPopUp.Text = "Color option is removed when Random Colors is selected";
+            this.randomColorPopUp.Text = "Color option is disabled when Random Colors is selected";
             this.randomColorPopUp.Visible = false;
             // 
             // colorLabel
@@ -194,7 +195,7 @@ namespace Vision
             this.longTextPopUp.AutoSize = true;
             this.longTextPopUp.BackColor = System.Drawing.Color.Transparent;
             this.longTextPopUp.ForeColor = System.Drawing.Color.Red;
-            this.longTextPopUp.Location = new System.Drawing.Point(106, 10);
+            this.longTextPopUp.Location = new System.Drawing.Point(103, 10);
             this.longTextPopUp.Name = "longTextPopUp";
             this.longTextPopUp.Size = new System.Drawing.Size(395, 13);
             this.longTextPopUp.TabIndex = 17;
@@ -228,9 +229,9 @@ namespace Vision
             this.staticEffectLabel.AutoSize = true;
             this.staticEffectLabel.Location = new System.Drawing.Point(315, 134);
             this.staticEffectLabel.Name = "staticEffectLabel";
-            this.staticEffectLabel.Size = new System.Drawing.Size(65, 13);
+            this.staticEffectLabel.Size = new System.Drawing.Size(69, 13);
             this.staticEffectLabel.TabIndex = 15;
-            this.staticEffectLabel.Text = "Static Effect";
+            this.staticEffectLabel.Text = "Middle Effect";
             this.staticEffectLabel.Visible = false;
             // 
             // scrollSpeedControl
@@ -278,19 +279,19 @@ namespace Vision
             this.exitEffectComboBox.TabIndex = 13;
             this.exitEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.exitEffectComboBox_SelectedIndexChanged);
             // 
-            // staticEffectComboBox
+            // middleEffectComboBox
             // 
-            this.staticEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.staticEffectComboBox.FormattingEnabled = true;
-            this.staticEffectComboBox.Items.AddRange(new object[] {
+            this.middleEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.middleEffectComboBox.FormattingEnabled = true;
+            this.middleEffectComboBox.Items.AddRange(new object[] {
             "None",
             "Random Color Dots",
             "Fade"});
-            this.staticEffectComboBox.Location = new System.Drawing.Point(256, 150);
-            this.staticEffectComboBox.Name = "staticEffectComboBox";
-            this.staticEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.staticEffectComboBox.TabIndex = 12;
-            this.staticEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.staticEffectComboBox_SelectedIndexChanged);
+            this.middleEffectComboBox.Location = new System.Drawing.Point(256, 150);
+            this.middleEffectComboBox.Name = "middleEffectComboBox";
+            this.middleEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.middleEffectComboBox.TabIndex = 12;
+            this.middleEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.staticEffectComboBox_SelectedIndexChanged);
             // 
             // entranceEffectComboBox
             // 
@@ -379,11 +380,14 @@ namespace Vision
             // borderEffectComboBox
             // 
             this.borderEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.borderEffectComboBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.borderEffectComboBox.FormattingEnabled = true;
             this.borderEffectComboBox.Items.AddRange(new object[] {
             "None",
             "Satic",
-            "Rotate"});
+            "Rotate",
+            "Random Color",
+            "Random Shooting Colors"});
             this.borderEffectComboBox.Location = new System.Drawing.Point(91, 30);
             this.borderEffectComboBox.Name = "borderEffectComboBox";
             this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -498,6 +502,7 @@ namespace Vision
             // 
             // borderOptionsGroupBox
             // 
+            this.borderOptionsGroupBox.Controls.Add(this.borderColorPopUp);
             this.borderOptionsGroupBox.Controls.Add(this.borderColorButton);
             this.borderOptionsGroupBox.Controls.Add(this.borderEffectComboBox);
             this.borderOptionsGroupBox.Controls.Add(this.label2);
@@ -665,6 +670,16 @@ namespace Vision
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
             // 
+            // borderColorPopUp
+            // 
+            this.borderColorPopUp.AutoSize = true;
+            this.borderColorPopUp.ForeColor = System.Drawing.Color.Red;
+            this.borderColorPopUp.Location = new System.Drawing.Point(342, 18);
+            this.borderColorPopUp.Name = "borderColorPopUp";
+            this.borderColorPopUp.Size = new System.Drawing.Size(221, 13);
+            this.borderColorPopUp.TabIndex = 43;
+            this.borderColorPopUp.Text = "Colors option is disabled for that Border Effect";
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,7 +738,7 @@ namespace Vision
         private System.Windows.Forms.Label staticEffectLabel;
         private System.Windows.Forms.Label entranceEffectLabel;
         private System.Windows.Forms.ComboBox exitEffectComboBox;
-        private System.Windows.Forms.ComboBox staticEffectComboBox;
+        private System.Windows.Forms.ComboBox middleEffectComboBox;
         private System.Windows.Forms.ComboBox entranceEffectComboBox;
         private System.Windows.Forms.RadioButton scrollingTextButton;
         private System.Windows.Forms.RadioButton specialEffectButton;
@@ -764,6 +779,7 @@ namespace Vision
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.TextBox fileLocationTextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label borderColorPopUp;
     }
 }
 
