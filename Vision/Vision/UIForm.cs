@@ -20,6 +20,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Timers;
+
 
 namespace Vision
 {
@@ -39,10 +41,12 @@ namespace Vision
         private Label[] segmentLabels = new Label[24];
         private Button[] segmentButtons = new Button[24];
         private Button[] addSegmentButtons = new Button[24];
-
+        private Point[] segmentLocationArray = new Point[24];
+        private Point[] addSegmentLocationArray = new Point[24];
+        private int largestNum = 1;
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
-        private Point[] mySegmentPanelArray = new Point[18];
+
         //Holder for all locations in order
         private Point[] mySegmentPanelArrayLoc;
         //Parallel Array for the location of all SegmentLabels
@@ -63,7 +67,7 @@ namespace Vision
             }
 
             InitializeComponent();
-            int x = 5;
+            int x = 6;
             int y = 6;
             int x2 = 60;
             int y2 = 14;
@@ -71,19 +75,19 @@ namespace Vision
             {
                 if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
                 {
-                    x = 5;
+                    x = 6;
                     x2 = 50;
                     y += 46;
                     y2 += 46;
                 }
                 else if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
                 {
-                    x = 120;
+                    x = 122;
                     x2 = 165;
                 }
                 else if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
                 {
-                    x = 235;
+                    x = 238;
                     x2 = 280;
                 }
                 segmentLabels[i] = new System.Windows.Forms.Label();
@@ -96,64 +100,27 @@ namespace Vision
                 else
                 {
                     addSegmentButtons[i] = new System.Windows.Forms.Button();
-                    // 
-                    // Create addSegmentButtons
-                    // 
-                    addSegmentButtons[i].Anchor = System.Windows.Forms.AnchorStyles.None;
-                    addSegmentButtons[i].BackColor = System.Drawing.Color.Gray;
-                    addSegmentButtons[i].FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-                    addSegmentButtons[i].Location = new System.Drawing.Point(x2, y2);
-                    addSegmentButtons[i].Size = new System.Drawing.Size(25, 25);
-                    addSegmentButtons[i].TabIndex = 14;
-                    addSegmentButtons[i].Text = "+";
-                    addSegmentButtons[i].UseVisualStyleBackColor = false;
-                    addSegmentButtons[i].Visible = false;
-                    addSegmentButtons[i].Click += new System.EventHandler(addSegmentClickEvent);
-                    addSegmentButtons[i].BringToFront();
+
+                    //Create addSegmentButtons
+                    createNewAddSegmentButton(i, x2, y2);
                 }
                 SegmentHolderPanel.Controls.Add(addSegmentButtons[i]);
                 SegmentHolderPanel.Controls.Add(segmentPanels[i]);
-                // 
+
                 // Create Segment Panels
-                // 
-                segmentPanels[i].BackColor = System.Drawing.Color.Gray;
-                segmentPanels[i].Controls.Add(segmentLabels[i]);
-                segmentPanels[i].Controls.Add(segmentButtons[i]);
-                segmentPanels[i].Location = new System.Drawing.Point(x, y);
-                segmentPanels[i].Size = new System.Drawing.Size(110, 40);
-                segmentPanels[i].TabIndex = 14;
-                segmentPanels[i].Visible = false;
-                segmentPanels[i].Click += new System.EventHandler(segmentClickEvent);
-                // 
+                createNewPanel(i, x, y);
+
                 // Create Segment Label
-                // 
-                segmentLabels[i].AutoSize = true;
-                segmentLabels[i].ForeColor = System.Drawing.Color.White;
-                segmentLabels[i].Location = new System.Drawing.Point(17, 11);
-                segmentLabels[i].Size = new System.Drawing.Size(58, 13);
-                segmentLabels[i].TabIndex = 8;
-                segmentLabels[i].Text = "Segment " + (i + 1);
-                segmentLabels[i].Click += new System.EventHandler(segmentClickEvent);
-                // 
+                createNewLabel(i);
+
                 // Create Segment Close Buttons
-                // 
-                segmentButtons[i].BackColor = System.Drawing.Color.Transparent;
-                segmentButtons[i].BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-                segmentButtons[i].FlatAppearance.BorderSize = 0;
-                segmentButtons[i].FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-                segmentButtons[i].FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-                segmentButtons[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                segmentButtons[i].ForeColor = System.Drawing.Color.White;
-                segmentButtons[i].Location = new System.Drawing.Point(87, 0);
-                segmentButtons[i].Size = new System.Drawing.Size(23, 23);
-                segmentButtons[i].TabIndex = 7;
-                segmentButtons[i].Text = "X";
-                segmentButtons[i].UseVisualStyleBackColor = false;
+                createNewCloseButtons(i);
             }
             
-            //getLocations();
+            getLocations();
             activeIndex = 0;
             segmentPanels[0].Visible = true;
+            mySegmentArray[0].ignore = false;
             resetSegments();
             addSegmentButtons[1].Visible = true;
         }
@@ -165,7 +132,6 @@ namespace Vision
 
         private void segmentClickEvent(object sender, EventArgs e)
         {
-            //Util.Animate(segmentPanels[0], Util.Effect.Slide, 150, 180);
             for (int i = 0; i < 24; i++)
             {
                 if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
@@ -184,15 +150,189 @@ namespace Vision
             {
                 if (mouseIsOverButton(addSegmentButtons[i]))
                 {
+                    if (i == 23)
+                    {
+                        activeIndex = i;
+                        segmentPanels[i].Visible = true;
+                        mySegmentArray[i].ignore = false;
+                        resetSegments();
+                        addSegmentButtons[i].Visible = false;
+                        //leave loop
+                        i = 24;
+                    }
+                    else
+                    {
+                        activeIndex = i;
+                        segmentPanels[i].Visible = true;
+                        mySegmentArray[i].ignore = false;
+                        resetSegments();
+                        addSegmentButtons[i].Visible = false;
+                        addSegmentButtons[i + 1].Visible = true;
+                        //leave loop
+                        i = 24;
+                    }
+                }
+            }
+        }
+
+        private void closeButtonClickEvent(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < 24; i++)
+            {
+                if (mouseIsOverButton(segmentButtons[i]))
+                {
+                    deleteSegment(i);
                     activeIndex = i;
-                    segmentPanels[i].Visible = true;
                     resetSegments();
-                    addSegmentButtons[i].Visible = false;
-                    addSegmentButtons[i + 1].Visible = true;
                     //leave loop
                     i = 24;
                 }
             }
+        }
+
+        private void createNewPanel(int i, int x, int y)
+        {
+            // 
+            // Create Segment Panels
+            // 
+            segmentPanels[i].BackColor = System.Drawing.Color.Gray;
+            segmentPanels[i].Controls.Add(segmentLabels[i]);
+            segmentPanels[i].Controls.Add(segmentButtons[i]);
+            segmentPanels[i].Location = new System.Drawing.Point(x, y);
+            segmentPanels[i].Size = new System.Drawing.Size(110, 40);
+            segmentPanels[i].TabIndex = 14;
+            segmentPanels[i].Visible = false;
+            segmentPanels[i].Click += new System.EventHandler(segmentClickEvent);
+        }
+
+        private void createNewLabel(int i)
+        {
+            // 
+            // Create Segment Label
+            // 
+            segmentLabels[i].AutoSize = true;
+            segmentLabels[i].ForeColor = System.Drawing.Color.White;
+            segmentLabels[i].Location = new System.Drawing.Point(17, 11);
+            segmentLabels[i].Size = new System.Drawing.Size(58, 13);
+            segmentLabels[i].TabIndex = 8;
+            segmentLabels[i].Text = "Segment " + (largestNum);
+            segmentLabels[i].Click += new System.EventHandler(segmentClickEvent);
+            largestNum++;
+        }
+
+        private void createNewCloseButtons(int i)
+        {
+            // 
+            // Create Segment Close Buttons
+            // 
+            segmentButtons[i].BackColor = System.Drawing.Color.Transparent;
+            segmentButtons[i].BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            segmentButtons[i].FlatAppearance.BorderSize = 0;
+            segmentButtons[i].FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            segmentButtons[i].FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            segmentButtons[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            segmentButtons[i].ForeColor = System.Drawing.Color.White;
+            segmentButtons[i].Location = new System.Drawing.Point(87, 0);
+            segmentButtons[i].Size = new System.Drawing.Size(23, 23);
+            segmentButtons[i].TabIndex = 7;
+            segmentButtons[i].Text = "X";
+            segmentButtons[i].UseVisualStyleBackColor = false;
+            segmentButtons[i].Click += new System.EventHandler(closeButtonClickEvent);
+        }
+
+        private void createNewAddSegmentButton(int i, int x, int y)
+        {
+            // 
+            // Create addSegmentButtons
+            // 
+            addSegmentButtons[i].Anchor = System.Windows.Forms.AnchorStyles.None;
+            addSegmentButtons[i].BackColor = System.Drawing.Color.Gray;
+            addSegmentButtons[i].FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            addSegmentButtons[i].Location = new System.Drawing.Point(x, y);
+            addSegmentButtons[i].Size = new System.Drawing.Size(25, 25);
+            addSegmentButtons[i].TabIndex = 14;
+            addSegmentButtons[i].Text = "+";
+            addSegmentButtons[i].UseVisualStyleBackColor = false;
+            addSegmentButtons[i].Visible = false;
+            addSegmentButtons[i].Click += new System.EventHandler(addSegmentClickEvent);
+            addSegmentButtons[i].BringToFront();
+        }
+
+        private void reorderSegments()
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (segmentPanels[i].Location != segmentLocationArray[i])
+                {
+
+                }
+            }
+        }
+
+        private void animateSegmentTimer_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (segmentPanels[i].Location != segmentLocationArray[i])
+                {
+                    if (segmentPanels[i].Location.X == segmentLocationArray[i].X)
+                    {
+                        animateSegmentTimer.Enabled = false;
+                    }
+                    else
+                    {
+                        segmentPanels[i].Left += 2;
+                    }
+                    if (segmentPanels[i].Location.Y == segmentLocationArray[i].Y)
+                    {
+                        animateSegmentTimer.Enabled = false;
+                    }
+                    else
+                    {
+                        segmentPanels[i].Top += 4;
+                    }
+                }
+            }
+        }
+
+        private void deleteSegment(int deleted)
+        {
+            segmentPanels[deleted].Visible = false;
+            for (int i = 0; i < 24; i++)
+            {
+                if (i > deleted)
+                {
+                    mySegmentArray[i - 1] = mySegmentArray[i];
+                    segmentPanels[i - 1] = segmentPanels[i];
+                    segmentLabels[i - 1] = segmentLabels[i];
+                    segmentButtons[i - 1] = segmentButtons[i];
+                    addSegmentButtons[i - 1] = addSegmentButtons[i];
+                    segmentPanels[i].Left = segmentLocationArray[i - 1].X;
+                    segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
+                    addSegmentButtons[i].Left = addSegmentLocationArray[i - 1].X;
+                    addSegmentButtons[i].Top = addSegmentLocationArray[i - 1].Y;
+                }
+            }
+            //Fill arrays with a new object at the end of the Array
+            mySegmentArray[23] = new Segment();
+            SegmentHolderPanel.Controls.Add(segmentPanels[23]);
+            segmentLabels[23] = new System.Windows.Forms.Label();
+            segmentButtons[23] = new System.Windows.Forms.Button();
+            segmentPanels[23] = new System.Windows.Forms.Panel();
+            addSegmentButtons[23] = new System.Windows.Forms.Button();
+            SegmentHolderPanel.Controls.Add(segmentPanels[23]);
+            SegmentHolderPanel.Controls.Add(addSegmentButtons[23]);
+            createNewLabel(23);
+            createNewCloseButtons(23);
+            createNewPanel(23, 238, 328);
+            createNewAddSegmentButton(23, 280, 336);
+            animateSegmentTimer.Enabled = true;
+        }
+
+        private void moveSegment(int moved)
+        {
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -221,70 +361,22 @@ namespace Vision
          */
         #region Generic Functions
         //Sets the locations of objects to a parallel array
-        /*
+        
         private void getLocations()
         {
-            mySegmentPanelArray[0] = segmentPanel1.Location;
-            mySegmentPanelArray[1] = segmentPanel2.Location;
-            mySegmentPanelArray[2] = segmentPanel3.Location;
-            mySegmentPanelArray[3] = segmentPanel4.Location;
-            mySegmentPanelArray[4] = segmentPanel5.Location;
-            mySegmentPanelArray[5] = segmentPanel6.Location;
-            mySegmentPanelArray[6] = segmentPanel7.Location;
-            mySegmentPanelArray[7] = segmentPanel8.Location;
-            mySegmentPanelArray[8] = segmentPanel9.Location;
-            mySegmentPanelArray[9] = segmentPanel10.Location;
-            mySegmentPanelArray[10] = segmentPanel11.Location;
-            mySegmentPanelArray[11] = segmentPanel12.Location;
-            mySegmentPanelArray[12] = segmentPanel13.Location;
-            mySegmentPanelArray[13] = segmentPanel14.Location;
-            mySegmentPanelArray[14] = segmentPanel15.Location;
-            mySegmentPanelArray[15] = segmentPanel16.Location;
-            mySegmentPanelArray[16] = segmentPanel17.Location;
-            mySegmentPanelArray[17] = segmentPanel18.Location;
-
-            mySegmentLabelArray[0] = segmentLabel1.Location;
-            mySegmentLabelArray[1] = segmentLabel2.Location;
-            mySegmentLabelArray[2] = segmentLabel3.Location;
-            mySegmentLabelArray[3] = segmentLabel4.Location;
-            mySegmentLabelArray[4] = segmentLabel5.Location;
-            mySegmentLabelArray[5] = segmentLabel6.Location;
-            mySegmentLabelArray[6] = segmentLabel7.Location;
-            mySegmentLabelArray[7] = segmentLabel8.Location;
-            mySegmentLabelArray[8] = segmentLabel9.Location;
-            mySegmentLabelArray[9] = segmentLabel10.Location;
-            mySegmentLabelArray[10] = segmentLabel11.Location;
-            mySegmentLabelArray[11] = segmentLabel12.Location;
-            mySegmentLabelArray[12] = segmentLabel13.Location;
-            mySegmentLabelArray[13] = segmentLabel14.Location;
-            mySegmentLabelArray[14] = segmentLabel15.Location;
-            mySegmentLabelArray[15] = segmentLabel16.Location;
-            mySegmentLabelArray[16] = segmentLabel17.Location;
-            mySegmentLabelArray[17] = segmentLabel18.Location;
-
-            mySegmentCloseButtonArray[0] = closeButton1.Location;
-            mySegmentCloseButtonArray[1] = closeButton2.Location;
-            mySegmentCloseButtonArray[2] = closeButton3.Location;
-            mySegmentCloseButtonArray[3] = closeButton4.Location;
-            mySegmentCloseButtonArray[4] = closeButton5.Location;
-            mySegmentCloseButtonArray[5] = closeButton6.Location;
-            mySegmentCloseButtonArray[6] = closeButton7.Location;
-            mySegmentCloseButtonArray[7] = closeButton8.Location;
-            mySegmentCloseButtonArray[8] = closeButton9.Location;
-            mySegmentCloseButtonArray[9] = closeButton10.Location;
-            mySegmentCloseButtonArray[10] = closeButton11.Location;
-            mySegmentCloseButtonArray[11] = closeButton12.Location;
-            mySegmentCloseButtonArray[12] = closeButton13.Location;
-            mySegmentCloseButtonArray[13] = closeButton14.Location;
-            mySegmentCloseButtonArray[14] = closeButton15.Location;
-            mySegmentCloseButtonArray[15] = closeButton16.Location;
-            mySegmentCloseButtonArray[16] = closeButton17.Location;
-            mySegmentCloseButtonArray[17] = closeButton18.Location;
-
-            //Holder for all locations in order
-            mySegmentPanelArrayLoc = mySegmentPanelArray;
+            for (int i = 0; i < 24; i++)
+            {
+                if (i == 0)
+                {
+                    segmentLocationArray[i] = segmentPanels[i].Location;
+                }
+                else
+                {
+                    addSegmentLocationArray[i] = addSegmentButtons[i].Location;
+                    segmentLocationArray[i] = segmentPanels[i].Location;
+                }
+            }
         }
-        */
         
         private void clearForMarquee()
         {
@@ -477,6 +569,7 @@ namespace Vision
 
         private int findLocation(double x, double y)
         {
+
             int result = 0;
             //test whether the mouse location is in a segment zone
             if (x > 5 && x < 115 && y > 6 && y < 46)
@@ -1273,11 +1366,6 @@ namespace Vision
             marquee1.borderThreadAbort();
             marquee1.clearMarquee(marquee1.BackColor);
             marquee1.clearBorder(marquee1.BackColor);
-        }
-
-        private void textTextBox_Leave(object sender, EventArgs e)
-        {
-            mySegmentArray[activeIndex].messageText = textTextBox.Text;
         }
     }
 }
