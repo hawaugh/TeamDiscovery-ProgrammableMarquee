@@ -673,7 +673,6 @@ namespace Vision
             // 
             // animateSegmentTimer
             // 
-            this.animateSegmentTimer.Interval = 10;
             this.animateSegmentTimer.Tick += new System.EventHandler(this.animateSegmentTimer_Tick);
             // 
             // marquee1

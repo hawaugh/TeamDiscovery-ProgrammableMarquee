@@ -44,6 +44,9 @@ namespace Vision
         private Point[] segmentLocationArray = new Point[24];
         private Point[] addSegmentLocationArray = new Point[24];
         private int largestNum = 1;
+        private Point a;
+        private Point b;
+        private int moving;
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
 
@@ -137,6 +140,7 @@ namespace Vision
                 if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
                 {
                     activeIndex = i;
+                    moveSegment(2, segmentPanels[2].Location, segmentPanels[1].Location);
                     resetSegments();
                     //leave loop
                     i = 24;
@@ -154,9 +158,9 @@ namespace Vision
                     {
                         activeIndex = i;
                         segmentPanels[i].Visible = true;
+                        addSegmentButtons[i].Visible = false;
                         mySegmentArray[i].ignore = false;
                         resetSegments();
-                        addSegmentButtons[i].Visible = false;
                         //leave loop
                         i = 24;
                     }
@@ -164,9 +168,9 @@ namespace Vision
                     {
                         activeIndex = i;
                         segmentPanels[i].Visible = true;
+                        addSegmentButtons[i].Visible = false;
                         mySegmentArray[i].ignore = false;
                         resetSegments();
-                        addSegmentButtons[i].Visible = false;
                         addSegmentButtons[i + 1].Visible = true;
                         //leave loop
                         i = 24;
@@ -183,7 +187,8 @@ namespace Vision
                 if (mouseIsOverButton(segmentButtons[i]))
                 {
                     deleteSegment(i);
-                    activeIndex = i;
+                    
+                    activeIndex = i - 1;
                     resetSegments();
                     //leave loop
                     i = 24;
@@ -259,41 +264,102 @@ namespace Vision
             addSegmentButtons[i].BringToFront();
         }
 
-        private void reorderSegments()
-        {
-            for (int i = 0; i < 24; i++)
-            {
-                if (segmentPanels[i].Location != segmentLocationArray[i])
-                {
-
-                }
-            }
-        }
-
         private void animateSegmentTimer_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 24; i++)
+            if (segmentPanels[moving].Location.X == segmentLocationArray[moving].X)
             {
-                if (segmentPanels[i].Location != segmentLocationArray[i])
+                animateSegmentTimer.Enabled = false;
+            }
+            else
+            {
+                segmentPanels[moving].Left += 2;
+            }
+            if (segmentPanels[moving].Location.Y == segmentLocationArray[moving].Y)
+            {
+                animateSegmentTimer.Enabled = false;
+            }
+            else
+            {
+                segmentPanels[moving].Top += 2;
+            }
+            /*
+            if (a.X > b.X && a.Y > b.Y)
+            {
+                if (a.X != b.X)
                 {
-                    if (segmentPanels[i].Location.X == segmentLocationArray[i].X)
-                    {
-                        animateSegmentTimer.Enabled = false;
-                    }
-                    else
-                    {
-                        segmentPanels[i].Left += 2;
-                    }
-                    if (segmentPanels[i].Location.Y == segmentLocationArray[i].Y)
-                    {
-                        animateSegmentTimer.Enabled = false;
-                    }
-                    else
-                    {
-                        segmentPanels[i].Top += 4;
-                    }
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Left -= 2;
+                }
+                if (a.Y != b.Y)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Top -= 2;
                 }
             }
+            else if (a.X < b.X && a.Y < b.Y)
+            {
+                if (a.X != b.X)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Left += 2;
+                }
+                if (a.Y != b.Y)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Top += 2;
+                }
+            }
+            else if (a.X > b.X && a.Y < b.Y)
+            {
+                if (a.X != b.X)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Left -= 2;
+                }
+                if (a.Y != b.Y)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Top += 2;
+                }
+            }
+            else if (a.X < b.X && a.Y > b.Y)
+            {
+                if (a.X != b.X)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Left += 2;
+                }
+                if (a.Y != b.Y)
+                {
+                    animateSegmentTimer.Enabled = false;
+                }
+                else
+                {
+                    segmentPanels[moving].Top -= 2;
+                }
+            }
+            */
         }
 
         private void deleteSegment(int deleted)
@@ -327,12 +393,70 @@ namespace Vision
             createNewCloseButtons(23);
             createNewPanel(23, 238, 328);
             createNewAddSegmentButton(23, 280, 336);
-            animateSegmentTimer.Enabled = true;
         }
 
-        private void moveSegment(int moved)
+        private void moveSegment(int moved, Point a, Point b)
         {
-
+            if (a.X > b.X && a.Y > b.Y)
+            {
+                while (segmentPanels[moved].Location != b)
+                {
+                    if (segmentPanels[moved].Location.X != b.X)
+                    {
+                        segmentPanels[moved].Left -= 1;
+                    }
+                    if (segmentPanels[moved].Location.Y != b.Y)
+                    {
+                        segmentPanels[moved].Top -= 1;
+                    }
+                    Thread.Sleep(2);
+                }
+            }
+            else if (a.X < b.X && a.Y < b.Y)
+            {
+                while (segmentPanels[moved].Location != b)
+                {
+                    if (segmentPanels[moved].Location.X != b.X)
+                    {
+                        segmentPanels[moved].Left += 1;
+                    }
+                    if (segmentPanels[moved].Location.Y != b.Y)
+                    {
+                        segmentPanels[moved].Top += 1;
+                    }
+                    Thread.Sleep(2);
+                }
+            }
+            else if (a.X > b.X && a.Y < b.Y)
+            {
+                while (segmentPanels[moved].Location != b)
+                {
+                    if (segmentPanels[moved].Location.X != b.X)
+                    {
+                        segmentPanels[moved].Left -= 1;
+                    }
+                    if (segmentPanels[moved].Location.Y != b.Y)
+                    {
+                        segmentPanels[moved].Top += 1;
+                    }
+                    Thread.Sleep(2);
+                }
+            }
+            else if (a.X < b.X && a.Y > b.Y)
+            {
+                while (segmentPanels[moved].Location != b)
+                {
+                    if (segmentPanels[moved].Location.X != b.X)
+                    {
+                        segmentPanels[moved].Left += 1;
+                    }
+                    if (segmentPanels[moved].Location.Y != b.Y)
+                    {
+                        segmentPanels[moved].Top -= 1;
+                    }
+                    Thread.Sleep(2);
+                }
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
