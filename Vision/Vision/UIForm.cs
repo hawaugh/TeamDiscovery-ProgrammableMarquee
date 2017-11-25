@@ -46,7 +46,7 @@ namespace Vision
         private int largestNum = 1;
         private Point a;
         private Point b;
-        private int moving;
+        private int moveFrom;
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
 
@@ -119,7 +119,6 @@ namespace Vision
                 // Create Segment Close Buttons
                 createNewCloseButtons(i);
             }
-            
             getLocations();
             activeIndex = 0;
             segmentPanels[0].Visible = true;
@@ -140,7 +139,7 @@ namespace Vision
                 if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
                 {
                     activeIndex = i;
-                    moveSegment(2, segmentPanels[2].Location, segmentPanels[1].Location);
+                    //moveSegment(2, segmentPanels[2].Location, segmentPanels[1].Location);
                     resetSegments();
                     //leave loop
                     i = 24;
@@ -182,29 +181,14 @@ namespace Vision
 
         private void closeButtonClickEvent(object sender, EventArgs e)
         {
-
             for (int i = 0; i < 24; i++)
             {
                 if (mouseIsOverButton(segmentButtons[i]))
                 { 
                     //Test if segment 1 is the only visible segment. Else it can be deleted.
-                    if (i == 0)
+                    if (i == 0 && segmentPanels[1].Visible == false)
                     {
-                        if (segmentPanels[1].Visible == false)
-                        {
-                            lastSegmentPopUp.Visible = true;
-                        }
-                        else
-                        {
-                            lastSegmentPopUp.Visible = false;
-                            deleteSegment(i);
-
-                            activeIndex = i;
-                            resetSegments();
-                            //leave loop
-                            i = 24;
-                        }
-                        
+                        lastSegmentPopUp.Visible = true;
                     }
                     else
                     {
@@ -216,6 +200,65 @@ namespace Vision
                         //leave loop
                         i = 24;
                     }
+                }
+            }
+        }
+
+        
+        private void mouseDownEvent(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (mouseIsOverPanel(segmentPanels[i]))
+                {
+                    if (segmentPanels[i].Visible == true)
+                    {
+                        moveFrom = i;
+                        //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
+                        segmentPanels[i].BringToFront();
+                        if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                        {
+                            mouseDownLocation = e.Location;
+                        }
+                        i = 24;
+                    }
+                }
+             }
+        }
+        
+        private void mouseMoveEvent(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (mouseIsOverPanel(segmentPanels[i]))
+                {
+                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                    {
+                        segmentPanels[i].Left = e.X + segmentPanels[i].Left - mouseDownLocation.X;
+                        segmentPanels[i].Top = e.Y + segmentPanels[i].Top - mouseDownLocation.Y;
+                    }
+                    i = 24;
+                }
+            }
+        }
+
+        private void mouseUpEvent(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].Visible == true)
+                {
+                    segmentPanels[moveFrom].Left = segmentLocationArray[i].X;
+                    segmentPanels[moveFrom].Top = segmentLocationArray[i].Y;
+                    activeIndex = i;
+                    resetSegments();
+                    moveSegment(moveFrom, i);
+                }
+                //Set back to starting position
+                else
+                {
+                    segmentPanels[i].Left = segmentLocationArray[i].X;
+                    segmentPanels[i].Top = segmentLocationArray[i].Y;
                 }
             }
         }
@@ -233,6 +276,9 @@ namespace Vision
             segmentPanels[i].TabIndex = 14;
             segmentPanels[i].Visible = false;
             segmentPanels[i].Click += new System.EventHandler(segmentClickEvent);
+            segmentPanels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
+            segmentPanels[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
+            segmentPanels[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
         }
 
         private void createNewLabel(int i)
@@ -247,6 +293,9 @@ namespace Vision
             segmentLabels[i].TabIndex = 8;
             segmentLabels[i].Text = "Segment " + (largestNum);
             segmentLabels[i].Click += new System.EventHandler(segmentClickEvent);
+            segmentLabels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
+            segmentLabels[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
+            segmentLabels[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
             largestNum++;
         }
 
@@ -287,7 +336,7 @@ namespace Vision
             addSegmentButtons[i].Click += new System.EventHandler(addSegmentClickEvent);
             addSegmentButtons[i].BringToFront();
         }
-
+        /*
         private void animateSegmentTimer_Tick(object sender, EventArgs e)
         {
             if (segmentPanels[moving].Location.X == segmentLocationArray[moving].X)
@@ -382,10 +431,9 @@ namespace Vision
                 {
                     segmentPanels[moving].Top -= 2;
                 }
-            }
-            */
-        }
-
+            }  
+    }
+    */
         private void deleteSegment(int deleted)
         {
             segmentPanels[deleted].Visible = false;
@@ -419,72 +467,58 @@ namespace Vision
             createNewAddSegmentButton(23, 280, 336);
         }
 
-        private void moveSegment(int moved, Point a, Point b)
+        private void moveSegment(int movedFrom, int movedTo)
         {
-            //Test moving segments by redrawing at every 1 to 2 pixels
-            segmentPanels[1].Location = new Point (5,6);
-            /*
-            if (a.X > b.X && a.Y > b.Y)
+            //If moved segment down
+            Segment tempSegment = mySegmentArray[movedFrom];
+            Panel tempPanel = segmentPanels[moveFrom];
+            Label tempLabel = segmentLabels[moveFrom];
+            Button tempButton = segmentButtons[moveFrom];
+            
+            if (movedFrom - movedTo < 0)
             {
-                while (segmentPanels[moved].Location != b)
+                for (int i = 0; i < 24; i++)
                 {
-                    if (segmentPanels[moved].Location.X != b.X)
+                    if (i <= movedTo && i > movedFrom)
                     {
-                        segmentPanels[moved].Left -= 1;
+                        mySegmentArray[i - 1] = mySegmentArray[i];
+                        segmentPanels[i - 1] = segmentPanels[i];
+                        segmentLabels[i - 1] = segmentLabels[i];
+                        segmentButtons[i - 1] = segmentButtons[i];
+                        segmentPanels[i].Left = segmentLocationArray[i - 1].X;
+                        segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
                     }
-                    if (segmentPanels[moved].Location.Y != b.Y)
+                    //greater than
+                    else
                     {
-                        segmentPanels[moved].Top -= 1;
+                        /*
+                        mySegmentArray[i - 1] = mySegmentArray[i];
+                        segmentPanels[i - 1] = segmentPanels[i];
+                        segmentLabels[i - 1] = segmentLabels[i];
+                        segmentButtons[i - 1] = segmentButtons[i];
+                        addSegmentButtons[i - 1] = addSegmentButtons[i];
+                        segmentPanels[i].Left = segmentLocationArray[i - 1].X;
+                        segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
+                        addSegmentButtons[i].Left = addSegmentLocationArray[i - 1].X;
+                        addSegmentButtons[i].Top = addSegmentLocationArray[i - 1].Y;
+                        */
                     }
-                    Thread.Sleep(2);
+                }
+                
+            }
+            //Else moved segment up
+            else
+            {
+                for (int j = 0; j < 24; j++)
+                {
+
                 }
             }
-            else if (a.X < b.X && a.Y < b.Y)
-            {
-                while (segmentPanels[moved].Location != b)
-                {
-                    if (segmentPanels[moved].Location.X != b.X)
-                    {
-                        segmentPanels[moved].Left += 1;
-                    }
-                    if (segmentPanels[moved].Location.Y != b.Y)
-                    {
-                        segmentPanels[moved].Top += 1;
-                    }
-                    Thread.Sleep(2);
-                }
-            }
-            else if (a.X > b.X && a.Y < b.Y)
-            {
-                while (segmentPanels[moved].Location != b)
-                {
-                    if (segmentPanels[moved].Location.X != b.X)
-                    {
-                        segmentPanels[moved].Left -= 1;
-                    }
-                    if (segmentPanels[moved].Location.Y != b.Y)
-                    {
-                        segmentPanels[moved].Top += 1;
-                    }
-                    Thread.Sleep(2);
-                }
-            }
-            else if (a.X < b.X && a.Y > b.Y)
-            {
-                while (segmentPanels[moved].Location != b)
-                {
-                    if (segmentPanels[moved].Location.X != b.X)
-                    {
-                        segmentPanels[moved].Left += 1;
-                    }
-                    if (segmentPanels[moved].Location.Y != b.Y)
-                    {
-                        segmentPanels[moved].Top -= 1;
-                    }
-                    Thread.Sleep(2);
-                }
-            }
-            */
+            mySegmentArray[movedTo] = tempSegment;
+            segmentPanels[movedTo] = tempPanel;
+            segmentLabels[movedTo] = tempLabel;
+            segmentButtons[movedTo] = tempButton;
+            getLocations();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -721,109 +755,8 @@ namespace Vision
 
         private int findLocation(double x, double y)
         {
-
-            int result = 0;
-            //test whether the mouse location is in a segment zone
-            if (x > 5 && x < 115 && y > 6 && y < 46)
-            {
-                result = 1;
-            }
-            else if (x > 120 && x < 230 && y > 6 && y < 46)
-            {
-                result = 2;
-            }
-            else if (x > 5 && x < 115 && y > 52 && y < 92)
-            {
-                result = 3;
-            }
-            else if (x > 120 && x < 230 && y > 52 && y < 92)
-            {
-                result = 4;
-            }
-            else if (x > 5 && x < 115 && y > 98 && y < 138)
-            {
-                result = 5;
-            }
-            else if (x > 120 && x < 230 && y > 98 && y < 138)
-            {
-                result = 6;
-            }
-            else if (x > 5 && x < 115 && y > 144 && y < 184)
-            {
-                result = 7;
-            }
-            else if (x > 120 && x < 230 && y > 144 && y < 184)
-            {
-                result = 8;
-            }
-            else if (x > 5 && x < 115 && y > 190 && y < 230)
-            {
-                result = 9;
-            }
-            else if (x > 120 && x < 230 && y > 190 && y < 230)
-            {
-                result = 10;
-            }
-            else if (x > 5 && x < 115 && y > 236 && y < 276)
-            {
-                result = 11;
-            }
-            else if (x > 120 && x < 230 && y > 236 && y < 276)
-            {
-                result = 12;
-            }
-            else if (x > 5 && x < 115 && y > 282 && y < 322)
-            {
-                result = 13;
-            }
-            else if (x > 120 && x < 230 && y > 282 && y < 322)
-            {
-                result = 14;
-            }
-            else if (x > 5 && x < 115 && y > 328 && y < 348)
-            {
-                result = 15;
-            }
-            else if (x > 120 && x < 230 && y > 328 && y < 348)
-            {
-                result = 16;
-            }
-            else if (x > 5 && x < 115 && y > 374 && y < 414)
-            {
-                result = 17;
-            }
-            else if (x > 120 && x < 230 && y > 374 && y < 414)
-            {
-                result = 18;
-            }
-            else
-            {
-                result = 0;
-            }
-            return result;
+            return 0;
         }
-        /*
-        private void segmentPanel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
-            segmentPanel1.BringToFront();
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                mouseDownLocation = e.Location;
-            }
-        }
-        */
-        /*
-        private void segmentPanel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                segmentPanel1.Left = e.X + segmentPanel1.Left - mouseDownLocation.X;
-                segmentPanel1.Top = e.Y + segmentPanel1.Top - mouseDownLocation.Y;
-            }
-        }
-        */
         /*
         //Save for later
         private void segmentMoveAnimation(Panel panel, Point a, Point b)
@@ -847,61 +780,7 @@ namespace Vision
             }
         }
         */
-        /*
-        private void segmentPanel1_MouseUp(object sender, MouseEventArgs e)
-        {
-
-            //segmentPanel1.Left = e.X + segmentPanel1.Left - MouseDownLocation.X;
-            //segmentPanel1.Top = e.Y + segmentPanel1.Top - MouseDownLocation.Y;
-
-            if (mouseIsOverPanel(segmentPanel2))
-            {
-                segmentPanel1.Left = mySegmentPanelArray[1].X;
-                segmentPanel1.Top = mySegmentPanelArray[1].Y;
-
-                //segmentPanel2.Left = mySegmentPanelArrayLoc[0].X;
-                //segmentPanel2.Top = mySegmentPanelArrayLoc[0].Y;
-
-                for (int i = 0; i < 23; i++)
-                {
-                    segmentPanel2.Left = segmentPanel2.Left - 5;
-                    
-                    //if (a.X < b.X)
-                    //{
-                    //    panel.Left = a.X + 1;
-                    //    a.X += 1;
-                    //}
-                    //if (a.Y < b.Y)
-                    //{
-                    //    panel.Top = a.Y + 1;
-                    //    a.Y += 1;
-                    //}
-                    
-                    Thread.Sleep(20);
-                }
-                //segmentMoveAnimation(segmentPanel2, segmentPanel2.Location, segmentPanel1.Location);
-
-            }
-            
-            else if (mouseIsOverPanel(segmentPanel3))
-            {
-                segmentMoveAnimation(segmentPanel1, segmentPanel1.Location, segmentPanel2.Location);
-                segmentPanel1.Left = mySegmentPanelArray[2].X;
-                segmentPanel1.Top = mySegmentPanelArray[2].Y;
-            }
-            else if (mouseIsOverPanel(segmentPanel4))
-            {
-                segmentMoveAnimation(segmentPanel1, segmentPanel1.Location, segmentPanel2.Location);
-                segmentPanel1.Left = mySegmentPanelArray[3].X;
-                segmentPanel1.Top = mySegmentPanelArray[3].Y;
-            }
-            else
-            {
-                //segmentPanel1.Left = mySegmentPanelArray[0].X;
-                //segmentPanel1.Top = mySegmentPanelArray[0].Y;
-            }
-        }
-        */
+        
         private void tempop (int moreingIndex, int moreToIndex)
         {
             // call 2 other methods

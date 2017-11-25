@@ -76,6 +76,7 @@ namespace Vision
             this.borderColorPopUp = new System.Windows.Forms.Label();
             this.borderColorButton = new System.Windows.Forms.Button();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
+            this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
@@ -92,7 +93,6 @@ namespace Vision
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
-            this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -547,6 +547,17 @@ namespace Vision
             this.SegmentHolderPanel.Size = new System.Drawing.Size(354, 402);
             this.SegmentHolderPanel.TabIndex = 36;
             // 
+            // lastSegmentPopUp
+            // 
+            this.lastSegmentPopUp.AutoSize = true;
+            this.lastSegmentPopUp.ForeColor = System.Drawing.Color.Red;
+            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 42);
+            this.lastSegmentPopUp.Name = "lastSegmentPopUp";
+            this.lastSegmentPopUp.Size = new System.Drawing.Size(159, 13);
+            this.lastSegmentPopUp.TabIndex = 45;
+            this.lastSegmentPopUp.Text = "Can not delete the only segment";
+            this.lastSegmentPopUp.Visible = false;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(117, 374);
@@ -672,21 +683,6 @@ namespace Vision
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Visible = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
-            // 
-            // animateSegmentTimer
-            // 
-            this.animateSegmentTimer.Tick += new System.EventHandler(this.animateSegmentTimer_Tick);
-            // 
-            // lastSegmentPopUp
-            // 
-            this.lastSegmentPopUp.AutoSize = true;
-            this.lastSegmentPopUp.ForeColor = System.Drawing.Color.Red;
-            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 42);
-            this.lastSegmentPopUp.Name = "lastSegmentPopUp";
-            this.lastSegmentPopUp.Size = new System.Drawing.Size(159, 13);
-            this.lastSegmentPopUp.TabIndex = 45;
-            this.lastSegmentPopUp.Text = "Can not delete the only segment";
-            this.lastSegmentPopUp.Visible = false;
             // 
             // marquee1
             // 
