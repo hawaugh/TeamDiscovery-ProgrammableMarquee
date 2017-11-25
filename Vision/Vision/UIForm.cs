@@ -150,6 +150,7 @@ namespace Vision
 
         private void addSegmentClickEvent(object sender, EventArgs e)
         {
+            lastSegmentPopUp.Visible = false;
             for (int i = 1; i < 24; i++)
             {
                 if (mouseIsOverButton(addSegmentButtons[i]))
@@ -185,13 +186,22 @@ namespace Vision
             for (int i = 0; i < 24; i++)
             {
                 if (mouseIsOverButton(segmentButtons[i]))
-                {
-                    deleteSegment(i);
-                    
-                    activeIndex = i - 1;
-                    resetSegments();
-                    //leave loop
-                    i = 24;
+                { 
+                    //Test if segment 1 is the only visible segment. Else it can be deleted.
+                    if (i == 0 && segmentPanels[2].Visible == false)
+                    {
+                        lastSegmentPopUp.Visible = true;
+                    }
+                    else
+                    {
+                        lastSegmentPopUp.Visible = false;
+                        deleteSegment(i);
+
+                        activeIndex = i - 1;
+                        resetSegments();
+                        //leave loop
+                        i = 24;
+                    }
                 }
             }
         }
@@ -397,6 +407,9 @@ namespace Vision
 
         private void moveSegment(int moved, Point a, Point b)
         {
+            //Test moving segments by redrawing at every 1 to 2 pixels
+            segmentPanels[1].Location = new Point (5,6);
+            /*
             if (a.X > b.X && a.Y > b.Y)
             {
                 while (segmentPanels[moved].Location != b)
@@ -457,6 +470,7 @@ namespace Vision
                     Thread.Sleep(2);
                 }
             }
+            */
         }
 
         private void button1_Click_1(object sender, EventArgs e)

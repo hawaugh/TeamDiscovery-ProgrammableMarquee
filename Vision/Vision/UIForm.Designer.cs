@@ -92,6 +92,7 @@ namespace Vision
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
+            this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -435,7 +436,7 @@ namespace Vision
             this.logoLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.logoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.logoLabel.Location = new System.Drawing.Point(-1, 0);
+            this.logoLabel.Location = new System.Drawing.Point(-2, 0);
             this.logoLabel.Name = "logoLabel";
             this.logoLabel.Size = new System.Drawing.Size(355, 53);
             this.logoLabel.TabIndex = 31;
@@ -449,7 +450,7 @@ namespace Vision
             this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(354, 1);
+            this.textTabLabel.Location = new System.Drawing.Point(353, 0);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -467,7 +468,7 @@ namespace Vision
             this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(433, 1);
+            this.imageTabLabel.Location = new System.Drawing.Point(432, 0);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
@@ -484,7 +485,7 @@ namespace Vision
             this.textPanel.Controls.Add(this.ignoreCheckBox);
             this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
-            this.textPanel.Location = new System.Drawing.Point(355, 55);
+            this.textPanel.Location = new System.Drawing.Point(354, 55);
             this.textPanel.Name = "textPanel";
             this.textPanel.Size = new System.Drawing.Size(847, 402);
             this.textPanel.TabIndex = 34;
@@ -539,6 +540,7 @@ namespace Vision
             // SegmentHolderPanel
             // 
             this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
             this.SegmentHolderPanel.Controls.Add(this.button1);
             this.SegmentHolderPanel.Location = new System.Drawing.Point(0, 55);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
@@ -561,7 +563,7 @@ namespace Vision
             this.imagePanel.Controls.Add(this.browseButton);
             this.imagePanel.Controls.Add(this.groupBox2);
             this.imagePanel.Controls.Add(this.groupBox1);
-            this.imagePanel.Location = new System.Drawing.Point(356, 56);
+            this.imagePanel.Location = new System.Drawing.Point(354, 55);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(847, 401);
             this.imagePanel.TabIndex = 35;
@@ -675,6 +677,17 @@ namespace Vision
             // 
             this.animateSegmentTimer.Tick += new System.EventHandler(this.animateSegmentTimer_Tick);
             // 
+            // lastSegmentPopUp
+            // 
+            this.lastSegmentPopUp.AutoSize = true;
+            this.lastSegmentPopUp.ForeColor = System.Drawing.Color.Red;
+            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 42);
+            this.lastSegmentPopUp.Name = "lastSegmentPopUp";
+            this.lastSegmentPopUp.Size = new System.Drawing.Size(159, 13);
+            this.lastSegmentPopUp.TabIndex = 45;
+            this.lastSegmentPopUp.Text = "Can not delete the only segment";
+            this.lastSegmentPopUp.Visible = false;
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
@@ -724,6 +737,7 @@ namespace Vision
             this.borderOptionsGroupBox.ResumeLayout(false);
             this.borderOptionsGroupBox.PerformLayout();
             this.SegmentHolderPanel.ResumeLayout(false);
+            this.SegmentHolderPanel.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -787,6 +801,7 @@ namespace Vision
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label borderColorPopUp;
         private System.Windows.Forms.Timer animateSegmentTimer;
+        private System.Windows.Forms.Label lastSegmentPopUp;
     }
 }
 
