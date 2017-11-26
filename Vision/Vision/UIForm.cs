@@ -195,7 +195,7 @@ namespace Vision
                         lastSegmentPopUp.Visible = false;
                         deleteSegment(i);
 
-                        activeIndex = i - 1;
+                        activeIndex = i;
                         resetSegments();
                         //leave loop
                         i = 24;
