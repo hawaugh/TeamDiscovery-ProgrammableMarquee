@@ -94,6 +94,7 @@ namespace Vision
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
             this.marquee1 = new Vision.Marquee();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -798,6 +799,7 @@ namespace Vision
         private System.Windows.Forms.Label borderColorPopUp;
         private System.Windows.Forms.Timer animateSegmentTimer;
         private System.Windows.Forms.Label lastSegmentPopUp;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
