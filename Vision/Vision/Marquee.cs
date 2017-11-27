@@ -382,7 +382,7 @@ namespace Vision
             for (int i = 96; i > topColumnStop; i--)
             {
                 //Move all dots 1 column right
-                for (int c = 94; c > 0; c--)
+                for (int c = 94; c > 1; c--)
                 {
                     for (int r = 2; r < 8; r++)
                     {
