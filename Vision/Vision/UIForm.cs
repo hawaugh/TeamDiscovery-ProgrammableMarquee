@@ -1296,6 +1296,7 @@ namespace Vision
             Application.Exit();
             abortDisplayThreads();
         }
+        //Edited 11-26 Heather
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
@@ -1307,8 +1308,42 @@ namespace Vision
             marquee1.Visible = true;
             Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
+            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Message copyMyMessage = new Vision.Message(mySegmentArray,marqueeBackgroundColor);
+                Segment[] copSegs = copyMyMessage.getSegmentArray();
+                copyMyMessage.backgroundColor = myMessage.backgroundColor;
+
+                for (int i = 0; i < copSegs.Length; i++)
+                {
+                    Segment seg = new Segment();
+                    seg.ignore = copSegs[i].ignore;
+                    seg.messageText = copSegs[i].messageText;
+                    seg.onColor = copSegs[i].onColor;
+                    seg.segmentSpeed = copSegs[i].segmentSpeed;
+                    seg.isScrolling = copSegs[i].isScrolling;
+                    seg.isRandomColorScrolling = copSegs[i].isRandomColorScrolling;
+                    seg.scrollSpeed = copSegs[i].scrollSpeed;
+                    seg.isImage = copSegs[i].isImage;
+                    seg.originalBitmap = copSegs[i].originalBitmap;
+                    seg.scaledBitmap = copSegs[i].scaledBitmap;
+                    seg.imageAspect = copSegs[i].imageAspect;
+                    seg.entranceEffect = copSegs[i].entranceEffect;
+                    seg.middleEffect = copSegs[i].middleEffect;
+                    seg.exitEffect = copSegs[i].exitEffect;
+                    seg.borderColor = copSegs[i].borderColor;
+                    seg.borderEffect = copSegs[i].borderEffect;
+                }
+                XmlSave.SaveData(copyMyMessage, saveFileDialog1.FileName);
+            }
+           
             myDisplayThread.Start();
             //create XML file
+            
         }
         #endregion
 
@@ -1319,17 +1354,49 @@ namespace Vision
          */
         #region XML Methods
 
+        //Edited 11-26 Heather
         //Don't know what parameters you will need
         //Save all fields but "filename" and the "messageMatrix" in every segment object in array
         //Also save the marqueeBackgroundColor from this class
-        public void saveXML()
+        class XmlSave
         {
+            public static void SaveData(object IClass, string fileName)
+            {
+                StreamWriter writer = null;
+                try
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()));
+                    writer = new StreamWriter(fileName);
+                    xmlSerializer.Serialize(writer, IClass);
+                }
+                finally
+                {
+                    if (writer != null)
+                        writer.Close();
+                    writer = null;
+                }
+            }
 
         }
 
-        public void loadXML()
+        class XmlLoad<T>
         {
+            public static Type type;
 
+            public XmlLoad()
+            {
+                type = typeof(T);
+            }
+
+            public T LoadData(string fileName)
+            {
+                T result;
+                XmlSerializer xmlSerializer = new XmlSerializer(type);
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                result = (T)xmlSerializer.Deserialize(fs);
+                fs.Close();
+                return result;
+            }
         }
 
         #endregion
