@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Vision
 {
-    class Segment
+    public class Segment
     {
         private bool _ignore;     
         private string _messageText;

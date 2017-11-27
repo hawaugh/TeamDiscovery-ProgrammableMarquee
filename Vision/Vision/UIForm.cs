@@ -23,6 +23,7 @@ using System.Runtime.InteropServices;
 using System.Timers;
 using System.IO;
 using System.Xml.Serialization;
+using System.Collections;
 
 namespace Vision
 {
@@ -48,6 +49,8 @@ namespace Vision
         private Point a;
         private Point b;
         private int moveFrom;
+        XmlSerializer xs;
+        List<Segment> list;
         //Getting setup for movable segments
         //Holder for the location for all SegmentPanels
 
@@ -126,11 +129,13 @@ namespace Vision
             mySegmentArray[0].ignore = false;
             resetSegments();
             addSegmentButtons[1].Visible = true;
+            list = new List<Segment>();
+            xs = new XmlSerializer(typeof(List<Segment>));
         }
-        
+
         private void UIForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void segmentClickEvent(object sender, EventArgs e)
@@ -185,7 +190,7 @@ namespace Vision
             for (int i = 0; i < 24; i++)
             {
                 if (mouseIsOverButton(segmentButtons[i]))
-                { 
+                {
                     //Test if segment 1 is the only visible segment. Else it can be deleted.
                     if (i == 0 && segmentPanels[1].Visible == false)
                     {
@@ -205,7 +210,7 @@ namespace Vision
             }
         }
 
-        
+
         private void mouseDownEvent(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             for (int i = 0; i < 24; i++)
@@ -224,9 +229,9 @@ namespace Vision
                         i = 24;
                     }
                 }
-             }
+            }
         }
-        
+
         private void mouseMoveEvent(object sender, MouseEventArgs e)
         {
             for (int i = 0; i < 24; i++)
@@ -475,7 +480,7 @@ namespace Vision
             Panel tempPanel = segmentPanels[moveFrom];
             Label tempLabel = segmentLabels[moveFrom];
             Button tempButton = segmentButtons[moveFrom];
-            
+
             if (movedFrom - movedTo < 0)
             {
                 for (int i = 0; i < 24; i++)
@@ -505,7 +510,7 @@ namespace Vision
                         */
                     }
                 }
-                
+
             }
             //Else moved segment up
             else
@@ -548,7 +553,7 @@ namespace Vision
          */
         #region Generic Functions
         //Sets the locations of objects to a parallel array
-        
+
         private void getLocations()
         {
             for (int i = 0; i < 24; i++)
@@ -564,7 +569,7 @@ namespace Vision
                 }
             }
         }
-        
+
         private void clearForMarquee()
         {
             //If it starts from 0 it will continue to overwrite until no more segments are visible
@@ -597,7 +602,7 @@ namespace Vision
             saveAndRunButton.Visible = false;
         }
 
-        
+
         private void openMenu()
         {
             populateMarqueeButton.Visible = true; //REMOVE
@@ -781,8 +786,8 @@ namespace Vision
             }
         }
         */
-        
-        private void tempop (int moreingIndex, int moreToIndex)
+
+        private void tempop(int moreingIndex, int moreToIndex)
         {
             // call 2 other methods
         }
@@ -1081,7 +1086,7 @@ namespace Vision
         }
 
         private void textTextBox_TextChanged(object sender, EventArgs e)
-        { 
+        {
             mySegmentArray[activeIndex].messageText = textTextBox.Text;
             if (textTextBox.Text.Length > 9)
             {
@@ -1162,7 +1167,7 @@ namespace Vision
             imagePanel.Visible = true;
             imagePanel.Controls.Add(ignoreCheckBox);
             imagePanel.Controls.Add(displayDurationLabel);
-            displayDurationLabel.Location = new Point (12, 21);
+            displayDurationLabel.Location = new Point(12, 21);
             imagePanel.Controls.Add(displayDurationControl);
             displayDurationControl.Location = new Point(102, 18);
         }
@@ -1315,9 +1320,8 @@ namespace Vision
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Message copyMyMessage = new Vision.Message(mySegmentArray,marqueeBackgroundColor);
-                Segment[] copSegs = copyMyMessage.getSegmentArray();
-                copyMyMessage.backgroundColor = myMessage.backgroundColor;
+                Segment[] copSegs = new Segment[mySegmentArray.Length];
+                mySegmentArray.CopyTo(copSegs, 0);
 
                 for (int i = 0; i < copSegs.Length; i++)
                 {
@@ -1338,13 +1342,18 @@ namespace Vision
                     seg.exitEffect = copSegs[i].exitEffect;
                     seg.borderColor = copSegs[i].borderColor;
                     seg.borderEffect = copSegs[i].borderEffect;
+                    
+
+                    list.Add(seg);
                 }
-                XmlSave.SaveData(copyMyMessage, saveFileDialog1.FileName);
+                FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
+                xs.Serialize(fs, list);
+                fs.Close();
             }
-           
+
             myDisplayThread.Start();
             //create XML file
-            
+
         }
         #endregion
 
@@ -1359,26 +1368,31 @@ namespace Vision
         //Don't know what parameters you will need
         //Save all fields but "filename" and the "messageMatrix" in every segment object in array
         //Also save the marqueeBackgroundColor from this class
-        class XmlSave
-        {
-            public static void SaveData(object IClass, string fileName)
-            {
-                StreamWriter writer = null;
-                try
-                {
-                    XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()));
-                    writer = new StreamWriter(fileName);
-                    xmlSerializer.Serialize(writer, IClass);
-                }
-                finally
-                {
-                    if (writer != null)
-                        writer.Close();
-                    writer = null;
-                }
-            }
 
+       /* private static void SaveData(List<Segment> segList, string fileName)
+        {
+            List segments = new ArrayList();
+
+            for(int i = 0; i < seg.Length; i++)
+            {
+
+            }
+            StreamWriter writer = null;
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(seg);
+                writer = new StreamWriter(fileName);
+                xmlSerializer.Serialize(writer, seg);
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+                writer = null;
+            }
         }
+
+
 
         class XmlLoad<T>
         {
@@ -1398,7 +1412,7 @@ namespace Vision
                 fs.Close();
                 return result;
             }
-        }
+        }*/
 
         #endregion
 
