@@ -236,15 +236,12 @@ namespace Vision
         {
             for (int i = 0; i < 24; i++)
             {
-                if (mouseIsOverPanel(segmentPanels[i]))
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                    {
-                        segmentPanels[i].Left = e.X + segmentPanels[i].Left - mouseDownLocation.X;
-                        segmentPanels[i].Top = e.Y + segmentPanels[i].Top - mouseDownLocation.Y;
-                    }
-                    i = 24;
+                    segmentPanels[moveFrom].Left = e.X + segmentPanels[moveFrom].Left - mouseDownLocation.X;
+                    segmentPanels[moveFrom].Top = e.Y + segmentPanels[moveFrom].Top - mouseDownLocation.Y;
                 }
+                i = 24;
             }
         }
 
@@ -252,19 +249,26 @@ namespace Vision
         {
             for (int i = 0; i < 24; i++)
             {
-                if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].Visible == true)
+                //When segments are moved up the for loop hits the moving segment before the segment to move to.
+                if (i == moveFrom)
                 {
-                    segmentPanels[moveFrom].Left = segmentLocationArray[i].X;
-                    segmentPanels[moveFrom].Top = segmentLocationArray[i].Y;
-                    activeIndex = i;
-                    resetSegments();
-                    moveSegment(moveFrom, i);
+                    //Skip
                 }
-                //Set back to starting position
                 else
                 {
-                    segmentPanels[i].Left = segmentLocationArray[i].X;
-                    segmentPanels[i].Top = segmentLocationArray[i].Y;
+                    if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].Visible == true)
+                    {
+                        segmentPanels[moveFrom].Left = segmentLocationArray[i].X;
+                        segmentPanels[moveFrom].Top = segmentLocationArray[i].Y;
+                        moveSegment(moveFrom, i);
+                        i = 24;
+                    }
+                    //Set back to starting position
+                    else
+                    {
+                        segmentPanels[moveFrom].Left = segmentLocationArray[moveFrom].X;
+                        segmentPanels[moveFrom].Top = segmentLocationArray[moveFrom].Y;
+                    }
                 }
             }
         }
@@ -475,49 +479,38 @@ namespace Vision
 
         private void moveSegment(int movedFrom, int movedTo)
         {
-            //If moved segment down
             Segment tempSegment = mySegmentArray[movedFrom];
             Panel tempPanel = segmentPanels[moveFrom];
             Label tempLabel = segmentLabels[moveFrom];
             Button tempButton = segmentButtons[moveFrom];
 
+            //If segment moved down
             if (movedFrom - movedTo < 0)
             {
                 for (int i = 0; i < 24; i++)
                 {
                     if (i <= movedTo && i > movedFrom)
                     {
+                        segmentPanels[i].Left = segmentLocationArray[i - 1].X;
+                        segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
                         mySegmentArray[i - 1] = mySegmentArray[i];
                         segmentPanels[i - 1] = segmentPanels[i];
                         segmentLabels[i - 1] = segmentLabels[i];
                         segmentButtons[i - 1] = segmentButtons[i];
-                        segmentPanels[i].Left = segmentLocationArray[i - 1].X;
-                        segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
-                    }
-                    //greater than
-                    else
-                    {
-                        /*
-                        mySegmentArray[i - 1] = mySegmentArray[i];
-                        segmentPanels[i - 1] = segmentPanels[i];
-                        segmentLabels[i - 1] = segmentLabels[i];
-                        segmentButtons[i - 1] = segmentButtons[i];
-                        addSegmentButtons[i - 1] = addSegmentButtons[i];
-                        segmentPanels[i].Left = segmentLocationArray[i - 1].X;
-                        segmentPanels[i].Top = segmentLocationArray[i - 1].Y;
-                        addSegmentButtons[i].Left = addSegmentLocationArray[i - 1].X;
-                        addSegmentButtons[i].Top = addSegmentLocationArray[i - 1].Y;
-                        */
                     }
                 }
-
             }
             //Else moved segment up
             else
             {
-                for (int j = 0; j < 24; j++)
+                for (int j = movedTo; j < moveFrom; j++)
                 {
-
+                    segmentPanels[j].Left = segmentLocationArray[j + 1].X;
+                    segmentPanels[j].Top = segmentLocationArray[j + 1].Y;
+                    mySegmentArray[j] = mySegmentArray[j + 1];
+                    segmentPanels[j] = segmentPanels[j + 1];
+                    segmentLabels[j] = segmentLabels[j + 1];
+                    segmentButtons[j] = segmentButtons[j + 1];
                 }
             }
             mySegmentArray[movedTo] = tempSegment;
@@ -525,8 +518,12 @@ namespace Vision
             segmentLabels[movedTo] = tempLabel;
             segmentButtons[movedTo] = tempButton;
             getLocations();
+            //works for moving down but not for moving up?
+            //click is firing also. How do I prevent click from firing when segment is moved.
+            activeIndex = movedFrom;
+            resetSegments();
         }
-
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
