@@ -215,13 +215,17 @@ namespace Vision
             {
                 displayRandomEntrance(segment, backgroundColor);
             }
-                  else if (segment.entranceEffect == 5)
+            else if (segment.entranceEffect == 5)
             {
                 displayUpsideDownEntrance(segment, backgroundColor);
             }
-                  else if (segment.entranceEffect == 6)
+            else if (segment.entranceEffect == 6)
             {
                 displaySidewayEntrance(segment, backgroundColor);
+            }
+            else if (segment.entranceEffect == 7)
+            {
+                displaySidewayUpEntrance(segment, backgroundColor);
             }
 
             //Display Middle   
@@ -281,6 +285,11 @@ namespace Vision
             else if (segment.exitEffect == 6)
             {
                  displaySidewayExit(segment, backgroundColor);
+                Thread.Sleep(500);
+            }
+            else if (segment.exitEffect == 7)
+            {
+                displaySidewayDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
         }
@@ -453,7 +462,7 @@ namespace Vision
         }
 
         //Ahmad
-        //Edited on 11/14/2017
+        //Edited on 11/27/2017
         public void displayDownEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -495,7 +504,8 @@ namespace Vision
 
 
             //Exit rest of segment to the up
-            for (int i = 0; i < stopMiddle; i++)
+            //Isn't need for this part since start of the code does this as well
+            /*for (int i = 0; i < stopMiddle; i++)
                 {
                     //Move all dots 1 column up
                     for (int c = 2; c < 93; c++)
@@ -513,12 +523,11 @@ namespace Vision
                     }
                     Thread.Sleep(25);
                     Invalidate();
-                }
+                }*/
         }
 
-
-        //Ahmad
-        //Added on 11/14/2017
+      //Ahmad
+        //Added on 11/27/2017
         public void displayUpsideDownEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -559,6 +568,8 @@ namespace Vision
             }
 
             //Exit rest of segment to the down
+            //Isn't need so its took it out
+            /*
             for (int i = 0; i < stopMiddle; i++)
             {
                 //Move all dots 1 column up
@@ -577,11 +588,11 @@ namespace Vision
                 }
                 Thread.Sleep(25);
                 Invalidate();
-            }
+            }*/
         }
 
-        //Ahmad
-        //Added on 11/14/2017
+      //Ahmad
+        //Added on 11/27/2017
         public void displaySidewayEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -602,17 +613,17 @@ namespace Vision
 
 
                 //Set last row to next row in segment
-                for (int c = 2; c < segmentLength + 2; c++)
+                for (int c = 2; c < segmentLength ; c++)
                 {
                     if (currSegment[i][c - 2].Equals('1'))
                     {
                         //setDot(14, c, segment.onColor);
-                        setDot(13, ((96 - segmentLength) / 2) + c, segment.onColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c + 3, segment.onColor);
                     }
                     else if (currSegment[i][c - 2].Equals('0'))
                     {
                         //setDot(14, c, backgroundColor);
-                        setDot(13, ((96 - segmentLength) / 2) + c, backgroundColor);
+                        setDot(13, ((96 - segmentLength) / 2) + c + 3, backgroundColor);
                     }
 
                 }
@@ -623,7 +634,8 @@ namespace Vision
 
 
             //Exit rest of segment to the up
-            for (int i = 0; i < stopMiddle; i++)
+            //Once again this part of the code is not needed 
+            /*for (int i = 0; i < stopMiddle; i++)
             {
                 //Move all dots 1 column up
                 for (int c = 2; c < 93; c++)
@@ -641,9 +653,51 @@ namespace Vision
                 }
                 Thread.Sleep(25);
                 Invalidate();
+            }*/
+        }
+        
+        //Ahmad
+        //Added on 11/27/2017
+        public void displaySidewayUpEntrance(Segment segment, Color backgroundColor)
+        {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            int centerPosition = (96 - segmentLength) / 2;
+            string currString;
+
+            for (int i = 12; i > 0; i--)
+            {
+                //Move all dots 1 row down
+                for (int r = 13; r > 2; r--)
+                {
+                    for (int c = 2; c < 94; c++)
+                    {
+                        setDot(r, c, getDotFore(r - 1 , c + 1));
+                    }
+                }
+
+                currString = currSegment[i - 1];
+                //Set last row to next row in segment
+                for (int c = centerPosition; c < centerPosition + segmentLength; c++)
+                {
+                    if (currString[c - centerPosition].Equals('1'))
+                    {
+
+                        setDot(2, c + 5 , segment.onColor);
+                    }
+                    else if (currString[c - centerPosition].Equals('0'))
+                    {
+
+                        setDot(2, c + 5, backgroundColor);
+                    }
+
+                }
+                Invalidate();
+                Thread.Sleep(25);
             }
         }
-
+        
 
         public void displayRandomEntrance(Segment segment, Color backgroundColor)
         {
@@ -1246,6 +1300,33 @@ namespace Vision
                 Thread.Sleep(25);
                 Invalidate();
             }
+        }
+        
+        //Ahmad
+        //Edited on 11/27/2017
+        public void displaySidewayDownExit(Segment segment, Color backgroundColor)
+        {
+            //Exit rest of segment to the down
+            for (int i = 14; i > 0; i--)
+            {
+                //Move all dots 1 column up
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 14; r > 2; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c + 1));
+                    }
+                }
+
+                //Set last column to blank
+                for (int c = 2; c < 94; c++)
+                {
+                    setDot(2, c, backgroundColor);
+                }
+                Thread.Sleep(25);
+                Invalidate();
+            }
+
         }
     
 
