@@ -320,66 +320,66 @@ namespace Vision
             Invalidate();
         }
 
-        //Heather - edited on 11/10/17
+        //Heather - edited on 11/25/17
         //Displays segment by scrolling top half in from left and bottom half in from left.
         public void displaySplitEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             Segment seg = segment;
-            Color col = backgroundColor;            
-
-            //causes both methods to run concurrently.
-            Parallel.Invoke(() =>
-            {
-                displayUpperSplitEntrance(seg, col);
-            },
-
-            () =>
-            {
-                displayLowerSplitEntrance(seg, col);
-            }
-            );          
-        }
-        //Heather - Created on 11/10/17
-        //private method that will display upper half of segment.  
-        //To be used in displaySplitEntrance that will run concurrently with lower half
-        private void displayUpperSplitEntrance(Segment segment, Color backgroundColor)
-        {
-           
+            Color col = backgroundColor;
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int topColumnStop = (96 - segmentLength) / 2 + segmentLength + 1; //gives stop column for top half scrolling in from right                     
-
-            //scroll top half from left-side of screen 
-            for (int s = segmentLength - 1; s > -1; s--)
+            int segCenter = segmentLength / 2;
+            int stopForCenterTop = (96 - segmentLength) / 2 + segmentLength + 1; //- 1;
+            int stopForCenterBottom = (96 - segmentLength) / 2 - 2; //gives stop column for bottom half in from left.                     
+            int bColLoopStart = 2;
+            int bHalfSegmentLengthStart = 0;
+            //scroll top half from left-side of screen and bottom half from right-side of screen
+            for (int s = segmentLength - 1; s > -1; s--) //this is used to set the current segment column around line 356
             {
-                //Move top half of dots to the right, starting at the topColumnStop column
-                for (int c = topColumnStop; c > 1; c--)
+                //Move dots until they are on screen
+                for (int c = 93; c > 1; c--)
                 {
-                    //Only want to use the upper half of rows on the display (2-7)
                     for (int r = 2; r < 8; r++)
                     {
                         setDot(r, c, getDotFore(r, c - 1));
+                        setDot(r + 6, bColLoopStart, getDotFore(r + 6, bColLoopStart + 1));
                     }
+                    bColLoopStart++;
                 }
+                bColLoopStart = 2;    //resets this variable to the original value for the next iteration of loop                          
 
                 //Set last column to next column in segment
                 for (int r = 2; r < 8; r++)
                 {
-                    if (currSegment[r - 2][s].Equals('1'))
+                    if (currSegment[r - 2][s].Equals('1') && currSegment[r + 4][bHalfSegmentLengthStart].Equals('1'))
                     {
                         setDot(r, 2, segment.onColor);
+                        setDot(r + 6, 94, segment.onColor);
                     }
-                    else if (currSegment[r - 2][s].Equals('0'))
+                    else if (currSegment[r - 2][s].Equals('0') && currSegment[r + 4][bHalfSegmentLengthStart].Equals('0'))
                     {
                         setDot(r, 93, backgroundColor);
+                        setDot(r + 6, 94, backgroundColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('1') && currSegment[r + 4][bHalfSegmentLengthStart].Equals('0'))
+                    {
+                        setDot(r, 2, segment.onColor);
+                        setDot(r + 6, 94, backgroundColor);
+                    }
+                    else if (currSegment[r - 2][s].Equals('0') && currSegment[r + 4][bHalfSegmentLengthStart].Equals('1'))
+                    {
+                        setDot(r, 93, backgroundColor);
+                        setDot(r + 6, 94, segment.onColor);
                     }
                 }
+                bHalfSegmentLengthStart++;
                 Invalidate();
                 Thread.Sleep(25);
             }
+            ////////center upper half and lower half of message          
             ////////center upper half of message
-            for (int i = 96; i > topColumnStop; i--)
+            for (int i = 96; i > stopForCenterTop; i--)
             {
                 //Move all dots 1 column right
                 for (int c = 94; c > 1; c--)
@@ -389,74 +389,28 @@ namespace Vision
                         setDot(r, c, getDotFore(r, c - 1));
                     }
                 }
-
-                //Set last column to blank
-                for (int r = 2; r < 8; r++)
-                {
-                    setDot(r, 1, backgroundColor);
-                }
-                Thread.Sleep(25);
-                Invalidate();
             }
-        }
-        //Heather - Created on 11/10/17
-        //private method that will display lower half of message scrolling in.
-        //Will be called in displaySplitEntrance and used to run concurrently with upper half method
-        private void displayLowerSplitEntrance(Segment segment, Color backgroundColor)
-        {   
-            String[] currSegment = segment.getMessageMatrix();
-            int segmentLength = currSegment[0].Length;           
-            int bottomColumnStop = (96 - segmentLength) / 2 - 2 ;   //gives stop column for bottom half in from left. 
-
-            //scroll bottom half from left
-            for (int q = 0; q < segmentLength; q++)
+            ////Center lower half of message
+            for (int j = 0; j < stopForCenterBottom; j++)
             {
                 //Move all dots 1 column left
-                for (int c = 2; c < 94; c++)
+                for (int l = 2; l < 94; l++)
                 {
                     for (int row = 8; row < 14; row++)
                     {
-                        setDot(row, c, getDotFore(row, c + 1));
+                        setDot(row, l, getDotFore(row, l + 1));
                     }
                 }
-
-                //Set last column to next column in segment
-                for (int r = 8; r < 14; r++)
-                {
-                    if (currSegment[r - 2][q].Equals('1'))
-                    {
-                        setDot(r, 94, segment.onColor);
-                    }
-                    else if (currSegment[r - 2][q].Equals('0'))
-                    {
-                        setDot(r, 94, backgroundColor);
-                    }
-                }
-                Invalidate();
-                Thread.Sleep(25);
             }
-            //////center lower half of message
-            for (int i = 0; i < bottomColumnStop; i++)
+            //Set last column to blank
+            for (int r = 2; r < 8; r++)
             {
-                //Move all dots 1 column left
-                for (int c = 2; c < 94; c++)
-                {
-                    for (int r = 8; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r, c + 1));
-                    }
-                }
-
-                //Set last column to blank
-                for (int r = 8; r < 14; r++)
-                {
-                    setDot(r, 94, backgroundColor);
-                }
-                Thread.Sleep(25);
-                Invalidate();
+                setDot(r, 1, backgroundColor);
+                setDot(r + 6, 94, backgroundColor);
             }
+            Thread.Sleep(25);
+            Invalidate();
         }
-
          //Ahmad
         public void displayUpEntrance(Segment segment, Color backgroundColor)
         {
