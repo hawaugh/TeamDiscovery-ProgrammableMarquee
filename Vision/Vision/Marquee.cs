@@ -417,58 +417,38 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int stopMiddle = (14 - segmentLength) / 2;
+            int centerPosition = (96 - segmentLength) / 2;
+            string currString;
 
             for (int i = 12; i > 0; i--)
             {
                 //Move all dots 1 row down
-                for (int r = 2; r < 14; r++)
+                for (int r = 13; r > 2; r--)
                 {
                     for (int c = 2; c < 94; c++)
-                    {
-                        setDot(r, c, getDotFore(r + 1, c));
-                    }
-                }
-                
-                //Set last row to next row in segment
-                for (int c = 2; c < segmentLength; c++)
-                {
-                    if (currSegment[i][c - 2].Equals('1'))
-                    {
-                        
-                        setDot(2, ((96 - segmentLength) / 2) + c, segment.onColor);
-                    }
-                    else if (currSegment[i][c - 2].Equals('0'))
-                    {
-                      
-                        setDot(2, ((96 - segmentLength) / 2) + c, backgroundColor);
-                    }
-
-                }
-                Invalidate();
-                Thread.Sleep(25);
-
-            }
-
-            //Exit rest of segment to the down
-            for (int i = 0; i < stopMiddle; i++)
-            {
-                //Move all dots 1 column up
-                for (int c = 2; c < 94; c++)
-                {
-                    for (int r = 14; r > 2; r--)
                     {
                         setDot(r, c, getDotFore(r - 1, c));
                     }
                 }
 
-                //Set last column to blank
-                for (int c = 2; c > 94; c++)
+                currString = currSegment[i - 1];
+                //Set last row to next row in segment
+                for (int c = centerPosition; c < centerPosition + segmentLength; c++)
                 {
-                    setDot(2, c, backgroundColor);
+                    if (currString[c - centerPosition].Equals('1'))
+                    {
+                        
+                        setDot(2, c, segment.onColor);
+                    }
+                    else if (currString[c - centerPosition].Equals('0'))
+                    {
+                      
+                        setDot(2, c, backgroundColor);
+                    }
+
                 }
-                Thread.Sleep(25);
                 Invalidate();
+                Thread.Sleep(25);
             }
         }
 
@@ -494,7 +474,7 @@ namespace Vision
 
 
                 //Set last row to next row in segment
-                for (int c = 2; c < segmentLength; c++)
+                for (int c = 2; c < segmentLength + 2; c++)
                 {
                    if (currSegment[i][c-2].Equals('1'))
                     {
@@ -559,7 +539,7 @@ namespace Vision
 
 
                 //Set last row to next row in segment
-                for (int c = 2; c < segmentLength; c++)
+                for (int c = 2; c < segmentLength + 2; c++)
                 {
                     if (currSegment[i][c - 2].Equals('1'))
                     {
@@ -622,7 +602,7 @@ namespace Vision
 
 
                 //Set last row to next row in segment
-                for (int c = 2; c < segmentLength; c++)
+                for (int c = 2; c < segmentLength + 2; c++)
                 {
                     if (currSegment[i][c - 2].Equals('1'))
                     {
