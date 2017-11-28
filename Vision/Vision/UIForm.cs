@@ -737,7 +737,7 @@ namespace Vision
             if (mySegmentArray[activeIndex].isScrolling == true)
             {
                 scrollingTextButton.Checked = true;
-                scrollSpeedControl.Value = mySegmentArray[activeIndex].scrollSpeed;
+                scrollSpeedControl.Value = (decimal)((double)mySegmentArray[activeIndex].scrollSpeed / 100);
                 if (mySegmentArray[activeIndex].isRandomColorScrolling == true)
                 {
                     randomColorCheckBox.Checked = true;
@@ -1059,7 +1059,6 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = false;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
-                scrollSpeedControl.Value = 0;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
@@ -1078,7 +1077,7 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = true;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
-                scrollSpeedControl.Value = 10;
+                scrollSpeedControl.Value = (decimal)((decimal)mySegmentArray[activeIndex].scrollSpeed / 100);
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
@@ -1109,7 +1108,7 @@ namespace Vision
 
         private void scrollSpeedControl_ValueChanged(object sender, EventArgs e)
         {
-            int input = (int)Math.Floor(scrollSpeedControl.Value);
+            int input = (int)Math.Floor(scrollSpeedControl.Value * 100);
             mySegmentArray[activeIndex].scrollSpeed = input;
         }
 

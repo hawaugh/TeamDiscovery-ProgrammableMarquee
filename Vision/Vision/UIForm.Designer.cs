@@ -79,6 +79,9 @@ namespace Vision
             this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.startNewMessageButton = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
+            this.previewButton = new System.Windows.Forms.Button();
+            this.scaledImageGroupBox = new System.Windows.Forms.GroupBox();
+            this.scaledPictureBox = new System.Windows.Forms.PictureBox();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,9 +97,6 @@ namespace Vision
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.scaledImageGroupBox = new System.Windows.Forms.GroupBox();
-            this.scaledPictureBox = new System.Windows.Forms.PictureBox();
-            this.previewButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
@@ -106,10 +106,10 @@ namespace Vision
             this.borderOptionsGroupBox.SuspendLayout();
             this.SegmentHolderPanel.SuspendLayout();
             this.imagePanel.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
             this.scaledImageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -246,11 +246,32 @@ namespace Vision
             // 
             // scrollSpeedControl
             // 
+            this.scrollSpeedControl.DecimalPlaces = 2;
+            this.scrollSpeedControl.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.scrollSpeedControl.Location = new System.Drawing.Point(14, 151);
+            this.scrollSpeedControl.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.scrollSpeedControl.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.scrollSpeedControl.Name = "scrollSpeedControl";
             this.scrollSpeedControl.Size = new System.Drawing.Size(120, 20);
             this.scrollSpeedControl.TabIndex = 6;
             this.scrollSpeedControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.scrollSpeedControl.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
             this.scrollSpeedControl.Visible = false;
             this.scrollSpeedControl.ValueChanged += new System.EventHandler(this.scrollSpeedControl_ValueChanged);
             // 
@@ -597,6 +618,35 @@ namespace Vision
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
+            // previewButton
+            // 
+            this.previewButton.Location = new System.Drawing.Point(758, 24);
+            this.previewButton.Name = "previewButton";
+            this.previewButton.Size = new System.Drawing.Size(75, 23);
+            this.previewButton.TabIndex = 9;
+            this.previewButton.Text = "Preview";
+            this.previewButton.UseVisualStyleBackColor = true;
+            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
+            // 
+            // scaledImageGroupBox
+            // 
+            this.scaledImageGroupBox.Controls.Add(this.scaledPictureBox);
+            this.scaledImageGroupBox.Location = new System.Drawing.Point(12, 217);
+            this.scaledImageGroupBox.Name = "scaledImageGroupBox";
+            this.scaledImageGroupBox.Size = new System.Drawing.Size(697, 142);
+            this.scaledImageGroupBox.TabIndex = 5;
+            this.scaledImageGroupBox.TabStop = false;
+            this.scaledImageGroupBox.Text = "Scaled Image";
+            // 
+            // scaledPictureBox
+            // 
+            this.scaledPictureBox.Location = new System.Drawing.Point(8, 18);
+            this.scaledPictureBox.Name = "scaledPictureBox";
+            this.scaledPictureBox.Size = new System.Drawing.Size(672, 112);
+            this.scaledPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.scaledPictureBox.TabIndex = 3;
+            this.scaledPictureBox.TabStop = false;
+            // 
             // fileLocationTextBox
             // 
             this.fileLocationTextBox.Location = new System.Drawing.Point(242, 26);
@@ -698,35 +748,6 @@ namespace Vision
             this.openFileDialog1.FileName = "openFileDialog";
             this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG;*.JPEG)|*.BMP;*.JPG;*.GIF;*.PNG;*.JPEG";
             // 
-            // scaledImageGroupBox
-            // 
-            this.scaledImageGroupBox.Controls.Add(this.scaledPictureBox);
-            this.scaledImageGroupBox.Location = new System.Drawing.Point(12, 217);
-            this.scaledImageGroupBox.Name = "scaledImageGroupBox";
-            this.scaledImageGroupBox.Size = new System.Drawing.Size(697, 142);
-            this.scaledImageGroupBox.TabIndex = 5;
-            this.scaledImageGroupBox.TabStop = false;
-            this.scaledImageGroupBox.Text = "Scaled Image";
-            // 
-            // scaledPictureBox
-            // 
-            this.scaledPictureBox.Location = new System.Drawing.Point(8, 18);
-            this.scaledPictureBox.Name = "scaledPictureBox";
-            this.scaledPictureBox.Size = new System.Drawing.Size(672, 112);
-            this.scaledPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.scaledPictureBox.TabIndex = 3;
-            this.scaledPictureBox.TabStop = false;
-            // 
-            // previewButton
-            // 
-            this.previewButton.Location = new System.Drawing.Point(758, 24);
-            this.previewButton.Name = "previewButton";
-            this.previewButton.Size = new System.Drawing.Size(75, 23);
-            this.previewButton.TabIndex = 9;
-            this.previewButton.Text = "Preview";
-            this.previewButton.UseVisualStyleBackColor = true;
-            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
-            // 
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -790,10 +811,10 @@ namespace Vision
             this.SegmentHolderPanel.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
             this.scaledImageGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
