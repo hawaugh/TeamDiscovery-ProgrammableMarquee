@@ -139,23 +139,6 @@ namespace Vision
 
         }
 
-        private void segmentClickEvent(object sender, EventArgs e)
-        {
-            if (clickEvent)
-            {
-                for (int i = 0; i < 24; i++)
-                {
-                    if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
-                    {
-                        activeIndex = i;
-                        resetSegments();
-                        //leave loop
-                        i = 24;
-                    }
-                }
-            }
-        }
-
         private void addSegmentClickEvent(object sender, EventArgs e)
         {
             lastSegmentPopUp.Visible = false;
@@ -218,10 +201,12 @@ namespace Vision
         {
             for (int i = 0; i < 24; i++)
             {
-                if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].BackColor == activeColor)
+                if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
                 {
                     if (segmentPanels[i].Visible == true)
                     {
+                        activeIndex = i;
+                        resetSegments();
                         moveFrom = i;
                         //moves the selected panel to the top so it doesnt go behind other panels while being dragged.
                         segmentPanels[i].BringToFront();
@@ -294,7 +279,6 @@ namespace Vision
             segmentPanels[i].Size = new System.Drawing.Size(110, 40);
             segmentPanels[i].TabIndex = 14;
             segmentPanels[i].Visible = false;
-            segmentPanels[i].Click += new System.EventHandler(segmentClickEvent);
             segmentPanels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
             segmentPanels[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
             segmentPanels[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
@@ -311,7 +295,6 @@ namespace Vision
             segmentLabels[i].Size = new System.Drawing.Size(58, 13);
             segmentLabels[i].TabIndex = 8;
             segmentLabels[i].Text = "Segment " + (largestNum);
-            segmentLabels[i].Click += new System.EventHandler(segmentClickEvent);
             segmentLabels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
             segmentLabels[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
             segmentLabels[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
