@@ -1674,9 +1674,9 @@ namespace Vision
          * 
          */
         #region Utility Methods
-        public Color randomColor()
+       public Color randomColor()
         {            
-            int randomNumber = rnd.Next(0, 20);
+            int randomNumber = rnd.Next(0, 31);
             if (randomNumber == 0)
             {
                 return Color.Aqua;
@@ -1757,12 +1757,55 @@ namespace Vision
             {
                 return Color.Violet;
             }
-            else
+            else if (randomNumber == 20)
             {
                 return Color.Yellow;
             }
+            else if (randomNumber == 21)
+            {
+                return Color.Aquamarine;
+            }
+            else if (randomNumber == 22)
+            {
+                return Color.Maroon;
+            }
+            else if (randomNumber == 23)
+            {
+                return Color.MediumOrchid;
+            }
+            else if (randomNumber == 24)
+            {
+                return Color.MediumSeaGreen;
+            }
+            else if (randomNumber == 25)
+            {
+                return Color.OliveDrab;
+            }
+            else if (randomNumber == 26)
+            {
+                return Color.Firebrick;
+            }
+            else if (randomNumber == 27)
+            {
+                return Color.Crimson;
+            }
+            else if (randomNumber == 28)
+            {
+                return Color.Magenta;
+            }
+            else if (randomNumber == 29)
+            {
+                return Color.LightPink;
+            }
+            else if (randomNumber == 30)
+            {
+                return Color.DarkRed;
+            }
+            else 
+            {
+                return Color.Coral;
+            }
         }
-
         #endregion
     }
 }
