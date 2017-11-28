@@ -77,7 +77,7 @@ namespace Vision
             this.borderColorButton = new System.Windows.Forms.Button();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.lastSegmentPopUp = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.startNewMessageButton = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
@@ -93,8 +93,8 @@ namespace Vision
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
-            this.marquee1 = new Vision.Marquee();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -542,7 +542,7 @@ namespace Vision
             // 
             this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
-            this.SegmentHolderPanel.Controls.Add(this.button1);
+            this.SegmentHolderPanel.Controls.Add(this.startNewMessageButton);
             this.SegmentHolderPanel.Location = new System.Drawing.Point(0, 55);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
             this.SegmentHolderPanel.Size = new System.Drawing.Size(354, 402);
@@ -559,14 +559,15 @@ namespace Vision
             this.lastSegmentPopUp.Text = "Can not delete the only segment";
             this.lastSegmentPopUp.Visible = false;
             // 
-            // button1
+            // startNewMessageButton
             // 
-            this.button1.Location = new System.Drawing.Point(117, 374);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start New Message";
-            this.button1.UseVisualStyleBackColor = true;
+            this.startNewMessageButton.Location = new System.Drawing.Point(117, 374);
+            this.startNewMessageButton.Name = "startNewMessageButton";
+            this.startNewMessageButton.Size = new System.Drawing.Size(120, 23);
+            this.startNewMessageButton.TabIndex = 0;
+            this.startNewMessageButton.Text = "Start New Message";
+            this.startNewMessageButton.UseVisualStyleBackColor = true;
+            this.startNewMessageButton.Click += new System.EventHandler(this.startNewMessageButton_Click);
             // 
             // imagePanel
             // 
@@ -795,7 +796,7 @@ namespace Vision
         private System.Windows.Forms.Button pauseButton;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.TextBox fileLocationTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button startNewMessageButton;
         private System.Windows.Forms.Label borderColorPopUp;
         private System.Windows.Forms.Timer animateSegmentTimer;
         private System.Windows.Forms.Label lastSegmentPopUp;

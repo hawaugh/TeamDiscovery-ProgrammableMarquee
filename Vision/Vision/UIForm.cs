@@ -145,7 +145,6 @@ namespace Vision
                 if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
                 {
                     activeIndex = i;
-                    //moveSegment(2, segmentPanels[2].Location, segmentPanels[1].Location);
                     resetSegments();
                     //leave loop
                     i = 24;
@@ -519,9 +518,6 @@ namespace Vision
             segmentButtons[movedTo] = tempButton;
             getLocations();
             //works for moving down but not for moving up?
-            //click is firing also. How do I prevent click from firing when segment is moved.
-            activeIndex = movedFrom;
-            resetSegments();
         }
         
         private void button1_Click_1(object sender, EventArgs e)
@@ -1476,6 +1472,11 @@ namespace Vision
             marquee1.borderThreadAbort();
             marquee1.clearMarquee(marquee1.BackColor);
             marquee1.clearBorder(marquee1.BackColor);
+        }
+
+        private void startNewMessageButton_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
