@@ -104,76 +104,67 @@ namespace Vision
             Color currentBorderColor = Color.Black;
             int currentBorderEffect = 0;
 
-            //Display Segments
-            for (int i = 0; i < message.getSegmentArray().Length; i++)
+            while (true)
             {
-                //Skip current index if ignore is true
-                if (!message.getSegmentArray()[i].ignore)
+                //Display Segments
+                for (int i = 0; i < message.getSegmentArray().Length; i++)
                 {
-                    //Check if its not an image
-                    if (!message.getSegmentArray()[i].isImage)
+                    //Skip current index if ignore is true
+                    if (!message.getSegmentArray()[i].ignore)
                     {
-                        currentIsImage = false;
-                        //Check if its the first segment
-                        if (i == 0)
+                        //Check if its not an image
+                        if (!message.getSegmentArray()[i].isImage)
                         {
-                            currentBorderColor = message.getSegmentArray()[i].borderColor;
-                            currentBorderEffect = message.getSegmentArray()[i].borderEffect;
-                            //Start Border Effect
-                            myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
-                            myBorderThread.Start();
-                        }
-                        //Check if the segment before was an image
-                        else if (currentIsImage)
-                        {
-                            currentBorderColor = message.getSegmentArray()[i].borderColor;
-                            currentBorderEffect = message.getSegmentArray()[i].borderEffect;
-                            //Start Border Effect
-                            myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
-                            myBorderThread.Start();
-                        }
-                        //Check if border effect changed from the last one
-                        else if (message.getSegmentArray()[i].borderColor != currentBorderColor || message.getSegmentArray()[i].borderEffect != currentBorderEffect)
-                        {
-                            if (myBorderThread != null)
+                            currentIsImage = false;
+                            //Check if its the first segment
+                            if (i == 0)
                             {
-                                if (myBorderThread.IsAlive)
-                                {
-                                    myBorderThread.Abort();
-                                }
+                                currentBorderColor = message.getSegmentArray()[i].borderColor;
+                                currentBorderEffect = message.getSegmentArray()[i].borderEffect;
+                                //Start Border Effect
+                                myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
+                                myBorderThread.Start();
                             }
+                            //Check if the segment before was an image
+                            else if (currentIsImage)
+                            {
+                                currentBorderColor = message.getSegmentArray()[i].borderColor;
+                                currentBorderEffect = message.getSegmentArray()[i].borderEffect;
+                                //Start Border Effect
+                                myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
+                                myBorderThread.Start();
+                            }
+                            //Check if border effect changed from the last one
+                            else if (message.getSegmentArray()[i].borderColor != currentBorderColor || message.getSegmentArray()[i].borderEffect != currentBorderEffect)
+                            {
+                                if (myBorderThread != null)
+                                {
+                                    if (myBorderThread.IsAlive)
+                                    {
+                                        myBorderThread.Abort();
+                                    }
+                                }
 
-                            currentBorderColor = message.getSegmentArray()[i].borderColor;
-                            currentBorderEffect = message.getSegmentArray()[i].borderEffect;
-                            //Start Border Effect
-                            myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
-                            myBorderThread.Start();
+                                currentBorderColor = message.getSegmentArray()[i].borderColor;
+                                currentBorderEffect = message.getSegmentArray()[i].borderEffect;
+                                //Start Border Effect
+                                myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
+                                myBorderThread.Start();
+                            }
                         }
-                    }
-                    //Set current variables if it is an image
-                    else if (message.getSegmentArray()[i].isImage)
-                    {
-                        currentIsImage = true;
-                        currentBorderColor = Color.Black;
-                        currentBorderEffect = 0;
-                    }
+                        //Set current variables if it is an image
+                        else if (message.getSegmentArray()[i].isImage)
+                        {
+                            currentIsImage = true;
+                            currentBorderColor = Color.Black;
+                            currentBorderEffect = 0;
+                        }
 
-                    //Display Current Segment
-                    displaySegment(message.getSegmentArray()[i], message.backgroundColor);
+                        //Display Current Segment
+                        displaySegment(message.getSegmentArray()[i], message.backgroundColor);
+                    }
                 }
             }
-
-            //Stop Border Thread if running
-            if (myBorderThread != null)
-            {
-                if (myBorderThread.IsAlive)
-                {
-                    myBorderThread.Abort();
-                }
-            }
-            //Clear Marquee
-            clearBorder(BackColor);
-            clearMarquee(BackColor);
         }
 
         //Selects the correct effects to use to display the segment
