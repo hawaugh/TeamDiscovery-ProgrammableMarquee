@@ -798,7 +798,7 @@ namespace Vision
             // 
             // goToFullScreenButton
             // 
-            this.goToFullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.goToFullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.goToFullScreenButton.Location = new System.Drawing.Point(561, 5);
             this.goToFullScreenButton.Name = "goToFullScreenButton";
             this.goToFullScreenButton.Size = new System.Drawing.Size(105, 37);
