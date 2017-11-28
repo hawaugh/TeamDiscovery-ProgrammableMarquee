@@ -441,6 +441,7 @@ namespace Vision
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.MaximizeBox = true;
             marquee1.Visible = true;
+            EnterFullScreenMode();
             Segment mySegment = new Segment("DISCOVERY", Color.Red, 20000, 4, 4, 4, Color.Red, 4);
             Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 3);
             Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
@@ -1489,21 +1490,44 @@ namespace Vision
             Application.Exit();
         }
 
+        /*
+         * 
+         *   FullScreen methods
+         * 
+         */
+        #region FullScreen methods
+
         //Work in progress
         private void EnterFullScreenMode()
         {
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            exitFullScreen.BackColor = marqueeBackgroundColor;
+            exitFullScreen.Visible = true;
+            backToMenuButton.Visible = false;
+            exitButton.Visible = false;
             fullScreen = true;
         }
 
         //Work in progress
         private void LeaveFullScreenMode()
         {
+            exitFullScreen.Visible = false;
+            backToMenuButton.Visible = true;
+            exitButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState = FormWindowState.Normal;
             fullScreen = false;
         }
+
+        private void exitFullScreen_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (fullScreen)
+            {
+                LeaveFullScreenMode();
+            }
+        }
+        #endregion
     }
 }

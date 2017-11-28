@@ -40,6 +40,7 @@ namespace Vision
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UIForm));
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
             this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
@@ -71,6 +72,7 @@ namespace Vision
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
+            this.exitFullScreen = new System.Windows.Forms.PictureBox();
             this.ignoreCheckBox = new System.Windows.Forms.CheckBox();
             this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.borderColorPopUp = new System.Windows.Forms.Label();
@@ -103,6 +105,7 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.textPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).BeginInit();
             this.borderOptionsGroupBox.SuspendLayout();
             this.SegmentHolderPanel.SuspendLayout();
             this.imagePanel.SuspendLayout();
@@ -535,6 +538,19 @@ namespace Vision
             this.textPanel.Size = new System.Drawing.Size(854, 402);
             this.textPanel.TabIndex = 34;
             // 
+            // exitFullScreen
+            // 
+            this.exitFullScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("exitFullScreen.Image")));
+            this.exitFullScreen.Location = new System.Drawing.Point(1142, 0);
+            this.exitFullScreen.Name = "exitFullScreen";
+            this.exitFullScreen.Size = new System.Drawing.Size(73, 73);
+            this.exitFullScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exitFullScreen.TabIndex = 46;
+            this.exitFullScreen.TabStop = false;
+            this.exitFullScreen.Visible = false;
+            this.exitFullScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.exitFullScreen_MouseClick);
+            // 
             // ignoreCheckBox
             // 
             this.ignoreCheckBox.AutoSize = true;
@@ -785,8 +801,9 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1214, 504);
-            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
+            this.Controls.Add(this.exitFullScreen);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
@@ -817,6 +834,7 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.textPanel.ResumeLayout(false);
             this.textPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).EndInit();
             this.borderOptionsGroupBox.ResumeLayout(false);
             this.borderOptionsGroupBox.PerformLayout();
             this.SegmentHolderPanel.ResumeLayout(false);
@@ -892,6 +910,7 @@ namespace Vision
         private System.Windows.Forms.PictureBox scaledPictureBox;
         private System.Windows.Forms.Button previewButton;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.PictureBox exitFullScreen;
     }
 }
 
