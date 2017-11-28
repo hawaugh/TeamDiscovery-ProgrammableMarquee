@@ -320,8 +320,6 @@ namespace Vision
             Color col = backgroundColor;
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int segCenter = segmentLength / 2;
-            int stopForCenterTop = (96 - segmentLength) / 2 + segmentLength + 1; //- 1;
             int stopForCenterBottom = (96 - segmentLength) / 2 - 2; //gives stop column for bottom half in from left.                     
             int bColLoopStart = 2;
             int bHalfSegmentLengthStart = 0;
@@ -368,38 +366,34 @@ namespace Vision
                 Invalidate();
                 Thread.Sleep(25);
             }
-            ////////center upper half and lower half of message          
-            ////////center upper half of message
-            for (int i = 96; i > stopForCenterTop; i--)
+
+            //Center the segment halves
+            for (int j = 0; j < stopForCenterBottom; j++) //this is used to set the current segment column around line 356
             {
-                //Move all dots 1 column right
-                for (int c = 94; c > 1; c--)
+                //Move dots until they are on screen
+                for (int c = 93; c > 1; c--)
                 {
                     for (int r = 2; r < 8; r++)
                     {
                         setDot(r, c, getDotFore(r, c - 1));
+                        setDot(r + 6, bColLoopStart, getDotFore(r + 6, bColLoopStart + 1));
                     }
+                    bColLoopStart++;
                 }
+                bColLoopStart = 2;    //resets this variable to the original value for the next iteration of loop 
+                Invalidate();
+                Thread.Sleep(25);   
             }
-            ////Center lower half of message
-            for (int j = 0; j < stopForCenterBottom; j++)
+
+            //move bottom segment once more (Because the bottom has to travel 1 further)
+            for (int c = 93; c > 1; c--)
             {
-                //Move all dots 1 column left
-                for (int l = 2; l < 94; l++)
+                for (int r = 2; r < 8; r++)
                 {
-                    for (int row = 8; row < 14; row++)
-                    {
-                        setDot(row, l, getDotFore(row, l + 1));
-                    }
+                    setDot(r + 6, bColLoopStart, getDotFore(r + 6, bColLoopStart + 1));
                 }
+                bColLoopStart++;
             }
-            //Set last column to blank
-            for (int r = 2; r < 8; r++)
-            {
-                setDot(r, 1, backgroundColor);
-                setDot(r + 6, 94, backgroundColor);
-            }
-            Thread.Sleep(25);
             Invalidate();
         }
          //Ahmad
