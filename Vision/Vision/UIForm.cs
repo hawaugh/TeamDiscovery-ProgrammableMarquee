@@ -50,6 +50,7 @@ namespace Vision
         private Point b;
         private int moveFrom;
         private bool clickEvent = true;
+        private bool fullScreen = false;
         XmlSerializer xs;
         List<Segment> list;
 
@@ -1486,6 +1487,23 @@ namespace Vision
         {
             abortDisplayThreads();
             Application.Exit();
+        }
+
+        //Work in progress
+        private void EnterFullScreenMode()
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            fullScreen = true;
+        }
+
+        //Work in progress
+        private void LeaveFullScreenMode()
+        {
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Normal;
+            fullScreen = false;
         }
     }
 }
