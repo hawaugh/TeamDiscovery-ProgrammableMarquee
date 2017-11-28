@@ -62,7 +62,7 @@ namespace Vision
             _onColor = Color.Red;
             _segmentSpeed = 2000;
             _isScrolling = false;
-            _scrollSpeed = 25;
+            _scrollSpeed = 100;
             _isRandomColorScrolling = false;
             _isImage = false;
             _filename = "";
