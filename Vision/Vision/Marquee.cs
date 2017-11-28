@@ -477,29 +477,6 @@ namespace Vision
                 Invalidate();
                 Thread.Sleep(25);
             }
-
-
-            //Exit rest of segment to the up
-            //Isn't need for this part since start of the code does this as well
-            /*for (int i = 0; i < stopMiddle; i++)
-                {
-                    //Move all dots 1 column up
-                    for (int c = 2; c < 93; c++)
-                    {
-                        for (int r = 2; r < 14; r++)
-                        {
-                            setDot(r, c, getDotFore(r + 1, c));
-                        }
-                    }
-
-                    //Set last column to blank
-                    for (int c = 2; c < 93; c++)
-                    {
-                        setDot(14, c, backgroundColor);
-                    }
-                    Thread.Sleep(25);
-                    Invalidate();
-                }*/
         }
 
       //Ahmad
@@ -580,29 +557,6 @@ namespace Vision
                 Invalidate();
                 Thread.Sleep(25);
             }
-
-            //Exit rest of segment to the down
-            //Isn't need so its took it out
-            /*
-            for (int i = 0; i < stopMiddle; i++)
-            {
-                //Move all dots 1 column up
-                for (int c = 2; c < 94; c++)
-                {
-                    for (int r = 14; r > 2; r--)
-                    {
-                        setDot(r, c, getDotFore(r - 1, c));
-                    }
-                }
-
-                //Set last column to blank
-                for (int c = 2; c > 94; c++)
-                {
-                    setDot(2, c, backgroundColor);
-                }
-                Thread.Sleep(25);
-                Invalidate();
-            }*/
         }
 
         //Ahmad
@@ -679,29 +633,6 @@ namespace Vision
                 Invalidate();
                 Thread.Sleep(25);
             }
-
-
-            //Exit rest of segment to the up
-            //Once again this part of the code is not needed 
-            /*for (int i = 0; i < stopMiddle; i++)
-            {
-                //Move all dots 1 column up
-                for (int c = 2; c < 93; c++)
-                {
-                    for (int r = 2; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r + 1, c));
-                    }
-                }
-
-                //Set last column to blank
-                for (int c = 2; c < 93; c++)
-                {
-                    setDot(14, c, backgroundColor);
-                }
-                Thread.Sleep(25);
-                Invalidate();
-            }*/
         }
         
         //Ahmad
@@ -711,7 +642,6 @@ namespace Vision
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int centerPosition = (96 - segmentLength) / 2;
             string currString;
 
             for (int i = 12; i > 0; i--)
@@ -727,19 +657,55 @@ namespace Vision
 
                 currString = currSegment[i - 1];
                 //Set last row to next row in segment
-                for (int c = centerPosition; c < centerPosition + segmentLength; c++)
+                for (int c = 2; c < segmentLength + 2; c++)
                 {
-                    if (currString[c - centerPosition].Equals('1'))
+                    if (currString[c- 2].Equals('1'))
                     {
 
-                        setDot(2, c + 5 , segment.onColor);
+                        setDot(2, ((92 - segmentLength) / 2) + c, segment.onColor);
                     }
-                    else if (currString[c - centerPosition].Equals('0'))
+                    else if (currString[c - 2].Equals('0'))
                     {
 
-                        setDot(2, c + 5, backgroundColor);
+                        setDot(2, ((92 - segmentLength) / 2) + c, backgroundColor);
                     }
 
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
+
+            Thread.Sleep(100);
+
+            //Number of iterations
+            for (int i = 0; i < 11; i++)
+            {
+                //The range of rows that need to be updated, based on iteration number
+                for (int r = 3 + i; r < 14; r++)
+                {
+                    //Recreate each row from the segmentarray and put it where it needs to be based on the iteration number
+                    for (int c = 2; c < segmentLength + 2; c++)
+                    {
+                        if (currSegment[r - 2][c - 2].Equals('1'))
+                        {
+                            if (((92 - segmentLength) / 2) + c + i - (r - 3) > 1)
+                            {
+                                setDot(r, ((92 - segmentLength) / 2) + c + i - (r - 3), segment.onColor);
+                            }
+                        }
+                        else if (currSegment[r - 2][c - 2].Equals('0'))
+                        {
+                            if (((92 - segmentLength) / 2) + c + i - (r - 3) > 1)
+                            {
+                                setDot(r, ((92 - segmentLength) / 2) + c + i - (r - 3), backgroundColor);
+                            }
+                        }
+                    }
+                    //Turn the dot before the text off
+                    if (((96 - segmentLength) / 2) + i - (r - 3) > 2)
+                    {
+                        setDot(r, ((94 - segmentLength) / 2) + i - (r - 3), backgroundColor);
+                    }
                 }
                 Invalidate();
                 Thread.Sleep(25);
