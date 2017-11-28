@@ -528,6 +528,7 @@ namespace Vision
             resetSegments();
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Normal;
             this.Size = new System.Drawing.Size(1230, 543);
         }
         private bool mouseIsOverPanel(Panel pnl)
