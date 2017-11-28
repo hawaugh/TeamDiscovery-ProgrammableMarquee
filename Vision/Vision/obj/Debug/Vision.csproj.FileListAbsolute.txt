@@ -83,3 +83,4 @@ C:\Users\Nick's Laptop\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.VisionSplashScreen.resources
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.VisionSplashScreen.resources

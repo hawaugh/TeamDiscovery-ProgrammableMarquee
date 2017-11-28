@@ -101,6 +101,7 @@ namespace Vision
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveButton = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
+            this.goToFullScreenButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -795,12 +796,25 @@ namespace Vision
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
             // 
+            // goToFullScreenButton
+            // 
+            this.goToFullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.goToFullScreenButton.Location = new System.Drawing.Point(561, 5);
+            this.goToFullScreenButton.Name = "goToFullScreenButton";
+            this.goToFullScreenButton.Size = new System.Drawing.Size(105, 37);
+            this.goToFullScreenButton.TabIndex = 47;
+            this.goToFullScreenButton.Text = "Go To FullScreen";
+            this.goToFullScreenButton.UseVisualStyleBackColor = true;
+            this.goToFullScreenButton.Visible = false;
+            this.goToFullScreenButton.Click += new System.EventHandler(this.goToFullScreenButton_Click);
+            // 
             // UIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1214, 504);
+            this.Controls.Add(this.goToFullScreenButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.exitFullScreen);
             this.Controls.Add(this.saveButton);
@@ -912,6 +926,7 @@ namespace Vision
         private System.Windows.Forms.Button previewButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.PictureBox exitFullScreen;
+        private System.Windows.Forms.Button goToFullScreenButton;
     }
 }
 

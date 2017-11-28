@@ -438,6 +438,7 @@ namespace Vision
             abortDisplayThreads();
             clearForMarquee();
             backToMenuButton.Visible = true;
+            goToFullScreenButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.MaximizeBox = true;
             marquee1.Visible = true;
@@ -525,6 +526,7 @@ namespace Vision
             marqueeBackgroundColorButton.Visible = true;
             playButton.Visible = false;
             pauseButton.Visible = false;
+            goToFullScreenButton.Visible = false;
             marquee1.Visible = false;
             runButton.Visible = true;
             resetSegments();
@@ -1297,6 +1299,7 @@ namespace Vision
             abortDisplayThreads();
             clearForMarquee();
             backToMenuButton.Visible = true;
+            goToFullScreenButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.MaximizeBox = true;
             marquee1.Visible = true;
@@ -1531,5 +1534,10 @@ namespace Vision
             }
         }
         #endregion
+
+        private void goToFullScreenButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
