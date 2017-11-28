@@ -72,11 +72,11 @@ namespace Vision
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
-            this.exitFullScreen = new System.Windows.Forms.PictureBox();
             this.ignoreCheckBox = new System.Windows.Forms.CheckBox();
             this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.borderColorPopUp = new System.Windows.Forms.Label();
             this.borderColorButton = new System.Windows.Forms.Button();
+            this.exitFullScreen = new System.Windows.Forms.PictureBox();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.startNewMessageButton = new System.Windows.Forms.Button();
@@ -105,8 +105,8 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.textPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).BeginInit();
             this.borderOptionsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).BeginInit();
             this.SegmentHolderPanel.SuspendLayout();
             this.imagePanel.SuspendLayout();
             this.scaledImageGroupBox.SuspendLayout();
@@ -538,19 +538,6 @@ namespace Vision
             this.textPanel.Size = new System.Drawing.Size(854, 402);
             this.textPanel.TabIndex = 34;
             // 
-            // exitFullScreen
-            // 
-            this.exitFullScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("exitFullScreen.Image")));
-            this.exitFullScreen.Location = new System.Drawing.Point(1142, 0);
-            this.exitFullScreen.Name = "exitFullScreen";
-            this.exitFullScreen.Size = new System.Drawing.Size(73, 73);
-            this.exitFullScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exitFullScreen.TabIndex = 46;
-            this.exitFullScreen.TabStop = false;
-            this.exitFullScreen.Visible = false;
-            this.exitFullScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.exitFullScreen_MouseClick);
-            // 
             // ignoreCheckBox
             // 
             this.ignoreCheckBox.AutoSize = true;
@@ -597,6 +584,19 @@ namespace Vision
             this.borderColorButton.TabIndex = 42;
             this.borderColorButton.UseVisualStyleBackColor = false;
             this.borderColorButton.Click += new System.EventHandler(this.borderColorButton_Click);
+            // 
+            // exitFullScreen
+            // 
+            this.exitFullScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("exitFullScreen.Image")));
+            this.exitFullScreen.Location = new System.Drawing.Point(1142, 0);
+            this.exitFullScreen.Name = "exitFullScreen";
+            this.exitFullScreen.Size = new System.Drawing.Size(73, 73);
+            this.exitFullScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exitFullScreen.TabIndex = 46;
+            this.exitFullScreen.TabStop = false;
+            this.exitFullScreen.Visible = false;
+            this.exitFullScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.exitFullScreen_MouseClick);
             // 
             // SegmentHolderPanel
             // 
@@ -820,6 +820,7 @@ namespace Vision
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 200);
@@ -834,9 +835,9 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.textPanel.ResumeLayout(false);
             this.textPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).EndInit();
             this.borderOptionsGroupBox.ResumeLayout(false);
             this.borderOptionsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).EndInit();
             this.SegmentHolderPanel.ResumeLayout(false);
             this.SegmentHolderPanel.PerformLayout();
             this.imagePanel.ResumeLayout(false);
