@@ -65,8 +65,8 @@ namespace Vision
             this.borderColorLabel = new System.Windows.Forms.Label();
             this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.loadXMLButton = new System.Windows.Forms.Button();
-            this.saveAndRunButton = new System.Windows.Forms.Button();
-            this.saveAndExitButton = new System.Windows.Forms.Button();
+            this.runButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
@@ -81,9 +81,8 @@ namespace Vision
             this.imagePanel = new System.Windows.Forms.Panel();
             this.fileLocationTextBox = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.originalPictureBox = new System.Windows.Forms.PictureBox();
             this.marqueeBackgroundColorLabel = new System.Windows.Forms.Label();
             this.backToMenuButton = new System.Windows.Forms.Button();
             this.colorDialogBox = new System.Windows.Forms.ColorDialog();
@@ -94,6 +93,11 @@ namespace Vision
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.scaledImageGroupBox = new System.Windows.Forms.GroupBox();
+            this.scaledPictureBox = new System.Windows.Forms.PictureBox();
+            this.previewButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -103,7 +107,9 @@ namespace Vision
             this.SegmentHolderPanel.SuspendLayout();
             this.imagePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
+            this.scaledImageGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -401,7 +407,7 @@ namespace Vision
             // loadXMLButton
             // 
             this.loadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadXMLButton.Location = new System.Drawing.Point(971, 463);
+            this.loadXMLButton.Location = new System.Drawing.Point(890, 463);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 3;
@@ -409,27 +415,35 @@ namespace Vision
             this.loadXMLButton.UseVisualStyleBackColor = true;
             this.loadXMLButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
-            // saveAndRunButton
+            // runButton
             // 
-            this.saveAndRunButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveAndRunButton.Location = new System.Drawing.Point(1052, 463);
-            this.saveAndRunButton.Name = "saveAndRunButton";
-            this.saveAndRunButton.Size = new System.Drawing.Size(75, 37);
-            this.saveAndRunButton.TabIndex = 27;
-            this.saveAndRunButton.Text = "Save and Run";
-            this.saveAndRunButton.UseVisualStyleBackColor = true;
-            this.saveAndRunButton.Click += new System.EventHandler(this.saveAndRunButton_Click);
+            this.runButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.runButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.runButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.runButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.runButton.Location = new System.Drawing.Point(1052, 463);
+            this.runButton.Name = "runButton";
+            this.runButton.Size = new System.Drawing.Size(75, 37);
+            this.runButton.TabIndex = 27;
+            this.runButton.Text = "Run";
+            this.runButton.UseVisualStyleBackColor = false;
+            this.runButton.Click += new System.EventHandler(this.saveAndRunButton_Click);
             // 
-            // saveAndExitButton
+            // exitButton
             // 
-            this.saveAndExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveAndExitButton.Location = new System.Drawing.Point(1133, 463);
-            this.saveAndExitButton.Name = "saveAndExitButton";
-            this.saveAndExitButton.Size = new System.Drawing.Size(75, 37);
-            this.saveAndExitButton.TabIndex = 29;
-            this.saveAndExitButton.Text = "Save and Exit";
-            this.saveAndExitButton.UseVisualStyleBackColor = true;
-            this.saveAndExitButton.Click += new System.EventHandler(this.saveAndExitButton_Click);
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Location = new System.Drawing.Point(1133, 463);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 37);
+            this.exitButton.TabIndex = 29;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.saveAndExitButton_Click);
             // 
             // logoLabel
             // 
@@ -552,7 +566,7 @@ namespace Vision
             // 
             this.lastSegmentPopUp.AutoSize = true;
             this.lastSegmentPopUp.ForeColor = System.Drawing.Color.Red;
-            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 42);
+            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 44);
             this.lastSegmentPopUp.Name = "lastSegmentPopUp";
             this.lastSegmentPopUp.Size = new System.Drawing.Size(159, 13);
             this.lastSegmentPopUp.TabIndex = 45;
@@ -572,9 +586,10 @@ namespace Vision
             // imagePanel
             // 
             this.imagePanel.BackColor = System.Drawing.Color.White;
+            this.imagePanel.Controls.Add(this.previewButton);
+            this.imagePanel.Controls.Add(this.scaledImageGroupBox);
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
             this.imagePanel.Controls.Add(this.browseButton);
-            this.imagePanel.Controls.Add(this.groupBox2);
             this.imagePanel.Controls.Add(this.groupBox1);
             this.imagePanel.Location = new System.Drawing.Point(354, 55);
             this.imagePanel.Name = "imagePanel";
@@ -584,14 +599,14 @@ namespace Vision
             // 
             // fileLocationTextBox
             // 
-            this.fileLocationTextBox.Location = new System.Drawing.Point(242, 18);
+            this.fileLocationTextBox.Location = new System.Drawing.Point(242, 26);
             this.fileLocationTextBox.Name = "fileLocationTextBox";
-            this.fileLocationTextBox.Size = new System.Drawing.Size(431, 20);
+            this.fileLocationTextBox.Size = new System.Drawing.Size(396, 20);
             this.fileLocationTextBox.TabIndex = 8;
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(689, 16);
+            this.browseButton.Location = new System.Drawing.Point(658, 24);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 6;
@@ -599,32 +614,24 @@ namespace Vision
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(12, 247);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(770, 99);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Scaled Image";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.originalPictureBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(770, 185);
+            this.groupBox1.Size = new System.Drawing.Size(697, 142);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Original Image";
             // 
-            // pictureBox1
+            // originalPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(8, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(636, 144);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.originalPictureBox.Location = new System.Drawing.Point(8, 18);
+            this.originalPictureBox.Name = "originalPictureBox";
+            this.originalPictureBox.Size = new System.Drawing.Size(672, 112);
+            this.originalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalPictureBox.TabIndex = 3;
+            this.originalPictureBox.TabStop = false;
             // 
             // marqueeBackgroundColorLabel
             // 
@@ -686,6 +693,50 @@ namespace Vision
             this.playButton.Visible = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog";
+            this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG;*.JPEG)|*.BMP;*.JPG;*.GIF;*.PNG;*.JPEG";
+            // 
+            // scaledImageGroupBox
+            // 
+            this.scaledImageGroupBox.Controls.Add(this.scaledPictureBox);
+            this.scaledImageGroupBox.Location = new System.Drawing.Point(12, 217);
+            this.scaledImageGroupBox.Name = "scaledImageGroupBox";
+            this.scaledImageGroupBox.Size = new System.Drawing.Size(697, 142);
+            this.scaledImageGroupBox.TabIndex = 5;
+            this.scaledImageGroupBox.TabStop = false;
+            this.scaledImageGroupBox.Text = "Scaled Image";
+            // 
+            // scaledPictureBox
+            // 
+            this.scaledPictureBox.Location = new System.Drawing.Point(8, 18);
+            this.scaledPictureBox.Name = "scaledPictureBox";
+            this.scaledPictureBox.Size = new System.Drawing.Size(672, 112);
+            this.scaledPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.scaledPictureBox.TabIndex = 3;
+            this.scaledPictureBox.TabStop = false;
+            // 
+            // previewButton
+            // 
+            this.previewButton.Location = new System.Drawing.Point(758, 24);
+            this.previewButton.Name = "previewButton";
+            this.previewButton.Size = new System.Drawing.Size(75, 23);
+            this.previewButton.TabIndex = 9;
+            this.previewButton.Text = "Preview";
+            this.previewButton.UseVisualStyleBackColor = true;
+            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.Location = new System.Drawing.Point(971, 463);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 37);
+            this.saveButton.TabIndex = 45;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            // 
             // marquee1
             // 
             this.marquee1.BackColor = System.Drawing.Color.Black;
@@ -703,6 +754,7 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1214, 504);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
@@ -711,8 +763,8 @@ namespace Vision
             this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.logoLabel);
-            this.Controls.Add(this.saveAndExitButton);
-            this.Controls.Add(this.saveAndRunButton);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.runButton);
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.pauseButton);
@@ -739,7 +791,9 @@ namespace Vision
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
+            this.scaledImageGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -747,9 +801,9 @@ namespace Vision
 
         #endregion
         private System.Windows.Forms.Button populateMarqueeButton;
-        private System.Windows.Forms.Button saveAndRunButton;
+        private System.Windows.Forms.Button runButton;
         private Marquee marquee1;
-        private System.Windows.Forms.Button saveAndExitButton;
+        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.GroupBox createASegmentGroupBox;
         private System.Windows.Forms.Label exitEffectLabel;
@@ -777,9 +831,8 @@ namespace Vision
         private System.Windows.Forms.NumericUpDown scrollSpeedControl;
         private System.Windows.Forms.GroupBox borderOptionsGroupBox;
         private System.Windows.Forms.Button browseButton;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox originalPictureBox;
         private System.Windows.Forms.CheckBox ignoreCheckBox;
         private System.Windows.Forms.CheckBox randomColorCheckBox;
         private System.Windows.Forms.Label marqueeBackgroundColorLabel;
@@ -801,6 +854,11 @@ namespace Vision
         private System.Windows.Forms.Timer animateSegmentTimer;
         private System.Windows.Forms.Label lastSegmentPopUp;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.GroupBox scaledImageGroupBox;
+        private System.Windows.Forms.PictureBox scaledPictureBox;
+        private System.Windows.Forms.Button previewButton;
+        private System.Windows.Forms.Button saveButton;
     }
 }
 

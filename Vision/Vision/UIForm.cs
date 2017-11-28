@@ -49,6 +49,7 @@ namespace Vision
         private Point a;
         private Point b;
         private int moveFrom;
+        private bool clickEvent = true;
         XmlSerializer xs;
         List<Segment> list;
         //Getting setup for movable segments
@@ -140,14 +141,17 @@ namespace Vision
 
         private void segmentClickEvent(object sender, EventArgs e)
         {
-            for (int i = 0; i < 24; i++)
+            if (clickEvent)
             {
-                if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
+                for (int i = 0; i < 24; i++)
                 {
-                    activeIndex = i;
-                    resetSegments();
-                    //leave loop
-                    i = 24;
+                    if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
+                    {
+                        activeIndex = i;
+                        resetSegments();
+                        //leave loop
+                        i = 24;
+                    }
                 }
             }
         }
@@ -214,7 +218,7 @@ namespace Vision
         {
             for (int i = 0; i < 24; i++)
             {
-                if (mouseIsOverPanel(segmentPanels[i]))
+                if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].BackColor == activeColor)
                 {
                     if (segmentPanels[i].Visible == true)
                     {
@@ -235,12 +239,16 @@ namespace Vision
         {
             for (int i = 0; i < 24; i++)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                if (segmentPanels[moveFrom].BackColor == activeColor)
                 {
-                    segmentPanels[moveFrom].Left = e.X + segmentPanels[moveFrom].Left - mouseDownLocation.X;
-                    segmentPanels[moveFrom].Top = e.Y + segmentPanels[moveFrom].Top - mouseDownLocation.Y;
+                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                    {
+                        clickEvent = false;
+                        segmentPanels[moveFrom].Left = e.X + segmentPanels[moveFrom].Left - mouseDownLocation.X;
+                        segmentPanels[moveFrom].Top = e.Y + segmentPanels[moveFrom].Top - mouseDownLocation.Y;
+                    }
+                    i = 24;
                 }
-                i = 24;
             }
         }
 
@@ -255,21 +263,23 @@ namespace Vision
                 }
                 else
                 {
-                    if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].Visible == true)
+                    if (segmentPanels[moveFrom].BackColor == activeColor)
                     {
-                        segmentPanels[moveFrom].Left = segmentLocationArray[i].X;
-                        segmentPanels[moveFrom].Top = segmentLocationArray[i].Y;
-                        moveSegment(moveFrom, i);
-                        i = 24;
-                    }
-                    //Set back to starting position
-                    else
-                    {
-                        segmentPanels[moveFrom].Left = segmentLocationArray[moveFrom].X;
-                        segmentPanels[moveFrom].Top = segmentLocationArray[moveFrom].Y;
+                        if (mouseIsOverPanel(segmentPanels[i]) && segmentPanels[i].Visible == true)
+                        {
+                            moveSegment(moveFrom, i);
+                            i = 24;
+                        }
+                        //Set back to starting position
+                        else
+                        {
+                            segmentPanels[moveFrom].Left = segmentLocationArray[moveFrom].X;
+                            segmentPanels[moveFrom].Top = segmentLocationArray[moveFrom].Y;
+                        }
                     }
                 }
             }
+            clickEvent = true;
         }
 
         private void createNewPanel(int i, int x, int y)
@@ -325,6 +335,7 @@ namespace Vision
             segmentButtons[i].TabIndex = 7;
             segmentButtons[i].Text = "X";
             segmentButtons[i].UseVisualStyleBackColor = false;
+            segmentButtons[i].Visible = false;
             segmentButtons[i].Click += new System.EventHandler(closeButtonClickEvent);
         }
 
@@ -502,20 +513,34 @@ namespace Vision
             //Else moved segment up
             else
             {
-                for (int j = movedTo; j < moveFrom; j++)
+                for (int i = 23; i >= 0; i--)
                 {
-                    segmentPanels[j].Left = segmentLocationArray[j + 1].X;
-                    segmentPanels[j].Top = segmentLocationArray[j + 1].Y;
-                    mySegmentArray[j] = mySegmentArray[j + 1];
-                    segmentPanels[j] = segmentPanels[j + 1];
-                    segmentLabels[j] = segmentLabels[j + 1];
-                    segmentButtons[j] = segmentButtons[j + 1];
+                    if (i >= movedTo && i < movedFrom)
+                    {
+                        segmentPanels[i].Left = segmentLocationArray[i + 1].X;
+                        segmentPanels[i].Top = segmentLocationArray[i + 1].Y;
+                        mySegmentArray[i + 1] = mySegmentArray[i];
+                        segmentPanels[i + 1] = segmentPanels[i];
+                        segmentLabels[i + 1] = segmentLabels[i];
+                        segmentButtons[i + 1] = segmentButtons[i];
+                    }
                 }
+                //for (int j = movedFrom; j > movedTo; j--)
+                //{
+                //    segmentPanels[j].Left = segmentLocationArray[j - 1].X;
+                //    segmentPanels[j].Top = segmentLocationArray[j - 1].Y;
+                //    mySegmentArray[j] = mySegmentArray[j - 1];
+                //    segmentPanels[j] = segmentPanels[j - 1];
+                //    segmentLabels[j] = segmentLabels[j - 1];
+                //    segmentButtons[j] = segmentButtons[j - 1];
+                //}
             }
             mySegmentArray[movedTo] = tempSegment;
             segmentPanels[movedTo] = tempPanel;
             segmentLabels[movedTo] = tempLabel;
             segmentButtons[movedTo] = tempButton;
+            segmentPanels[movedTo].Left = segmentLocationArray[movedTo].X;
+            segmentPanels[movedTo].Top = segmentLocationArray[movedTo].Y;
             getLocations();
             //works for moving down but not for moving up?
         }
@@ -592,7 +617,7 @@ namespace Vision
             imagePanel.Visible = false;
             marqueeBackgroundColorLabel.Visible = false;
             marqueeBackgroundColorButton.Visible = false;
-            saveAndRunButton.Visible = false;
+            runButton.Visible = false;
         }
 
 
@@ -611,7 +636,7 @@ namespace Vision
             playButton.Visible = false;
             pauseButton.Visible = false;
             marquee1.Visible = false;
-            saveAndRunButton.Visible = true;
+            runButton.Visible = true;
             resetSegments();
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
@@ -690,6 +715,8 @@ namespace Vision
             {
                 marqueeBackgroundColor = marqueeBackgroundColorDialogBox.Color;
                 marqueeBackgroundColorButton.BackColor = marqueeBackgroundColorDialogBox.Color;
+                originalPictureBox.BackColor = marqueeBackgroundColorDialogBox.Color;
+                scaledPictureBox.BackColor = marqueeBackgroundColorDialogBox.Color;
             }
         }
         #endregion
@@ -706,8 +733,11 @@ namespace Vision
             for (int i = 0; i < 24; i++)
             {
                 segmentPanels[i].BackColor = Color.Gray;
+                segmentButtons[i].Visible = false;
             }
             segmentPanels[activeIndex].BackColor = activeColor;
+            segmentButtons[activeIndex].Visible = true;
+
 
             //Fill information into the text and image tabs
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
@@ -1160,9 +1190,9 @@ namespace Vision
             imagePanel.Visible = true;
             imagePanel.Controls.Add(ignoreCheckBox);
             imagePanel.Controls.Add(displayDurationLabel);
-            displayDurationLabel.Location = new Point(12, 21);
+            displayDurationLabel.Location = new Point(12, 28);
             imagePanel.Controls.Add(displayDurationControl);
-            displayDurationControl.Location = new Point(102, 18);
+            displayDurationControl.Location = new Point(102, 26);
         }
 
         private void displayDurationControl_ValueChanged(object sender, EventArgs e)
@@ -1173,13 +1203,13 @@ namespace Vision
 
         private void browseButton_Click(object sender, EventArgs e)
         {
-            openFileDialog = new OpenFileDialog();
             int size = -1;
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK) // Test result.
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) // Test result.
             {
+
                 int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
-                string filename = openFileDialog.FileName;
+                string filename = openFileDialog1.FileName;
                 fileLocationTextBox.Text = filename;
                 mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
             }
@@ -1477,6 +1507,15 @@ namespace Vision
         private void startNewMessageButton_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void previewButton_Click(object sender, EventArgs e)
+        {
+            originalPictureBox.Image = (Image)mySegmentArray[activeIndex].originalBitmap;
+            originalPictureBox.BackColor = marqueeBackgroundColor;
+            scaledPictureBox.Image = (Image)mySegmentArray[activeIndex].scaledBitmap;
+            scaledPictureBox.BackColor = marqueeBackgroundColor;
+            originalPictureBox.Invalidate();
         }
     }
 }
