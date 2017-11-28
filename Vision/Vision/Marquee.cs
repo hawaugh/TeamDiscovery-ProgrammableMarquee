@@ -605,14 +605,13 @@ namespace Vision
             }*/
         }
 
-      //Ahmad
+        //Ahmad
         //Added on 11/27/2017
         public void displaySidewayEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
             String[] currSegment = segment.getMessageMatrix();
             int segmentLength = currSegment[0].Length;
-            int stopMiddle = (14 - segmentLength) / 2;
 
             for (int i = 0; i < 12; i++)
             {
@@ -627,23 +626,58 @@ namespace Vision
 
 
                 //Set last row to next row in segment
-                for (int c = 2; c < segmentLength ; c++)
+                for (int c = 2; c < segmentLength + 2; c++)
                 {
                     if (currSegment[i][c - 2].Equals('1'))
                     {
                         //setDot(14, c, segment.onColor);
-                        setDot(13, ((96 - segmentLength) / 2) + c + 3, segment.onColor);
+                        setDot(13, ((92 - segmentLength) / 2) + c, segment.onColor);
                     }
                     else if (currSegment[i][c - 2].Equals('0'))
                     {
                         //setDot(14, c, backgroundColor);
-                        setDot(13, ((96 - segmentLength) / 2) + c + 3, backgroundColor);
+                        setDot(13, ((92 - segmentLength) / 2) + c, backgroundColor);
                     }
 
                 }
                 Invalidate();
                 Thread.Sleep(25);
+            }
 
+            Thread.Sleep(100);
+
+            //Number of iterations
+            for (int i = 0; i < 11; i++)
+            {
+                //The range of rows that need to be updated, based on iteration number
+                for (int r = 12 - i; r > 1; r--)
+                {
+                    //Recreate each row from the segmentarray and put it where it needs to be based on the iteration number
+                    for (int c = 2; c < segmentLength + 2; c++)
+                    {
+                        if (currSegment[r - 2][c - 2].Equals('1'))
+                        {
+                            if (((92 - segmentLength) / 2) + c - (12 - i - r) > 1)
+                            {
+                                setDot(r, ((92 - segmentLength) / 2) + c - (12 - i - r), segment.onColor);
+                            }
+                        }
+                        else if (currSegment[r - 2][c - 2].Equals('0'))
+                        {
+                            if (((92 - segmentLength) / 2) + c - (12 - i - r) > 1)
+                            {
+                                setDot(r, ((92 - segmentLength) / 2) + c - (12 - i - r), backgroundColor);
+                            }
+                        }
+                    }
+                    //Turn the dot before the text off
+                    if (((96 - segmentLength) / 2) - (12 - i - r) > 2)
+                    {
+                        setDot(r, ((94 - segmentLength) / 2) - (12 - i - r), backgroundColor);
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
             }
 
 
