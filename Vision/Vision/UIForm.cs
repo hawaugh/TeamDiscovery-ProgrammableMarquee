@@ -1296,6 +1296,7 @@ namespace Vision
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
+            goToFullScreenButton.Visible = true;
             abortDisplayThreads();
             clearForMarquee();
             backToMenuButton.Visible = true;
@@ -1512,6 +1513,7 @@ namespace Vision
             exitFullScreen.Visible = true;
             backToMenuButton.Visible = false;
             exitButton.Visible = false;
+            goToFullScreenButton.Visible = false;
             fullScreen = true;
         }
 
@@ -1521,6 +1523,7 @@ namespace Vision
             exitFullScreen.Visible = false;
             backToMenuButton.Visible = true;
             exitButton.Visible = true;
+            goToFullScreenButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState = FormWindowState.Normal;
             fullScreen = false;
@@ -1533,11 +1536,11 @@ namespace Vision
                 LeaveFullScreenMode();
             }
         }
-        #endregion
 
         private void goToFullScreenButton_Click(object sender, EventArgs e)
         {
-
+            EnterFullScreenMode();
         }
+        #endregion
     }
 }
