@@ -266,6 +266,7 @@ namespace Vision
             this.scrollSpeedControl.Name = "scrollSpeedControl";
             this.scrollSpeedControl.Size = new System.Drawing.Size(120, 20);
             this.scrollSpeedControl.TabIndex = 6;
+            this.scrollSpeedControl.Tag = "";
             this.scrollSpeedControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.scrollSpeedControl.Value = new decimal(new int[] {
             25,
@@ -278,11 +279,11 @@ namespace Vision
             // scrollSpeedLabel
             // 
             this.scrollSpeedLabel.AutoSize = true;
-            this.scrollSpeedLabel.Location = new System.Drawing.Point(39, 134);
+            this.scrollSpeedLabel.Location = new System.Drawing.Point(7, 134);
             this.scrollSpeedLabel.Name = "scrollSpeedLabel";
-            this.scrollSpeedLabel.Size = new System.Drawing.Size(67, 13);
+            this.scrollSpeedLabel.Size = new System.Drawing.Size(135, 13);
             this.scrollSpeedLabel.TabIndex = 21;
-            this.scrollSpeedLabel.Text = "Scroll Speed";
+            this.scrollSpeedLabel.Text = "Scroll Speed Per Character";
             this.scrollSpeedLabel.Visible = false;
             // 
             // entranceEffectLabel
@@ -523,7 +524,7 @@ namespace Vision
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(354, 55);
             this.textPanel.Name = "textPanel";
-            this.textPanel.Size = new System.Drawing.Size(847, 402);
+            this.textPanel.Size = new System.Drawing.Size(854, 402);
             this.textPanel.TabIndex = 34;
             // 
             // ignoreCheckBox
@@ -531,7 +532,7 @@ namespace Vision
             this.ignoreCheckBox.AutoSize = true;
             this.ignoreCheckBox.Checked = true;
             this.ignoreCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ignoreCheckBox.Location = new System.Drawing.Point(788, 3);
+            this.ignoreCheckBox.Location = new System.Drawing.Point(797, 3);
             this.ignoreCheckBox.Name = "ignoreCheckBox";
             this.ignoreCheckBox.Size = new System.Drawing.Size(56, 17);
             this.ignoreCheckBox.TabIndex = 24;
@@ -614,7 +615,7 @@ namespace Vision
             this.imagePanel.Controls.Add(this.groupBox1);
             this.imagePanel.Location = new System.Drawing.Point(354, 55);
             this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(847, 401);
+            this.imagePanel.Size = new System.Drawing.Size(854, 401);
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
@@ -797,7 +798,7 @@ namespace Vision
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
-            this.Text = "Form1";
+            this.Text = "Vision";
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();

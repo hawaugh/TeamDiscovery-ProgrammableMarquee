@@ -52,15 +52,6 @@ namespace Vision
         private bool clickEvent = true;
         XmlSerializer xs;
         List<Segment> list;
-        //Getting setup for movable segments
-        //Holder for the location for all SegmentPanels
-
-        //Holder for all locations in order
-        private Point[] mySegmentPanelArrayLoc;
-        //Parallel Array for the location of all SegmentLabels
-        private Point[] mySegmentLabelArray = new Point[18];
-        //Parallel Array for the location of all SegmentCloseButtons
-        private Point[] mySegmentCloseButtonArray = new Point[18];
 
         public OpenFileDialog openFileDialog { get; private set; }
 
@@ -181,6 +172,25 @@ namespace Vision
                     if (i == 0 && segmentPanels[1].Visible == false)
                     {
                         lastSegmentPopUp.Visible = true;
+                    }
+                    else if (i < 23 && segmentPanels[i + 1].Visible == false)
+                    {
+                        lastSegmentPopUp.Visible = false;
+                        deleteSegment(i);
+                        activeIndex = i - 1;
+                        resetSegments();
+                        //leave loop
+                        i = 24;
+                    }
+                    else if (segmentPanels[23].Visible == true && addSegmentButtons[23].Visible == false)
+                    {
+                        lastSegmentPopUp.Visible = false;
+                        deleteSegment(i);
+                        addSegmentButtons[23].Visible = true;
+                        activeIndex = i;
+                        resetSegments();
+                        //leave loop
+                        i = 24;
                     }
                     else
                     {
@@ -339,104 +349,7 @@ namespace Vision
             addSegmentButtons[i].Click += new System.EventHandler(addSegmentClickEvent);
             addSegmentButtons[i].BringToFront();
         }
-        /*
-        private void animateSegmentTimer_Tick(object sender, EventArgs e)
-        {
-            if (segmentPanels[moving].Location.X == segmentLocationArray[moving].X)
-            {
-                animateSegmentTimer.Enabled = false;
-            }
-            else
-            {
-                segmentPanels[moving].Left += 2;
-            }
-            if (segmentPanels[moving].Location.Y == segmentLocationArray[moving].Y)
-            {
-                animateSegmentTimer.Enabled = false;
-            }
-            else
-            {
-                segmentPanels[moving].Top += 2;
-            }
-            /*
-            if (a.X > b.X && a.Y > b.Y)
-            {
-                if (a.X != b.X)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Left -= 2;
-                }
-                if (a.Y != b.Y)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Top -= 2;
-                }
-            }
-            else if (a.X < b.X && a.Y < b.Y)
-            {
-                if (a.X != b.X)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Left += 2;
-                }
-                if (a.Y != b.Y)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Top += 2;
-                }
-            }
-            else if (a.X > b.X && a.Y < b.Y)
-            {
-                if (a.X != b.X)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Left -= 2;
-                }
-                if (a.Y != b.Y)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Top += 2;
-                }
-            }
-            else if (a.X < b.X && a.Y > b.Y)
-            {
-                if (a.X != b.X)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Left += 2;
-                }
-                if (a.Y != b.Y)
-                {
-                    animateSegmentTimer.Enabled = false;
-                }
-                else
-                {
-                    segmentPanels[moving].Top -= 2;
-                }
-            }  
-    }
-    */
+        
         private void deleteSegment(int deleted)
         {
             segmentPanels[deleted].Visible = false;
@@ -508,15 +421,6 @@ namespace Vision
                         segmentButtons[i + 1] = segmentButtons[i];
                     }
                 }
-                //for (int j = movedFrom; j > movedTo; j--)
-                //{
-                //    segmentPanels[j].Left = segmentLocationArray[j - 1].X;
-                //    segmentPanels[j].Top = segmentLocationArray[j - 1].Y;
-                //    mySegmentArray[j] = mySegmentArray[j - 1];
-                //    segmentPanels[j] = segmentPanels[j - 1];
-                //    segmentLabels[j] = segmentLabels[j - 1];
-                //    segmentButtons[j] = segmentButtons[j - 1];
-                //}
             }
             mySegmentArray[movedTo] = tempSegment;
             segmentPanels[movedTo] = tempPanel;
@@ -525,7 +429,6 @@ namespace Vision
             segmentPanels[movedTo].Left = segmentLocationArray[movedTo].X;
             segmentPanels[movedTo].Top = segmentLocationArray[movedTo].Y;
             getLocations();
-            //works for moving down but not for moving up?
         }
         
         private void button1_Click_1(object sender, EventArgs e)
@@ -623,7 +526,7 @@ namespace Vision
             resetSegments();
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
-            this.Size = new System.Drawing.Size(1219, 543);
+            this.Size = new System.Drawing.Size(1230, 543);
         }
         private bool mouseIsOverPanel(Panel pnl)
         {
