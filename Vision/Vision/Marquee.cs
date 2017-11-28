@@ -28,6 +28,7 @@ namespace Vision
         private Dot[] border = new Dot[220];
         private Thread myBorderThread = null;
         private static Random rnd = new Random();
+        private static int prevRandom = -1;
 
         public Marquee()
         {
@@ -1651,8 +1652,16 @@ namespace Vision
          */
         #region Utility Methods
        public Color randomColor()
-        {            
-            int randomNumber = rnd.Next(0, 31);
+        {
+            int randomNumber;
+            do
+            {
+                randomNumber = rnd.Next(0, 32);
+            }
+            while (randomNumber == prevRandom);
+
+            prevRandom = randomNumber;
+
             if (randomNumber == 0)
             {
                 return Color.Aqua;
