@@ -807,8 +807,9 @@ namespace Vision
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vision";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UIForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UIForm_FormClosed);
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();

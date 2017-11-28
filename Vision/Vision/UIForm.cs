@@ -1439,11 +1439,6 @@ namespace Vision
             originalPictureBox.Invalidate();
         }
 
-        private void UIForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            abortDisplayThreads();
-        }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             //create XML file
@@ -1484,6 +1479,12 @@ namespace Vision
                 fs.Close();
             }
 
+        }
+
+        private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            abortDisplayThreads();
+            Application.Exit();
         }
     }
 }

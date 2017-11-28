@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="VisionAppDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisionSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisionSplashScreen.Designer.cs">
+      <DependentUpon>VisionSplashScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,6 +77,9 @@
     </Compile>
     <EmbeddedResource Include="UIForm.resx">
       <DependentUpon>UIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisionSplashScreen.resx">
+      <DependentUpon>VisionSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -27,7 +27,8 @@ namespace Vision
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UIForm());
+            Application.Run(new VisionSplashScreen());
+            //Application.Run(new UIForm());
             
         }
     }
