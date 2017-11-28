@@ -529,12 +529,12 @@ namespace Vision
                     if (currSegment[i][c - 2].Equals('1'))
                     {
                         //setDot(14, c, segment.onColor);
-                        setDot(2, ((96 - segmentLength) / 2) + c, segment.onColor);
+                        setDot(2, ((92 - segmentLength) / 2) + c, segment.onColor);
                     }
                     else if (currSegment[i][c - 2].Equals('0'))
                     {
                         //setDot(14, c, backgroundColor);
-                        setDot(2, ((96 - segmentLength) / 2) + c, backgroundColor);
+                        setDot(2, ((92 - segmentLength) / 2) + c, backgroundColor);
                     }
 
                 }
