@@ -304,7 +304,10 @@ namespace Vision
             "Split",
             "Scroll Up",
             "Scroll Down",
-            "Random Dots"});
+            "Random Dots",
+            "Up Exit",
+            "Sideway Down",
+            "Sideway Up"});
             this.exitEffectComboBox.Location = new System.Drawing.Point(506, 150);
             this.exitEffectComboBox.Name = "exitEffectComboBox";
             this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -318,7 +321,9 @@ namespace Vision
             this.middleEffectComboBox.Items.AddRange(new object[] {
             "None",
             "Random Color Dots",
-            "Fade"});
+            "Fade",
+            "Wave",
+            "Spotlight"});
             this.middleEffectComboBox.Location = new System.Drawing.Point(256, 150);
             this.middleEffectComboBox.Name = "middleEffectComboBox";
             this.middleEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -334,7 +339,10 @@ namespace Vision
             "Split",
             "Scroll Up",
             "Scroll Down",
-            "Random Dots"});
+            "Random Dots",
+            "Upside Down",
+            "Sideway Down",
+            "Sideway Up"});
             this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 150);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
@@ -416,7 +424,7 @@ namespace Vision
             this.borderEffectComboBox.FormattingEnabled = true;
             this.borderEffectComboBox.Items.AddRange(new object[] {
             "None",
-            "Satic",
+            "Static",
             "Rotate",
             "Random Color",
             "Random Shooting Colors"});
@@ -758,6 +766,7 @@ namespace Vision
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // marquee1
             // 
@@ -799,6 +808,7 @@ namespace Vision
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
             this.Text = "Vision";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UIForm_FormClosing);
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();

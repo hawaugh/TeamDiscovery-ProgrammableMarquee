@@ -496,6 +496,7 @@ namespace Vision
             populateMarqueeButton.Visible = false; //REMOVE
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
+            saveButton.Visible = false;
             logoLabel.Visible = false;
             textTabLabel.Visible = false;
             imageTabLabel.Visible = false;
@@ -512,6 +513,7 @@ namespace Vision
             populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
             loadXMLButton.Visible = true;
+            saveButton.Visible = true;
             logoLabel.Visible = true;
             textTabLabel.Visible = true;
             imageTabLabel.Visible = true;
@@ -627,6 +629,12 @@ namespace Vision
 
             //Fill information into the text and image tabs
             textTextBox.Text = mySegmentArray[activeIndex].messageText;
+            fileLocationTextBox.Text = mySegmentArray[activeIndex].filename;
+            originalPictureBox.Image = (Image)mySegmentArray[activeIndex].originalBitmap;
+            originalPictureBox.BackColor = marqueeBackgroundColor;
+            scaledPictureBox.Image = (Image)mySegmentArray[activeIndex].scaledBitmap;
+            scaledPictureBox.BackColor = marqueeBackgroundColor;
+            originalPictureBox.Invalidate();
             displayDurationControl.Value = (mySegmentArray[activeIndex].segmentSpeed / 1000);
             colorButton.BackColor = mySegmentArray[activeIndex].onColor;
             if (mySegmentArray[activeIndex].ignore == true)
@@ -748,6 +756,18 @@ namespace Vision
             {
                 return 4;
             }
+            else if (text == "Upside Down")
+            {
+                return 5;
+            }
+            else if (text == "Sideway Down")
+            {
+                return 6;
+            }
+            else if (text == "Sideway Up")
+            {
+                return 7;
+            }
             else
             {
                 return 0;
@@ -777,6 +797,18 @@ namespace Vision
             {
                 entranceEffectComboBox.Text = "Random Dots";
             }
+            else if (mySegmentArray[activeIndex].entranceEffect == 5)
+            {
+                entranceEffectComboBox.Text = "Upside Down";
+            }
+            else if (mySegmentArray[activeIndex].entranceEffect == 6)
+            {
+                entranceEffectComboBox.Text = "Sideway Down";
+            }
+            else if (mySegmentArray[activeIndex].entranceEffect == 7)
+            {
+                entranceEffectComboBox.Text = "Sideway Up";
+            }
             else
             {
                 entranceEffectComboBox.Text = "";
@@ -803,6 +835,14 @@ namespace Vision
             {
                 return 2;
             }
+            else if (text == "Wave")
+            {
+                return 3;
+            }
+            else if (text == "Spotlight")
+            {
+                return 4;
+            }
             else
             {
                 return 0;
@@ -823,6 +863,14 @@ namespace Vision
             else if (mySegmentArray[activeIndex].middleEffect == 2)
             {
                 middleEffectComboBox.Text = "Fade";
+            }
+            else if (mySegmentArray[activeIndex].middleEffect == 3)
+            {
+                middleEffectComboBox.Text = "Wave";
+            }
+            else if (mySegmentArray[activeIndex].middleEffect == 4)
+            {
+                middleEffectComboBox.Text = "Spotlight";
             }
             else
             {
@@ -858,6 +906,18 @@ namespace Vision
             {
                 return 4;
             }
+            else if (text == "Up Exit")
+            {
+                return 5;
+            }
+            else if (text == "Sideway Down")
+            {
+                return 6;
+            }
+            else if (text == "Sideway Up")
+            {
+                return 7;
+            }
             else
             {
                 return 0;
@@ -886,6 +946,18 @@ namespace Vision
             else if (mySegmentArray[activeIndex].exitEffect == 4)
             {
                 exitEffectComboBox.Text = "Random Dots";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 5)
+            {
+                exitEffectComboBox.Text = "Up Exit";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 6)
+            {
+                exitEffectComboBox.Text = "Sideway Down";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 7)
+            {
+                exitEffectComboBox.Text = "Sideway Up";
             }
             else
             {
@@ -1166,14 +1238,17 @@ namespace Vision
             if (mySegmentArray[activeIndex].borderEffect == 0)
             {
                 borderEffectComboBox.Text = "None";
+                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 1)
             {
                 borderEffectComboBox.Text = "Static";
+                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 2)
             {
                 borderEffectComboBox.Text = "Rotate";
+                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 3)
             {
@@ -1222,46 +1297,7 @@ namespace Vision
             marquee1.Visible = true;
             Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Segment[] copSegs = new Segment[mySegmentArray.Length];
-                mySegmentArray.CopyTo(copSegs, 0);
-
-                for (int i = 0; i < copSegs.Length; i++)
-                {
-                    Segment seg = new Segment();
-                    seg.ignore = copSegs[i].ignore;
-                    seg.messageText = copSegs[i].messageText;
-                    seg.onColor = copSegs[i].onColor;
-                    seg.segmentSpeed = copSegs[i].segmentSpeed;
-                    seg.isScrolling = copSegs[i].isScrolling;
-                    seg.isRandomColorScrolling = copSegs[i].isRandomColorScrolling;
-                    seg.scrollSpeed = copSegs[i].scrollSpeed;
-                    seg.isImage = copSegs[i].isImage;
-                    seg.originalBitmap = copSegs[i].originalBitmap;
-                    seg.scaledBitmap = copSegs[i].scaledBitmap;
-                    seg.imageAspect = copSegs[i].imageAspect;
-                    seg.entranceEffect = copSegs[i].entranceEffect;
-                    seg.middleEffect = copSegs[i].middleEffect;
-                    seg.exitEffect = copSegs[i].exitEffect;
-                    seg.borderColor = copSegs[i].borderColor;
-                    seg.borderEffect = copSegs[i].borderEffect;
-                    
-
-                    list.Add(seg);
-                }
-                FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
-                xs.Serialize(fs, list);
-                fs.Close();
-            }
-
             myDisplayThread.Start();
-            //create XML file
-
         }
         #endregion
 
@@ -1401,6 +1437,53 @@ namespace Vision
             scaledPictureBox.Image = (Image)mySegmentArray[activeIndex].scaledBitmap;
             scaledPictureBox.BackColor = marqueeBackgroundColor;
             originalPictureBox.Invalidate();
+        }
+
+        private void UIForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            abortDisplayThreads();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            //create XML file
+            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Segment[] copSegs = new Segment[mySegmentArray.Length];
+                mySegmentArray.CopyTo(copSegs, 0);
+
+                for (int i = 0; i < copSegs.Length; i++)
+                {
+                    Segment seg = new Segment();
+                    seg.ignore = copSegs[i].ignore;
+                    seg.messageText = copSegs[i].messageText;
+                    seg.onColor = copSegs[i].onColor;
+                    seg.segmentSpeed = copSegs[i].segmentSpeed;
+                    seg.isScrolling = copSegs[i].isScrolling;
+                    seg.isRandomColorScrolling = copSegs[i].isRandomColorScrolling;
+                    seg.scrollSpeed = copSegs[i].scrollSpeed;
+                    seg.isImage = copSegs[i].isImage;
+                    seg.originalBitmap = copSegs[i].originalBitmap;
+                    seg.scaledBitmap = copSegs[i].scaledBitmap;
+                    seg.imageAspect = copSegs[i].imageAspect;
+                    seg.entranceEffect = copSegs[i].entranceEffect;
+                    seg.middleEffect = copSegs[i].middleEffect;
+                    seg.exitEffect = copSegs[i].exitEffect;
+                    seg.borderColor = copSegs[i].borderColor;
+                    seg.borderEffect = copSegs[i].borderEffect;
+
+
+                    list.Add(seg);
+                }
+                FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
+                xs.Serialize(fs, list);
+                fs.Close();
+            }
+
         }
     }
 }
