@@ -642,11 +642,11 @@ namespace Vision
             colorButton.BackColor = mySegmentArray[activeIndex].onColor;
             if (mySegmentArray[activeIndex].ignore == true)
             {
-                ignoreCheckBox.Checked = false;
+                ignoreCheckBox.Checked = true;
             }
             else
             {
-                ignoreCheckBox.Checked = true;
+                ignoreCheckBox.Checked = false;
             }
             if (mySegmentArray[activeIndex].isScrolling == true)
             {
