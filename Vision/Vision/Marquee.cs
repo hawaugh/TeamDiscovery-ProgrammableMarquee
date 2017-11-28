@@ -476,7 +476,6 @@ namespace Vision
                 }
                 Invalidate();
                 Thread.Sleep(25);
-
             }
 
 
@@ -541,7 +540,45 @@ namespace Vision
                 }
                 Invalidate();
                 Thread.Sleep(25);
+            }
 
+            for (int i = 0; i < 12; i++)
+            {
+                //Move all dots 1 row up for up section
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 13 - i; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r + 1, c));
+                    }
+                }
+
+                //Move all Dots 1 row down for down section
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 12 - i; r > 1; r--)
+                    {
+                        setDot(r, c, getDotFore(r - 1, c));
+                    }
+                }
+
+                //Set last row to next row in segment
+                for (int c = 2; c < segmentLength + 2; c++)
+                {
+                    if (currSegment[i][c - 2].Equals('1'))
+                    {
+                        //setDot(14, c, segment.onColor);
+                        setDot(13, ((92 - segmentLength) / 2) + c, segment.onColor);
+                    }
+                    else if (currSegment[i][c - 2].Equals('0'))
+                    {
+                        //setDot(14, c, backgroundColor);
+                        setDot(13, ((92 - segmentLength) / 2) + c, backgroundColor);
+                    }
+
+                }
+                Invalidate();
+                Thread.Sleep(25);
             }
 
             //Exit rest of segment to the down
