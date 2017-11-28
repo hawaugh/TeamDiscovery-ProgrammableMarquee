@@ -1277,6 +1277,8 @@ namespace Vision
         private void backToMenuButton_Click(object sender, EventArgs e)
         {
             abortDisplayThreads();
+            marquee1.clearBorder(marqueeBackgroundColor);
+            marquee1.clearMarquee(marqueeBackgroundColor);
 
             //show menu
             openMenu();

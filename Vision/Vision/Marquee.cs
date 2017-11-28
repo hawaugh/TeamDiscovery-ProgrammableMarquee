@@ -116,17 +116,8 @@ namespace Vision
                         if (!message.getSegmentArray()[i].isImage)
                         {
                             currentIsImage = false;
-                            //Check if its the first segment
-                            if (i == 0)
-                            {
-                                currentBorderColor = message.getSegmentArray()[i].borderColor;
-                                currentBorderEffect = message.getSegmentArray()[i].borderEffect;
-                                //Start Border Effect
-                                myBorderThread = new Thread(delegate () { displayBorder(currentBorderColor, currentBorderEffect); });
-                                myBorderThread.Start();
-                            }
-                            //Check if the segment before was an image
-                            else if (currentIsImage)
+                            //check if last segment was an image
+                            if (currentIsImage)
                             {
                                 currentBorderColor = message.getSegmentArray()[i].borderColor;
                                 currentBorderEffect = message.getSegmentArray()[i].borderEffect;
@@ -144,7 +135,7 @@ namespace Vision
                                         myBorderThread.Abort();
                                     }
                                 }
-
+                                clearBorder(BackColor);
                                 currentBorderColor = message.getSegmentArray()[i].borderColor;
                                 currentBorderEffect = message.getSegmentArray()[i].borderEffect;
                                 //Start Border Effect
