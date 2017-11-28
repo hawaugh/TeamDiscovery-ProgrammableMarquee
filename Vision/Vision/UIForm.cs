@@ -1383,6 +1383,21 @@ namespace Vision
             {
                 if (myDisplayThread.IsAlive)
                 {
+                    if (myDisplayThread.ThreadState != ThreadState.Running && myDisplayThread.ThreadState != ThreadState.Suspended)
+                    {
+                        Thread restartThread = new Thread(delegate () 
+                        {
+                            while (myDisplayThread.ThreadState != ThreadState.Running && myDisplayThread.ThreadState != ThreadState.Suspended)
+                            {
+                                Thread.Sleep(25);
+                            }
+                            if (myDisplayThread.ThreadState == ThreadState.Suspended)
+                            {
+                                myDisplayThread.Resume();
+                            }
+                        });
+                        restartThread.Start();
+                    }
                     if (myDisplayThread.ThreadState == ThreadState.Suspended)
                     {
                         myDisplayThread.Resume();
