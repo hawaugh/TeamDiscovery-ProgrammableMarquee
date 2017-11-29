@@ -495,12 +495,112 @@ namespace Vision
 
         public void displayFromLeftEntrance(Segment segment, Color backgroundColor)
         {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            int centerPosition = (96 - segmentLength) / 2;
+            string currString;
 
+            for (int i = segmentLength - 1; i >= 0; i--)
+            {
+                //Move all dots 1 column right
+                for (int c = 93; c > 2; c--)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+
+                //set far left column to next column in segment
+                for (int r = 2; r < 14; r++)
+                {
+                    currString = currSegment[r - 2];
+                    if (currString[i].Equals('1'))
+                    {
+
+                        setDot(r, 2, segment.onColor);
+                    }
+                    else if (currString[i].Equals('0'))
+                    {
+
+                        setDot(r, 2, backgroundColor);
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
+
+
+            //Center the message
+            for (int i = 2; i < centerPosition; i++)
+            {
+                //Move all dots 1 column right
+                for (int c = 93; c > 1; c--)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
         }
 
         public void displayFromRightEntrance(Segment segment, Color backgroundColor)
         {
+            clearMarquee(backgroundColor);
+            String[] currSegment = segment.getMessageMatrix();
+            int segmentLength = currSegment[0].Length;
+            int centerPosition = (96 - segmentLength) / 2;
+            string currString;
 
+            for (int i = 0; i < segmentLength - 1; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 93; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1));
+                    }
+                }
+
+                //set far left column to next column in segment
+                for (int r = 2; r < 14; r++)
+                {
+                    currString = currSegment[r - 2];
+                    if (currString[i].Equals('1'))
+                    {
+
+                        setDot(r, 93, segment.onColor);
+                    }
+                    else if (currString[i].Equals('0'))
+                    {
+
+                        setDot(r, 93, backgroundColor);
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
+
+
+            //Center the message
+            for (int i = 2; i < centerPosition + 1; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1));
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
         }
 
         //Ahmad
@@ -1289,12 +1389,37 @@ namespace Vision
         
         public void displayExitLeft(Segment segment, Color backgroundColor)
         {
-
+            for (int i = 0; i < 96; i++)
+            {
+                //Move all dots 1 column left
+                for (int c = 2; c < 94; c++)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c + 1));
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
         }   
         
         public void displayExitRight(Segment segment, Color backgroundColor)
         {
-
+            //Center the message
+            for (int i = 0; i < 96; i++)
+            {
+                //Move all dots 1 column right
+                for (int c = 93; c > 1; c--)
+                {
+                    for (int r = 2; r < 14; r++)
+                    {
+                        setDot(r, c, getDotFore(r, c - 1));
+                    }
+                }
+                Invalidate();
+                Thread.Sleep(25);
+            }
         }    
         
         //Ahmad
