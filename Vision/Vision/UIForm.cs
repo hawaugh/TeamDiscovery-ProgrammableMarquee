@@ -1075,6 +1075,8 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = false;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
+                displayDurationControl.Visible = true;
+                displayDurationLabel.Visible = true;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
@@ -1095,6 +1097,8 @@ namespace Vision
                 mySegmentArray[activeIndex].isScrolling = true;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
                 scrollSpeedControl.Value = (decimal)((decimal)mySegmentArray[activeIndex].scrollSpeed / 100);
+                displayDurationControl.Visible = false;
+                displayDurationLabel.Visible = false;
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
