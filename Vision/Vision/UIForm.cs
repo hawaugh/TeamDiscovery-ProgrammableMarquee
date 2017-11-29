@@ -756,33 +756,41 @@ namespace Vision
             {
                 return 0;
             }
-            else if (text == "Horizontal Split")
+            else if (text == "From Top")
             {
                 return 1;
             }
-            else if (text == "From Top")
+            else if (text == "From Bottom")
             {
                 return 2;
             }
-            else if (text == "From Bottom")
+            else if (text == "From Left")
             {
                 return 3;
             }
-            else if (text == "Scattered Dots")
+            else if (text == "From Right")
             {
                 return 4;
             }
-            else if (text == "The Schwoop")
+            else if (text == "Horizontal Split")
             {
                 return 5;
             }
-            else if (text == "Crooked From Bottom")
+            else if (text == "Scattered Dots")
             {
                 return 6;
             }
-            else if (text == "Crooked From Top")
+            else if (text == "The Schwoop")
             {
                 return 7;
+            }
+            else if (text == "Crooked From Top")
+            {
+                return 8;
+            }
+            else if (text == "Crooked From Bottom")
+            {
+                return 9;
             }
             else
             {
@@ -799,31 +807,39 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 1)
             {
-                entranceEffectComboBox.Text = "Horizontal Split";
+                entranceEffectComboBox.Text = "From Top";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 2)
             {
-                entranceEffectComboBox.Text = "From Top";
+                entranceEffectComboBox.Text = "From Bottom";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 3)
             {
-                entranceEffectComboBox.Text = "From Bottom";
+                entranceEffectComboBox.Text = "From Left";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 4)
             {
-                entranceEffectComboBox.Text = "Scattered Dots";
+                entranceEffectComboBox.Text = "From Right";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 5)
             {
-                entranceEffectComboBox.Text = "The Schwoop";
+                entranceEffectComboBox.Text = "Horizontal Split";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 6)
             {
-                entranceEffectComboBox.Text = "Crooked From Bottom";
+                entranceEffectComboBox.Text = "Scattered Dots";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 7)
             {
+                entranceEffectComboBox.Text = "The Schwoop";
+            }
+            else if (mySegmentArray[activeIndex].entranceEffect == 8)
+            {
                 entranceEffectComboBox.Text = "Crooked From Top";
+            }
+            else if (mySegmentArray[activeIndex].entranceEffect == 9)
+            {
+                entranceEffectComboBox.Text = "Crooked From Bottom";
             }
             else
             {
@@ -906,29 +922,37 @@ namespace Vision
             {
                 return 0;
             }
-            else if (text == "Horizontal Split")
+            else if (text == "Exit Top")
             {
                 return 1;
             }
-            else if (text == "Exit Top")
+            else if (text == "Exit Bottom")
             {
                 return 2;
             }
-            else if (text == "Exit Bottom")
+            else if (text == "Exit Left")
             {
                 return 3;
             }
-            else if (text == "Scattered Dots")
+            else if (text == "Exit Right")
             {
                 return 4;
             }
-            else if (text == "Diagonal Exit Top")
+            else if (text == "Horizontal Split")
             {
                 return 5;
             }
-            else if (text == "Diagonal Exit Bottom")
+            else if (text == "Scattered Dots")
             {
                 return 6;
+            }
+            else if (text == "Diagonal Exit Top")
+            {
+                return 7;
+            }
+            else if (text == "Diagonal Exit Bottom")
+            {
+                return 8;
             }
             else
             {
@@ -945,25 +969,33 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].exitEffect == 1)
             {
-                exitEffectComboBox.Text = "Horizontal Split";
+                exitEffectComboBox.Text = "Exit Top";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 2)
             {
-                exitEffectComboBox.Text = "Exit Top";
+                exitEffectComboBox.Text = "Exit Bottom";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 3)
             {
-                exitEffectComboBox.Text = "Exit Bottom";
+                exitEffectComboBox.Text = "Exit Left";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 4)
             {
-                exitEffectComboBox.Text = "Scattered Dots";
+                exitEffectComboBox.Text = "Exit Right";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 5)
             {
-                exitEffectComboBox.Text = "Diagonal Exit Top";
+                exitEffectComboBox.Text = "Horizontal Split";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 6)
+            {
+                exitEffectComboBox.Text = "Scattered Dots";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 7)
+            {
+                exitEffectComboBox.Text = "Diagonal Exit Top";
+            }
+            else if (mySegmentArray[activeIndex].exitEffect == 8)
             {
                 exitEffectComboBox.Text = "Diagonal Exit Bottom";
             }
@@ -999,6 +1031,7 @@ namespace Vision
 
         private void textTabLabel_Click(object sender, EventArgs e)
         {
+            //mySegmentArray[activeIndex].isImage = false;
             textTabLabel.BackColor = Color.White;
             textTabLabel.ForeColor = Color.Black;
             imageTabLabel.BackColor = darkerGray;
@@ -1135,6 +1168,7 @@ namespace Vision
 
         private void imageTabLabel_Click(object sender, EventArgs e)
         {
+            //mySegmentArray[activeIndex].isImage = true;
             imageTabLabel.BackColor = Color.White;
             imageTabLabel.ForeColor = Color.Black;
             textTabLabel.BackColor = darkerGray;

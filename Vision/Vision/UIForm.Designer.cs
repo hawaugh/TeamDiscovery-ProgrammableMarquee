@@ -302,9 +302,11 @@ namespace Vision
             this.exitEffectComboBox.FormattingEnabled = true;
             this.exitEffectComboBox.Items.AddRange(new object[] {
             "No effect",
-            "Horizontal Split",
             "Exit Top",
             "Exit Bottom",
+            "Exit Left",
+            "Exit Right",
+            "Horizontal Split",
             "Scattered Dots",
             "Diagonal Exit Top",
             "Diagonal Exit Bottom"});
@@ -336,13 +338,15 @@ namespace Vision
             this.entranceEffectComboBox.FormattingEnabled = true;
             this.entranceEffectComboBox.Items.AddRange(new object[] {
             "No effect",
-            "Horizontal Split",
             "From Top",
             "From Bottom",
+            "From Left",
+            "From Right",
+            "Horizontal Split",
             "Scattered Dots",
             "The Schwoop",
-            "Crooked From Bottom",
-            "Crooked From Top"});
+            "Crooked From Top",
+            "Crooked From Bottom"});
             this.entranceEffectComboBox.Location = new System.Drawing.Point(6, 150);
             this.entranceEffectComboBox.Name = "entranceEffectComboBox";
             this.entranceEffectComboBox.Size = new System.Drawing.Size(191, 21);
