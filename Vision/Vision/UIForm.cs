@@ -217,6 +217,7 @@ namespace Vision
 
         private void mouseDownEvent(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            resetSegments();
             for (int i = 0; i < 24; i++)
             {
                 if (mouseIsOverPanel(segmentPanels[i]) || mouseIsOverLabel(segmentLabels[i]))
@@ -677,7 +678,15 @@ namespace Vision
 
 
             //Fill information into the text and image tabs
-            textTextBox.Text = mySegmentArray[activeIndex].messageText;
+            if (mySegmentArray[activeIndex].isImage == false && mySegmentArray[activeIndex].messageText == "")
+            {
+                textTextBox.Text = mySegmentArray[activeIndex].messageText;
+                segmentLabels[activeIndex].Text = "EMPTY";
+            }
+            else
+            {
+                textTextBox.Text = mySegmentArray[activeIndex].messageText;
+            }
             fileLocationTextBox.Text = mySegmentArray[activeIndex].filename;
             originalPictureBox.Image = (Image)mySegmentArray[activeIndex].originalBitmap;
             originalPictureBox.BackColor = marqueeBackgroundColor;
@@ -694,25 +703,58 @@ namespace Vision
             {
                 ignoreCheckBox.Checked = false;
             }
-            if (mySegmentArray[activeIndex].isScrolling == true)
+            if (mySegmentArray[activeIndex].isImage == true)
             {
-                scrollingTextButton.Checked = true;
-                scrollSpeedControl.Value = (decimal)((double)mySegmentArray[activeIndex].scrollSpeed / 100);
-                if (mySegmentArray[activeIndex].isRandomColorScrolling == true)
-                {
-                    randomColorCheckBox.Checked = true;
-                }
+                //Set everything in Image to active
+                imageTabLabel.BackColor = Color.White;
+                imageTabLabel.ForeColor = Color.Black;
+                textTabLabel.BackColor = darkerGray;
+                textTabLabel.ForeColor = Color.White;
+                textPanel.Visible = false;
+                imagePanel.Visible = true;
+                imagePanel.Controls.Add(ignoreCheckBox);
+                imagePanel.Controls.Add(displayDurationLabel);
+                displayDurationLabel.Location = new Point(12, 28);
+                imagePanel.Controls.Add(displayDurationControl);
+                displayDurationControl.Location = new Point(102, 26);
             }
             else
             {
-                specialEffectButton.Checked = true;
-                //Sets values for Effect combo boxes
-                setEntranceEffectText();
-                setMiddleEffectText();
-                setExitEffectText();
+                textTabLabel.BackColor = Color.White;
+                textTabLabel.ForeColor = Color.Black;
+                imageTabLabel.BackColor = darkerGray;
+                imageTabLabel.ForeColor = Color.White;
+                imagePanel.Visible = false;
+                textPanel.Visible = true;
+                textPanel.Controls.Add(ignoreCheckBox);
+                displayDurationLabel.Location = new Point(14, 63);
+                textPanel.Controls.Add(displayDurationLabel);
+                createASegmentGroupBox.Controls.Add(displayDurationLabel);
+                displayDurationControl.Location = new Point(104, 59);
+                textPanel.Controls.Add(displayDurationControl);
+                createASegmentGroupBox.Controls.Add(displayDurationControl);
+
+                if (mySegmentArray[activeIndex].isScrolling == true)
+                {
+                    scrollingTextButton.Checked = true;
+                    scrollSpeedControl.Value = (decimal)((double)mySegmentArray[activeIndex].scrollSpeed / 100);
+                    if (mySegmentArray[activeIndex].isRandomColorScrolling == true)
+                    {
+                        randomColorCheckBox.Checked = true;
+                    }
+                }
+                else
+                {
+                    specialEffectButton.Checked = true;
+                    //Sets values for Effect combo boxes
+                    setEntranceEffectText();
+                    setMiddleEffectText();
+                    setExitEffectText();
+                }
+                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
+                setBorderEffectText();
             }
-            borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
-            setBorderEffectText();
+            
         }
 
         private int findLocation(double x, double y)
@@ -1032,6 +1074,19 @@ namespace Vision
         private void textTabLabel_Click(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].isImage = false;
+            if (mySegmentArray[activeIndex].messageText.Length > 9)
+            {
+                string first9 = mySegmentArray[activeIndex].messageText.Substring(0, 9);
+                segmentLabels[activeIndex].Text = first9 + "...";
+            }
+            else if (mySegmentArray[activeIndex].messageText == "")
+            {
+                segmentLabels[activeIndex].Text = "EMPTY";
+            }
+            else
+            {
+                segmentLabels[activeIndex].Text = mySegmentArray[activeIndex].messageText;
+            }
             textTabLabel.BackColor = Color.White;
             textTabLabel.ForeColor = Color.Black;
             imageTabLabel.BackColor = darkerGray;
@@ -1116,11 +1171,20 @@ namespace Vision
                 scrollingTextButton.Checked = true;
                 specialEffectButton.Visible = false;
                 longTextPopUp.Visible = true;
+                if (mySegmentArray[activeIndex].isImage == false)
+                {
+                    string first9 = mySegmentArray[activeIndex].messageText.Substring(0, 9);
+                    segmentLabels[activeIndex].Text = first9 + "...";
+                }
             }
             else
             {
                 longTextPopUp.Visible = false;
                 specialEffectButton.Visible = true;
+                if (mySegmentArray[activeIndex].isImage == false)
+                {
+                    segmentLabels[activeIndex].Text = mySegmentArray[activeIndex].messageText;
+                }
             }
         }
 
@@ -1151,7 +1215,7 @@ namespace Vision
         #region Image Tab
         private void imageTabLabel_MouseEnter(object sender, EventArgs e)
         {
-            imageTabLabel.ForeColor = Color.DeepSkyBlue;
+            imageTabLabel.ForeColor = activeColor;
         }
 
         private void imageTabLabel_MouseLeave(object sender, EventArgs e)
@@ -1169,6 +1233,7 @@ namespace Vision
         private void imageTabLabel_Click(object sender, EventArgs e)
         {
             mySegmentArray[activeIndex].isImage = true;
+            segmentLabels[activeIndex].Text = "Image";
             imageTabLabel.BackColor = Color.White;
             imageTabLabel.ForeColor = Color.Black;
             textTabLabel.BackColor = darkerGray;
@@ -1198,7 +1263,6 @@ namespace Vision
                 int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
                 string filename = openFileDialog1.FileName;
                 fileLocationTextBox.Text = filename;
-                //mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
                 mySegmentArray[activeIndex].isImage = true;
                 mySegmentArray[activeIndex].filename = filename;
                 mySegmentArray[activeIndex].segmentSpeed = segmentSpeed;
@@ -1592,6 +1656,14 @@ namespace Vision
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void fileLocationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (mySegmentArray[activeIndex].isImage == true)
+            {
+                segmentLabels[activeIndex].Text = "Image";
+            }
         }
     }
 }

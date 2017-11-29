@@ -657,6 +657,7 @@ namespace Vision
             this.fileLocationTextBox.Name = "fileLocationTextBox";
             this.fileLocationTextBox.Size = new System.Drawing.Size(396, 20);
             this.fileLocationTextBox.TabIndex = 8;
+            this.fileLocationTextBox.TextChanged += new System.EventHandler(this.fileLocationTextBox_TextChanged);
             // 
             // browseButton
             // 
