@@ -471,13 +471,12 @@ namespace Vision
             // 
             this.textTabLabel.AutoSize = true;
             this.textTabLabel.BackColor = System.Drawing.Color.White;
-            this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(1, 1);
+            this.textTabLabel.Location = new System.Drawing.Point(1, 2);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.textTabLabel.Size = new System.Drawing.Size(80, 55);
+            this.textTabLabel.Size = new System.Drawing.Size(78, 53);
             this.textTabLabel.TabIndex = 32;
             this.textTabLabel.Text = "Text";
             this.textTabLabel.BackColorChanged += new System.EventHandler(this.textTabLabel_BackColorChanged);
@@ -489,13 +488,12 @@ namespace Vision
             // 
             this.imageTabLabel.AutoSize = true;
             this.imageTabLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(79, 1);
+            this.imageTabLabel.Location = new System.Drawing.Point(79, 2);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
+            this.imageTabLabel.Size = new System.Drawing.Size(105, 53);
             this.imageTabLabel.TabIndex = 33;
             this.imageTabLabel.Text = "Image";
             this.imageTabLabel.Click += new System.EventHandler(this.imageTabLabel_Click);
