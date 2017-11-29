@@ -307,7 +307,7 @@ namespace Vision
             "Exit Left",
             "Exit Right",
             "Horizontal Split",
-            "Scattered Dots",
+            "Disolve",
             "Diagonal Exit Top",
             "Diagonal Exit Bottom"});
             this.exitEffectComboBox.Location = new System.Drawing.Point(506, 150);
@@ -343,7 +343,7 @@ namespace Vision
             "From Left",
             "From Right",
             "Horizontal Split",
-            "Scattered Dots",
+            "Disolve",
             "The Schwoop",
             "Crooked From Top",
             "Crooked From Bottom"});
