@@ -34,6 +34,7 @@ namespace Vision
         private Segment[] mySegmentArray = new Segment[24];
         private Color darkerGray = new Color();
         private Color lightGray = new Color();
+        private Color offWhite = new Color();
         private Color activeColor = new Color();
         private int activeIndex;
         private Point mouseDownLocation;
@@ -42,11 +43,11 @@ namespace Vision
         private int lastSegmentVisable;
         private Panel[] segmentPanels = new Panel[24];
         private Label[] segmentLabels = new Label[24];
+        private Label[] segmentReference = new Label[24];
         private Button[] segmentButtons = new Button[24];
         private Button[] addSegmentButtons = new Button[24];
         private Point[] segmentLocationArray = new Point[24];
         private Point[] addSegmentLocationArray = new Point[24];
-        private int largestNum = 1;
         private Point a;
         private Point b;
         private int moveFrom;
@@ -61,6 +62,7 @@ namespace Vision
         {
             darkerGray = Color.FromArgb(0, 64, 64, 64);
             lightGray = Color.FromArgb(0, 224, 224, 224);
+            offWhite = Color.FromArgb(100, 224, 224, 224);
             activeColor = Color.DeepSkyBlue;
             for (int i = 0; i < 24; i++)
             {
@@ -92,6 +94,7 @@ namespace Vision
                     x2 = 280;
                 }
                 segmentLabels[i] = new System.Windows.Forms.Label();
+                segmentReference[i] = new System.Windows.Forms.Label();
                 segmentButtons[i] = new System.Windows.Forms.Button();
                 segmentPanels[i] = new System.Windows.Forms.Panel();
                 if (i == 0)
@@ -113,6 +116,9 @@ namespace Vision
 
                 // Create Segment Label
                 createNewLabel(i);
+
+                // Create Segment Reference
+                createNewReference(i);
 
                 // Create Segment Close Buttons
                 createNewCloseButtons(i);
@@ -286,6 +292,7 @@ namespace Vision
             // 
             segmentPanels[i].BackColor = System.Drawing.Color.Gray;
             segmentPanels[i].Controls.Add(segmentLabels[i]);
+            segmentPanels[i].Controls.Add(segmentReference[i]);
             segmentPanels[i].Controls.Add(segmentButtons[i]);
             segmentPanels[i].Location = new System.Drawing.Point(x, y);
             segmentPanels[i].Size = new System.Drawing.Size(110, 40);
@@ -303,16 +310,29 @@ namespace Vision
             // 
             segmentLabels[i].AutoSize = true;
             segmentLabels[i].ForeColor = System.Drawing.Color.White;
-            segmentLabels[i].Location = new System.Drawing.Point(17, 11);
+            segmentLabels[i].Location = new System.Drawing.Point(10, 16);
             segmentLabels[i].Size = new System.Drawing.Size(58, 13);
             segmentLabels[i].TabIndex = 8;
-            segmentLabels[i].Text = "Segment " + (largestNum);
+            segmentLabels[i].Text = "EMPTY";
             segmentLabels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
             segmentLabels[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
             segmentLabels[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
-            largestNum++;
         }
-
+        
+        private void createNewReference(int i)
+        {
+            // 
+            // Create Segment Reference
+            // 
+            segmentReference[i].AutoSize = true;
+            segmentReference[i].ForeColor = offWhite;
+            segmentReference[i].Location = new System.Drawing.Point(1, 1);
+            segmentReference[i].Size = new System.Drawing.Size(5, 13);
+            segmentReference[i].Font = new Font("Arial", 7, FontStyle.Bold); ;
+            segmentReference[i].TabIndex = 9;
+            segmentReference[i].Text = (i + 1).ToString();
+        }
+        
         private void createNewCloseButtons(int i)
         {
             // 
@@ -361,6 +381,7 @@ namespace Vision
                 {
                     mySegmentArray[i - 1] = mySegmentArray[i];
                     segmentPanels[i - 1] = segmentPanels[i];
+                    segmentReference[i - 1] = segmentReference[i];
                     segmentLabels[i - 1] = segmentLabels[i];
                     segmentButtons[i - 1] = segmentButtons[i];
                     addSegmentButtons[i - 1] = addSegmentButtons[i];
@@ -374,15 +395,18 @@ namespace Vision
             mySegmentArray[23] = new Segment();
             SegmentHolderPanel.Controls.Add(segmentPanels[23]);
             segmentLabels[23] = new System.Windows.Forms.Label();
+            segmentReference[23] = new System.Windows.Forms.Label();
             segmentButtons[23] = new System.Windows.Forms.Button();
             segmentPanels[23] = new System.Windows.Forms.Panel();
             addSegmentButtons[23] = new System.Windows.Forms.Button();
             SegmentHolderPanel.Controls.Add(segmentPanels[23]);
             SegmentHolderPanel.Controls.Add(addSegmentButtons[23]);
             createNewLabel(23);
+            createNewReference(23);
             createNewCloseButtons(23);
             createNewPanel(23, 238, 328);
             createNewAddSegmentButton(23, 280, 336);
+            getLocations();
         }
 
         private void moveSegment(int movedFrom, int movedTo)
@@ -391,6 +415,7 @@ namespace Vision
             Panel tempPanel = segmentPanels[moveFrom];
             Label tempLabel = segmentLabels[moveFrom];
             Button tempButton = segmentButtons[moveFrom];
+            Label tempReference = segmentReference[movedFrom];
 
             //If segment moved down
             if (movedFrom - movedTo < 0)
@@ -404,6 +429,7 @@ namespace Vision
                         mySegmentArray[i - 1] = mySegmentArray[i];
                         segmentPanels[i - 1] = segmentPanels[i];
                         segmentLabels[i - 1] = segmentLabels[i];
+                        segmentReference[i - 1] = segmentReference[i];
                         segmentButtons[i - 1] = segmentButtons[i];
                     }
                 }
@@ -420,6 +446,7 @@ namespace Vision
                         mySegmentArray[i + 1] = mySegmentArray[i];
                         segmentPanels[i + 1] = segmentPanels[i];
                         segmentLabels[i + 1] = segmentLabels[i];
+                        segmentReference[i + 1] = segmentReference[i];
                         segmentButtons[i + 1] = segmentButtons[i];
                     }
                 }
@@ -427,6 +454,7 @@ namespace Vision
             mySegmentArray[movedTo] = tempSegment;
             segmentPanels[movedTo] = tempPanel;
             segmentLabels[movedTo] = tempLabel;
+            segmentReference[movedTo] = tempReference;
             segmentButtons[movedTo] = tempButton;
             segmentPanels[movedTo].Left = segmentLocationArray[movedTo].X;
             segmentPanels[movedTo].Top = segmentLocationArray[movedTo].Y;
@@ -476,6 +504,7 @@ namespace Vision
                     segmentLocationArray[i] = segmentPanels[i].Location;
                 }
             }
+            setReferences();
         }
 
         private void clearForMarquee()
@@ -497,7 +526,7 @@ namespace Vision
             {
                 imagePanel.BringToFront();
             }
-            populateMarqueeButton.Visible = false; //REMOVE
+            //populateMarqueeButton.Visible = false; //REMOVE
             SegmentHolderPanel.Visible = false;
             loadXMLButton.Visible = false;
             saveButton.Visible = false;
@@ -514,7 +543,7 @@ namespace Vision
 
         private void openMenu()
         {
-            populateMarqueeButton.Visible = true; //REMOVE
+            //populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
             loadXMLButton.Visible = true;
             saveButton.Visible = true;
@@ -561,6 +590,20 @@ namespace Vision
                 return true;
             }
             return false;
+        }
+
+        private void setReferences()
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                for (int j = 0; j < 24; j++)
+                {
+                    if (segmentLocationArray[i] == segmentPanels[j].Location)
+                    {
+                        segmentReference[j].Text = (i + 1).ToString();
+                    }
+                }
+            }
         }
         #endregion
 
@@ -1517,5 +1560,10 @@ namespace Vision
             EnterFullScreenMode();
         }
         #endregion
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

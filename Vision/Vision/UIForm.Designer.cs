@@ -43,6 +43,7 @@ namespace Vision
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UIForm));
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.secondsPerCharacterLabel = new System.Windows.Forms.Label();
             this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
             this.colorLabel = new System.Windows.Forms.Label();
             this.colorButton = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@ namespace Vision
             this.label2 = new System.Windows.Forms.Label();
             this.borderColorLabel = new System.Windows.Forms.Label();
             this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.loadXMLButton = new System.Windows.Forms.Button();
             this.runButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
@@ -95,11 +95,11 @@ namespace Vision
             this.pauseButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.animateSegmentTimer = new System.Windows.Forms.Timer(this.components);
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveButton = new System.Windows.Forms.Button();
             this.goToFullScreenButton = new System.Windows.Forms.Button();
-            this.secondsPerCharacterLabel = new System.Windows.Forms.Label();
+            this.loadXMLButton = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -118,12 +118,13 @@ namespace Vision
             // populateMarqueeButton
             // 
             this.populateMarqueeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.populateMarqueeButton.Location = new System.Drawing.Point(77, 463);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(198, 463);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 37);
             this.populateMarqueeButton.TabIndex = 1;
             this.populateMarqueeButton.Text = "Populate Marquee";
             this.populateMarqueeButton.UseVisualStyleBackColor = true;
+            this.populateMarqueeButton.Visible = false;
             this.populateMarqueeButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // createASegmentGroupBox
@@ -152,6 +153,16 @@ namespace Vision
             this.createASegmentGroupBox.Size = new System.Drawing.Size(770, 206);
             this.createASegmentGroupBox.TabIndex = 5;
             this.createASegmentGroupBox.TabStop = false;
+            // 
+            // secondsPerCharacterLabel
+            // 
+            this.secondsPerCharacterLabel.AutoSize = true;
+            this.secondsPerCharacterLabel.Location = new System.Drawing.Point(136, 153);
+            this.secondsPerCharacterLabel.Name = "secondsPerCharacterLabel";
+            this.secondsPerCharacterLabel.Size = new System.Drawing.Size(117, 13);
+            this.secondsPerCharacterLabel.TabIndex = 44;
+            this.secondsPerCharacterLabel.Text = "Seconds Per Character";
+            this.secondsPerCharacterLabel.Visible = false;
             // 
             // displayDurationControl
             // 
@@ -422,17 +433,6 @@ namespace Vision
             this.borderEffectComboBox.Size = new System.Drawing.Size(191, 21);
             this.borderEffectComboBox.TabIndex = 3;
             this.borderEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.borderEffectComboBox_SelectedIndexChanged);
-            // 
-            // loadXMLButton
-            // 
-            this.loadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.loadXMLButton.Location = new System.Drawing.Point(890, 463);
-            this.loadXMLButton.Name = "loadXMLButton";
-            this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
-            this.loadXMLButton.TabIndex = 3;
-            this.loadXMLButton.Text = "Load XML";
-            this.loadXMLButton.UseVisualStyleBackColor = true;
-            this.loadXMLButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // runButton
             // 
@@ -750,13 +750,17 @@ namespace Vision
             // 
             // saveButton
             // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(971, 463);
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.Location = new System.Drawing.Point(88, 463);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 37);
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // goToFullScreenButton
@@ -771,15 +775,19 @@ namespace Vision
             this.goToFullScreenButton.Visible = false;
             this.goToFullScreenButton.Click += new System.EventHandler(this.goToFullScreenButton_Click);
             // 
-            // secondsPerCharacterLabel
+            // loadXMLButton
             // 
-            this.secondsPerCharacterLabel.AutoSize = true;
-            this.secondsPerCharacterLabel.Location = new System.Drawing.Point(136, 153);
-            this.secondsPerCharacterLabel.Name = "secondsPerCharacterLabel";
-            this.secondsPerCharacterLabel.Size = new System.Drawing.Size(117, 13);
-            this.secondsPerCharacterLabel.TabIndex = 44;
-            this.secondsPerCharacterLabel.Text = "Seconds Per Character";
-            this.secondsPerCharacterLabel.Visible = false;
+            this.loadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loadXMLButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.loadXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.loadXMLButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.loadXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadXMLButton.Location = new System.Drawing.Point(7, 463);
+            this.loadXMLButton.Name = "loadXMLButton";
+            this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
+            this.loadXMLButton.TabIndex = 48;
+            this.loadXMLButton.Text = "Load XML";
+            this.loadXMLButton.UseVisualStyleBackColor = false;
             // 
             // marquee1
             // 
@@ -798,6 +806,7 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1214, 504);
+            this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.goToFullScreenButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.exitFullScreen);
@@ -806,7 +815,6 @@ namespace Vision
             this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
-            this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.exitButton);
@@ -869,7 +877,6 @@ namespace Vision
         private System.Windows.Forms.ComboBox borderEffectComboBox;
         private System.Windows.Forms.TextBox textTextBox;
         private System.Windows.Forms.Label textLabel;
-        private System.Windows.Forms.Button loadXMLButton;
         private System.Windows.Forms.Label longTextPopUp;
         private System.Windows.Forms.Label textTabLabel;
         private System.Windows.Forms.Label imageTabLabel;
@@ -901,7 +908,6 @@ namespace Vision
         private System.Windows.Forms.Button startNewMessageButton;
         private System.Windows.Forms.Timer animateSegmentTimer;
         private System.Windows.Forms.Label lastSegmentPopUp;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox scaledImageGroupBox;
         private System.Windows.Forms.PictureBox scaledPictureBox;
@@ -910,6 +916,8 @@ namespace Vision
         private System.Windows.Forms.PictureBox exitFullScreen;
         private System.Windows.Forms.Button goToFullScreenButton;
         private System.Windows.Forms.Label secondsPerCharacterLabel;
+        private System.Windows.Forms.Button loadXMLButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
