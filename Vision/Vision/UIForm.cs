@@ -776,7 +776,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Disolve")
+            else if (text == "Scattered Dots")
             {
                 return 6;
             }
@@ -827,7 +827,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 6)
             {
-                entranceEffectComboBox.Text = "Disolve";
+                entranceEffectComboBox.Text = "Scattered Dots";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 7)
             {
@@ -942,7 +942,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Disolve")
+            else if (text == "Scattered Dots")
             {
                 return 6;
             }
@@ -989,7 +989,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].exitEffect == 6)
             {
-                exitEffectComboBox.Text = "Disolve";
+                exitEffectComboBox.Text = "Scattered Dots";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 7)
             {
@@ -1503,14 +1503,15 @@ namespace Vision
         private void saveButton_Click(object sender, EventArgs e)
         {
             //create XML file
-            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
+             saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
             saveFileDialog1.FilterIndex = 1;
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Segment[] copSegs = new Segment[mySegmentArray.Length];
-                mySegmentArray.CopyTo(copSegs, 0);
+                Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
+                Segment[] copSegs = copyMyMessage.getSegmentArray();
+                copyMyMessage.backgroundColor = myMessage.backgroundColor;
 
                 for (int i = 0; i < copSegs.Length; i++)
                 {
@@ -1531,15 +1532,10 @@ namespace Vision
                     seg.exitEffect = copSegs[i].exitEffect;
                     seg.borderColor = copSegs[i].borderColor;
                     seg.borderEffect = copSegs[i].borderEffect;
-
-
-                    list.Add(seg);
                 }
-                FileStream fs = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write);
-                xs.Serialize(fs, list);
-                fs.Close();
+                XmlSave.SaveData(copyMyMessage, saveFileDialog1.FileName);
             }
-
+            myDisplayThread.Start();            
         }
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
