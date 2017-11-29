@@ -1271,68 +1271,22 @@ namespace Vision
         //Uses 2 helper methods to split and exit the segment concurrently
         public void displaySplitExit(Segment segment, Color backgroundColor)
         {
-            //causes both methods to run concurrently.
-            Parallel.Invoke(() =>
+            int bColLoopStart = 2;
+            for (int i = 0; i < 96; i++)
             {
-                displayUpperSplitExit(segment, backgroundColor);
-            },
-
-            () =>
-            {
-                displayLowerSplitExit(segment, backgroundColor);
-            }
-            );
-
-        }
-
-        //Heather - Created on 11/10/17
-        //Private method that is used in the displaySplitExit method.
-        private void displayUpperSplitExit(Segment segment, Color backgroundColor)
-        {
-            //Exit top half to right
-            for (int i = 0; i < 94; i++)
-            {
-                for (int c = 93; c > 0; c--)
+                //Move dots until they are on screen
+                for (int c = 93; c > 1; c--)
                 {
                     for (int r = 2; r < 8; r++)
                     {
                         setDot(r, c, getDotFore(r, c - 1));
+                        setDot(r + 6, bColLoopStart, getDotFore(r + 6, bColLoopStart + 1));
                     }
+                    bColLoopStart++;
                 }
-
-                //Set last column to blank
-                for (int r = 2; r < 8; r++)
-                {
-                    setDot(r, 1, backgroundColor);
-                }
-                Thread.Sleep(25);
+                bColLoopStart = 2;
                 Invalidate();
-            }
-        }
-
-        //Heather - Created on 11/10/17
-        //Private method that is used in the displaySplitExit method. Moves lower half of message off screen to the left
-        private void displayLowerSplitExit(Segment segment, Color backgroundColor)
-        {
-            //Exit rest of segment to the left
-            for (int i = 0; i < 94; i++)
-            {
-                //Move all dots 1 column left
-                for (int c = 2; c < 93; c++)
-                {
-                    for (int r = 8; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r, c + 1));
-                    }
-                }
-
-                //Set last column to blank
-                for (int r = 2; r < 14; r++)
-                {
-                    setDot(r, 93, backgroundColor);
-                }
                 Thread.Sleep(25);
-                Invalidate();
             }
         }
 
