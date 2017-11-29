@@ -51,7 +51,6 @@ namespace Vision
         private Point a;
         private Point b;
         private int moveFrom;
-        private bool clickEvent = true;
         private bool fullScreen = false;
         XmlSerializer xs;
         List<Segment> list;
@@ -139,7 +138,6 @@ namespace Vision
 
         private void addSegmentClickEvent(object sender, EventArgs e)
         {
-            lastSegmentPopUp.Visible = false;
             for (int i = 1; i < 24; i++)
             {
                 if (mouseIsOverButton(addSegmentButtons[i]))
@@ -178,11 +176,10 @@ namespace Vision
                     //Test if segment 1 is the only visible segment. Else it can be deleted.
                     if (i == 0 && segmentPanels[1].Visible == false)
                     {
-                        lastSegmentPopUp.Visible = true;
+                        
                     }
                     else if (i < 23 && segmentPanels[i + 1].Visible == false)
                     {
-                        lastSegmentPopUp.Visible = false;
                         deleteSegment(i);
                         activeIndex = i - 1;
                         resetSegments();
@@ -191,7 +188,6 @@ namespace Vision
                     }
                     else if (segmentPanels[23].Visible == true && addSegmentButtons[23].Visible == false)
                     {
-                        lastSegmentPopUp.Visible = false;
                         deleteSegment(i);
                         addSegmentButtons[23].Visible = true;
                         activeIndex = i;
@@ -201,7 +197,6 @@ namespace Vision
                     }
                     else
                     {
-                        lastSegmentPopUp.Visible = false;
                         deleteSegment(i);
 
                         activeIndex = i;
@@ -246,7 +241,6 @@ namespace Vision
                 {
                     if (e.Button == System.Windows.Forms.MouseButtons.Left)
                     {
-                        clickEvent = false;
                         segmentPanels[moveFrom].Left = e.X + segmentPanels[moveFrom].Left - mouseDownLocation.X;
                         segmentPanels[moveFrom].Top = e.Y + segmentPanels[moveFrom].Top - mouseDownLocation.Y;
                     }
@@ -282,7 +276,7 @@ namespace Vision
                     }
                 }
             }
-            clickEvent = true;
+            resetSegments();
         }
 
         private void createNewPanel(int i, int x, int y)
@@ -668,6 +662,7 @@ namespace Vision
         #region Segment Buttons
         private void resetSegments()
         {
+            
             //set everything to default
             for (int i = 0; i < 24; i++)
             {
@@ -675,8 +670,14 @@ namespace Vision
                 segmentButtons[i].Visible = false;
             }
             segmentPanels[activeIndex].BackColor = activeColor;
-            segmentButtons[activeIndex].Visible = true;
-
+            if (segmentPanels[1].Visible == false)
+            {
+                segmentButtons[0].Visible = false;
+            }
+            else
+            {
+                segmentButtons[activeIndex].Visible = true;
+            }
 
             //Fill information into the text and image tabs
             if (mySegmentArray[activeIndex].isImage == false && mySegmentArray[activeIndex].messageText == "")

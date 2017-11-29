@@ -75,7 +75,6 @@ namespace Vision
             this.borderColorButton = new System.Windows.Forms.Button();
             this.exitFullScreen = new System.Windows.Forms.PictureBox();
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
-            this.lastSegmentPopUp = new System.Windows.Forms.Label();
             this.startNewMessageButton = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.previewButton = new System.Windows.Forms.Button();
@@ -107,7 +106,6 @@ namespace Vision
             this.textPanel.SuspendLayout();
             this.borderOptionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).BeginInit();
-            this.SegmentHolderPanel.SuspendLayout();
             this.imagePanel.SuspendLayout();
             this.scaledImageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).BeginInit();
@@ -564,22 +562,11 @@ namespace Vision
             // 
             // SegmentHolderPanel
             // 
-            this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
+            this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SegmentHolderPanel.Location = new System.Drawing.Point(1, 417);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
             this.SegmentHolderPanel.Size = new System.Drawing.Size(1016, 95);
             this.SegmentHolderPanel.TabIndex = 36;
-            // 
-            // lastSegmentPopUp
-            // 
-            this.lastSegmentPopUp.AutoSize = true;
-            this.lastSegmentPopUp.ForeColor = System.Drawing.Color.Red;
-            this.lastSegmentPopUp.Location = new System.Drawing.Point(3, 44);
-            this.lastSegmentPopUp.Name = "lastSegmentPopUp";
-            this.lastSegmentPopUp.Size = new System.Drawing.Size(159, 13);
-            this.lastSegmentPopUp.TabIndex = 45;
-            this.lastSegmentPopUp.Text = "Can not delete the only segment";
-            this.lastSegmentPopUp.Visible = false;
             // 
             // startNewMessageButton
             // 
@@ -843,8 +830,6 @@ namespace Vision
             this.borderOptionsGroupBox.ResumeLayout(false);
             this.borderOptionsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitFullScreen)).EndInit();
-            this.SegmentHolderPanel.ResumeLayout(false);
-            this.SegmentHolderPanel.PerformLayout();
             this.imagePanel.ResumeLayout(false);
             this.imagePanel.PerformLayout();
             this.scaledImageGroupBox.ResumeLayout(false);
@@ -901,7 +886,6 @@ namespace Vision
         private System.Windows.Forms.TextBox fileLocationTextBox;
         private System.Windows.Forms.Button startNewMessageButton;
         private System.Windows.Forms.Timer animateSegmentTimer;
-        private System.Windows.Forms.Label lastSegmentPopUp;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox scaledImageGroupBox;
         private System.Windows.Forms.PictureBox scaledPictureBox;
