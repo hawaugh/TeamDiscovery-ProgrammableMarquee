@@ -1031,7 +1031,7 @@ namespace Vision
 
         private void textTabLabel_Click(object sender, EventArgs e)
         {
-            //mySegmentArray[activeIndex].isImage = false;
+            mySegmentArray[activeIndex].isImage = false;
             textTabLabel.BackColor = Color.White;
             textTabLabel.ForeColor = Color.Black;
             imageTabLabel.BackColor = darkerGray;
@@ -1168,7 +1168,7 @@ namespace Vision
 
         private void imageTabLabel_Click(object sender, EventArgs e)
         {
-            //mySegmentArray[activeIndex].isImage = true;
+            mySegmentArray[activeIndex].isImage = true;
             imageTabLabel.BackColor = Color.White;
             imageTabLabel.ForeColor = Color.Black;
             textTabLabel.BackColor = darkerGray;
@@ -1198,7 +1198,10 @@ namespace Vision
                 int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
                 string filename = openFileDialog1.FileName;
                 fileLocationTextBox.Text = filename;
-                mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
+                //mySegmentArray[activeIndex] = new Segment(filename, segmentSpeed);
+                mySegmentArray[activeIndex].isImage = true;
+                mySegmentArray[activeIndex].filename = filename;
+                mySegmentArray[activeIndex].segmentSpeed = segmentSpeed;
             }
         }
         #endregion
