@@ -668,47 +668,14 @@ namespace Vision
                 setMiddleEffectText();
                 setExitEffectText();
             }
-            if (mySegmentArray[activeIndex].borderEffect == 3 || mySegmentArray[activeIndex].borderEffect == 4)
-            {
-                borderColorPopUp.Visible = true;
-                borderColorButton.BackColor = lightGray;
-                setBorderEffectText();
-            }
-            else
-            {
-                borderColorPopUp.Visible = false;
-                borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
-                setBorderEffectText();
-            }
+            borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
+            setBorderEffectText();
         }
 
         private int findLocation(double x, double y)
         {
             return 0;
         }
-        /*
-        //Save for later
-        private void segmentMoveAnimation(Panel panel, Point a, Point b)
-        {
-
-            for (int i = 0; i < 23; i++)
-            {
-                panel.Left = a.X + 5;
-                
-                //if (a.X < b.X)
-                //{
-                //    panel.Left = a.X + 1;
-                //    a.X += 1;
-                //}
-                //if (a.Y < b.Y)
-                //{
-                //    panel.Top = a.Y + 1;
-                //    a.Y += 1;
-                //}
-                
-            }
-        }
-        */
 
         private void tempop(int moreingIndex, int moreToIndex)
         {
@@ -742,35 +709,35 @@ namespace Vision
 
         private int findEntranceEffect(String text)
         {
-            if (text == "None")
+            if (text == "No effect")
             {
                 return 0;
             }
-            else if (text == "Split")
+            else if (text == "Horizontal Split")
             {
                 return 1;
             }
-            else if (text == "Scroll Up")
+            else if (text == "From Top")
             {
                 return 2;
             }
-            else if (text == "Scroll Down")
+            else if (text == "From Bottom")
             {
                 return 3;
             }
-            else if (text == "Random Dots")
+            else if (text == "Scattered Dots")
             {
                 return 4;
             }
-            else if (text == "Upside Down")
+            else if (text == "The Schwoop")
             {
                 return 5;
             }
-            else if (text == "Sideway Down")
+            else if (text == "Crooked From Bottom")
             {
                 return 6;
             }
-            else if (text == "Sideway Up")
+            else if (text == "Crooked From Top")
             {
                 return 7;
             }
@@ -785,35 +752,35 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].entranceEffect == 0)
             {
-                entranceEffectComboBox.Text = "None";
+                entranceEffectComboBox.Text = "No effect";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 1)
             {
-                entranceEffectComboBox.Text = "Split";
+                entranceEffectComboBox.Text = "Horizontal Split";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 2)
             {
-                entranceEffectComboBox.Text = "Scroll Up";
+                entranceEffectComboBox.Text = "From Top";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 3)
             {
-                entranceEffectComboBox.Text = "Scroll Down";
+                entranceEffectComboBox.Text = "From Bottom";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 4)
             {
-                entranceEffectComboBox.Text = "Random Dots";
+                entranceEffectComboBox.Text = "Scattered Dots";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 5)
             {
-                entranceEffectComboBox.Text = "Upside Down";
+                entranceEffectComboBox.Text = "The Schwoop";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 6)
             {
-                entranceEffectComboBox.Text = "Sideway Down";
+                entranceEffectComboBox.Text = "Crooked From Bottom";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 7)
             {
-                entranceEffectComboBox.Text = "Sideway Up";
+                entranceEffectComboBox.Text = "Crooked From Top";
             }
             else
             {
@@ -829,23 +796,23 @@ namespace Vision
 
         private int findMiddleEffect(String text)
         {
-            if (text == "None")
+            if (text == "No effect")
             {
                 return 0;
             }
-            else if (text == "Random Color Dots")
+            else if (text == "Random Colored Dots")
             {
                 return 1;
             }
-            else if (text == "Fade")
+            else if (text == "Flashing")
             {
                 return 2;
             }
-            else if (text == "Wave")
+            else if (text == "The Wave")
             {
                 return 3;
             }
-            else if (text == "Spotlight")
+            else if (text == "The Spotlight")
             {
                 return 4;
             }
@@ -860,23 +827,23 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].middleEffect == 0)
             {
-                middleEffectComboBox.Text = "None";
+                middleEffectComboBox.Text = "No effect";
             }
             else if (mySegmentArray[activeIndex].middleEffect == 1)
             {
-                middleEffectComboBox.Text = "Random Color Dots";
+                middleEffectComboBox.Text = "Random Colored Dots";
             }
             else if (mySegmentArray[activeIndex].middleEffect == 2)
             {
-                middleEffectComboBox.Text = "Fade";
+                middleEffectComboBox.Text = "Flashing";
             }
             else if (mySegmentArray[activeIndex].middleEffect == 3)
             {
-                middleEffectComboBox.Text = "Wave";
+                middleEffectComboBox.Text = "The Wave";
             }
             else if (mySegmentArray[activeIndex].middleEffect == 4)
             {
-                middleEffectComboBox.Text = "Spotlight";
+                middleEffectComboBox.Text = "The Spotlight";
             }
             else
             {
@@ -892,37 +859,33 @@ namespace Vision
 
         private int findExitEffect(String text)
         {
-            if (text == "None")
+            if (text == "No effect")
             {
                 return 0;
             }
-            else if (text == "Split")
+            else if (text == "Horizontal Split")
             {
                 return 1;
             }
-            else if (text == "Scroll Up")
+            else if (text == "Exit Top")
             {
                 return 2;
             }
-            else if (text == "Scroll Down")
+            else if (text == "Exit Bottom")
             {
                 return 3;
             }
-            else if (text == "Random Dots")
+            else if (text == "Scattered Dots")
             {
                 return 4;
             }
-            else if (text == "Up Exit")
+            else if (text == "Diagonal Exit Top")
             {
                 return 5;
             }
-            else if (text == "Sideway Down")
+            else if (text == "Diagonal Exit Bottom")
             {
                 return 6;
-            }
-            else if (text == "Sideway Up")
-            {
-                return 7;
             }
             else
             {
@@ -935,35 +898,31 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].exitEffect == 0)
             {
-                exitEffectComboBox.Text = "None";
+                exitEffectComboBox.Text = "No effect";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 1)
             {
-                exitEffectComboBox.Text = "Split";
+                exitEffectComboBox.Text = "Horizontal Split";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 2)
             {
-                exitEffectComboBox.Text = "Scroll Up";
+                exitEffectComboBox.Text = "Exit Top";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 3)
             {
-                exitEffectComboBox.Text = "Scroll Down";
+                exitEffectComboBox.Text = "Exit Bottom";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 4)
             {
-                exitEffectComboBox.Text = "Random Dots";
+                exitEffectComboBox.Text = "Scattered Dots";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 5)
             {
-                exitEffectComboBox.Text = "Up Exit";
+                exitEffectComboBox.Text = "Diagonal Exit Top";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 6)
             {
-                exitEffectComboBox.Text = "Sideway Down";
-            }
-            else if (mySegmentArray[activeIndex].exitEffect == 7)
-            {
-                exitEffectComboBox.Text = "Sideway Up";
+                exitEffectComboBox.Text = "Diagonal Exit Bottom";
             }
             else
             {
@@ -1048,6 +1007,7 @@ namespace Vision
                 exitEffectComboBox.Visible = true;
                 scrollSpeedControl.Visible = false;
                 scrollSpeedLabel.Visible = false;
+                secondsPerCharacterLabel.Visible = false;
                 randomColorCheckBox.Visible = false;
             }
         }
@@ -1067,6 +1027,7 @@ namespace Vision
                 exitEffectComboBox.Visible = false;
                 scrollSpeedControl.Visible = true;
                 scrollSpeedLabel.Visible = true;
+                secondsPerCharacterLabel.Visible = true;
                 randomColorCheckBox.Visible = true;
             }
         }
@@ -1098,24 +1059,10 @@ namespace Vision
             if (randomColorCheckBox.Checked == true)
             {
                 mySegmentArray[activeIndex].isRandomColorScrolling = true;
-                //test is a color option is selected.
-                if (colorButton.BackColor != lightGray)
-                {
-                    //if true. Sets button color back to normal and displays pop up.
-                    colorButton.BackColor = lightGray;
-                    randomColorPopUp.Visible = true;
-                }
             }
             else
             {
                 mySegmentArray[activeIndex].isRandomColorScrolling = false;
-                //Test if pop up is visible. (randomColorCheckBox is already true)
-                if (randomColorPopUp.Visible == true)
-                {
-                    //if true. removes popup and sets the color option back to normal.
-                    randomColorPopUp.Visible = false;
-                    colorButton.BackColor = colorDialogBox.Color;
-                }
             }
         }
         #endregion
@@ -1189,12 +1136,6 @@ namespace Vision
         {
             if (borderColorDialogBox.ShowDialog() == DialogResult.OK)
             {
-                if (borderColorPopUp.Visible == true)
-                {
-                    mySegmentArray[activeIndex].borderEffect = 0;
-                    borderColorPopUp.Visible = false;
-                    setBorderEffectText();
-                }
                 mySegmentArray[activeIndex].borderColor = borderColorDialogBox.Color;
                 borderColorButton.BackColor = borderColorDialogBox.Color;
             }
@@ -1208,29 +1149,24 @@ namespace Vision
 
         private int findBorderEffect(String text)
         {
-            borderColorPopUp.Visible = false;
-            if (text == "None")
+            if (text == "No Border")
             {
                 return 0;
             }
-            else if (text == "Static")
+            else if (text == "Static Border")
             {
                 return 1;
             }
-            else if (text == "Rotate")
+            else if (text == "Rotating")
             {
                 return 2;
             }
-            else if (text == "Random Color")
+            else if (text == "Flashing Random Colors")
             {
-                borderColorPopUp.Visible = true;
-                borderColorButton.BackColor = lightGray;
                 return 3;
             }
-            else if (text == "Random Shooting Colors")
+            else if (text == "Oscillating Random Colors")
             {
-                borderColorPopUp.Visible = true;
-                borderColorButton.BackColor = lightGray;
                 return 4;
             }
             else
@@ -1243,26 +1179,26 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].borderEffect == 0)
             {
-                borderEffectComboBox.Text = "None";
+                borderEffectComboBox.Text = "No Border";
                 borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 1)
             {
-                borderEffectComboBox.Text = "Static";
+                borderEffectComboBox.Text = "Static Border";
                 borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 2)
             {
-                borderEffectComboBox.Text = "Rotate";
+                borderEffectComboBox.Text = "Rotating";
                 borderColorButton.BackColor = mySegmentArray[activeIndex].borderColor;
             }
             else if (mySegmentArray[activeIndex].borderEffect == 3)
             {
-                borderEffectComboBox.Text = "Random Color";
+                borderEffectComboBox.Text = "Flashing Random Colors";
             }
             else if (mySegmentArray[activeIndex].borderEffect == 4)
             {
-                borderEffectComboBox.Text = "Random Shooting Colors";
+                borderEffectComboBox.Text = "Oscillating Random Colors";
             }
             else
             {
