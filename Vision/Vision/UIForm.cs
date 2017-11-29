@@ -276,7 +276,6 @@ namespace Vision
                     }
                 }
             }
-            resetSegments();
         }
 
         private void createNewPanel(int i, int x, int y)
@@ -325,6 +324,9 @@ namespace Vision
             segmentReference[i].Font = new Font("Arial", 7, FontStyle.Bold); ;
             segmentReference[i].TabIndex = 9;
             segmentReference[i].Text = (i + 1).ToString();
+            segmentReference[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
+            segmentReference[i].MouseMove += new System.Windows.Forms.MouseEventHandler(mouseMoveEvent);
+            segmentReference[i].MouseUp += new System.Windows.Forms.MouseEventHandler(mouseUpEvent);
         }
         
         private void createNewCloseButtons(int i)
@@ -452,6 +454,8 @@ namespace Vision
             segmentButtons[movedTo] = tempButton;
             segmentPanels[movedTo].Left = segmentLocationArray[movedTo].X;
             segmentPanels[movedTo].Top = segmentLocationArray[movedTo].Y;
+            activeIndex = movedTo;
+            resetSegments();
             getLocations();
         }
         
