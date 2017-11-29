@@ -1075,8 +1075,6 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = false;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
-                displayDurationControl.Visible = true;
-                displayDurationLabel.Visible = true;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
@@ -1097,8 +1095,6 @@ namespace Vision
                 mySegmentArray[activeIndex].isScrolling = true;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
                 scrollSpeedControl.Value = (decimal)((decimal)mySegmentArray[activeIndex].scrollSpeed / 100);
-                displayDurationControl.Visible = false;
-                displayDurationLabel.Visible = false;
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
@@ -1336,34 +1332,29 @@ namespace Vision
         #region XML Methods
 
         //Edited 11-26 Heather
-        //Don't know what parameters you will need
+        //Edited 11-28 Logan
         //Save all fields but "filename" and the "messageMatrix" in every segment object in array
         //Also save the marqueeBackgroundColor from this class
-
-       /* private static void SaveData(List<Segment> segList, string fileName)
+        class XmlSave
         {
-            List segments = new ArrayList();
+            public static void SaveData(object IClass, string fileName)
+            {
+                StreamWriter writer = null;
+                try
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer((IClass.GetType()));
+                    writer = new StreamWriter(fileName);
+                    xmlSerializer.Serialize(writer, IClass);
+                }
+                finally
+                {
+                    if (writer != null)
+                        writer.Close();
+                    writer = null;
+                }
+            }
 
-            for(int i = 0; i < seg.Length; i++)
-            {
-
-            }
-            StreamWriter writer = null;
-            try
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(seg);
-                writer = new StreamWriter(fileName);
-                xmlSerializer.Serialize(writer, seg);
-            }
-            finally
-            {
-                if (writer != null)
-                    writer.Close();
-                writer = null;
-            }
         }
-
-
 
         class XmlLoad<T>
         {
@@ -1383,7 +1374,7 @@ namespace Vision
                 fs.Close();
                 return result;
             }
-        }*/
+        }
 
         #endregion
 
