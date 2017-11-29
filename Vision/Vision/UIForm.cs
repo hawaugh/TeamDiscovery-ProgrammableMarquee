@@ -550,6 +550,7 @@ namespace Vision
             startNewMessageButton.Visible = false;
             loadXMLButton.Visible = false;
             saveButton.Visible = false;
+            buildLabel.Visible = false;
             textTabLabel.Visible = false;
             imageTabLabel.Visible = false;
             textPanel.Visible = false;
@@ -578,6 +579,7 @@ namespace Vision
             goToFullScreenButton.Visible = false;
             marquee1.Visible = false;
             runButton.Visible = true;
+            buildLabel.Visible = true;
             resetSegments();
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;

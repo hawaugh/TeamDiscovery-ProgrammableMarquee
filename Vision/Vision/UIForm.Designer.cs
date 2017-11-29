@@ -44,18 +44,22 @@ namespace Vision
             this.populateMarqueeButton = new System.Windows.Forms.Button();
             this.createASegmentGroupBox = new System.Windows.Forms.GroupBox();
             this.secondsPerCharacterLabel = new System.Windows.Forms.Label();
+            this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
             this.colorLabel = new System.Windows.Forms.Label();
             this.colorButton = new System.Windows.Forms.Button();
             this.longTextPopUp = new System.Windows.Forms.Label();
             this.randomColorCheckBox = new System.Windows.Forms.CheckBox();
+            this.exitEffectLabel = new System.Windows.Forms.Label();
             this.staticEffectLabel = new System.Windows.Forms.Label();
             this.scrollSpeedControl = new System.Windows.Forms.NumericUpDown();
             this.scrollSpeedLabel = new System.Windows.Forms.Label();
             this.entranceEffectLabel = new System.Windows.Forms.Label();
+            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
             this.middleEffectComboBox = new System.Windows.Forms.ComboBox();
             this.entranceEffectComboBox = new System.Windows.Forms.ComboBox();
             this.scrollingTextButton = new System.Windows.Forms.RadioButton();
             this.specialEffectButton = new System.Windows.Forms.RadioButton();
+            this.displayDurationLabel = new System.Windows.Forms.Label();
             this.textTextBox = new System.Windows.Forms.TextBox();
             this.textLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -95,12 +99,10 @@ namespace Vision
             this.goToFullScreenButton = new System.Windows.Forms.Button();
             this.loadXMLButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.displayDurationLabel = new System.Windows.Forms.Label();
-            this.exitEffectComboBox = new System.Windows.Forms.ComboBox();
-            this.exitEffectLabel = new System.Windows.Forms.Label();
-            this.displayDurationControl = new System.Windows.Forms.NumericUpDown();
+            this.buildLabel = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
             this.textPanel.SuspendLayout();
             this.borderOptionsGroupBox.SuspendLayout();
@@ -111,7 +113,6 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -163,6 +164,25 @@ namespace Vision
             this.secondsPerCharacterLabel.Text = "Seconds Per Character";
             this.secondsPerCharacterLabel.Visible = false;
             // 
+            // displayDurationControl
+            // 
+            this.displayDurationControl.Location = new System.Drawing.Point(104, 105);
+            this.displayDurationControl.Maximum = new decimal(new int[] {
+            2147482,
+            0,
+            0,
+            0});
+            this.displayDurationControl.Name = "displayDurationControl";
+            this.displayDurationControl.Size = new System.Drawing.Size(120, 20);
+            this.displayDurationControl.TabIndex = 43;
+            this.displayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.displayDurationControl.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.displayDurationControl.ValueChanged += new System.EventHandler(this.displayDurationControl_ValueChanged);
+            // 
             // colorLabel
             // 
             this.colorLabel.AutoSize = true;
@@ -206,6 +226,15 @@ namespace Vision
             this.randomColorCheckBox.UseVisualStyleBackColor = true;
             this.randomColorCheckBox.Visible = false;
             this.randomColorCheckBox.CheckedChanged += new System.EventHandler(this.randomColorCheckBox_CheckedChanged);
+            // 
+            // exitEffectLabel
+            // 
+            this.exitEffectLabel.AutoSize = true;
+            this.exitEffectLabel.Location = new System.Drawing.Point(839, 87);
+            this.exitEffectLabel.Name = "exitEffectLabel";
+            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
+            this.exitEffectLabel.TabIndex = 16;
+            this.exitEffectLabel.Text = "Exit Effect";
             // 
             // staticEffectLabel
             // 
@@ -267,6 +296,26 @@ namespace Vision
             this.entranceEffectLabel.TabIndex = 14;
             this.entranceEffectLabel.Text = "Entrance Effect";
             // 
+            // exitEffectComboBox
+            // 
+            this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.exitEffectComboBox.FormattingEnabled = true;
+            this.exitEffectComboBox.Items.AddRange(new object[] {
+            "No effect",
+            "Exit Top",
+            "Exit Bottom",
+            "Exit Left",
+            "Exit Right",
+            "Horizontal Split",
+            "Disolve",
+            "Diagonal Exit Top",
+            "Diagonal Exit Bottom"});
+            this.exitEffectComboBox.Location = new System.Drawing.Point(774, 103);
+            this.exitEffectComboBox.Name = "exitEffectComboBox";
+            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
+            this.exitEffectComboBox.TabIndex = 13;
+            this.exitEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.exitEffectComboBox_SelectedIndexChanged);
+            // 
             // middleEffectComboBox
             // 
             this.middleEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -327,6 +376,15 @@ namespace Vision
             this.specialEffectButton.Text = "Special Effects";
             this.specialEffectButton.UseVisualStyleBackColor = true;
             this.specialEffectButton.CheckedChanged += new System.EventHandler(this.specialEffectButton_CheckedChanged);
+            // 
+            // displayDurationLabel
+            // 
+            this.displayDurationLabel.AutoSize = true;
+            this.displayDurationLabel.Location = new System.Drawing.Point(14, 109);
+            this.displayDurationLabel.Name = "displayDurationLabel";
+            this.displayDurationLabel.Size = new System.Drawing.Size(87, 13);
+            this.displayDurationLabel.TabIndex = 8;
+            this.displayDurationLabel.Text = "Display Duration:";
             // 
             // textTextBox
             // 
@@ -452,7 +510,7 @@ namespace Vision
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(1, 55);
             this.textPanel.Name = "textPanel";
-            this.textPanel.Size = new System.Drawing.Size(1014, 358);
+            this.textPanel.Size = new System.Drawing.Size(1016, 358);
             this.textPanel.TabIndex = 34;
             // 
             // ignoreCheckBox
@@ -506,7 +564,6 @@ namespace Vision
             // 
             // SegmentHolderPanel
             // 
-            this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
             this.SegmentHolderPanel.Location = new System.Drawing.Point(1, 417);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
@@ -693,7 +750,6 @@ namespace Vision
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Visible = false;
-            //this.saveButton.Click += new System.EventHandler(this.saveButton_Click); //Removed for Beta Build
             // 
             // goToFullScreenButton
             // 
@@ -722,62 +778,14 @@ namespace Vision
             this.loadXMLButton.UseVisualStyleBackColor = false;
             this.loadXMLButton.Visible = false;
             // 
-            // displayDurationLabel
+            // buildLabel
             // 
-            this.displayDurationLabel.AutoSize = true;
-            this.displayDurationLabel.Location = new System.Drawing.Point(14, 109);
-            this.displayDurationLabel.Name = "displayDurationLabel";
-            this.displayDurationLabel.Size = new System.Drawing.Size(87, 13);
-            this.displayDurationLabel.TabIndex = 8;
-            this.displayDurationLabel.Text = "Display Duration:";
-            // 
-            // exitEffectComboBox
-            // 
-            this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.exitEffectComboBox.FormattingEnabled = true;
-            this.exitEffectComboBox.Items.AddRange(new object[] {
-            "No effect",
-            "Exit Top",
-            "Exit Bottom",
-            "Exit Left",
-            "Exit Right",
-            "Horizontal Split",
-            "Disolve",
-            "Diagonal Exit Top",
-            "Diagonal Exit Bottom"});
-            this.exitEffectComboBox.Location = new System.Drawing.Point(774, 103);
-            this.exitEffectComboBox.Name = "exitEffectComboBox";
-            this.exitEffectComboBox.Size = new System.Drawing.Size(191, 21);
-            this.exitEffectComboBox.TabIndex = 13;
-            this.exitEffectComboBox.SelectedIndexChanged += new System.EventHandler(this.exitEffectComboBox_SelectedIndexChanged);
-            // 
-            // exitEffectLabel
-            // 
-            this.exitEffectLabel.AutoSize = true;
-            this.exitEffectLabel.Location = new System.Drawing.Point(839, 87);
-            this.exitEffectLabel.Name = "exitEffectLabel";
-            this.exitEffectLabel.Size = new System.Drawing.Size(55, 13);
-            this.exitEffectLabel.TabIndex = 16;
-            this.exitEffectLabel.Text = "Exit Effect";
-            // 
-            // displayDurationControl
-            // 
-            this.displayDurationControl.Location = new System.Drawing.Point(104, 105);
-            this.displayDurationControl.Maximum = new decimal(new int[] {
-            2147482,
-            0,
-            0,
-            0});
-            this.displayDurationControl.Name = "displayDurationControl";
-            this.displayDurationControl.Size = new System.Drawing.Size(120, 20);
-            this.displayDurationControl.TabIndex = 43;
-            this.displayDurationControl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.displayDurationControl.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.displayDurationControl.ValueChanged += new System.EventHandler(this.displayDurationControl_ValueChanged);
+            this.buildLabel.AutoSize = true;
+            this.buildLabel.Location = new System.Drawing.Point(784, 538);
+            this.buildLabel.Name = "buildLabel";
+            this.buildLabel.Size = new System.Drawing.Size(82, 13);
+            this.buildLabel.TabIndex = 49;
+            this.buildLabel.Text = "Beta Build 0.1.0";
             // 
             // marquee1
             // 
@@ -796,6 +804,7 @@ namespace Vision
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1018, 553);
+            this.Controls.Add(this.buildLabel);
             this.Controls.Add(this.loadXMLButton);
             this.Controls.Add(this.startNewMessageButton);
             this.Controls.Add(this.goToFullScreenButton);
@@ -827,6 +836,7 @@ namespace Vision
             this.Load += new System.EventHandler(this.UIForm_Load);
             this.createASegmentGroupBox.ResumeLayout(false);
             this.createASegmentGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).EndInit();
             this.textPanel.ResumeLayout(false);
             this.textPanel.PerformLayout();
@@ -841,7 +851,6 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,6 +916,7 @@ namespace Vision
         private System.Windows.Forms.Label exitEffectLabel;
         private System.Windows.Forms.ComboBox exitEffectComboBox;
         private System.Windows.Forms.Label displayDurationLabel;
+        private System.Windows.Forms.Label buildLabel;
     }
 }
 
