@@ -168,6 +168,10 @@ namespace Vision
         public void setMessageMatrix(string messageText)
         {
             messageMatrix = new String[12];
+            for (int i = 0; i < 12; i++)
+            {
+                messageMatrix[i] = "";
+            }
             string[] currentLetter;
             foreach (char c in messageText)
             {
