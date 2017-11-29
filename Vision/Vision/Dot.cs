@@ -36,10 +36,14 @@ namespace Vision
             set { _ForeColor = value; }
         }
 
+        
+        //Ahmad Omar
+        //Edited on 11/29/2017
         //sets dot color to a random color
+        //Added 11 new colors that will populate any text segments
         public void randColor()
         {
-            int randomNumber = rnd.Next(0, 20);
+            int randomNumber = rnd.Next(0, 32);
             if (randomNumber == 0)
             {
                 _ForeColor = Color.Aqua;
@@ -120,9 +124,53 @@ namespace Vision
             {
                 _ForeColor = Color.Violet;
             }
-            else
+            else if (randomNumber == 20)
             {
                 _ForeColor = Color.Yellow;
+            }
+            else if (randomNumber == 21)
+            {
+                _ForeColor = Color.Aquamarine;
+            }
+            else if (randomNumber == 22)
+            {
+                _ForeColor = Color.Maroon;
+            }
+            else if (randomNumber == 23)
+            {
+                _ForeColor = Color.MediumOrchid;
+            }
+            else if (randomNumber == 24)
+            {
+                _ForeColor = Color.MediumSeaGreen;
+            }
+            else if (randomNumber == 25)
+            {
+                _ForeColor = Color.OliveDrab;
+            }
+            else if (randomNumber == 26)
+            {
+                _ForeColor = Color.Firebrick;
+            }
+            else if (randomNumber == 27)
+            {
+                _ForeColor = Color.Crimson;
+            }
+            else if (randomNumber == 28)
+            {
+                _ForeColor = Color.Magenta;
+            }
+            else if (randomNumber == 29)
+            {
+                _ForeColor = Color.LightPink;
+            }
+            else if (randomNumber == 30)
+            {
+                _ForeColor = Color.DarkRed;
+            }
+            else
+            {
+                _ForeColor = Color.Coral;
             }
         }
     }
