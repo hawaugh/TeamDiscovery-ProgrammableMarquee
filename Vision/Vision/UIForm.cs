@@ -745,10 +745,10 @@ namespace Vision
                 imagePanel.Visible = false;
                 textPanel.Visible = true;
                 textPanel.Controls.Add(ignoreCheckBox);
-                displayDurationLabel.Location = new Point(14, 63);
+                displayDurationLabel.Location = new Point(14, 109);
                 textPanel.Controls.Add(displayDurationLabel);
                 createASegmentGroupBox.Controls.Add(displayDurationLabel);
-                displayDurationControl.Location = new Point(104, 59);
+                displayDurationControl.Location = new Point(104, 105);
                 textPanel.Controls.Add(displayDurationControl);
                 createASegmentGroupBox.Controls.Add(displayDurationControl);
 
@@ -1112,10 +1112,10 @@ namespace Vision
             imagePanel.Visible = false;
             textPanel.Visible = true;
             textPanel.Controls.Add(ignoreCheckBox);
-            displayDurationLabel.Location = new Point(14, 63);
+            displayDurationLabel.Location = new Point(14, 109);
             textPanel.Controls.Add(displayDurationLabel);
             createASegmentGroupBox.Controls.Add(displayDurationLabel);
-            displayDurationControl.Location = new Point(104, 59);
+            displayDurationControl.Location = new Point(104, 105);
             textPanel.Controls.Add(displayDurationControl);
             createASegmentGroupBox.Controls.Add(displayDurationControl);
         }
@@ -1148,6 +1148,8 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = false;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
+                displayDurationControl.Visible = true;
+                displayDurationLabel.Visible = true;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
                 staticEffectLabel.Visible = true;
@@ -1168,6 +1170,8 @@ namespace Vision
                 mySegmentArray[activeIndex].isScrolling = true;
                 //For some reason setting the default value in designer doesnt work. But this fixes it.
                 scrollSpeedControl.Value = (decimal)((decimal)mySegmentArray[activeIndex].scrollSpeed / 100);
+                displayDurationControl.Visible = false;
+                displayDurationLabel.Visible = false;
                 entranceEffectLabel.Visible = false;
                 entranceEffectComboBox.Visible = false;
                 staticEffectLabel.Visible = false;
