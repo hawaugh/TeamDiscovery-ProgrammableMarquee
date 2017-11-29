@@ -212,11 +212,11 @@ namespace Vision
             }
             else if (segment.entranceEffect == 8)
             {
-                displaySidewayEntrance(segment, backgroundColor);
+                displaySidewayUpEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 9)
             {
-                displaySidewayUpEntrance(segment, backgroundColor);
+                displaySidewayEntrance(segment, backgroundColor);
             }
 
             //Display Middle   
