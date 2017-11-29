@@ -184,29 +184,37 @@ namespace Vision
             }
             else if (segment.entranceEffect == 1)
             {
-                displaySplitEntrance(segment, backgroundColor);
+                displayUpEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 2)
             {
-                displayUpEntrance(segment, backgroundColor);
+                displayDownEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 3)
             {
-                displayDownEntrance(segment, backgroundColor);
+                displayFromLeftEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 4)
             {
-                displayRandomEntrance(segment, backgroundColor);
+                displayFromRightEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 5)
             {
-                displayUpsideDownEntrance(segment, backgroundColor);
+                displaySplitEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 6)
             {
-                displaySidewayEntrance(segment, backgroundColor);
+                displayRandomEntrance(segment, backgroundColor);
             }
             else if (segment.entranceEffect == 7)
+            {
+                displayUpsideDownEntrance(segment, backgroundColor);
+            }
+            else if (segment.entranceEffect == 8)
+            {
+                displaySidewayEntrance(segment, backgroundColor);
+            }
+            else if (segment.entranceEffect == 9)
             {
                 displaySidewayUpEntrance(segment, backgroundColor);
             }
@@ -239,33 +247,43 @@ namespace Vision
             {
                 clearMarquee(backgroundColor);
                 Thread.Sleep(500);
-            }
+            }            
             else if (segment.exitEffect == 1)
-            {
-                displaySplitExit(segment, backgroundColor);
-                Thread.Sleep(500);
-            }
-            else if (segment.exitEffect == 2)
             {
                 displayUpExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
-            else if (segment.exitEffect == 3)
+            else if (segment.exitEffect == 2)
             {
                 displayDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
+            else if (segment.exitEffect == 3)
+            {
+                displayExitLeft(segment, backgroundColor);
+                Thread.Sleep(500);
+            }
             else if (segment.exitEffect == 4)
+            {
+                displayExitRight(segment, backgroundColor);
+                Thread.Sleep(500);
+            }
+            else if (segment.exitEffect == 5)
+            {
+                displaySplitExit(segment, backgroundColor);
+                Thread.Sleep(500);
+            }
+            else if (segment.exitEffect == 6)
             {
                 displayRandomExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
-            else if (segment.exitEffect == 5)
+            else if (segment.exitEffect == 7)
             {                
                 displaySidewayExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
-            else if (segment.exitEffect == 6)
+            else if (segment.exitEffect == 8)
             {
                 displaySidewayDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
@@ -392,7 +410,8 @@ namespace Vision
             }
             Invalidate();
         }
-         //Ahmad
+
+        //Ahmad
         public void displayUpEntrance(Segment segment, Color backgroundColor)
         {
             clearMarquee(backgroundColor);
@@ -474,7 +493,17 @@ namespace Vision
             }
         }
 
-      //Ahmad
+        public void displayFromLeftEntrance(Segment segment, Color backgroundColor)
+        {
+
+        }
+
+        public void displayFromRightEntrance(Segment segment, Color backgroundColor)
+        {
+
+        }
+
+        //Ahmad
         //Added on 11/27/2017
         public void displayUpsideDownEntrance(Segment segment, Color backgroundColor)
         {
@@ -1256,33 +1285,17 @@ namespace Vision
                 Thread.Sleep(25);
                 Invalidate();
             }
-
         }
         
-        //Ahmad 
-        //Added On 11/14/2017
-        public void displayUpsideDownExit(Segment segment, Color backgroundColor)
+        public void displayExitLeft(Segment segment, Color backgroundColor)
         {
-            for (int i = 0; i < 14; i++)
-            {
-                //Move all dots 1 column up
-                for (int c = 93; c > 0; c--)
-                {
-                    for (int r = 2; r < 14; r++)
-                    {
-                        setDot(r, c, getDotFore(r + 1, c));
-                    }
-                }
 
-                //Set last column to blank
-                for (int c = 2; c < 93; c++)
-                {
-                    setDot(14, c, backgroundColor);
-                }
-                Thread.Sleep(25);
-                Invalidate();
-            }
-        }
+        }   
+        
+        public void displayExitRight(Segment segment, Color backgroundColor)
+        {
+
+        }    
         
         //Ahmad
         //Added on 11/14/2017
