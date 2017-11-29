@@ -812,9 +812,9 @@ namespace Vision
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.pauseButton);
+            this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
-            this.Controls.Add(this.textPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

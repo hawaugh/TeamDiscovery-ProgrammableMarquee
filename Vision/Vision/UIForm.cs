@@ -190,7 +190,7 @@ namespace Vision
                     {
                         deleteSegment(i);
                         addSegmentButtons[23].Visible = true;
-                        activeIndex = i;
+                        activeIndex = i - 1;
                         resetSegments();
                         //leave loop
                         i = 24;
