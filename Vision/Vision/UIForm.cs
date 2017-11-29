@@ -1506,7 +1506,7 @@ namespace Vision
             {
                 Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
                 Segment[] copSegs = copyMyMessage.getSegmentArray();
-                copyMyMessage.backgroundColor = myMessage.backgroundColor;
+                copyMyMessage.backgroundColor = marqueeBackgroundColor;
 
                 for (int i = 0; i < copSegs.Length; i++)
                 {
