@@ -1437,7 +1437,7 @@ namespace Vision
             }
             else if (borderEffect == 3)
             {
-                displayRandomColorBorder();
+                displayRandomColorBorder(borderColor);
             }
             else if (borderEffect == 4)
             {
@@ -1506,15 +1506,18 @@ namespace Vision
 
         }
 
-        public void displayRandomColorBorder()
+        public void displayRandomColorBorder(Color borderColor)
         {
             for (int b = 0; b < 220; b++)
             {
-                border[b].randColor();
+                border[b].ForeColor = borderColor;
             }
+
+            Color newColor;
 
             while (true)
             {
+                //Fade Out
                 for (int i = 255; i > -1; i -= 5)
                 {
                     for (int b = 0; b < 220; b++)
@@ -1524,6 +1527,12 @@ namespace Vision
 
                     Invalidate();
                     Thread.Sleep(10);
+                }
+                //Change Color
+                newColor = Color.FromArgb(0, randomColor());
+                for (int b = 0; b < 220; b++)
+                {
+                    border[b].ForeColor = newColor;
                 }
                 for (int i = 0; i < 256; i += 5)
                 {
