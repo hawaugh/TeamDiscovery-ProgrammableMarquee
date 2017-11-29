@@ -92,25 +92,6 @@ namespace Vision
                     x += 84;
                     x2 += 84;
                 }
-                /*
-                if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
-                {
-                    x = 6;
-                    x2 = 50;
-                    y += 46;
-                    y2 += 46;
-                }
-                else if (i == 1 || i == 4 || i == 7 || i == 10 || i == 13 || i == 16 || i == 19 || i == 22)
-                {
-                    x = 122;
-                    x2 = 165;
-                }
-                else if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23)
-                {
-                    x = 238;
-                    x2 = 280;
-                }
-                */
                 segmentLabels[i] = new System.Windows.Forms.Label();
                 segmentReference[i] = new System.Windows.Forms.Label();
                 segmentButtons[i] = new System.Windows.Forms.Button();
@@ -423,8 +404,8 @@ namespace Vision
             createNewLabel(23);
             createNewReference(23);
             createNewCloseButtons(23);
-            createNewPanel(23, 238, 328);
-            createNewAddSegmentButton(23, 280, 336);
+            createNewPanel(23, 928, 49);
+            createNewAddSegmentButton(23, 954, 59);
             getLocations();
         }
 
