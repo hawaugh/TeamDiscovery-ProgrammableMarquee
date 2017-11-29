@@ -509,7 +509,7 @@ namespace Vision
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
             this.textPanel.Location = new System.Drawing.Point(1, 55);
             this.textPanel.Name = "textPanel";
-            this.textPanel.Size = new System.Drawing.Size(1014, 402);
+            this.textPanel.Size = new System.Drawing.Size(1016, 402);
             this.textPanel.TabIndex = 34;
             // 
             // ignoreCheckBox
@@ -565,9 +565,9 @@ namespace Vision
             // 
             this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
-            this.SegmentHolderPanel.Location = new System.Drawing.Point(3, 462);
+            this.SegmentHolderPanel.Location = new System.Drawing.Point(1, 462);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
-            this.SegmentHolderPanel.Size = new System.Drawing.Size(1014, 95);
+            this.SegmentHolderPanel.Size = new System.Drawing.Size(1016, 95);
             this.SegmentHolderPanel.TabIndex = 36;
             // 
             // lastSegmentPopUp
