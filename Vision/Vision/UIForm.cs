@@ -174,9 +174,14 @@ namespace Vision
                 if (mouseIsOverButton(segmentButtons[i]))
                 {
                     //Test if segment 1 is the only visible segment. Else it can be deleted.
-                    if (i == 0 && segmentPanels[1].Visible == false)
+                    if (i == 23)
                     {
-                        
+                        deleteSegment(i);
+                        addSegmentButtons[23].Visible = true;
+                        activeIndex = i - 1;
+                        resetSegments();
+                        //leave loop
+                        i = 24;
                     }
                     else if (i < 23 && segmentPanels[i + 1].Visible == false)
                     {
@@ -190,7 +195,7 @@ namespace Vision
                     {
                         deleteSegment(i);
                         addSegmentButtons[23].Visible = true;
-                        activeIndex = i - 1;
+                        activeIndex = i;
                         resetSegments();
                         //leave loop
                         i = 24;
