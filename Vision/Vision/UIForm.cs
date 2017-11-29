@@ -565,8 +565,8 @@ namespace Vision
             //populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
             startNewMessageButton.Visible = true;
-            loadXMLButton.Visible = true;
-            saveButton.Visible = true;
+            //loadXMLButton.Visible = true; //Removed for Beta Build
+            //saveButton.Visible = true; //Removed for Beta Build
             textTabLabel.Visible = true;
             imageTabLabel.Visible = true;
             textPanel.Visible = true;
@@ -582,7 +582,7 @@ namespace Vision
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
             this.WindowState = FormWindowState.Normal;
-            this.Size = new System.Drawing.Size(1034, 637);
+            this.Size = new System.Drawing.Size(1034, 592);
         }
         private bool mouseIsOverPanel(Panel pnl)
         {
@@ -1584,6 +1584,7 @@ namespace Vision
             originalPictureBox.Invalidate();
         }
 
+        /* Removed for Beta Build
         private void saveButton_Click(object sender, EventArgs e)
         {
             //create XML file
@@ -1621,6 +1622,7 @@ namespace Vision
             }
             myDisplayThread.Start();            
         }
+        */
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
         {

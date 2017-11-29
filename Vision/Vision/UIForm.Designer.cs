@@ -692,7 +692,8 @@ namespace Vision
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Visible = false;
+            //this.saveButton.Click += new System.EventHandler(this.saveButton_Click); //Removed for Beta Build
             // 
             // goToFullScreenButton
             // 
@@ -719,6 +720,7 @@ namespace Vision
             this.loadXMLButton.TabIndex = 48;
             this.loadXMLButton.Text = "Load XML";
             this.loadXMLButton.UseVisualStyleBackColor = false;
+            this.loadXMLButton.Visible = false;
             // 
             // displayDurationLabel
             // 
