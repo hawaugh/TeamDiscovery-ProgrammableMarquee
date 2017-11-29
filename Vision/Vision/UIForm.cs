@@ -776,7 +776,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Scattered Dots")
+            else if (text == "Disolve")
             {
                 return 6;
             }
@@ -827,7 +827,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 6)
             {
-                entranceEffectComboBox.Text = "Scattered Dots";
+                entranceEffectComboBox.Text = "Disolve";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 7)
             {
@@ -942,7 +942,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Scattered Dots")
+            else if (text == "Disolve")
             {
                 return 6;
             }
@@ -989,7 +989,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].exitEffect == 6)
             {
-                exitEffectComboBox.Text = "Scattered Dots";
+                exitEffectComboBox.Text = "Disolve";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 7)
             {
