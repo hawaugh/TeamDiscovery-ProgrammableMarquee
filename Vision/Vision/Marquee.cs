@@ -261,16 +261,11 @@ namespace Vision
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 5)
-            {
-                displayUpsideDownExit(segment, backgroundColor);
+            {                
+                displaySidewayExit(segment, backgroundColor);
                 Thread.Sleep(500);
             }
             else if (segment.exitEffect == 6)
-            {
-                 displaySidewayExit(segment, backgroundColor);
-                Thread.Sleep(500);
-            }
-            else if (segment.exitEffect == 7)
             {
                 displaySidewayDownExit(segment, backgroundColor);
                 Thread.Sleep(500);
