@@ -1688,7 +1688,7 @@ namespace Vision
          * 
          */
         #region Utility Methods
-       public Color randomColor()
+        public Color randomColor()
         {
             int randomNumber;
             do

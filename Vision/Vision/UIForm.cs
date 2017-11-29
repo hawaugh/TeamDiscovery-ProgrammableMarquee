@@ -30,6 +30,7 @@ namespace Vision
     public partial class UIForm : Form
     {
         private Thread myDisplayThread = null;
+        private Thread myPauseInvalidationThread = null;
         private Segment[] mySegmentArray = new Segment[24];
         private Color darkerGray = new Color();
         private Color lightGray = new Color();
@@ -1379,6 +1380,13 @@ namespace Vision
         {
             playButton.Visible = false;
             pauseButton.Visible = true;
+            if (myPauseInvalidationThread != null)
+            {
+                if (myPauseInvalidationThread.IsAlive)
+                {
+                    myPauseInvalidationThread.Abort();
+                }
+            }
             if (myDisplayThread != null)
             {
                 if (myDisplayThread.IsAlive)
@@ -1425,6 +1433,15 @@ namespace Vision
                 }
             }
             marquee1.borderThreadSuspend();
+            myPauseInvalidationThread = new Thread(delegate ()
+            {
+                while(true)
+                {
+                    Thread.Sleep(25);
+                    marquee1.Invalidate();
+                }
+            });
+            myPauseInvalidationThread.Start();
         }
         #endregion
 
@@ -1442,6 +1459,13 @@ namespace Vision
                     myDisplayThread.Suspend();
                     myDisplayThread.Resume();
                     myDisplayThread.Abort();
+                }
+            }
+            if (myPauseInvalidationThread != null)
+            {
+                if (myPauseInvalidationThread.IsAlive)
+                {
+                    myPauseInvalidationThread.Abort();
                 }
             }
             marquee1.borderThreadAbort();
