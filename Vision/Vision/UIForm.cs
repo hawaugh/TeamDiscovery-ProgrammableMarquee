@@ -70,12 +70,29 @@ namespace Vision
             }
 
             InitializeComponent();
-            int x = 6;
-            int y = 6;
-            int x2 = 60;
+            int x = 4;
+            int y = 4;
+            int x2 = 30;
             int y2 = 14;
             for (int i = 0; i < 24; i++)
             {
+                if (i == 0)
+                {
+
+                }
+                else if (i == 12)
+                {
+                    x = 4;
+                    x2 = 30;
+                    y += 44;
+                    y2 += 44;
+                }
+                else
+                {
+                    x += 84;
+                    x2 += 84;
+                }
+                /*
                 if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21)
                 {
                     x = 6;
@@ -93,6 +110,7 @@ namespace Vision
                     x = 238;
                     x2 = 280;
                 }
+                */
                 segmentLabels[i] = new System.Windows.Forms.Label();
                 segmentReference[i] = new System.Windows.Forms.Label();
                 segmentButtons[i] = new System.Windows.Forms.Button();
@@ -296,7 +314,7 @@ namespace Vision
             segmentPanels[i].Controls.Add(segmentReference[i]);
             segmentPanels[i].Controls.Add(segmentButtons[i]);
             segmentPanels[i].Location = new System.Drawing.Point(x, y);
-            segmentPanels[i].Size = new System.Drawing.Size(110, 40);
+            segmentPanels[i].Size = new System.Drawing.Size(80, 40);
             segmentPanels[i].TabIndex = 14;
             segmentPanels[i].Visible = false;
             segmentPanels[i].MouseDown += new System.Windows.Forms.MouseEventHandler(mouseDownEvent);
@@ -311,7 +329,7 @@ namespace Vision
             // 
             segmentLabels[i].AutoSize = true;
             segmentLabels[i].ForeColor = System.Drawing.Color.White;
-            segmentLabels[i].Location = new System.Drawing.Point(10, 16);
+            segmentLabels[i].Location = new System.Drawing.Point(3, 18);
             segmentLabels[i].Size = new System.Drawing.Size(58, 13);
             segmentLabels[i].TabIndex = 8;
             segmentLabels[i].Text = "EMPTY";
@@ -346,8 +364,8 @@ namespace Vision
             segmentButtons[i].FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             segmentButtons[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             segmentButtons[i].ForeColor = System.Drawing.Color.White;
-            segmentButtons[i].Location = new System.Drawing.Point(87, 0);
-            segmentButtons[i].Size = new System.Drawing.Size(23, 23);
+            segmentButtons[i].Location = new System.Drawing.Point(62, -2);
+            segmentButtons[i].Size = new System.Drawing.Size(20, 20);
             segmentButtons[i].TabIndex = 7;
             segmentButtons[i].Text = "X";
             segmentButtons[i].UseVisualStyleBackColor = false;
@@ -529,9 +547,9 @@ namespace Vision
             }
             //populateMarqueeButton.Visible = false; //REMOVE
             SegmentHolderPanel.Visible = false;
+            startNewMessageButton.Visible = false;
             loadXMLButton.Visible = false;
             saveButton.Visible = false;
-            logoLabel.Visible = false;
             textTabLabel.Visible = false;
             imageTabLabel.Visible = false;
             textPanel.Visible = false;
@@ -546,9 +564,9 @@ namespace Vision
         {
             //populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
+            startNewMessageButton.Visible = true;
             loadXMLButton.Visible = true;
             saveButton.Visible = true;
-            logoLabel.Visible = true;
             textTabLabel.Visible = true;
             imageTabLabel.Visible = true;
             textPanel.Visible = true;
@@ -564,7 +582,7 @@ namespace Vision
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
             this.WindowState = FormWindowState.Normal;
-            this.Size = new System.Drawing.Size(1230, 543);
+            this.Size = new System.Drawing.Size(1034, 637);
         }
         private bool mouseIsOverPanel(Panel pnl)
         {

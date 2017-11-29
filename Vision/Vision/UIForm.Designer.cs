@@ -67,7 +67,6 @@ namespace Vision
             this.borderEffectComboBox = new System.Windows.Forms.ComboBox();
             this.runButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.logoLabel = new System.Windows.Forms.Label();
             this.textTabLabel = new System.Windows.Forms.Label();
             this.imageTabLabel = new System.Windows.Forms.Label();
             this.textPanel = new System.Windows.Forms.Panel();
@@ -118,7 +117,7 @@ namespace Vision
             // populateMarqueeButton
             // 
             this.populateMarqueeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.populateMarqueeButton.Location = new System.Drawing.Point(198, 463);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(164, 559);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 37);
             this.populateMarqueeButton.TabIndex = 1;
@@ -445,7 +444,7 @@ namespace Vision
             this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.runButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.runButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.runButton.Location = new System.Drawing.Point(1052, 463);
+            this.runButton.Location = new System.Drawing.Point(866, 559);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 37);
             this.runButton.TabIndex = 27;
@@ -460,26 +459,13 @@ namespace Vision
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Location = new System.Drawing.Point(1133, 463);
+            this.exitButton.Location = new System.Drawing.Point(942, 559);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 37);
             this.exitButton.TabIndex = 29;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.saveAndExitButton_Click);
-            // 
-            // logoLabel
-            // 
-            this.logoLabel.AutoSize = true;
-            this.logoLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.logoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.logoLabel.Location = new System.Drawing.Point(-2, 0);
-            this.logoLabel.Name = "logoLabel";
-            this.logoLabel.Size = new System.Drawing.Size(355, 53);
-            this.logoLabel.TabIndex = 31;
-            this.logoLabel.Text = "Team Discovery";
-            this.logoLabel.Click += new System.EventHandler(this.logoLabel_Click);
             // 
             // textTabLabel
             // 
@@ -488,7 +474,7 @@ namespace Vision
             this.textTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(353, 0);
+            this.textTabLabel.Location = new System.Drawing.Point(1, 1);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -506,7 +492,7 @@ namespace Vision
             this.imageTabLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(432, 0);
+            this.imageTabLabel.Location = new System.Drawing.Point(79, 1);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
@@ -523,9 +509,9 @@ namespace Vision
             this.textPanel.Controls.Add(this.ignoreCheckBox);
             this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
-            this.textPanel.Location = new System.Drawing.Point(354, 55);
+            this.textPanel.Location = new System.Drawing.Point(1, 55);
             this.textPanel.Name = "textPanel";
-            this.textPanel.Size = new System.Drawing.Size(854, 402);
+            this.textPanel.Size = new System.Drawing.Size(1014, 402);
             this.textPanel.TabIndex = 34;
             // 
             // ignoreCheckBox
@@ -568,7 +554,7 @@ namespace Vision
             // 
             this.exitFullScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exitFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("exitFullScreen.Image")));
-            this.exitFullScreen.Location = new System.Drawing.Point(1142, 0);
+            this.exitFullScreen.Location = new System.Drawing.Point(944, 1);
             this.exitFullScreen.Name = "exitFullScreen";
             this.exitFullScreen.Size = new System.Drawing.Size(73, 73);
             this.exitFullScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -581,10 +567,9 @@ namespace Vision
             // 
             this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SegmentHolderPanel.Controls.Add(this.lastSegmentPopUp);
-            this.SegmentHolderPanel.Controls.Add(this.startNewMessageButton);
-            this.SegmentHolderPanel.Location = new System.Drawing.Point(0, 55);
+            this.SegmentHolderPanel.Location = new System.Drawing.Point(3, 462);
             this.SegmentHolderPanel.Name = "SegmentHolderPanel";
-            this.SegmentHolderPanel.Size = new System.Drawing.Size(354, 402);
+            this.SegmentHolderPanel.Size = new System.Drawing.Size(1014, 95);
             this.SegmentHolderPanel.TabIndex = 36;
             // 
             // lastSegmentPopUp
@@ -600,7 +585,7 @@ namespace Vision
             // 
             // startNewMessageButton
             // 
-            this.startNewMessageButton.Location = new System.Drawing.Point(117, 374);
+            this.startNewMessageButton.Location = new System.Drawing.Point(451, 559);
             this.startNewMessageButton.Name = "startNewMessageButton";
             this.startNewMessageButton.Size = new System.Drawing.Size(120, 23);
             this.startNewMessageButton.TabIndex = 0;
@@ -616,9 +601,9 @@ namespace Vision
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
             this.imagePanel.Controls.Add(this.browseButton);
             this.imagePanel.Controls.Add(this.groupBox1);
-            this.imagePanel.Location = new System.Drawing.Point(354, 55);
+            this.imagePanel.Location = new System.Drawing.Point(1, 55);
             this.imagePanel.Name = "imagePanel";
-            this.imagePanel.Size = new System.Drawing.Size(854, 401);
+            this.imagePanel.Size = new System.Drawing.Size(1014, 402);
             this.imagePanel.TabIndex = 35;
             this.imagePanel.Visible = false;
             // 
@@ -692,7 +677,7 @@ namespace Vision
             // 
             this.marqueeBackgroundColorLabel.AutoSize = true;
             this.marqueeBackgroundColorLabel.ForeColor = System.Drawing.Color.White;
-            this.marqueeBackgroundColorLabel.Location = new System.Drawing.Point(976, 12);
+            this.marqueeBackgroundColorLabel.Location = new System.Drawing.Point(794, 10);
             this.marqueeBackgroundColorLabel.Name = "marqueeBackgroundColorLabel";
             this.marqueeBackgroundColorLabel.Size = new System.Drawing.Size(137, 13);
             this.marqueeBackgroundColorLabel.TabIndex = 37;
@@ -701,7 +686,7 @@ namespace Vision
             // backToMenuButton
             // 
             this.backToMenuButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.backToMenuButton.Location = new System.Drawing.Point(561, 463);
+            this.backToMenuButton.Location = new System.Drawing.Point(459, 559);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(105, 37);
             this.backToMenuButton.TabIndex = 39;
@@ -717,7 +702,7 @@ namespace Vision
             // marqueeBackgroundColorButton
             // 
             this.marqueeBackgroundColorButton.BackColor = System.Drawing.Color.Black;
-            this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(1122, 7);
+            this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(940, 5);
             this.marqueeBackgroundColorButton.Name = "marqueeBackgroundColorButton";
             this.marqueeBackgroundColorButton.Size = new System.Drawing.Size(75, 23);
             this.marqueeBackgroundColorButton.TabIndex = 42;
@@ -727,7 +712,7 @@ namespace Vision
             // pauseButton
             // 
             this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pauseButton.Location = new System.Drawing.Point(6, 463);
+            this.pauseButton.Location = new System.Drawing.Point(1, 559);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(65, 37);
             this.pauseButton.TabIndex = 43;
@@ -739,7 +724,7 @@ namespace Vision
             // playButton
             // 
             this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playButton.Location = new System.Drawing.Point(6, 463);
+            this.playButton.Location = new System.Drawing.Point(1, 559);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(65, 37);
             this.playButton.TabIndex = 44;
@@ -760,7 +745,7 @@ namespace Vision
             this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Location = new System.Drawing.Point(88, 463);
+            this.saveButton.Location = new System.Drawing.Point(77, 559);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 37);
             this.saveButton.TabIndex = 45;
@@ -771,7 +756,7 @@ namespace Vision
             // goToFullScreenButton
             // 
             this.goToFullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.goToFullScreenButton.Location = new System.Drawing.Point(561, 5);
+            this.goToFullScreenButton.Location = new System.Drawing.Point(459, 3);
             this.goToFullScreenButton.Name = "goToFullScreenButton";
             this.goToFullScreenButton.Size = new System.Drawing.Size(105, 37);
             this.goToFullScreenButton.TabIndex = 47;
@@ -787,7 +772,7 @@ namespace Vision
             this.loadXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.loadXMLButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.loadXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadXMLButton.Location = new System.Drawing.Point(7, 463);
+            this.loadXMLButton.Location = new System.Drawing.Point(1, 559);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 48;
@@ -800,7 +785,7 @@ namespace Vision
             this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.marquee1.Location = new System.Drawing.Point(0, 0);
             this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1214, 504);
+            this.marquee1.Size = new System.Drawing.Size(1018, 598);
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
@@ -810,8 +795,9 @@ namespace Vision
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1214, 504);
+            this.ClientSize = new System.Drawing.Size(1018, 598);
             this.Controls.Add(this.loadXMLButton);
+            this.Controls.Add(this.startNewMessageButton);
             this.Controls.Add(this.goToFullScreenButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.exitFullScreen);
@@ -821,7 +807,6 @@ namespace Vision
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.textTabLabel);
-            this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.populateMarqueeButton);
@@ -867,7 +852,6 @@ namespace Vision
         private System.Windows.Forms.Button runButton;
         private Marquee marquee1;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.GroupBox createASegmentGroupBox;
         private System.Windows.Forms.Label exitEffectLabel;
         private System.Windows.Forms.Label staticEffectLabel;
