@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_17C4DCD39A4A4497AD5B28FA25D45A71"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_35216F8C34C644E1977917F28FA5E910"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8F590271A5ABD4EDEF164808CB5BA692"
+        "OwnerKey" = "8:_35216F8C34C644E1977917F28FA5E910"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_35216F8C34C644E1977917F28FA5E910"
+        "OwnerKey" = "8:_8F590271A5ABD4EDEF164808CB5BA692"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -55,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -71,6 +93,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -100,6 +138,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17C4DCD39A4A4497AD5B28FA25D45A71"
+            {
+            "SourcePath" = "8:D:\\Downloads\\favicon.ico"
+            "TargetName" = "8:VisionIcon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_A948D4E43C324A33B2007983CB9BE3AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8F590271A5ABD4EDEF164808CB5BA692"
             {
             "AssemblyRegister" = "3:1"
@@ -158,6 +216,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A948D4E43C324A33B2007983CB9BE3AE"
+                    {
+                    "Name" = "8:Icon"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_09304206CA454674BDE8DCA06D4F417C"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_C5A9AEF5BCF04DFCA968A2265A76F42D"
@@ -187,15 +256,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Vision"
-        "ProductCode" = "8:{4D4F32CA-58BB-4673-AEFA-176D472B6474}"
-        "PackageCode" = "8:{226E3CC8-F2C5-4AF1-B7EA-BF34586E98FD}"
+        "ProductCode" = "8:{743CCABE-2C8E-4DA6-82D5-0AC09BC6821B}"
+        "PackageCode" = "8:{17784FA6-8F2E-4022-BAD1-1FF9EA248397}"
         "UpgradeCode" = "8:{CAE99E6F-F011-459C-BC8C-5DD5D9BE1DE2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:0.1.0"
         "Manufacturer" = "8:Team Discovery"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -308,6 +377,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8F2CF252A606448889BCA8F7E2A823BB"
+            {
+            "Name" = "8:Vision Marquee System"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_35216F8C34C644E1977917F28FA5E910"
+            "Folder" = "8:_3D1AFDE961B94F94AADB7D468625D471"
+            "WorkingFolder" = "8:_9A319C6D507A4292A3FA2E4AF01DC88A"
+            "Icon" = "8:_17C4DCD39A4A4497AD5B28FA25D45A71"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
