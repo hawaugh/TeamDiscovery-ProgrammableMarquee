@@ -550,8 +550,8 @@ namespace Vision
             //populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
             startNewMessageButton.Visible = true;
-            //loadXMLButton.Visible = true; //Removed for Beta Build
-            //saveButton.Visible = true; //Removed for Beta Build
+            loadXMLButton.Visible = true;
+            saveButton.Visible = true;
             textTabLabel.Visible = true;
             imageTabLabel.Visible = true;
             textPanel.Visible = true;
@@ -567,6 +567,7 @@ namespace Vision
             resetSegments();
             backToMenuButton.Visible = false;
             this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.WindowState = FormWindowState.Normal;
             this.Size = new System.Drawing.Size(1034, 592);
         }
@@ -1577,7 +1578,6 @@ namespace Vision
             originalPictureBox.Invalidate();
         }
 
-        /* Removed for Beta Build
         private void saveButton_Click(object sender, EventArgs e)
         {
             //create XML file
@@ -1615,7 +1615,6 @@ namespace Vision
             }
             myDisplayThread.Start();            
         }
-        */
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
         {

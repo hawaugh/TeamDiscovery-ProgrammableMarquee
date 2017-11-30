@@ -474,7 +474,7 @@ namespace Vision
             this.textTabLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(1, 1);
+            this.textTabLabel.Location = new System.Drawing.Point(0, 1);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -493,7 +493,7 @@ namespace Vision
             this.imageTabLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(79, 1);
+            this.imageTabLabel.Location = new System.Drawing.Point(78, 1);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
@@ -740,7 +740,6 @@ namespace Vision
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Visible = false;
             // 
             // goToFullScreenButton
             // 
@@ -767,7 +766,6 @@ namespace Vision
             this.loadXMLButton.TabIndex = 48;
             this.loadXMLButton.Text = "Load XML";
             this.loadXMLButton.UseVisualStyleBackColor = false;
-            this.loadXMLButton.Visible = false;
             // 
             // buildLabel
             // 
@@ -818,7 +816,6 @@ namespace Vision
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 200);
             this.Name = "UIForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
