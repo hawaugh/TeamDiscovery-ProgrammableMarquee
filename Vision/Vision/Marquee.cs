@@ -1703,6 +1703,7 @@ namespace Vision
         #region Image Effects
         public void displayImage(Segment image)
         {
+
             //Stop Border Effect
             if (myBorderThread != null)
             {
@@ -1717,15 +1718,18 @@ namespace Vision
             clearBorder(BackColor);
             Invalidate();
 
-            for (int c = 0; c < image.getWidth(); c++)
+            if (image.scaledBitmap != null)
             {
-                for (int r = 0; r < image.getHeight(); r++)
+                for (int c = 0; c < image.getWidth(); c++)
                 {
-                    setDot(r + ((16 - image.getHeight()) / 2), c + ((96 - image.getWidth()) / 2), image.getPixel(c, r)); 
+                    for (int r = 0; r < image.getHeight(); r++)
+                    {
+                        setDot(r + ((16 - image.getHeight()) / 2), c + ((96 - image.getWidth()) / 2), image.getPixel(c, r));
+                    }
                 }
-            }
 
-            Invalidate();
+                Invalidate();
+            }
 
             //Hold Image on marquee for set time, redrawing over intervals
             for (int i = 0; i < (image.segmentSpeed / 25); i++)

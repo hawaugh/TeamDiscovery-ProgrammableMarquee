@@ -65,7 +65,7 @@
             this.buildLabel.Name = "buildLabel";
             this.buildLabel.Size = new System.Drawing.Size(82, 13);
             this.buildLabel.TabIndex = 2;
-            this.buildLabel.Text = "Beta Build 0.1.0";
+            this.buildLabel.Text = "Beta Build 0.1.1";
             // 
             // VisionSplashScreen
             // 
