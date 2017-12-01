@@ -748,6 +748,8 @@ namespace Vision
 
                 if (mySegmentArray[activeIndex].isScrolling == true)
                 {
+                    displayDurationLabel.Visible = false;
+                    displayDurationControl.Visible = false;
                     scrollingTextButton.Checked = true;
                     scrollSpeedControl.Value = (decimal)((double)mySegmentArray[activeIndex].scrollSpeed / 100);
                     if (mySegmentArray[activeIndex].isRandomColorScrolling == true)
@@ -1112,6 +1114,7 @@ namespace Vision
             displayDurationControl.Location = new Point(104, 105);
             textPanel.Controls.Add(displayDurationControl);
             createASegmentGroupBox.Controls.Add(displayDurationControl);
+            resetSegments();
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -1261,6 +1264,8 @@ namespace Vision
             displayDurationLabel.Location = new Point(12, 28);
             imagePanel.Controls.Add(displayDurationControl);
             displayDurationControl.Location = new Point(102, 26);
+            displayDurationLabel.Visible = true;
+            displayDurationControl.Visible = true;
         }
 
         private void displayDurationControl_ValueChanged(object sender, EventArgs e)
