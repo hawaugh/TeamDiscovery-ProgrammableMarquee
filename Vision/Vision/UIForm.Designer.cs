@@ -741,6 +741,7 @@ namespace Vision
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // goToFullScreenButton
             // 
