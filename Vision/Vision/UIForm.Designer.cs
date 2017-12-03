@@ -778,11 +778,11 @@ namespace Vision
             // 
             // marquee1
             // 
+            this.marquee1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.marquee1.BackColor = System.Drawing.Color.Black;
-            this.marquee1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.marquee1.Location = new System.Drawing.Point(0, 0);
+            this.marquee1.Location = new System.Drawing.Point(0, 100);
             this.marquee1.Name = "marquee1";
-            this.marquee1.Size = new System.Drawing.Size(1018, 553);
+            this.marquee1.Size = new System.Drawing.Size(1032, 260);
             this.marquee1.TabIndex = 28;
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;

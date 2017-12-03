@@ -1762,10 +1762,10 @@ namespace Vision
             // Antialiasing
             gfx.SmoothingMode = SmoothingMode.AntiAlias;
 
-            int dotWidth = this.Width / 96;         
+            int dotWidth = this.Width / 96 ;
             int xLoc = (this.Width - (dotWidth * 96)) / 2;
             int yLoc = (this.Height - (dotWidth * 16)) / 2;
-            this.SuspendLayout();         
+            this.SuspendLayout();
             for (int r = 0; r < 16; r++)
             {
                 for (int c = 0; c < 96; c++)

@@ -1394,7 +1394,7 @@ namespace Vision
             Application.Exit();
             abortDisplayThreads();
         }
-        //Edited 11-26 Heather
+        //Edited 12-2 Heather
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
@@ -1404,8 +1404,9 @@ namespace Vision
             backToMenuButton.Visible = true;
             goToFullScreenButton.Visible = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.BackColor = Color.Black;
             this.MaximizeBox = true;
-            marquee1.Visible = true;
+            marquee1.Visible = true;            
             Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             myDisplayThread.Start();
@@ -1635,11 +1636,13 @@ namespace Vision
         #region FullScreen methods
 
         //Work in progress
+        //Edited 12-2 Heather
         private void EnterFullScreenMode()
         {
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            this.BackColor = Color.Black;
             exitFullScreen.BackColor = marqueeBackgroundColor;
             exitFullScreen.Visible = true;
             backToMenuButton.Visible = false;

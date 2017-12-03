@@ -84,3 +84,14 @@ C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.VisionSplashScreen.resources
 C:\Users\Upset PC\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
 C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.UIForm.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.VisionSplashScreen.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.Cache
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.pdb
