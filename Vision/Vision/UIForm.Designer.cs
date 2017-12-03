@@ -299,13 +299,13 @@ namespace Vision
             this.exitEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exitEffectComboBox.FormattingEnabled = true;
             this.exitEffectComboBox.Items.AddRange(new object[] {
-            "No effect",
+            "No Effect",
             "Exit Top",
             "Exit Bottom",
             "Exit Left",
             "Exit Right",
             "Horizontal Split",
-            "Disolve",
+            "Dissolve",
             "Diagonal Exit Top",
             "Diagonal Exit Bottom"});
             this.exitEffectComboBox.Location = new System.Drawing.Point(774, 103);
@@ -319,7 +319,7 @@ namespace Vision
             this.middleEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.middleEffectComboBox.FormattingEnabled = true;
             this.middleEffectComboBox.Items.AddRange(new object[] {
-            "No effect",
+            "No Effect",
             "Random Colored Dots",
             "Flashing",
             "The Wave",
@@ -335,13 +335,13 @@ namespace Vision
             this.entranceEffectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.entranceEffectComboBox.FormattingEnabled = true;
             this.entranceEffectComboBox.Items.AddRange(new object[] {
-            "No effect",
+            "No Effect",
             "From Top",
             "From Bottom",
             "From Left",
             "From Right",
             "Horizontal Split",
-            "Disolve",
+            "Dissolve",
             "The Schwoop",
             "Crooked From Top",
             "Crooked From Bottom"});
