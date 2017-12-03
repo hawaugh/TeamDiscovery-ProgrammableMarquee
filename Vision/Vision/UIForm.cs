@@ -810,7 +810,7 @@ namespace Vision
 
         private int findEntranceEffect(String text)
         {
-            if (text == "No effect")
+            if (text == "No Effect")
             {
                 return 0;
             }
@@ -834,7 +834,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Disolve")
+            else if (text == "Dissolve")
             {
                 return 6;
             }
@@ -861,7 +861,7 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].entranceEffect == 0)
             {
-                entranceEffectComboBox.Text = "No effect";
+                entranceEffectComboBox.Text = "No Effect";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 1)
             {
@@ -885,7 +885,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 6)
             {
-                entranceEffectComboBox.Text = "Disolve";
+                entranceEffectComboBox.Text = "Dissolve";
             }
             else if (mySegmentArray[activeIndex].entranceEffect == 7)
             {
@@ -913,7 +913,7 @@ namespace Vision
 
         private int findMiddleEffect(String text)
         {
-            if (text == "No effect")
+            if (text == "No Effect")
             {
                 return 0;
             }
@@ -944,7 +944,7 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].middleEffect == 0)
             {
-                middleEffectComboBox.Text = "No effect";
+                middleEffectComboBox.Text = "No Effect";
             }
             else if (mySegmentArray[activeIndex].middleEffect == 1)
             {
@@ -976,7 +976,7 @@ namespace Vision
 
         private int findExitEffect(String text)
         {
-            if (text == "No effect")
+            if (text == "No Effect")
             {
                 return 0;
             }
@@ -1000,7 +1000,7 @@ namespace Vision
             {
                 return 5;
             }
-            else if (text == "Disolve")
+            else if (text == "Dissolve")
             {
                 return 6;
             }
@@ -1023,7 +1023,7 @@ namespace Vision
         {
             if (mySegmentArray[activeIndex].exitEffect == 0)
             {
-                exitEffectComboBox.Text = "No effect";
+                exitEffectComboBox.Text = "No Effect";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 1)
             {
@@ -1047,7 +1047,7 @@ namespace Vision
             }
             else if (mySegmentArray[activeIndex].exitEffect == 6)
             {
-                exitEffectComboBox.Text = "Disolve";
+                exitEffectComboBox.Text = "Dissolve";
             }
             else if (mySegmentArray[activeIndex].exitEffect == 7)
             {
