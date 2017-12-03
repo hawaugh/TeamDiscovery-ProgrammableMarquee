@@ -542,6 +542,7 @@ namespace Vision
             marqueeBackgroundColorLabel.Visible = false;
             marqueeBackgroundColorButton.Visible = false;
             runButton.Visible = false;
+            marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
         }
 
 
@@ -562,6 +563,7 @@ namespace Vision
             pauseButton.Visible = false;
             goToFullScreenButton.Visible = false;
             marquee1.Visible = false;
+            this.BackColor = Color.FromArgb(255, 64, 64, 64);
             runButton.Visible = true;
             buildLabel.Visible = true;
             resetSegments();
@@ -1643,7 +1645,6 @@ namespace Vision
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = Color.Black;
-            exitFullScreen.BackColor = marqueeBackgroundColor;
             exitFullScreen.Visible = true;
             backToMenuButton.Visible = false;
             exitButton.Visible = false;
@@ -1688,6 +1689,12 @@ namespace Vision
             {
                 segmentLabels[activeIndex].Text = "Image";
             }
+        }
+
+        private void marquee1_SizeChanged(object sender, EventArgs e)
+        {
+            marquee1.Height = (int)((double)marquee1.Width / 6);
+            marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
         }
     }
 }
