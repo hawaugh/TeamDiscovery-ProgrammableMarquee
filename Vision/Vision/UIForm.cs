@@ -1690,7 +1690,7 @@ namespace Vision
                 segmentLabels[activeIndex].Text = "Image";
             }
         }
-
+        //Added 12-3 Logan
         private void marquee1_SizeChanged(object sender, EventArgs e)
         {
             marquee1.Height = (int)((double)marquee1.Width / 6);
