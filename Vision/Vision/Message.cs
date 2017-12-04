@@ -18,15 +18,23 @@ using System.Drawing;
 
 namespace Vision
 {
-    class Message
+    //Have to make Message a public class in order to use it in XmlSerializer
+    public class Message
     {
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
-        private Color _backgroundColor;            
+        private Color _backgroundColor;
+        
+        // Parameterless constructor needed for serialization
+        public Message()
+        {
+            
+        }
 
         //Constructor
         public Message(Segment[] newSegmentArray, Color backgroundColor)
         {
-            segmentArray = newSegmentArray;
+            
+            segmentArray =  newSegmentArray;
             _backgroundColor = backgroundColor;
         }
 
