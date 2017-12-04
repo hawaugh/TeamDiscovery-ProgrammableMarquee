@@ -3,10 +3,10 @@
 // Team: Team Discovery
 //
 // Class: UIForm.Designer.cs
-// Description: 
+// Description: Adds all the objects and there properties to the form.
 //
 // Name: Nick Burnette
-// Last Edit: 11/3/17
+// Last Edit: 12/4/17
 /////////////////////////////////////////////////////
 
 namespace Vision
@@ -453,7 +453,7 @@ namespace Vision
             // 
             // exitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
@@ -679,13 +679,17 @@ namespace Vision
             // 
             // backToMenuButton
             // 
-            this.backToMenuButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.backToMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.backToMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.backToMenuButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.backToMenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Cyan;
+            this.backToMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backToMenuButton.Location = new System.Drawing.Point(76, 514);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(105, 37);
             this.backToMenuButton.TabIndex = 39;
             this.backToMenuButton.Text = "Back to Menu";
-            this.backToMenuButton.UseVisualStyleBackColor = true;
+            this.backToMenuButton.UseVisualStyleBackColor = false;
             this.backToMenuButton.Visible = false;
             this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
             // 
@@ -705,7 +709,7 @@ namespace Vision
             // 
             // pauseButton
             // 
-            this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pauseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pauseButton.Location = new System.Drawing.Point(480, 514);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(65, 37);
@@ -717,7 +721,7 @@ namespace Vision
             // 
             // playButton
             // 
-            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.playButton.Location = new System.Drawing.Point(480, 514);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(65, 37);
@@ -750,12 +754,16 @@ namespace Vision
             // goToFullScreenButton
             // 
             this.goToFullScreenButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.goToFullScreenButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.goToFullScreenButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.goToFullScreenButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.goToFullScreenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.goToFullScreenButton.Location = new System.Drawing.Point(459, 3);
             this.goToFullScreenButton.Name = "goToFullScreenButton";
             this.goToFullScreenButton.Size = new System.Drawing.Size(105, 37);
             this.goToFullScreenButton.TabIndex = 47;
             this.goToFullScreenButton.Text = "Go To FullScreen";
-            this.goToFullScreenButton.UseVisualStyleBackColor = true;
+            this.goToFullScreenButton.UseVisualStyleBackColor = false;
             this.goToFullScreenButton.Visible = false;
             this.goToFullScreenButton.Click += new System.EventHandler(this.goToFullScreenButton_Click);
             // 
@@ -802,24 +810,24 @@ namespace Vision
             this.ClientSize = new System.Drawing.Size(1018, 553);
             this.Controls.Add(this.buildLabel);
             this.Controls.Add(this.loadXMLButton);
-            this.Controls.Add(this.startNewMessageButton);
             this.Controls.Add(this.goToFullScreenButton);
             this.Controls.Add(this.marqueeBackgroundColorButton);
             this.Controls.Add(this.exitFullScreen);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.marqueeBackgroundColorLabel);
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.textTabLabel);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.populateMarqueeButton);
-            this.Controls.Add(this.playButton);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
             this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.startNewMessageButton);
+            this.Controls.Add(this.backToMenuButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -911,4 +919,5 @@ namespace Vision
         private System.Windows.Forms.Label buildLabel;
     }
 }
+
 
