@@ -55,6 +55,8 @@ namespace Vision
         private bool fullScreen = false;
         XmlSerializer xs;
         List<Segment> list;
+        Color pauseCol;
+        Color playCol;
 
         public OpenFileDialog openFileDialog { get; private set; }
 
@@ -139,6 +141,8 @@ namespace Vision
 
         private void addSegmentClickEvent(object sender, EventArgs e)
         {
+            clickToMakeLabel.Visible = false;
+            aNewSegmentLabel.Visible = false;
             for (int i = 1; i < 24; i++)
             {
                 if (mouseIsOverButton(addSegmentButtons[i]))
@@ -1409,7 +1413,8 @@ namespace Vision
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.BackColor = Color.Black;
             this.MaximizeBox = true;
-            marquee1.Visible = true;            
+            marquee1.Visible = true;
+            marquee1.SendToBack(); 
             Message myMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             myDisplayThread.Start();
@@ -1638,11 +1643,17 @@ namespace Vision
             {
                 LeaveFullScreenMode();
             }
+            pauseButton.BackColor = pauseCol;
+            playButton.BackColor = playCol;
         }
 
         private void goToFullScreenButton_Click(object sender, EventArgs e)
         {
             EnterFullScreenMode();
+            pauseCol = pauseButton.BackColor;
+            pauseButton.BackColor = Color.FromArgb(50, pauseCol.R, pauseCol.G, pauseCol.B);
+            playCol = playButton.BackColor;
+            playButton.BackColor = Color.FromArgb(50, playCol.R, playCol.G, playCol.B);
         }
         #endregion
 
