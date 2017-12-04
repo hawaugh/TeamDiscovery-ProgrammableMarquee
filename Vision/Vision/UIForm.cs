@@ -1588,40 +1588,7 @@ namespace Vision
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //create XML file
-             saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
-                Segment[] copSegs = copyMyMessage.getSegmentArray();
-                copyMyMessage.backgroundColor = marqueeBackgroundColor;
-
-                for (int i = 0; i < copSegs.Length; i++)
-                {
-                    Segment seg = new Segment();
-                    seg.ignore = copSegs[i].ignore;
-                    seg.messageText = copSegs[i].messageText;
-                    seg.onColor = copSegs[i].onColor;
-                    seg.segmentSpeed = copSegs[i].segmentSpeed;
-                    seg.isScrolling = copSegs[i].isScrolling;
-                    seg.isRandomColorScrolling = copSegs[i].isRandomColorScrolling;
-                    seg.scrollSpeed = copSegs[i].scrollSpeed;
-                    seg.isImage = copSegs[i].isImage;
-                    seg.originalBitmap = copSegs[i].originalBitmap;
-                    seg.scaledBitmap = copSegs[i].scaledBitmap;
-                    seg.imageAspect = copSegs[i].imageAspect;
-                    seg.entranceEffect = copSegs[i].entranceEffect;
-                    seg.middleEffect = copSegs[i].middleEffect;
-                    seg.exitEffect = copSegs[i].exitEffect;
-                    seg.borderColor = copSegs[i].borderColor;
-                    seg.borderEffect = copSegs[i].borderEffect;
-                }
-                XmlSave.SaveData(copyMyMessage, saveFileDialog1.FileName);
-            }
-            myDisplayThread.Start();            
         }
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -1695,6 +1662,11 @@ namespace Vision
         {
             marquee1.Height = (int)((double)marquee1.Width / 6);
             marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
+        }
+
+        private void saveButton_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

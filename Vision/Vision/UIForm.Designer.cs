@@ -116,7 +116,7 @@ namespace Vision
             // populateMarqueeButton
             // 
             this.populateMarqueeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.populateMarqueeButton.Location = new System.Drawing.Point(164, 514);
+            this.populateMarqueeButton.Location = new System.Drawing.Point(197, 514);
             this.populateMarqueeButton.Name = "populateMarqueeButton";
             this.populateMarqueeButton.Size = new System.Drawing.Size(106, 37);
             this.populateMarqueeButton.TabIndex = 1;
@@ -443,7 +443,7 @@ namespace Vision
             this.runButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.runButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.runButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.runButton.Location = new System.Drawing.Point(866, 514);
+            this.runButton.Location = new System.Drawing.Point(942, 514);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 37);
             this.runButton.TabIndex = 27;
@@ -458,7 +458,7 @@ namespace Vision
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Location = new System.Drawing.Point(942, 514);
+            this.exitButton.Location = new System.Drawing.Point(1, 514);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 37);
             this.exitButton.TabIndex = 29;
@@ -575,12 +575,16 @@ namespace Vision
             // 
             // startNewMessageButton
             // 
-            this.startNewMessageButton.Location = new System.Drawing.Point(451, 515);
+            this.startNewMessageButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.startNewMessageButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.startNewMessageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
+            this.startNewMessageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startNewMessageButton.Location = new System.Drawing.Point(77, 514);
             this.startNewMessageButton.Name = "startNewMessageButton";
-            this.startNewMessageButton.Size = new System.Drawing.Size(120, 23);
+            this.startNewMessageButton.Size = new System.Drawing.Size(120, 37);
             this.startNewMessageButton.TabIndex = 0;
             this.startNewMessageButton.Text = "Start New Message";
-            this.startNewMessageButton.UseVisualStyleBackColor = true;
+            this.startNewMessageButton.UseVisualStyleBackColor = false;
             this.startNewMessageButton.Click += new System.EventHandler(this.startNewMessageButton_Click);
             // 
             // imagePanel
@@ -676,7 +680,7 @@ namespace Vision
             // backToMenuButton
             // 
             this.backToMenuButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.backToMenuButton.Location = new System.Drawing.Point(459, 514);
+            this.backToMenuButton.Location = new System.Drawing.Point(76, 514);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(105, 37);
             this.backToMenuButton.TabIndex = 39;
@@ -702,7 +706,7 @@ namespace Vision
             // pauseButton
             // 
             this.pauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pauseButton.Location = new System.Drawing.Point(1, 514);
+            this.pauseButton.Location = new System.Drawing.Point(480, 514);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(65, 37);
             this.pauseButton.TabIndex = 43;
@@ -714,7 +718,7 @@ namespace Vision
             // playButton
             // 
             this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.playButton.Location = new System.Drawing.Point(1, 514);
+            this.playButton.Location = new System.Drawing.Point(480, 514);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(65, 37);
             this.playButton.TabIndex = 44;
@@ -735,13 +739,13 @@ namespace Vision
             this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Location = new System.Drawing.Point(77, 514);
+            this.saveButton.Location = new System.Drawing.Point(867, 514);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 37);
             this.saveButton.TabIndex = 45;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click_1);
             // 
             // goToFullScreenButton
             // 
@@ -762,7 +766,7 @@ namespace Vision
             this.loadXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.loadXMLButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.loadXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadXMLButton.Location = new System.Drawing.Point(1, 514);
+            this.loadXMLButton.Location = new System.Drawing.Point(792, 514);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 48;
@@ -772,7 +776,7 @@ namespace Vision
             // buildLabel
             // 
             this.buildLabel.AutoSize = true;
-            this.buildLabel.Location = new System.Drawing.Point(784, 538);
+            this.buildLabel.Location = new System.Drawing.Point(710, 538);
             this.buildLabel.Name = "buildLabel";
             this.buildLabel.Size = new System.Drawing.Size(82, 13);
             this.buildLabel.TabIndex = 49;
@@ -808,7 +812,6 @@ namespace Vision
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.textTabLabel);
-            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.populateMarqueeButton);
             this.Controls.Add(this.playButton);
@@ -816,6 +819,7 @@ namespace Vision
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
+            this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
