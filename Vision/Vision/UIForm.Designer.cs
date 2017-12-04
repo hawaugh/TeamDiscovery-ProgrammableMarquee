@@ -74,7 +74,6 @@ namespace Vision
             this.borderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.borderColorButton = new System.Windows.Forms.Button();
             this.exitFullScreen = new System.Windows.Forms.PictureBox();
-            this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.startNewMessageButton = new System.Windows.Forms.Button();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.previewButton = new System.Windows.Forms.Button();
@@ -99,6 +98,9 @@ namespace Vision
             this.loadXMLButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.buildLabel = new System.Windows.Forms.Label();
+            this.SegmentHolderPanel = new System.Windows.Forms.Panel();
+            this.aNewSegmentLabel = new System.Windows.Forms.Label();
+            this.clickToMakeLabel = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
@@ -111,6 +113,7 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
+            this.SegmentHolderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // populateMarqueeButton
@@ -193,6 +196,7 @@ namespace Vision
             // colorButton
             // 
             this.colorButton.BackColor = System.Drawing.Color.Red;
+            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colorButton.Location = new System.Drawing.Point(879, 21);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(75, 23);
@@ -474,7 +478,7 @@ namespace Vision
             this.textTabLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.textTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTabLabel.ForeColor = System.Drawing.Color.Black;
-            this.textTabLabel.Location = new System.Drawing.Point(0, 1);
+            this.textTabLabel.Location = new System.Drawing.Point(0, 0);
             this.textTabLabel.Name = "textTabLabel";
             this.textTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.textTabLabel.Size = new System.Drawing.Size(80, 55);
@@ -493,7 +497,7 @@ namespace Vision
             this.imageTabLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.imageTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imageTabLabel.ForeColor = System.Drawing.Color.White;
-            this.imageTabLabel.Location = new System.Drawing.Point(78, 1);
+            this.imageTabLabel.Location = new System.Drawing.Point(78, 0);
             this.imageTabLabel.Name = "imageTabLabel";
             this.imageTabLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.imageTabLabel.Size = new System.Drawing.Size(107, 55);
@@ -510,7 +514,7 @@ namespace Vision
             this.textPanel.Controls.Add(this.ignoreCheckBox);
             this.textPanel.Controls.Add(this.borderOptionsGroupBox);
             this.textPanel.Controls.Add(this.createASegmentGroupBox);
-            this.textPanel.Location = new System.Drawing.Point(1, 56);
+            this.textPanel.Location = new System.Drawing.Point(1, 55);
             this.textPanel.Name = "textPanel";
             this.textPanel.Size = new System.Drawing.Size(1016, 358);
             this.textPanel.TabIndex = 34;
@@ -544,6 +548,7 @@ namespace Vision
             // borderColorButton
             // 
             this.borderColorButton.BackColor = System.Drawing.Color.Red;
+            this.borderColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.borderColorButton.Location = new System.Drawing.Point(405, 30);
             this.borderColorButton.Name = "borderColorButton";
             this.borderColorButton.Size = new System.Drawing.Size(75, 23);
@@ -564,14 +569,6 @@ namespace Vision
             this.exitFullScreen.TabStop = false;
             this.exitFullScreen.Visible = false;
             this.exitFullScreen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.exitFullScreen_MouseClick);
-            // 
-            // SegmentHolderPanel
-            // 
-            this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SegmentHolderPanel.Location = new System.Drawing.Point(1, 417);
-            this.SegmentHolderPanel.Name = "SegmentHolderPanel";
-            this.SegmentHolderPanel.Size = new System.Drawing.Size(1016, 95);
-            this.SegmentHolderPanel.TabIndex = 36;
             // 
             // startNewMessageButton
             // 
@@ -595,7 +592,7 @@ namespace Vision
             this.imagePanel.Controls.Add(this.fileLocationTextBox);
             this.imagePanel.Controls.Add(this.browseButton);
             this.imagePanel.Controls.Add(this.groupBox1);
-            this.imagePanel.Location = new System.Drawing.Point(1, 56);
+            this.imagePanel.Location = new System.Drawing.Point(1, 55);
             this.imagePanel.Name = "imagePanel";
             this.imagePanel.Size = new System.Drawing.Size(1014, 358);
             this.imagePanel.TabIndex = 35;
@@ -679,12 +676,12 @@ namespace Vision
             // 
             // backToMenuButton
             // 
-            this.backToMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.backToMenuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backToMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.backToMenuButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.backToMenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Cyan;
             this.backToMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backToMenuButton.Location = new System.Drawing.Point(76, 514);
+            this.backToMenuButton.Location = new System.Drawing.Point(911, 514);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(105, 37);
             this.backToMenuButton.TabIndex = 39;
@@ -700,6 +697,8 @@ namespace Vision
             // marqueeBackgroundColorButton
             // 
             this.marqueeBackgroundColorButton.BackColor = System.Drawing.Color.Black;
+            this.marqueeBackgroundColorButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.marqueeBackgroundColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.marqueeBackgroundColorButton.Location = new System.Drawing.Point(940, 5);
             this.marqueeBackgroundColorButton.Name = "marqueeBackgroundColorButton";
             this.marqueeBackgroundColorButton.Size = new System.Drawing.Size(75, 23);
@@ -710,24 +709,32 @@ namespace Vision
             // pauseButton
             // 
             this.pauseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pauseButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.pauseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.pauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pauseButton.Location = new System.Drawing.Point(480, 514);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(65, 37);
             this.pauseButton.TabIndex = 43;
             this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.UseVisualStyleBackColor = false;
             this.pauseButton.Visible = false;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
             // playButton
             // 
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.playButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.playButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Location = new System.Drawing.Point(480, 514);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(65, 37);
             this.playButton.TabIndex = 44;
             this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Visible = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
@@ -790,6 +797,36 @@ namespace Vision
             this.buildLabel.TabIndex = 49;
             this.buildLabel.Text = "Beta Build 0.1.1";
             // 
+            // SegmentHolderPanel
+            // 
+            this.SegmentHolderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SegmentHolderPanel.Controls.Add(this.aNewSegmentLabel);
+            this.SegmentHolderPanel.Controls.Add(this.clickToMakeLabel);
+            this.SegmentHolderPanel.Location = new System.Drawing.Point(1, 416);
+            this.SegmentHolderPanel.Name = "SegmentHolderPanel";
+            this.SegmentHolderPanel.Size = new System.Drawing.Size(1016, 95);
+            this.SegmentHolderPanel.TabIndex = 36;
+            // 
+            // aNewSegmentLabel
+            // 
+            this.aNewSegmentLabel.AutoSize = true;
+            this.aNewSegmentLabel.ForeColor = System.Drawing.Color.White;
+            this.aNewSegmentLabel.Location = new System.Drawing.Point(87, 40);
+            this.aNewSegmentLabel.Name = "aNewSegmentLabel";
+            this.aNewSegmentLabel.Size = new System.Drawing.Size(84, 13);
+            this.aNewSegmentLabel.TabIndex = 1;
+            this.aNewSegmentLabel.Text = "A New Segment";
+            // 
+            // clickToMakeLabel
+            // 
+            this.clickToMakeLabel.AutoSize = true;
+            this.clickToMakeLabel.ForeColor = System.Drawing.Color.White;
+            this.clickToMakeLabel.Location = new System.Drawing.Point(90, 1);
+            this.clickToMakeLabel.Name = "clickToMakeLabel";
+            this.clickToMakeLabel.Size = new System.Drawing.Size(76, 13);
+            this.clickToMakeLabel.TabIndex = 0;
+            this.clickToMakeLabel.Text = "Click To Make";
+            // 
             // marquee1
             // 
             this.marquee1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -818,20 +855,20 @@ namespace Vision
             this.Controls.Add(this.SegmentHolderPanel);
             this.Controls.Add(this.imageTabLabel);
             this.Controls.Add(this.textTabLabel);
-            this.Controls.Add(this.runButton);
             this.Controls.Add(this.populateMarqueeButton);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.startNewMessageButton);
+            this.Controls.Add(this.runButton);
+            this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.textPanel);
             this.Controls.Add(this.imagePanel);
             this.Controls.Add(this.marquee1);
-            this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.playButton);
-            this.Controls.Add(this.startNewMessageButton);
-            this.Controls.Add(this.backToMenuButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(500, 200);
+            this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "UIForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vision";
@@ -852,6 +889,8 @@ namespace Vision
             ((System.ComponentModel.ISupportInitialize)(this.scaledPictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
+            this.SegmentHolderPanel.ResumeLayout(false);
+            this.SegmentHolderPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -879,7 +918,6 @@ namespace Vision
         private System.Windows.Forms.Panel textPanel;
         private System.Windows.Forms.Panel imagePanel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel SegmentHolderPanel;
         private System.Windows.Forms.Label scrollSpeedLabel;
         private System.Windows.Forms.NumericUpDown scrollSpeedControl;
         private System.Windows.Forms.GroupBox borderOptionsGroupBox;
@@ -917,7 +955,9 @@ namespace Vision
         private System.Windows.Forms.ComboBox exitEffectComboBox;
         private System.Windows.Forms.Label displayDurationLabel;
         private System.Windows.Forms.Label buildLabel;
+        private System.Windows.Forms.Panel SegmentHolderPanel;
+        private System.Windows.Forms.Label aNewSegmentLabel;
+        private System.Windows.Forms.Label clickToMakeLabel;
     }
 }
-
 
