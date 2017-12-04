@@ -24,6 +24,7 @@ using System.Timers;
 using System.IO;
 using System.Xml.Serialization;
 using System.Collections;
+using System.Drawing.Imaging;
 
 namespace Vision
 {
@@ -47,9 +48,7 @@ namespace Vision
         private Button[] segmentButtons = new Button[24];
         private Button[] addSegmentButtons = new Button[24];
         private Point[] segmentLocationArray = new Point[24];
-        private Point[] addSegmentLocationArray = new Point[24];
-        private Point a;
-        private Point b;
+        private Point[] addSegmentLocationArray = new Point[24];       
         private int moveFrom;
         private bool fullScreen = false;
         XmlSerializer xs;
@@ -1424,8 +1423,7 @@ namespace Vision
 
         //Edited 11-26 Heather
         //Edited 11-28 Logan
-        //Save all fields but "filename" and the "messageMatrix" in every segment object in array
-        //Also save the marqueeBackgroundColor from this class
+        //To be used with the saveButton_Click event handler
         class XmlSave
         {
             public static void SaveData(object IClass, string fileName)
@@ -1465,8 +1463,7 @@ namespace Vision
                 fs.Close();
                 return result;
             }
-        }
-
+        }     
         #endregion
 
         /*
@@ -1586,10 +1583,81 @@ namespace Vision
             originalPictureBox.Invalidate();
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        //Edited 12-3 Heather
+        //Save all fields but "filename" and the "messageMatrix" in every segment object in array
+        //Also save the marqueeBackgroundColor from this class
+        private void saveButton_Click_1(object sender, EventArgs e)
         {
+            //create XML file
+            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
 
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                list = new List<Segment>();
+                Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
+                if (mySegmentArray != null)
+                {
+                    Segment[] copSegs = new Segment[copyMyMessage.getSegmentArray().Length];                    
+                    copyMyMessage.backgroundColor = marqueeBackgroundColor;
+
+                    for (int i = 0; i < copSegs.Length; i++)
+                    {
+                        Segment seg = new Segment();
+                        if (mySegmentArray[i].isImage)
+                        {
+                            seg.ignore = mySegmentArray[i].ignore;
+                            seg.isImage = mySegmentArray[i].isImage;
+                            seg.filename = mySegmentArray[i].filename;
+                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
+                            seg.originalBitmapString = mySegmentArray[i].originalBitmapString;
+                            seg.scaledBitmapString = mySegmentArray[i].scaledBitmapString;
+                            seg.imageAspect = mySegmentArray[i].imageAspect;
+                            seg.backgroundColor = marqueeBackgroundColor;
+                        }
+                        if (!mySegmentArray[i].isImage)
+                        {
+                            seg.ignore = mySegmentArray[i].ignore;
+                            seg.isImage = mySegmentArray[i].isImage;
+                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
+                            seg.messageText = mySegmentArray[i].messageText;
+                            seg.onColor = mySegmentArray[i].onColor;
+                            seg.isScrolling = mySegmentArray[i].isScrolling;
+                            seg.isRandomColorScrolling = mySegmentArray[i].isRandomColorScrolling;
+                            seg.scrollSpeed = mySegmentArray[i].scrollSpeed;
+                            seg.entranceEffect = mySegmentArray[i].entranceEffect;
+                            seg.middleEffect = mySegmentArray[i].middleEffect;
+                            seg.exitEffect = mySegmentArray[i].exitEffect;
+                            seg.borderColor = mySegmentArray[i].borderColor;
+                            seg.borderEffect = mySegmentArray[i].borderEffect;
+                            seg.backgroundColor = copyMyMessage.backgroundColor;
+                        }
+                        list.Add(seg);
+                    }           
+                        //Message updatedcopy = new Vision.Message(copSegs, marqueeBackgroundColor);
+                        XmlSave.SaveData(list, saveFileDialog1.FileName);
+                    }
+                    //myDisplayThread.Start();
+                }
+            }       
+
+        public void setOriginalBitmap(string imageString)
+        {
+            byte[] bitmapBytes = Convert.FromBase64String(imageString);
+            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
+            Image image = Image.FromStream(memoryStream);
+            Bitmap originalBitmap = new Bitmap(image);
         }
+
+        public void setScaledBitmap(string imageString)
+        {
+            byte[] bitmapBytes = Convert.FromBase64String(imageString);
+            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
+            Image image = Image.FromStream(memoryStream);
+            Bitmap scaledBitmap = new Bitmap(image);
+        }
+
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -1611,7 +1679,7 @@ namespace Vision
             this.WindowState = FormWindowState.Normal;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            this.BackColor = Color.Black;
+            this.BackColor = Color.Black;           
             exitFullScreen.Visible = true;
             backToMenuButton.Visible = false;
             exitButton.Visible = false;
@@ -1657,16 +1725,12 @@ namespace Vision
                 segmentLabels[activeIndex].Text = "Image";
             }
         }
+
         //Added 12-3 Logan
         private void marquee1_SizeChanged(object sender, EventArgs e)
         {
             marquee1.Height = (int)((double)marquee1.Width / 6);
             marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
-        }
-
-        private void saveButton_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
