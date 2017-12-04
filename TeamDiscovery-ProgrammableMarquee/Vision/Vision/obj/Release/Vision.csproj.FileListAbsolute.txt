@@ -1,0 +1,10 @@
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Release\Vision.exe.config
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Release\Vision.exe
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\bin\Release\Vision.pdb
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.csprojResolveAssemblyReference.cache
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.Properties.Resources.resources
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.UIForm.resources
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.VisionSplashScreen.resources
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.csproj.GenerateResource.Cache
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.exe
+C:\Users\Reine\Documents\GitHub\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Release\Vision.pdb
