@@ -3,10 +3,11 @@
 // Team: Team Discovery
 //
 // Class: UIForm.cs
-// Description: 
+// Description: Connects the UI to the back-end code 
+//              and handles the UI's functionality.
 //
 // Name: Nick Burnette
-// Last Edit: 11/3
+// Last Edit: 12/4/17
 /////////////////////////////////////////////////////
 
 using System;
