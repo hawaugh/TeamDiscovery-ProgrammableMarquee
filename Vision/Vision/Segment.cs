@@ -161,6 +161,30 @@ namespace Vision
             }
         }
 
+        public bool Equals(Segment test)
+        {
+            if (this.ignore == test.ignore
+                && this.messageText == test.messageText
+                && this.onColorR == test.onColorR
+                && this.onColorG == test.onColorG
+                && this.onColorB == test.onColorB
+                && this.segmentSpeed == test.segmentSpeed
+                && this.isScrolling == test.isScrolling
+                && this.isImage == test.isImage
+                && this.filename == test.filename
+                && this.entranceEffect == test.entranceEffect
+                && this.middleEffect == test.middleEffect
+                && this.exitEffect == test.exitEffect
+                && this.borderColorR == test.borderColorR
+                && this.borderColorG == test.borderColorG
+                && this.borderColorB == test.borderColorB
+                && this.borderEffect == test.borderEffect)
+            {
+                return true;
+            }
+            return false;
+        }
+
         //ignore setter/getter
         public bool ignore
         {

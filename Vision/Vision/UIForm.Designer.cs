@@ -101,8 +101,8 @@ namespace Vision
             this.SegmentHolderPanel = new System.Windows.Forms.Panel();
             this.aNewSegmentLabel = new System.Windows.Forms.Label();
             this.clickToMakeLabel = new System.Windows.Forms.Label();
-            this.marquee1 = new Vision.Marquee();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.marquee1 = new Vision.Marquee();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -727,6 +727,8 @@ namespace Vision
             // 
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.playButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.playButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playButton.BackgroundImage")));
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.playButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -751,7 +753,7 @@ namespace Vision
             this.saveButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Location = new System.Drawing.Point(867, 514);
+            this.saveButton.Location = new System.Drawing.Point(866, 514);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 37);
             this.saveButton.TabIndex = 45;
@@ -782,7 +784,7 @@ namespace Vision
             this.loadXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.loadXMLButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.loadXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadXMLButton.Location = new System.Drawing.Point(792, 514);
+            this.loadXMLButton.Location = new System.Drawing.Point(790, 514);
             this.loadXMLButton.Name = "loadXMLButton";
             this.loadXMLButton.Size = new System.Drawing.Size(75, 37);
             this.loadXMLButton.TabIndex = 48;
@@ -793,7 +795,7 @@ namespace Vision
             // buildLabel
             // 
             this.buildLabel.AutoSize = true;
-            this.buildLabel.Location = new System.Drawing.Point(710, 538);
+            this.buildLabel.Location = new System.Drawing.Point(708, 538);
             this.buildLabel.Name = "buildLabel";
             this.buildLabel.Size = new System.Drawing.Size(82, 13);
             this.buildLabel.TabIndex = 49;
@@ -829,6 +831,10 @@ namespace Vision
             this.clickToMakeLabel.TabIndex = 0;
             this.clickToMakeLabel.Text = "Click To Make";
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // marquee1
             // 
             this.marquee1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -840,10 +846,6 @@ namespace Vision
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
             this.marquee1.SizeChanged += new System.EventHandler(this.marquee1_SizeChanged);
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // UIForm
             // 

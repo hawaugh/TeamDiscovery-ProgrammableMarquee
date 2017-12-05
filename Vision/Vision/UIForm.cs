@@ -618,6 +618,56 @@ namespace Vision
                 }
             }
         }
+        
+        private void populateUI()
+        {
+            Segment test = new Segment();
+            for (int i = 23; i > 0; i--)
+            {
+                if (test.Equals(mySegmentArray[i]))
+                {
+                    //Skip
+                }
+                else
+                {
+                    for (int j = 1; j < i+1; j++)
+                    {
+                        clickToMakeLabel.Visible = false;
+                        aNewSegmentLabel.Visible = false;
+                        if (i == 23)
+                        {
+                            segmentPanels[j].Visible = true;
+                            addSegmentButtons[j].Visible = false;
+                        }
+                        else
+                        {
+                            segmentPanels[j].Visible = true;
+                            addSegmentButtons[j].Visible = false;
+                        }
+                        if (mySegmentArray[j].isImage == false && mySegmentArray[j].messageText == "")
+                        {
+                            segmentLabels[j].Text = "EMPTY";
+                        }
+                        else if (mySegmentArray[j].isImage)
+                        {
+                            segmentLabels[j].Text = "Image";
+                        }
+                        else
+                        {
+                            segmentLabels[j].Text = mySegmentArray[j].messageText;
+                        }
+                        //exit loop
+                    }
+                    if (i < 23)
+                    {
+                        addSegmentButtons[i + 1].Visible = true;
+                    }
+                    i = 0;
+                }
+            }
+            activeIndex = 0;
+            resetSegments();
+        }
         #endregion
 
         /*
@@ -679,7 +729,6 @@ namespace Vision
         #region Segment Buttons
         private void resetSegments()
         {
-            
             //set everything to default
             for (int i = 0; i < 24; i++)
             {
@@ -1704,8 +1753,8 @@ namespace Vision
                 }
                 mySegmentArray = deserializedXml;
             }
+            populateUI();
         }
-
 
         public Bitmap setBitmap(string imageString)
         {
@@ -1770,9 +1819,9 @@ namespace Vision
         {
             EnterFullScreenMode();
             pauseCol = pauseButton.BackColor;
-            pauseButton.BackColor = Color.FromArgb(50, pauseCol.R, pauseCol.G, pauseCol.B);
+            pauseButton.BackColor = Color.FromArgb(140, pauseCol.R, pauseCol.G, pauseCol.B);
             playCol = playButton.BackColor;
-            playButton.BackColor = Color.FromArgb(50, playCol.R, playCol.G, playCol.B);
+            playButton.BackColor = Color.FromArgb(140, playCol.R, playCol.G, playCol.B);
         }
         #endregion
 
