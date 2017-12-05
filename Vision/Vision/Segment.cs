@@ -26,6 +26,9 @@ namespace Vision
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
+        private int _onColorR;
+        private int _onColorG;
+        private int _onColorB;
         private int _segmentSpeed;
 
         //Scrolling fields
@@ -50,6 +53,9 @@ namespace Vision
 
         //Border fields
         private Color _borderColor;
+        private int _borderColorR;
+        private int _borderColorG;
+        private int _borderColorB;
         private int _borderEffect;
 
         //Default Constructor
@@ -62,6 +68,9 @@ namespace Vision
                 messageMatrix[i] = "";
             }
             _onColor = Color.Red;
+            _onColorR = _onColor.R;
+            _onColorG = _onColor.G;
+            _onColorB = _onColor.B;
             _segmentSpeed = 2000;
             _isScrolling = false;
             _scrollSpeed = 100;
@@ -72,6 +81,9 @@ namespace Vision
             _middleEffect = 0;
             _exitEffect = 0;
             _borderColor = Color.Red;
+            _borderColorR = _borderColor.R;
+            _borderColorG = _borderColor.G;
+            _borderColorB = _borderColor.B;
             _borderEffect = 0;
         }
 
@@ -82,10 +94,16 @@ namespace Vision
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
+            _onColorR = _onColor.R;
+            _onColorG = _onColor.G;
+            _onColorB = _onColor.B;
             _isRandomColorScrolling = isRandomColorScrolling;
             _scrollSpeed = scrollSpeed;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
+            _borderColorR = _borderColor.R;
+            _borderColorG = _borderColor.G;
+            _borderColorB = _borderColor.B;
             _isScrolling = true;
             _isImage = false;
         }
@@ -98,12 +116,18 @@ namespace Vision
             _messageText = segmentText;
             setMessageMatrix(_messageText);
             _onColor = onColor;
+            _onColorR = _onColor.R;
+            _onColorG = _onColor.G;
+            _onColorB = _onColor.B;
             _segmentSpeed = segmentSpeed;
             _isScrolling = isScrolling;
             _entranceEffect = entranceEffect;
             _middleEffect = middleEffect;
             _exitEffect = exitEffect;
             _borderColor = borderColor;
+            _borderColorR = _borderColor.R;
+            _borderColorG = _borderColor.G;
+            _borderColorB = _borderColor.B;
             _borderEffect = borderEffect;
             _isImage = false;
         }
@@ -194,7 +218,31 @@ namespace Vision
         public Color onColor
         {
             get { return _onColor; }
-            set { _onColor = value; }
+            set
+            {
+                _onColor = value;
+                _onColorR = _onColor.R;
+                _onColorG = _onColor.G;
+                _onColorB = _onColor.B;
+            }
+        }
+
+        public int onColorR
+        {
+            get { return _onColorR; }
+            set { _onColorR = value; }
+        }
+
+        public int onColorG
+        {
+            get { return _onColorG; }
+            set { _onColorG = value; }
+        }
+
+        public int onColorB
+        {
+            get { return _onColorB; }
+            set { _onColorB = value; }
         }
 
         public bool isScrolling
@@ -380,7 +428,31 @@ namespace Vision
         public Color borderColor
         {
             get { return _borderColor; }
-            set { _borderColor = value; }
+            set
+            {
+                _borderColor = value;
+                _borderColorR = _borderColor.R;
+                _borderColorG = _borderColor.G;
+                _borderColorB = _borderColor.B;
+            }
+        }
+
+        public int borderColorR
+        {
+            get { return _borderColorR; }
+            set { _borderColorR = value; }
+        }
+
+        public int borderColorG
+        {
+            get { return _borderColorG; }
+            set { _borderColorG = value; }
+        }
+
+        public int borderColorB
+        {
+            get { return _borderColorB; }
+            set { _borderColorB = value; }
         }
 
         //getter/setter for borderEffect

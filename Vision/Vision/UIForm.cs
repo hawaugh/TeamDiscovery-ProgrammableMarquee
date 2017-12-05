@@ -1628,6 +1628,9 @@ namespace Vision
                             seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
                             seg.messageText = mySegmentArray[i].messageText;
                             seg.onColor = mySegmentArray[i].onColor;
+                            seg.onColorR = mySegmentArray[i].onColorR;
+                            seg.onColorG = mySegmentArray[i].onColorG;
+                            seg.onColorB = mySegmentArray[i].onColorB;
                             seg.isScrolling = mySegmentArray[i].isScrolling;
                             seg.isRandomColorScrolling = mySegmentArray[i].isRandomColorScrolling;
                             seg.scrollSpeed = mySegmentArray[i].scrollSpeed;
@@ -1635,6 +1638,9 @@ namespace Vision
                             seg.middleEffect = mySegmentArray[i].middleEffect;
                             seg.exitEffect = mySegmentArray[i].exitEffect;
                             seg.borderColor = mySegmentArray[i].borderColor;
+                            seg.borderColorR = mySegmentArray[i].borderColorR;
+                            seg.borderColorG = mySegmentArray[i].borderColorG;
+                            seg.borderColorB = mySegmentArray[i].borderColorB;
                             seg.borderEffect = mySegmentArray[i].borderEffect;
                         }
                         list.Add(seg);
@@ -1678,22 +1684,25 @@ namespace Vision
                         seg.isImage = xmlFileSegs[i].isImage;
                         seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
                         seg.messageText = xmlFileSegs[i].messageText;
-                        seg.onColor = xmlFileSegs[i].onColor;
+                        seg.onColor = Color.FromArgb(255, xmlFileSegs[i].onColorR, xmlFileSegs[i].onColorG, xmlFileSegs[i].onColorB);
+                        seg.onColorR = xmlFileSegs[i].onColorR;
+                        seg.onColorG = xmlFileSegs[i].onColorG;
+                        seg.onColorB = xmlFileSegs[i].onColorB;
                         seg.isScrolling = xmlFileSegs[i].isScrolling;
                         seg.isRandomColorScrolling = xmlFileSegs[i].isRandomColorScrolling;
                         seg.scrollSpeed = xmlFileSegs[i].scrollSpeed;
                         seg.entranceEffect = xmlFileSegs[i].entranceEffect;
                         seg.middleEffect = xmlFileSegs[i].middleEffect;
                         seg.exitEffect = xmlFileSegs[i].exitEffect;
-                        seg.borderColor = xmlFileSegs[i].borderColor;
+                        seg.borderColor = Color.FromArgb(255, xmlFileSegs[i].borderColorR, xmlFileSegs[i].borderColorG, xmlFileSegs[i].borderColorB);
+                        seg.borderColorR = xmlFileSegs[i].borderColorR;
+                        seg.borderColorG = xmlFileSegs[i].borderColorG;
+                        seg.borderColorB = xmlFileSegs[i].borderColorB;
                         seg.borderEffect = xmlFileSegs[i].borderEffect;
                     }
                     deserializedXml[i] = seg;
                 }
-                mySegmentArray = deserializedXml ;
-                Message myMessage = new Vision.Message(mySegmentArray, Color.Black);
-                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-                myDisplayThread.Start();
+                mySegmentArray = deserializedXml;
             }
         }
 
