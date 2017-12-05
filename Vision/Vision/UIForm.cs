@@ -440,7 +440,7 @@ namespace Vision
                     }
                 }
             }
-            //Else moved segment up
+            //Else segment moved up
             else
             {
                 for (int i = 23; i >= 0; i--)
@@ -469,35 +469,14 @@ namespace Vision
             getLocations();
         }
         
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            pauseButton.Visible = true;
-            abortDisplayThreads();
-            clearForMarquee();
-            backToMenuButton.Visible = true;
-            goToFullScreenButton.Visible = true;
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.MaximizeBox = true;
-            marquee1.Visible = true;
-            EnterFullScreenMode();
-            Segment mySegment = new Segment("DISCOVERY", Color.Red, 20000, 4, 4, 4, Color.Red, 4);
-            Segment mySecondSegment = new Segment("Discovery", Color.Aqua, true, 25, Color.Aqua, 3);
-            Segment myImageSegment = new Segment("..\\..\\panthers.jpg", 10000);
-            Segment myThirdSegment = new Segment("BEST TEAM", Color.Yellow, 4080, 4, 2, 4, Color.Green, 1);
-            mySegmentArray = new Segment[] { mySegment, mySecondSegment, myImageSegment, myThirdSegment };
-            Message myMessage = new Vision.Message(mySegmentArray, Color.Black);
-            myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
-            myDisplayThread.Start();
-        }
-
         /*
          * 
          *   Generic functions
          * 
          */
         #region Generic Functions
-        //Sets the locations of objects to a parallel array
 
+        //Sets the locations of objects to a parallel array
         private void getLocations()
         {
             for (int i = 0; i < 24; i++)
@@ -534,7 +513,6 @@ namespace Vision
             {
                 imagePanel.BringToFront();
             }
-            //populateMarqueeButton.Visible = false; //REMOVE
             SegmentHolderPanel.Visible = false;
             startNewMessageButton.Visible = false;
             loadXMLButton.Visible = false;
@@ -553,7 +531,6 @@ namespace Vision
 
         private void openMenu()
         {
-            //populateMarqueeButton.Visible = true; //REMOVE
             SegmentHolderPanel.Visible = true;
             startNewMessageButton.Visible = true;
             loadXMLButton.Visible = true;
@@ -668,38 +645,41 @@ namespace Vision
             activeIndex = 0;
             resetSegments();
         }
-        #endregion
 
-        /*
-         *
-         *   Animations
-         * 
-         */
-        #region Animations
-        public static class Util
+        private void abortDisplayThreads()
         {
-            public enum Effect { Roll, Slide, Center, Blend }
-
-            public static void Animate(Control ctl, Effect effect, int msec, int angle)
+            if (myDisplayThread != null)
             {
-                int flags = effmap[(int)effect];
-                if (ctl.Visible) { flags |= 0x10000; angle += 180; }
-                else
+                if (myDisplayThread.IsAlive)
                 {
-                    if (ctl.TopLevelControl == ctl) flags |= 0x20000;
-                    else if (effect == Effect.Blend) throw new ArgumentException();
+                    myDisplayThread.Suspend();
+                    myDisplayThread.Resume();
+                    myDisplayThread.Abort();
                 }
-                flags |= dirmap[(angle % 360) / 45];
-                bool ok = AnimateWindow(ctl.Handle, msec, flags);
-                if (!ok) throw new Exception("Animation failed");
-                ctl.Visible = !ctl.Visible;
             }
+            if (myPauseInvalidationThread != null)
+            {
+                if (myPauseInvalidationThread.IsAlive)
+                {
+                    myPauseInvalidationThread.Abort();
+                }
+            }
+            marquee1.borderThreadAbort();
+            marquee1.clearMarquee(marquee1.BackColor);
+            marquee1.clearBorder(marquee1.BackColor);
+        }
 
-            private static int[] dirmap = { 1, 5, 4, 6, 2, 10, 8, 9 };
-            private static int[] effmap = { 0, 0x40000, 0x10, 0x80000 };
+        private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            abortDisplayThreads();
+            Application.Exit();
+        }
 
-            [DllImport("user32.dll")]
-            private static extern bool AnimateWindow(IntPtr handle, int msec, int flags);
+        //Added 12-3 Logan
+        private void marquee1_SizeChanged(object sender, EventArgs e)
+        {
+            marquee1.Height = (int)((double)marquee1.Width / 6);
+            marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
         }
         #endregion
 
@@ -1200,7 +1180,6 @@ namespace Vision
             if (specialEffectButton.Checked == true)
             {
                 mySegmentArray[activeIndex].isScrolling = false;
-                //For some reason setting the default value in designer doesnt work. But this fixes it.
                 displayDurationControl.Visible = true;
                 displayDurationLabel.Visible = true;
                 entranceEffectLabel.Visible = true;
@@ -1221,7 +1200,6 @@ namespace Vision
             if (scrollingTextButton.Checked == true)
             {
                 mySegmentArray[activeIndex].isScrolling = true;
-                //For some reason setting the default value in designer doesnt work. But this fixes it.
                 scrollSpeedControl.Value = (decimal)((decimal)mySegmentArray[activeIndex].scrollSpeed / 100);
                 displayDurationControl.Visible = false;
                 displayDurationLabel.Visible = false;
@@ -1334,15 +1312,41 @@ namespace Vision
         {
             int size = -1;
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK) // Test result.
+            if (browseOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
 
                 int segmentSpeed = mySegmentArray[activeIndex].segmentSpeed;
-                string filename = openFileDialog1.FileName;
+                string filename = browseOpenFileDialog.FileName;
                 fileLocationTextBox.Text = filename;
                 mySegmentArray[activeIndex].isImage = true;
                 mySegmentArray[activeIndex].filename = filename;
                 mySegmentArray[activeIndex].segmentSpeed = segmentSpeed;
+            }
+        }
+
+        private void previewButton_Click(object sender, EventArgs e)
+        {
+            originalPictureBox.Image = (Image)mySegmentArray[activeIndex].originalBitmap;
+            originalPictureBox.BackColor = marqueeBackgroundColor;
+            scaledPictureBox.Image = (Image)mySegmentArray[activeIndex].scaledBitmap;
+            scaledPictureBox.BackColor = marqueeBackgroundColor;
+            originalPictureBox.Invalidate();
+        }
+
+        public Bitmap setBitmap(string imageString)
+        {
+            byte[] bitmapBytes = Convert.FromBase64String(imageString);
+            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
+            Image image = Image.FromStream(memoryStream);
+            Bitmap bitmap = new Bitmap(image);
+            return bitmap;
+        }
+
+        private void fileLocationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (mySegmentArray[activeIndex].isImage == true)
+            {
+                segmentLabels[activeIndex].Text = "Image";
             }
         }
         #endregion
@@ -1443,6 +1447,7 @@ namespace Vision
             //show menu
             openMenu();
         }
+
         //This is the Exit button
         private void saveAndExitButton_Click(object sender, EventArgs e)
         {
@@ -1450,6 +1455,7 @@ namespace Vision
             Application.Exit();
             abortDisplayThreads();
         }
+
         //Edited 12-2 Heather
         //This is the Run button
         private void saveAndRunButton_Click(object sender, EventArgs e)
@@ -1469,6 +1475,124 @@ namespace Vision
             myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
             myDisplayThread.Start();
         }
+
+        private void startNewMessageButton_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        //This is the Save button
+        private void saveButton_Click_1(object sender, EventArgs e)
+        {
+            //create XML file
+            saveFileDialog.Filter = "Xml Files (*.xml) | *.xml";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                list = new List<Segment>();
+                Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
+                if (mySegmentArray != null)
+                {
+                    Segment[] copSegs = new Segment[copyMyMessage.getSegmentArray().Length];
+                    copyMyMessage.backgroundColor = marqueeBackgroundColor;
+
+                    for (int i = 0; i < copSegs.Length; i++)
+                    {
+                        Segment seg = new Segment();
+                        if (mySegmentArray[i].isImage)
+                        {
+                            seg.ignore = mySegmentArray[i].ignore;
+                            seg.isImage = mySegmentArray[i].isImage;
+                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
+                            seg.originalBitmapString = mySegmentArray[i].originalBitmapString;
+                            seg.scaledBitmapString = mySegmentArray[i].scaledBitmapString;
+                            seg.imageAspect = mySegmentArray[i].imageAspect;
+                        }
+                        if (!mySegmentArray[i].isImage)
+                        {
+                            seg.ignore = mySegmentArray[i].ignore;
+                            seg.isImage = mySegmentArray[i].isImage;
+                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
+                            seg.messageText = mySegmentArray[i].messageText;
+                            seg.onColor = mySegmentArray[i].onColor;
+                            seg.onColorR = mySegmentArray[i].onColorR;
+                            seg.onColorG = mySegmentArray[i].onColorG;
+                            seg.onColorB = mySegmentArray[i].onColorB;
+                            seg.isScrolling = mySegmentArray[i].isScrolling;
+                            seg.isRandomColorScrolling = mySegmentArray[i].isRandomColorScrolling;
+                            seg.scrollSpeed = mySegmentArray[i].scrollSpeed;
+                            seg.entranceEffect = mySegmentArray[i].entranceEffect;
+                            seg.middleEffect = mySegmentArray[i].middleEffect;
+                            seg.exitEffect = mySegmentArray[i].exitEffect;
+                            seg.borderColor = mySegmentArray[i].borderColor;
+                            seg.borderColorR = mySegmentArray[i].borderColorR;
+                            seg.borderColorG = mySegmentArray[i].borderColorG;
+                            seg.borderColorB = mySegmentArray[i].borderColorB;
+                            seg.borderEffect = mySegmentArray[i].borderEffect;
+                        }
+                        list.Add(seg);
+                    }
+                    XmlSave.SaveData(list, saveFileDialog.FileName);
+                }
+            }
+        }
+
+        //Edited 12-4 Heather
+        //This is the Load XML button
+        private void loadXMLButton_Click(object sender, EventArgs e)
+        {
+            xmlOpenFileDialog.Filter = "Xml Files (*.xml) | *.xml";
+            xmlOpenFileDialog.FilterIndex = 1;
+            xmlOpenFileDialog.RestoreDirectory = true;
+            if (xmlOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fname = xmlOpenFileDialog.FileName;
+
+                XmlLoad<List<Segment>> cRef = new XmlLoad<List<Segment>>();
+                List<Segment> xmlFileSegs = new List<Segment>(cRef.LoadData(fname));
+                Segment[] deserializedXml = new Segment[xmlFileSegs.Count];
+                for (int i = 0; i < xmlFileSegs.Count; i++)
+                {
+                    Segment seg = new Segment();
+                    if (xmlFileSegs[i].isImage)
+                    {
+                        seg.ignore = xmlFileSegs[i].ignore;
+                        seg.isImage = xmlFileSegs[i].isImage;
+                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
+                        seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
+                        seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
+                        seg.imageAspect = xmlFileSegs[i].imageAspect;
+                    }
+                    if (!xmlFileSegs[i].isImage)
+                    {
+                        seg.ignore = xmlFileSegs[i].ignore;
+                        seg.isImage = xmlFileSegs[i].isImage;
+                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
+                        seg.messageText = xmlFileSegs[i].messageText;
+                        seg.onColor = Color.FromArgb(255, xmlFileSegs[i].onColorR, xmlFileSegs[i].onColorG, xmlFileSegs[i].onColorB);
+                        seg.onColorR = xmlFileSegs[i].onColorR;
+                        seg.onColorG = xmlFileSegs[i].onColorG;
+                        seg.onColorB = xmlFileSegs[i].onColorB;
+                        seg.isScrolling = xmlFileSegs[i].isScrolling;
+                        seg.isRandomColorScrolling = xmlFileSegs[i].isRandomColorScrolling;
+                        seg.scrollSpeed = xmlFileSegs[i].scrollSpeed;
+                        seg.entranceEffect = xmlFileSegs[i].entranceEffect;
+                        seg.middleEffect = xmlFileSegs[i].middleEffect;
+                        seg.exitEffect = xmlFileSegs[i].exitEffect;
+                        seg.borderColor = Color.FromArgb(255, xmlFileSegs[i].borderColorR, xmlFileSegs[i].borderColorG, xmlFileSegs[i].borderColorB);
+                        seg.borderColorR = xmlFileSegs[i].borderColorR;
+                        seg.borderColorG = xmlFileSegs[i].borderColorG;
+                        seg.borderColorB = xmlFileSegs[i].borderColorB;
+                        seg.borderEffect = xmlFileSegs[i].borderEffect;
+                    }
+                    deserializedXml[i] = seg;
+                }
+                mySegmentArray = deserializedXml;
+            }
+            populateUI();
+        }
         #endregion
 
         /*
@@ -1477,11 +1601,8 @@ namespace Vision
          * 
          */
         #region XML Methods
-
         //Edited 11-26 Heather
         //Edited 11-28 Logan
-        //Save all fields but "filename" and the "messageMatrix" in every segment object in array
-        //Also save the marqueeBackgroundColor from this class
         class XmlSave
         {
             public static void SaveData(object IClass, string fileName)
@@ -1600,177 +1721,6 @@ namespace Vision
         }
         #endregion
 
-        private void logoLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void abortDisplayThreads()
-        {
-            if (myDisplayThread != null)
-            {
-                if (myDisplayThread.IsAlive)
-                {
-                    myDisplayThread.Suspend();
-                    myDisplayThread.Resume();
-                    myDisplayThread.Abort();
-                }
-            }
-            if (myPauseInvalidationThread != null)
-            {
-                if (myPauseInvalidationThread.IsAlive)
-                {
-                    myPauseInvalidationThread.Abort();
-                }
-            }
-            marquee1.borderThreadAbort();
-            marquee1.clearMarquee(marquee1.BackColor);
-            marquee1.clearBorder(marquee1.BackColor);
-        }
-
-        private void startNewMessageButton_Click(object sender, EventArgs e)
-        {
-            Application.Restart();
-        }
-
-        private void previewButton_Click(object sender, EventArgs e)
-        {
-            originalPictureBox.Image = (Image)mySegmentArray[activeIndex].originalBitmap;
-            originalPictureBox.BackColor = marqueeBackgroundColor;
-            scaledPictureBox.Image = (Image)mySegmentArray[activeIndex].scaledBitmap;
-            scaledPictureBox.BackColor = marqueeBackgroundColor;
-            originalPictureBox.Invalidate();
-        }
-        //This is the Save button
-        private void saveButton_Click_1(object sender, EventArgs e)
-        {
-            //create XML file
-            saveFileDialog1.Filter = "Xml Files (*.xml) | *.xml";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                list = new List<Segment>();
-                Message copyMyMessage = new Vision.Message(mySegmentArray, marqueeBackgroundColor);
-                if (mySegmentArray != null)
-                {
-                    Segment[] copSegs = new Segment[copyMyMessage.getSegmentArray().Length];
-                    copyMyMessage.backgroundColor = marqueeBackgroundColor;
-
-                    for (int i = 0; i < copSegs.Length; i++)
-                    {
-                        Segment seg = new Segment();
-                        if (mySegmentArray[i].isImage)
-                        {
-                            seg.ignore = mySegmentArray[i].ignore;
-                            seg.isImage = mySegmentArray[i].isImage;
-                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
-                            seg.originalBitmapString = mySegmentArray[i].originalBitmapString;
-                            seg.scaledBitmapString = mySegmentArray[i].scaledBitmapString;
-                            seg.imageAspect = mySegmentArray[i].imageAspect;
-                        }
-                        if (!mySegmentArray[i].isImage)
-                        {
-                            seg.ignore = mySegmentArray[i].ignore;
-                            seg.isImage = mySegmentArray[i].isImage;
-                            seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
-                            seg.messageText = mySegmentArray[i].messageText;
-                            seg.onColor = mySegmentArray[i].onColor;
-                            seg.onColorR = mySegmentArray[i].onColorR;
-                            seg.onColorG = mySegmentArray[i].onColorG;
-                            seg.onColorB = mySegmentArray[i].onColorB;
-                            seg.isScrolling = mySegmentArray[i].isScrolling;
-                            seg.isRandomColorScrolling = mySegmentArray[i].isRandomColorScrolling;
-                            seg.scrollSpeed = mySegmentArray[i].scrollSpeed;
-                            seg.entranceEffect = mySegmentArray[i].entranceEffect;
-                            seg.middleEffect = mySegmentArray[i].middleEffect;
-                            seg.exitEffect = mySegmentArray[i].exitEffect;
-                            seg.borderColor = mySegmentArray[i].borderColor;
-                            seg.borderColorR = mySegmentArray[i].borderColorR;
-                            seg.borderColorG = mySegmentArray[i].borderColorG;
-                            seg.borderColorB = mySegmentArray[i].borderColorB;
-                            seg.borderEffect = mySegmentArray[i].borderEffect;
-                        }
-                        list.Add(seg);
-                        //copSegs[i] = seg;
-                    }
-                    //Message updatedcopy = new Vision.Message(copSegs, copyMyMessage.backgroundColor);
-                    XmlSave.SaveData(list, saveFileDialog1.FileName);
-                }              
-            }
-        }
-
-        //Edited 12-4 Heather
-        //This is the Load XML button
-        private void loadXMLButton_Click(object sender, EventArgs e)
-        {
-            openFileDialog2.Filter = "Xml Files (*.xml) | *.xml";
-            openFileDialog2.FilterIndex = 1;
-            openFileDialog2.RestoreDirectory = true;
-            if (openFileDialog2.ShowDialog() == DialogResult.OK)  // Test result.
-            {
-                string fname = openFileDialog2.FileName;
-
-                XmlLoad<List<Segment>> cRef = new XmlLoad<List<Segment>>();
-                List<Segment> xmlFileSegs = new List<Segment>(cRef.LoadData(fname));
-                Segment[] deserializedXml = new Segment[xmlFileSegs.Count];
-                for (int i = 0; i < xmlFileSegs.Count; i++)
-                {
-                    Segment seg = new Segment();
-                    if (xmlFileSegs[i].isImage)
-                    {
-                        seg.ignore = xmlFileSegs[i].ignore;
-                        seg.isImage = xmlFileSegs[i].isImage;
-                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
-                        seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
-                        seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
-                        seg.imageAspect = xmlFileSegs[i].imageAspect;
-                    }
-                    if (!xmlFileSegs[i].isImage)
-                    {
-                        seg.ignore = xmlFileSegs[i].ignore;
-                        seg.isImage = xmlFileSegs[i].isImage;
-                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
-                        seg.messageText = xmlFileSegs[i].messageText;
-                        seg.onColor = Color.FromArgb(255, xmlFileSegs[i].onColorR, xmlFileSegs[i].onColorG, xmlFileSegs[i].onColorB);
-                        seg.onColorR = xmlFileSegs[i].onColorR;
-                        seg.onColorG = xmlFileSegs[i].onColorG;
-                        seg.onColorB = xmlFileSegs[i].onColorB;
-                        seg.isScrolling = xmlFileSegs[i].isScrolling;
-                        seg.isRandomColorScrolling = xmlFileSegs[i].isRandomColorScrolling;
-                        seg.scrollSpeed = xmlFileSegs[i].scrollSpeed;
-                        seg.entranceEffect = xmlFileSegs[i].entranceEffect;
-                        seg.middleEffect = xmlFileSegs[i].middleEffect;
-                        seg.exitEffect = xmlFileSegs[i].exitEffect;
-                        seg.borderColor = Color.FromArgb(255, xmlFileSegs[i].borderColorR, xmlFileSegs[i].borderColorG, xmlFileSegs[i].borderColorB);
-                        seg.borderColorR = xmlFileSegs[i].borderColorR;
-                        seg.borderColorG = xmlFileSegs[i].borderColorG;
-                        seg.borderColorB = xmlFileSegs[i].borderColorB;
-                        seg.borderEffect = xmlFileSegs[i].borderEffect;
-                    }
-                    deserializedXml[i] = seg;
-                }
-                mySegmentArray = deserializedXml;
-            }
-            populateUI();
-        }
-
-        public Bitmap setBitmap(string imageString)
-        {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            Bitmap bitmap = new Bitmap(image);
-            return bitmap;
-        }      
-
-        private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            abortDisplayThreads();
-            Application.Exit();
-        }
-
         /*
          * 
          *   FullScreen methods
@@ -1778,7 +1728,6 @@ namespace Vision
          */
         #region FullScreen methods
 
-        //Work in progress
         //Edited 12-2 Heather
         private void EnterFullScreenMode()
         {
@@ -1793,7 +1742,6 @@ namespace Vision
             fullScreen = true;
         }
 
-        //Work in progress
         private void LeaveFullScreenMode()
         {
             exitFullScreen.Visible = false;
@@ -1824,26 +1772,5 @@ namespace Vision
             playButton.BackColor = Color.FromArgb(140, playCol.R, playCol.G, playCol.B);
         }
         #endregion
-
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void fileLocationTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (mySegmentArray[activeIndex].isImage == true)
-            {
-                segmentLabels[activeIndex].Text = "Image";
-            }
-        }
-        //Added 12-3 Logan
-        private void marquee1_SizeChanged(object sender, EventArgs e)
-        {
-            marquee1.Height = (int)((double)marquee1.Width / 6);
-            marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
-        }
-
-        
     }
 }
