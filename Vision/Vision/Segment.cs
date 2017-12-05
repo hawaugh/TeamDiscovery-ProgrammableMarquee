@@ -354,14 +354,14 @@ namespace Vision
         public Bitmap originalBitmap
         {
             get { return _originalBitmap; }
-            set { }
+            set { _originalBitmap = value; }
         }
 
         //getter/setter for scaledBitmap
         public Bitmap scaledBitmap
         {
             get { return _scaledBitmap; }
-            set { }
+            set { _scaledBitmap = value; }
         }
 
         /*
