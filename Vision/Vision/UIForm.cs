@@ -1616,7 +1616,6 @@ namespace Vision
                         {
                             seg.ignore = mySegmentArray[i].ignore;
                             seg.isImage = mySegmentArray[i].isImage;
-                            seg.filename = mySegmentArray[i].filename;
                             seg.segmentSpeed = mySegmentArray[i].segmentSpeed;
                             seg.originalBitmapString = mySegmentArray[i].originalBitmapString;
                             seg.scaledBitmapString = mySegmentArray[i].scaledBitmapString;
@@ -1670,7 +1669,6 @@ namespace Vision
                     {
                         seg.ignore = xmlFileSegs[i].ignore;
                         seg.isImage = xmlFileSegs[i].isImage;
-                        seg.filename = xmlFileSegs[i].filename;
                         seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
                         seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
                         seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
