@@ -95,3 +95,5 @@ C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.exe
 C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee2\Vision\Vision\obj\Debug\Vision.pdb
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.VisionSplashScreen.resources
+C:\Users\dbunn\Source\Repos\TeamDiscovery-ProgrammableMarquee\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache

@@ -18,10 +18,15 @@ using System.Drawing;
 
 namespace Vision
 {
-    class Message
+     public class Message
     {
         private Segment[] segmentArray;  //Contains one segment for non subsegmented message
-        private Color _backgroundColor;            
+        private Color _backgroundColor;
+
+        // Parameterless constructor needed for serialization
+        public Message()
+        {
+        }
 
         //Constructor
         public Message(Segment[] newSegmentArray, Color backgroundColor)

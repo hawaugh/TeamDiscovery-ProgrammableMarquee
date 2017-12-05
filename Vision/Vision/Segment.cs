@@ -22,7 +22,7 @@ namespace Vision
 {
     public class Segment
     {
-        private bool _ignore;     
+        private bool _ignore;
         private string _messageText;
         private string[] messageMatrix = new string[12];
         private Color _onColor;
@@ -38,22 +38,25 @@ namespace Vision
         private string _filename;
         private Bitmap _originalBitmap;
         private Bitmap _scaledBitmap;
+        private string _origBitmapString;   //added the string version of the bitmap for the xml;
+        private string _scaledBitmapString; //added the string version of the scaled bitmap for the xml.
         private float _imageAspect;
         private const float ASPECT_RATIO = 6;
 
         //Effect fields
-        private int _entranceEffect;        
-        private int _middleEffect;        
+        private int _entranceEffect;
+        private int _middleEffect;
         private int _exitEffect;
 
         //Border fields
         private Color _borderColor;
         private int _borderEffect;
+        private Color _backgroundColor;
 
         //Default Constructor
         public Segment()
         {
-            _ignore = true;    
+            _ignore = true;
             _messageText = "";
             for (int i = 0; i < 12; i++)
             {
@@ -71,6 +74,7 @@ namespace Vision
             _exitEffect = 0;
             _borderColor = Color.Red;
             _borderEffect = 0;
+            _backgroundColor = Color.Black;
         }
 
         //Scrolling Text Constructor
@@ -84,9 +88,10 @@ namespace Vision
             _scrollSpeed = scrollSpeed;
             _borderColor = borderColor;
             _borderEffect = borderEffect;
-            _isScrolling = true;            
+            _isScrolling = true;
             _isImage = false;
         }
+    
 
         //Static Text Constructor
         public Segment(string segmentText, Color onColor, int segmentSpeed, int entranceEffect, int middleEffect, int exitEffect, Color borderColor, int borderEffect)
@@ -114,19 +119,23 @@ namespace Vision
             _segmentSpeed = segmentSpeed;
             //creates the image from file
             _originalBitmap = new Bitmap(_filename);
+            originalBitmapToString(_originalBitmap);
             _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
 
             if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
             {
                 _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                scaledBitmapToString(_scaledBitmap);
             }
             else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
             {
                 _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                scaledBitmapToString(_scaledBitmap);
             }
             else //Aspect ratio equals marquee
             {
                 _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
+                scaledBitmapToString(_scaledBitmap);
             }
         }
 
@@ -183,6 +192,12 @@ namespace Vision
             }
         }
 
+        public Color backgroundColor
+        {
+            get { return _backgroundColor; }
+            set { _backgroundColor = value; }
+        }
+
         //getter/setter for onColor
         public Color onColor
         {
@@ -222,6 +237,20 @@ namespace Vision
             set { _isImage = value; }
         }
 
+        //getter and setter for the string representation of the original bitmap.
+        public string originalBitmapString
+        {
+            get { return _origBitmapString; }
+            set { _origBitmapString = value; }
+        }
+
+        //getter setter for the string representation of the scaled bitmap.
+        public string scaledBitmapString
+        {
+            get { return _scaledBitmapString; }
+            set { _scaledBitmapString = value; }
+        }
+
         public string filename
         {
             get { return _filename; }
@@ -247,44 +276,15 @@ namespace Vision
                     {
                         _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
                     }
+                    scaledBitmapToString(_scaledBitmap);
+                    originalBitmapToString(_originalBitmap);
                 }
             }
         }
 
-        public string originalBitmapToString()
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            _originalBitmap.Save(memoryStream, ImageFormat.Png);
-            byte[] bitmapBytes = memoryStream.GetBuffer();
-            string bitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
-            return bitmapString;
-        }
-
-        public string scaledBitmapToString()
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            _scaledBitmap.Save(memoryStream, ImageFormat.Png);
-            byte[] bitmapBytes = memoryStream.GetBuffer();
-            string bitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
-            return bitmapString;
-        }
-
-        public void setOriginalBitmap(string imageString)
-        {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            _originalBitmap = new Bitmap(image);
-        }
-
-        public void setScaledBitmap(string imageString)
-        {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            _scaledBitmap = new Bitmap(image);
-        }
-
+        /*
+             * Returns Color of Pixel from scaledBitmap using int for column and int for row.
+             */
         public Color getPixel(int c, int r)
         {
             return _scaledBitmap.GetPixel(c, r);
@@ -320,6 +320,29 @@ namespace Vision
             get { return _scaledBitmap; }
             set { }
         }
+
+        /*
+         * Creates a string representation of the originalbitmap for the XML file.
+         */
+        public void originalBitmapToString(Bitmap bitmap)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, ImageFormat.Png);
+            byte[] bitmapBytes = memoryStream.GetBuffer();
+            _origBitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
+        }
+
+        /*
+         * Creates string representation of the scaledBitmap for the XML file
+         */
+        public void scaledBitmapToString(Bitmap bitmap)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, ImageFormat.Png);
+            byte[] bitmapBytes = memoryStream.GetBuffer();
+            _scaledBitmapString = Convert.ToBase64String(bitmapBytes, Base64FormattingOptions.InsertLineBreaks);
+        }
+
 
         #endregion
 
