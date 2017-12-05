@@ -1620,7 +1620,6 @@ namespace Vision
                             seg.originalBitmapString = mySegmentArray[i].originalBitmapString;
                             seg.scaledBitmapString = mySegmentArray[i].scaledBitmapString;
                             seg.imageAspect = mySegmentArray[i].imageAspect;
-                            seg.backgroundColor = marqueeBackgroundColor;
                         }
                         if (!mySegmentArray[i].isImage)
                         {
@@ -1637,7 +1636,6 @@ namespace Vision
                             seg.exitEffect = mySegmentArray[i].exitEffect;
                             seg.borderColor = mySegmentArray[i].borderColor;
                             seg.borderEffect = mySegmentArray[i].borderEffect;
-                            seg.backgroundColor = marqueeBackgroundColor;
                         }
                         list.Add(seg);
                         //copSegs[i] = seg;
@@ -1673,7 +1671,6 @@ namespace Vision
                         seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
                         seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
                         seg.imageAspect = xmlFileSegs[i].imageAspect;
-                        seg.backgroundColor = marqueeBackgroundColor;
                     }
                     if (!xmlFileSegs[i].isImage)
                     {
@@ -1690,7 +1687,6 @@ namespace Vision
                         seg.exitEffect = xmlFileSegs[i].exitEffect;
                         seg.borderColor = xmlFileSegs[i].borderColor;
                         seg.borderEffect = xmlFileSegs[i].borderEffect;
-                        seg.backgroundColor = marqueeBackgroundColor;
                     }
                     deserializedXml[i] = seg;
                 }

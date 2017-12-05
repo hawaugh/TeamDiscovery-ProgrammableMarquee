@@ -51,7 +51,6 @@ namespace Vision
         //Border fields
         private Color _borderColor;
         private int _borderEffect;
-        private Color _backgroundColor;
 
         //Default Constructor
         public Segment()
@@ -74,7 +73,6 @@ namespace Vision
             _exitEffect = 0;
             _borderColor = Color.Red;
             _borderEffect = 0;
-            _backgroundColor = Color.Black;
         }
 
         //Scrolling Text Constructor
@@ -190,12 +188,6 @@ namespace Vision
                     messageMatrix[i] = messageMatrix[i] + currentLetter[i] + "0";
                 }
             }
-        }
-
-        public Color backgroundColor
-        {
-            get { return _backgroundColor; }
-            set { _backgroundColor = value; }
         }
 
         //getter/setter for onColor
