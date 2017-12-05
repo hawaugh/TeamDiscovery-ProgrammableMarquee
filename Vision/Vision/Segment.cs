@@ -258,26 +258,29 @@ namespace Vision
             {
                 _filename = value;
                 //creates the image from file
-                long fileLength = new FileInfo(_filename).Length;
-                if (fileLength > 0)
+                if (_filename.Length > 0)
                 {
-                    _originalBitmap = new Bitmap(_filename);
-                    _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
+                    long fileLength = new FileInfo(_filename).Length;
+                    if (fileLength > 0)
+                    {
+                        _originalBitmap = new Bitmap(_filename);
+                        _imageAspect = ((float)_originalBitmap.Width) / ((float)_originalBitmap.Height);
 
-                    if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
-                    {
-                        _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                        if (_imageAspect < ASPECT_RATIO)  //Scaled if ratio taller than marquee
+                        {
+                            _scaledBitmap = new Bitmap(_originalBitmap, (int)Math.Round(16 * _imageAspect), 16);
+                        }
+                        else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
+                        {
+                            _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
+                        }
+                        else //Aspect ratio equals marquee
+                        {
+                            _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
+                        }
+                        scaledBitmapToString(_scaledBitmap);
+                        originalBitmapToString(_originalBitmap);
                     }
-                    else if (_imageAspect > ASPECT_RATIO) //Scaled if ratio wider than marquee
-                    {
-                        _scaledBitmap = new Bitmap(_originalBitmap, 96, (int)Math.Round(96 / _imageAspect));
-                    }
-                    else //Aspect ratio equals marquee
-                    {
-                        _scaledBitmap = new Bitmap(_originalBitmap, 96, 16);
-                    }
-                    scaledBitmapToString(_scaledBitmap);
-                    originalBitmapToString(_originalBitmap);
                 }
             }
         }
