@@ -102,6 +102,7 @@ namespace Vision
             this.aNewSegmentLabel = new System.Windows.Forms.Label();
             this.clickToMakeLabel = new System.Windows.Forms.Label();
             this.marquee1 = new Vision.Marquee();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.createASegmentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayDurationControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrollSpeedControl)).BeginInit();
@@ -787,6 +788,7 @@ namespace Vision
             this.loadXMLButton.TabIndex = 48;
             this.loadXMLButton.Text = "Load XML";
             this.loadXMLButton.UseVisualStyleBackColor = false;
+            this.loadXMLButton.Click += new System.EventHandler(this.loadXMLButton_Click);
             // 
             // buildLabel
             // 
@@ -838,6 +840,10 @@ namespace Vision
             this.marquee1.Text = "marquee";
             this.marquee1.Visible = false;
             this.marquee1.SizeChanged += new System.EventHandler(this.marquee1_SizeChanged);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // UIForm
             // 
@@ -958,6 +964,7 @@ namespace Vision
         private System.Windows.Forms.Panel SegmentHolderPanel;
         private System.Windows.Forms.Label aNewSegmentLabel;
         private System.Windows.Forms.Label clickToMakeLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 

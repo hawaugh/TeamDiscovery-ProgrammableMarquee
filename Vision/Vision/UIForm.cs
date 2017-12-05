@@ -1394,7 +1394,7 @@ namespace Vision
             //show menu
             openMenu();
         }
-
+        //This is the Exit button
         private void saveAndExitButton_Click(object sender, EventArgs e)
         {
             //Closes the form
@@ -1402,6 +1402,7 @@ namespace Vision
             abortDisplayThreads();
         }
         //Edited 12-2 Heather
+        //This is the Run button
         private void saveAndRunButton_Click(object sender, EventArgs e)
         {
             pauseButton.Visible = true;
@@ -1591,7 +1592,7 @@ namespace Vision
             scaledPictureBox.BackColor = marqueeBackgroundColor;
             originalPictureBox.Invalidate();
         }
-
+        //This is the Save button
         private void saveButton_Click_1(object sender, EventArgs e)
         {
             //create XML file
@@ -1637,32 +1638,80 @@ namespace Vision
                             seg.exitEffect = mySegmentArray[i].exitEffect;
                             seg.borderColor = mySegmentArray[i].borderColor;
                             seg.borderEffect = mySegmentArray[i].borderEffect;
-                            seg.backgroundColor = copyMyMessage.backgroundColor;
+                            seg.backgroundColor = marqueeBackgroundColor;
                         }
                         list.Add(seg);
+                        //copSegs[i] = seg;
                     }
-                    //Message updatedcopy = new Vision.Message(copSegs, marqueeBackgroundColor);
+                    //Message updatedcopy = new Vision.Message(copSegs, copyMyMessage.backgroundColor);
                     XmlSave.SaveData(list, saveFileDialog1.FileName);
-                }
-                //myDisplayThread.Start();
+                }              
             }
         }
 
-        public void setOriginalBitmap(string imageString)
+        //Edited 12-4 Heather
+        //This is the Load XML button
+        private void loadXMLButton_Click(object sender, EventArgs e)
         {
-            byte[] bitmapBytes = Convert.FromBase64String(imageString);
-            MemoryStream memoryStream = new MemoryStream(bitmapBytes);
-            Image image = Image.FromStream(memoryStream);
-            Bitmap originalBitmap = new Bitmap(image);
+            openFileDialog2.Filter = "Xml Files (*.xml) | *.xml";
+            openFileDialog2.FilterIndex = 1;
+            openFileDialog2.RestoreDirectory = true;
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)  // Test result.
+            {
+                string fname = openFileDialog2.FileName;
+
+                XmlLoad<List<Segment>> cRef = new XmlLoad<List<Segment>>();
+                List<Segment> xmlFileSegs = new List<Segment>(cRef.LoadData(fname));
+                Segment[] deserializedXml = new Segment[xmlFileSegs.Count];
+                for (int i = 0; i < xmlFileSegs.Count; i++)
+                {
+                    Segment seg = new Segment();
+                    if (xmlFileSegs[i].isImage)
+                    {
+                        seg.ignore = xmlFileSegs[i].ignore;
+                        seg.isImage = xmlFileSegs[i].isImage;
+                        seg.filename = xmlFileSegs[i].filename;
+                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
+                        seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
+                        seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
+                        seg.imageAspect = xmlFileSegs[i].imageAspect;
+                        seg.backgroundColor = marqueeBackgroundColor;
+                    }
+                    if (!xmlFileSegs[i].isImage)
+                    {
+                        seg.ignore = xmlFileSegs[i].ignore;
+                        seg.isImage = xmlFileSegs[i].isImage;
+                        seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
+                        seg.messageText = xmlFileSegs[i].messageText;
+                        seg.onColor = xmlFileSegs[i].onColor;
+                        seg.isScrolling = xmlFileSegs[i].isScrolling;
+                        seg.isRandomColorScrolling = xmlFileSegs[i].isRandomColorScrolling;
+                        seg.scrollSpeed = xmlFileSegs[i].scrollSpeed;
+                        seg.entranceEffect = xmlFileSegs[i].entranceEffect;
+                        seg.middleEffect = xmlFileSegs[i].middleEffect;
+                        seg.exitEffect = xmlFileSegs[i].exitEffect;
+                        seg.borderColor = xmlFileSegs[i].borderColor;
+                        seg.borderEffect = xmlFileSegs[i].borderEffect;
+                        seg.backgroundColor = marqueeBackgroundColor;
+                    }
+                    deserializedXml[i] = seg;
+                }
+                mySegmentArray = deserializedXml ;
+                Message myMessage = new Vision.Message(mySegmentArray, Color.Black);
+                myDisplayThread = new Thread(delegate () { marquee1.displayMessage(myMessage); });
+                myDisplayThread.Start();
+            }
         }
 
-        public void setScaledBitmap(string imageString)
+
+        public Bitmap setBitmap(string imageString)
         {
             byte[] bitmapBytes = Convert.FromBase64String(imageString);
             MemoryStream memoryStream = new MemoryStream(bitmapBytes);
             Image image = Image.FromStream(memoryStream);
-            Bitmap scaledBitmap = new Bitmap(image);
-        }
+            Bitmap bitmap = new Bitmap(image);
+            return bitmap;
+        }      
 
         private void UIForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -1741,6 +1790,8 @@ namespace Vision
         {
             marquee1.Height = (int)((double)marquee1.Width / 6);
             marquee1.Top = (this.ClientSize.Height - marquee1.Height) / 2;
-        }               
+        }
+
+        
     }
 }
