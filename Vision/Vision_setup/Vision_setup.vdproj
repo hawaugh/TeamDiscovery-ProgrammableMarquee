@@ -145,11 +145,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_8F590271A5ABD4EDEF164808CB5BA692"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -245,15 +240,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Vision"
-        "ProductCode" = "8:{9910971D-936A-4E00-B1AD-CE8D7A29F09A}"
-        "PackageCode" = "8:{01F504E0-531E-49C0-8846-1A1A8F7B1704}"
+        "ProductCode" = "8:{448A174A-8F82-4886-8A9E-020B128D9ADB}"
+        "PackageCode" = "8:{5A299B8A-E29B-4A9B-BA94-64814471D511}"
         "UpgradeCode" = "8:{CAE99E6F-F011-459C-BC8C-5DD5D9BE1DE2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.1.1"
+        "ProductVersion" = "8:0.2.0"
         "Manufacturer" = "8:Team Discovery"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

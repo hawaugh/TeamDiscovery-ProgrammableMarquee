@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>20000</segmentSpeed>
+    <messageText>WELCOME</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>2</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>1</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>2000</segmentSpeed>
+    <messageText>CSC289 Capstone Presentation by Team Discovery</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>true</isScrolling>
+    <isRandomColorScrolling>true</isRandomColorScrolling>
+    <scrollSpeed>50</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>2</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>2000</segmentSpeed>
+    <messageText>CSC289 Capstone Presentation by Team Discovery</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>true</isScrolling>
+    <isRandomColorScrolling>true</isRandomColorScrolling>
+    <scrollSpeed>50</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>2</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>EFFECT 1</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>1</entranceEffect>
+    <middleEffect>1</middleEffect>
+    <exitEffect>5</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>20000</segmentSpeed>
+    <messageText>EFFECT 2</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>9</entranceEffect>
+    <middleEffect>2</middleEffect>
+    <exitEffect>7</exitEffect>
+    <borderColor />
+    <borderColorR>0</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>255</borderColorB>
+    <borderEffect>2</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>20000</segmentSpeed>
+    <messageText>EFFECT 3</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>7</entranceEffect>
+    <middleEffect>3</middleEffect>
+    <exitEffect>2</exitEffect>
+    <borderColor />
+    <borderColorR>0</borderColorR>
+    <borderColorG>128</borderColorG>
+    <borderColorB>255</borderColorB>
+    <borderEffect>1</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>20000</segmentSpeed>
+    <messageText>EFFECT 4</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>5</entranceEffect>
+    <middleEffect>4</middleEffect>
+    <exitEffect>4</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>4</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>WE'REGLAD</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>TO SHOW</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>YOU OUR</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>PROJECT</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>WE'REGLAD</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>TO SHOW</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>YOU OUR</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>PROJECT</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>WE'REGLAD</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>TO SHOW</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>255</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>10000</segmentSpeed>
+    <messageText>YOU OUR</messageText>
+    <onColor />
+    <onColorR>0</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>255</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>2000</segmentSpeed>
+    <messageText>PROJECT</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>3</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>45000</segmentSpeed>
+    <messageText />
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>true</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>0</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>45000</segmentSpeed>
+    <messageText />
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>true</isImage>
+    <originalBitmapString>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
+GfS5g9qdysris9GmO9DOXgLzF4cj7wq0kZdDcfuD3V74SwjVAgi4/5Gjf4OqBLlcPz2RPiNSOyet
+BhyadE1lkZTAoXgvDMOMJHjInWEYhmFGATmb5c4CnWEYhmGGDpcU6JkMuVf18g2dBTrDMAzDDBHx
+IfcMNHQW6AzDMAwzTMn4G3oGW7+yQGcYhmGYIaIvAr3HZWujZ5Y7wzAMw4w8nDN+C0F8CAJ9t8V+
+fYm0FZBAd0qBXtmTQL/eY5kEDb1i5lMW++wzpS3DMAzDMIOG0z0FQvqQxTXzXfxO3oVK19CnJ2vo
+ZkPuZdOv1wU6aegu95DteMgwDMMwY5eqq74JQV4DoT7L4rrmFGkrSJ0U152GXjbzbPi9E8L/Mkvp
+Fbk8HIlhGIZhmIyxzv+YpcKdfka7mUA309CJYvcnLVOn9uvcaYZhGIZhBoK+CHSGYRiGYYYpSQJ9
+Rvfr0BmGYRiGGcaQQM9kljvDMAzDMMMYHnJnGIZhmFFAqkDnIXeGYRiGGYEkCfQe1qEzDDP2uPXW
+6uOXLr3j3KVL77QvW3ZnCZklS4RJ/W10N/432hv9G3+r/2b2Rnejm9GP0d5oUu2M9xpNpn5S/6fe
+k/rbaJfqJ9WuO7fUq9Gf2e9UQ25m7v253+x/qj8zu1Rjdo/xamZ6cks1qeGbuaW6d2dnvKa6mbmn
+/jb6ofq0ZMmScxYurDtGVrXcUH6dw+KavstSNSsx5O50t1pcs74qffSburq645Yuvf3cxYvvcHT3
+rOq32f/uDPnrzm+qW09+lTHzo+y6czNeU93M3JW90c7oZmaXalL9KH/G32Z+zezM3Ix+lH2qm9Fe
+2Zn5T7U32in7ntyVSXVT/o33pf42+k91V/+N7qnGGJbZfco+1c3432hvdk39bWbI3cwPtQl3333H
+jxcuXJjbNsEIIv7j/fcveWn58iVv3X//XW8YzX33LdGN+E9X8VvZCze6kp2wT/gTfhPuqXbiP7kZ
+/4vwE/El3Omq7BPu6X4S9qn+jHYUX3p6E0a4pceTiMPolgjTaN9THAm/yhjdjf/Vb5GHifCS70t9
+dpHWhN/ke4Wdsk/YqfuSw073Z+aWfI8xvkSY6p6En8R9yj31v7g/cU12S5hku0R8Cf/qfmPaEsbo
+33gV96X6F3bquYzPJ67Ll9/z9tKldz117713VcqqlhvK3OdZnNOfs1wwN6YL9QuqY5byGWssZbNP
+lj76RSwWO+Lee++edv/9d7+E53hbPVPiWRPPSMbMTtkn3JSdMMn5ZQxDuCVf1T2pduK3CNN4D4Vt
+bqfuNRpln+ou7jeGkepmtFfhG+9JuCfclH2ye/p9wqSnId2PMipNFFfys6j7VL4Y3ZPDSzxX8v9k
++8Tv5HiUUfck26eGnZwms/ATdun3dhee8Zr6W5ie05Xsv/s4zOzENTlvE/7RDrwJGfv2smV377j7
+7jvLZXXLPdDOr0NkB5CQGK6HjWbZsuT/Rju6Gt3Vf6O98Zpqp0xvfsz8m9ml/k69Gt2Npjs/3V1T
+/RrdU3+r/925K7ee7Mx+G+2M93X3W/03Xo1G+U31r/4b3VPtzdxT3ehq5k+4LU5yV79T7cyuyvTk
+L/W3+q+MmZ2yN/ut/qeaVDdU3hh65BDqi38rq1pumDjnJGjkt1ucM/daKiDQXTNftbjcf7SMdx8l
+ffSbe+755ww8y0FqE4zPSEY9o/F5u/ttNMre6JbqT/03Xrv7TVejMdqZ3WP8bzRG/93d052b0d7o
+nmoy8d+TmzLd+THaG42yV25GP6luRjuz36lX9dtob3RTdsar0T7VzehHuStjtFe/jf56+6/sjFf1
+28xfqkl1T70a/amr0U39Rief6tNrMBfKqpZ7li279WvLlt35G2jql0Oj+OvAmX9maDeWTKbP35u/
+kZCP3aVxpJWBzNJL9emee/4x5d577/iirGq5o9z9NYtzxl9hai2uGZMtk+cfK11ywl133f516ogs
+WXLXALcJZibb8kD3jbSyNFimL/nCeZg7k5aXqE93TqqrW/gFWdUGDhpqY8OGTe6MrFoDg9v9Ecu0
++R+T/wYEs2diw4ZN9kZWLYZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIZhGIYZ
+XCyW/w82akKIvQb/mAAAAABJRU5ErkJggg==</originalBitmapString>
+    <scaledBitmapString>iVBORw0KGgoAAAANSUhEUgAAACwAAAAQCAYAAABtPJ3XAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALfSURBVEhL5VRNTxNRFH1FwA/EqCEhaqIRSRRR
+UcTQsCkmCtPOtDAzbyqUxgDGQkiMisYPopmUxigdKhs2dSGGkC7Y2GkJiatuTGqHJviP8J7pNKh8
+LEwXTTzJzbv3vnPPu+/2ddh/j0LGmHRcZqXnbxTNhNsJqw/f03ON+bQx9CP7vmNra8tlZYzZ1VW9
+/uc3o8GhVBcK5nx0I/OxD41umPEBWscK6fi0lZ676FCqC/ms0VvIxKcxZVpDBTMuFNLGm82vC8cd
+SnVhI7vQm88YUwUzIVCzby0zHrbWDCWX02sdSnWhWEzW5dc+tFmmoWxmE2eK6wm3lTWuONtVhnux
+C0yLviKb2WF8ljusKoOiX2Kq3sWCUT/jsUdMjfXYsaQfcRiVweCgr83j8dRqmnZAlsUO5FS1vx2r
+pok3A4FAI3zO/a2RSKSuzOO8r1XTfKOKYts5cGwEo7dZcHaRDejlP5tLUbwh4jzg3Hu/VC+4nbpR
+io+Co6q+AVUVxiVJakIR58Ll0uo/z7n7MHwbqurtUhTxDhX0kMBiKed7SguJiDNk48jhMM75SRJ9
+SZc4TfHY8LDURAfW6zqrAcfGzobp4lo9aT4XBOEgYugjByvF3ocYXDh8t0GW+zsphUs+xh7nIqfc
+KfhluOjwZ5z7JtCULEudNMEATbkXl4E4Jos9imMQRxEahihdNvLHBHZpGKCDnzguo8Ho9OtFSHsY
+Mc63N7ZBw/Iuk00S99PfDVOBbwoH4+cgfx2TgCiawh4JB9EwcVrID+NS2JMkTxMuQxL7Thj4veHy
+EJxaGphvYnvCwi3k9pswQ0LTpLPwSayblhoIIAZU1d9efsOI6e1eL7/h0jsWW2wisGfDpTcJyLLf
+Xa4dGRGOUaqGGhzEEEIh8QQ4e75hfNiTyWRdJYzkXMz/upkFYy+YR6/N5XKV1QZWVj5fTaWWuyth
+JIxPmIsNvWuGdir15dpuvH+xpaWlQ78AvH+0qemLDC8AAAAASUVORK5CYII=</scaledBitmapString>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>0</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>20000</segmentSpeed>
+    <messageText>COOL,HUH?</messageText>
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>6</entranceEffect>
+    <middleEffect>4</middleEffect>
+    <exitEffect>2</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>4</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>2000</segmentSpeed>
+    <messageText />
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>0</borderEffect>
+  </Segment>
+  <Segment>
+    <ignore>true</ignore>
+    <segmentSpeed>2000</segmentSpeed>
+    <messageText />
+    <onColor />
+    <onColorR>255</onColorR>
+    <onColorG>0</onColorG>
+    <onColorB>0</onColorB>
+    <isScrolling>false</isScrolling>
+    <isRandomColorScrolling>false</isRandomColorScrolling>
+    <scrollSpeed>100</scrollSpeed>
+    <isImage>false</isImage>
+    <filename />
+    <imageAspect>0</imageAspect>
+    <entranceEffect>0</entranceEffect>
+    <middleEffect>0</middleEffect>
+    <exitEffect>0</exitEffect>
+    <borderColor />
+    <borderColorR>255</borderColorR>
+    <borderColorG>0</borderColorG>
+    <borderColorB>0</borderColorB>
+    <borderEffect>0</borderEffect>
+  </Segment>
+</ArrayOfSegment>
