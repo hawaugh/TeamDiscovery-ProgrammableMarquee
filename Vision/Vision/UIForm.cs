@@ -1567,6 +1567,8 @@ namespace Vision
                         seg.segmentSpeed = xmlFileSegs[i].segmentSpeed;
                         seg.originalBitmap = setBitmap(xmlFileSegs[i].originalBitmapString);
                         seg.scaledBitmap = setBitmap(xmlFileSegs[i].scaledBitmapString);
+                        seg.originalBitmapString = xmlFileSegs[i].originalBitmapString;
+                        seg.scaledBitmapString = xmlFileSegs[i].scaledBitmapString;
                         seg.imageAspect = xmlFileSegs[i].imageAspect;
                     }
                     if (!xmlFileSegs[i].isImage)
