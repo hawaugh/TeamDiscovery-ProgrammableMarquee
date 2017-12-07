@@ -47,7 +47,7 @@
     <borderEffect>2</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>2000</segmentSpeed>
     <messageText>CSC289 Capstone Presentation by Team Discovery</messageText>
     <onColor />
