@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>20000</segmentSpeed>
     <messageText>WELCOME</messageText>
     <onColor />
@@ -24,7 +24,7 @@
     <borderEffect>1</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>2000</segmentSpeed>
     <messageText>CSC289 Capstone Presentation by Team Discovery</messageText>
     <onColor />
@@ -70,7 +70,7 @@
     <borderEffect>2</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>EFFECT 1</messageText>
     <onColor />
@@ -93,7 +93,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>20000</segmentSpeed>
     <messageText>EFFECT 2</messageText>
     <onColor />
@@ -116,7 +116,7 @@
     <borderEffect>2</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>20000</segmentSpeed>
     <messageText>EFFECT 3</messageText>
     <onColor />
@@ -139,7 +139,7 @@
     <borderEffect>1</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>20000</segmentSpeed>
     <messageText>EFFECT 4</messageText>
     <onColor />
@@ -162,9 +162,9 @@
     <borderEffect>4</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
-    <messageText>WE'REGLAD</messageText>
+    <messageText>GLAD</messageText>
     <onColor />
     <onColorR>255</onColorR>
     <onColorG>0</onColorG>
@@ -185,7 +185,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>TO SHOW</messageText>
     <onColor />
@@ -208,7 +208,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>YOU OUR</messageText>
     <onColor />
@@ -231,7 +231,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>PROJECT</messageText>
     <onColor />
@@ -254,9 +254,9 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
-    <messageText>WE'REGLAD</messageText>
+    <messageText>GLAD</messageText>
     <onColor />
     <onColorR>0</onColorR>
     <onColorG>0</onColorG>
@@ -277,7 +277,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>TO SHOW</messageText>
     <onColor />
@@ -300,7 +300,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>YOU OUR</messageText>
     <onColor />
@@ -323,7 +323,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>PROJECT</messageText>
     <onColor />
@@ -346,9 +346,9 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
-    <messageText>WE'REGLAD</messageText>
+    <messageText>GLAD</messageText>
     <onColor />
     <onColorR>0</onColorR>
     <onColorG>255</onColorG>
@@ -369,7 +369,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>TO SHOW</messageText>
     <onColor />
@@ -392,7 +392,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>YOU OUR</messageText>
     <onColor />
@@ -415,7 +415,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>10000</segmentSpeed>
     <messageText>PROJECT</messageText>
     <onColor />
@@ -438,7 +438,7 @@
     <borderEffect>3</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>45000</segmentSpeed>
     <messageText />
     <onColor />
@@ -1460,7 +1460,7 @@ ezC7O1A1Nb9rjbKSxJu3TJlcPDC7uG7by51qJ22OgyJmF2Yx2GLKSnRqxMe3x32akOcojoZTSPWj
     <borderEffect>0</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>45000</segmentSpeed>
     <messageText />
     <onColor />
@@ -1879,7 +1879,7 @@ JIxPmIsNvWuGdir15dpuvH+xpaWlQ78AvH+0qemLDC8AAAAASUVORK5CYII=</scaledBitmapString
     <borderEffect>0</borderEffect>
   </Segment>
   <Segment>
-    <ignore>true</ignore>
+    <ignore>false</ignore>
     <segmentSpeed>20000</segmentSpeed>
     <messageText>COOL,HUH?</messageText>
     <onColor />
