@@ -769,6 +769,8 @@ namespace Vision
                 displayDurationLabel.Location = new Point(12, 28);
                 imagePanel.Controls.Add(displayDurationControl);
                 displayDurationControl.Location = new Point(102, 26);
+                displayDurationLabel.Visible = true;
+                displayDurationControl.Visible = true;
             }
             else
             {
@@ -1185,6 +1187,7 @@ namespace Vision
             {
                 mySegmentArray[activeIndex].isScrolling = false;
                 displayDurationControl.Visible = true;
+                displayDurationControl.Value = mySegmentArray[activeIndex].segmentSpeed / 1000;
                 displayDurationLabel.Visible = true;
                 entranceEffectLabel.Visible = true;
                 entranceEffectComboBox.Visible = true;
@@ -1196,6 +1199,9 @@ namespace Vision
                 scrollSpeedLabel.Visible = false;
                 secondsPerCharacterLabel.Visible = false;
                 randomColorCheckBox.Visible = false;
+                setEntranceEffectText();
+                setMiddleEffectText();
+                setExitEffectText();
             }
         }
 
@@ -1217,6 +1223,14 @@ namespace Vision
                 scrollSpeedLabel.Visible = true;
                 secondsPerCharacterLabel.Visible = true;
                 randomColorCheckBox.Visible = true;
+                if (mySegmentArray[activeIndex].isRandomColorScrolling)
+                {
+                    randomColorCheckBox.Checked = true;
+                }
+                else
+                {
+                    randomColorCheckBox.Checked = false;
+                }
             }
         }
 
