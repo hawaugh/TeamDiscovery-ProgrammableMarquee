@@ -783,9 +783,9 @@ namespace Vision
             this.buildLabel.AutoSize = true;
             this.buildLabel.Location = new System.Drawing.Point(708, 538);
             this.buildLabel.Name = "buildLabel";
-            this.buildLabel.Size = new System.Drawing.Size(82, 13);
+            this.buildLabel.Size = new System.Drawing.Size(69, 13);
             this.buildLabel.TabIndex = 49;
-            this.buildLabel.Text = "Beta Build 0.2.0";
+            this.buildLabel.Text = "Version 1.0.0";
             // 
             // SegmentHolderPanel
             // 
