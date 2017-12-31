@@ -9,6 +9,10 @@ Built on .NET Framework 4.5.2
 
 Walk Through
 
+<a href="https://imgflip.com/gif/21wfwn"><img src="https://i.imgflip.com/21wfwn.gif" title="made at imgflip.com"/></a>
+
+
+
 -Splash Screen 
 
 ![splashscreen](https://user-images.githubusercontent.com/31226496/33809230-92c7b8b4-ddc1-11e7-8085-71dfb03e73dd.png)
@@ -43,13 +47,36 @@ At the top you can see that there are two tabs. Text and Image. Select the text 
 
 - 9 currently available entrance effects
   - No Effect cause your text to just show up with no effect.
-  - From top has your text slide in from the top.
+  - From top has your text slide in from the top, and from bottom makes the text come enter from the bottom of the screen.
+  		
+	<a href="https://imgflip.com/gif/21wg6y"><img src="https://i.imgflip.com/21wg6y.gif" title="made at imgflip.com"/></a>
+	
+	
+  - From left makes the left scroll in from the left, and from right makes it scroll in from the right to stop in the middle.
+  
+  	<a href="https://imgflip.com/gif/21wgrp"><img src="https://i.imgflip.com/21wgrp.gif" title="made at imgflip.com"/></a>
+	
+  
   - Horizontal Split brings the text in from left and right in two separate parts and then connects the parts.
+  
+  	<a href="https://imgflip.com/gif/21wgab"><img src="https://i.imgflip.com/21wgab.gif" title="made at imgflip.com"/></a>
+	
+  
   - Dissolve adds one dot at a time until all of the text is visible.
+  
+  	<a href="https://imgflip.com/gif/21wgd2"><img src="https://i.imgflip.com/21wgd2.gif" title="made at imgflip.com"/></a>
+	
+	
   - The Schwoop brings your text down from the top but upside down, then curves up right-side up and returns to the center.
+  
+  	<a href="https://imgflip.com/gif/21wggp"><img src="https://i.imgflip.com/21wggp.gif" title="made at imgflip.com"/></a>
+	
+  
   - Crooked From Top brings your text in from the top right slated, then centers itself and straightens the character.
-  
-  
+  	
+	<a href="https://imgflip.com/gif/21wgk7"><img src="https://i.imgflip.com/21wgk7.gif" title="made at imgflip.com"/></a>
+	
+  	
 
 -	Middle Effect manipulates the text while it is being displayed.
 
@@ -59,9 +86,22 @@ At the top you can see that there are two tabs. Text and Image. Select the text 
 - 4 currently available middle effects	
   - No Effect does just that, nothing will happen to the text.
   - Random Colored Dots changes every dot in the text to change to a random color.
+  
+  	<a href="https://imgflip.com/gif/21wgvo"><img src="https://i.imgflip.com/21wgvo.gif" title="made at imgflip.com"/></a>
+	
   - Flashing causes the text to fade out and then back in once.
+  	
+	<a href="https://imgflip.com/gif/21wgy0"><img src="https://i.imgflip.com/21wgy0.gif" title="made at imgflip.com"/></a>
+  
   - The Wave causes 3 lines to move through the text fading in and out as they move along the text.
+  
+  	<a href="https://imgflip.com/gif/21wh01"><img src="https://i.imgflip.com/21wh01.gif" title="made at imgflip.com"/></a>
+  
   - The Spotlight cause the text to dim slightly while a light looks over the text.
+  
+  	<a href="https://imgflip.com/gif/21wh1w"><img src="https://i.imgflip.com/21wh1w.gif" title="made at imgflip.com"/></a>
+	
+	
 
 - Exit Effect is how your text leaves the display
 
@@ -69,14 +109,40 @@ At the top you can see that there are two tabs. Text and Image. Select the text 
 
 - 8 Currently available  exit effects 
   - No Effect causes the text to disappear.
+  
+  
   - Exit Top causes the text to slide up until it's no longer visible.
+  
+  	<a href="https://imgflip.com/gif/21wh8k"><img src="https://i.imgflip.com/21wh8k.gif" title="made at imgflip.com"/></a>
+  
   - Exit Bottom causes the text to slide down until it's no longer visible.
+  	
+	<a href="https://imgflip.com/gif/21whai"><img src="https://i.imgflip.com/21whai.gif" title="made at imgflip.com"/></a>
+	
   - Exit Left causes the text to slide left until it's no longer visible.
+  
+  	<a href="https://imgflip.com/gif/21whdk"><img src="https://i.imgflip.com/21whdk.gif" title="made at imgflip.com"/></a>
+  
   - Exit right causes the text to slide right until it's no longer visible.
+  
+  	<a href="https://imgflip.com/gif/21whck"><img src="https://i.imgflip.com/21whck.gif" title="made at imgflip.com"/></a>
+  
   - Horizontal Split splits the text into two parts and moves off screen in different directions.
+  
+  	<a href="https://imgflip.com/gif/21whf5"><img src="https://i.imgflip.com/21whf5.gif" title="made at imgflip.com"/></a>
+  
   - Dissolve removes one dot at a time until all of the text is gone.
+  
+  	<a href="https://imgflip.com/gif/21whgx"><img src="https://i.imgflip.com/21whgx.gif" title="made at imgflip.com"/></a>
+  
   - Diagonal Exit Top slides the text to the top left until it's no longer visible.
+  
+  	<a href="https://imgflip.com/gif/21whin"><img src="https://i.imgflip.com/21whin.gif" title="made at imgflip.com"/></a>
+  
   - Diagonal Exit bottom slides the text to the  left until it's no longer visible.
+  
+  	<a href="https://imgflip.com/gif/21whl2"><img src="https://i.imgflip.com/21whl2.gif" title="made at imgflip.com"/></a>
+  
   
  
  ![image](https://user-images.githubusercontent.com/31226496/33809578-221ca290-ddc7-11e7-8b2f-c98e4cf6ec1d.png)
@@ -99,10 +165,24 @@ At the top you can see that there are two tabs. Text and Image. Select the text 
  
 - 4 border effects currently available 
   - No Border doesn’t display anything around the edge of the display.
+  
+  
   - Static Border causes one dot around the edge of the border to display the chosen color.
+  
+  	<a href="https://imgflip.com/gif/21whpd"><img src="https://i.imgflip.com/21whpd.gif" title="made at imgflip.com"/></a>
+  
   - Rotating causes 3 dots to rotate counter-clockwise around the edge of the marquee.
+  
+  	<a href="https://imgflip.com/gif/21whsc"><img src="https://i.imgflip.com/21whsc.gif" title="made at imgflip.com"/></a>
+  
   - Flashing Random Colors causes the border to fade out and in repeatedly change colors each interval.
+  
+  	<a href="https://imgflip.com/gif/21whtw"><img src="https://i.imgflip.com/21whtw.gif" title="made at imgflip.com"/></a>
+  
   - Oscillating Random Colors causes the border to change to random colors going from right to left.
+  
+  	<a href="https://imgflip.com/gif/21whvq"><img src="https://i.imgflip.com/21whvq.gif" title="made at imgflip.com"/></a>
+  
 
  
 ![image](https://user-images.githubusercontent.com/31226496/33809858-61c5e592-ddcb-11e7-8997-0e56636c3a09.png)
